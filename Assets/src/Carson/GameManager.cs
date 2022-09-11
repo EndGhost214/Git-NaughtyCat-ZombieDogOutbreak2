@@ -4,13 +4,15 @@ using UnityEngine;
 
 // Class to control UI elements and game event execution.
 public static class GameManager : MonoBehaviour {
-	private Dog[] dogs;
+	private List<Dogs> dogs = new List<Dogs>();
 	private Player player;
 	
 	private LevelManager levelMan;
 	
 	private int round = 0;
 	private int time = 0;
+	
+	private int spawnID = 0; // index of next spawnpoint to use
 	
     // Start is called before the first frame update
     void Start() {
@@ -22,16 +24,44 @@ public static class GameManager : MonoBehaviour {
     void Update() {
 		// Check that the game is in progress
         if (round > 0) {
-			
+			// Spawn 5 dogs every 12 seconds
+			if (time % 12 == 0) {
+				SpawnDogs(5);
+			}
+			// Spawn a larger group every 4 seconds
+			if (time % 4 == 0) {
+				SpawnDogs(1);
+			}
 		}
     }
+	
+	// Spawn the provided number of dogs at the next spawn locations
+	private static void SpawnDogs(int num) {
+		Vector2 spawn = GetNextSpawnPoint(); // get position to spawn dogs at next
+		
+		for (int i = 0; i < num; i++) {
+			dogs.add(new ZombieDog(spawn));
+		}
+	}
+	
+	// Returns the next position a dog should be spawned.
+	private static Vector2 GetNextSpawnPoint() {
+		List<Vector2> points = levelMan.GetSpawnPoints();
+		
+		// Increment counter to next spawn point in the list
+		spawnID = (spawnID + 1) % (points.Count + 1);
+		
+		return points[spawnID];
+	}
 	
 	// Call to end the game when the player dies or quits.
 	public static void EndGame() {
 		round = 0;
-		for (int i = 0; dogs[i] != null; i++) {
-			dogs[i].Disable();
-		}
+		
+		dogs.ForEach(delegate(Dog dog) {
+			dog.Disable();
+			dogs.remove(dog);
+		});
 		
 		// Reset level manager
 		// Display start menu
@@ -57,9 +87,7 @@ public static class GameManager : MonoBehaviour {
 		}
 		
 		// Populate array with starting enemies
-		for (int i = 0; i < 3 * difficulty) {
-			ZombieDog[i] = new ZombieDog();
-		}
+		SpawnDogs(3 * difficulty);
 	}
 	
 	// Getter function for current level (for modifying enemy speed, UI elements)
@@ -92,11 +120,9 @@ public static class GameManager : MonoBehaviour {
 		int count = 0;
 		
 		// Loop through dogs array
-		for (int i = 0; dogs[i] != null; i++) {
-			if (dogs[i].IsAlive() == true) {
-				count++;
-			}
-		}
+		dogs.ForEach(if (dogs[i].IsAlive() == true) {
+			count++;
+		});
 		
 		return count;
 	}
