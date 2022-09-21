@@ -4,7 +4,7 @@ using UnityEngine;
 
 // Class to control UI elements and game event execution.
 public static class GameManager : MonoBehaviour {
-	private List<Dogs> dogs = new List<Dogs>();
+	private List<Dog> dogs = new List<Dog>();
 	private Player player;
 	
 	private LevelManager levelMan;
@@ -37,7 +37,7 @@ public static class GameManager : MonoBehaviour {
 	
 	// Spawn the provided number of dogs at the next spawn locations
 	private static void SpawnDogs(int num) {
-		Vector2 spawn = GetNextSpawnPoint(); // get position to spawn dogs at next
+		Vector2 spawn = NextSpawn(); // get position to spawn dogs at next
 		
 		for (int i = 0; i < num; i++) {
 			dogs.add(new ZombieDog(spawn));
@@ -45,7 +45,7 @@ public static class GameManager : MonoBehaviour {
 	}
 	
 	// Returns the next position a dog should be spawned.
-	private static Vector2 GetNextSpawnPoint() {
+	private static Vector2 NextSpawn() {
 		List<Vector2> points = levelMan.GetSpawnPoints();
 		
 		// Increment counter to next spawn point in the list
