@@ -7,8 +7,8 @@ public class ZombieDog : Dog
     //serialized field for sound management class
     [SerializeField]
     private GameObject ZomDog;
-    [SerializeField]
-    private SoundManager sounds;
+    //[SerializeField]
+    //private SoundManager sounds;
 
     //other variables
     /*
@@ -25,13 +25,13 @@ public class ZombieDog : Dog
     public ZombieDog(Vector3 pos){
         transform.position = pos;
         //call dog noise sound from marissa's function
-        //sounds.ZombieSoundsFunction();
+        SoundManager.Instance.ZombieSoundFunction();
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        SoundManager.Instance.ZombieSoundFunction();
     }
 
     // Update is called once per frame
