@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 // Class to control UI elements and game event execution.
-public static class GameManager : MonoBehaviour {
+public class GameManager : MonoBehaviour {
 	private List<Dog> dogs = new List<Dog>();
-	private Player player;
+	//private Player player;
 	
-	private LevelManager levelMan;
+	[SerializeField]
+	private MapManager map;
 	
 	private int round = 0;
 	private int time = 0;
@@ -17,7 +18,6 @@ public static class GameManager : MonoBehaviour {
     // Start is called before the first frame update
     void Start() {
         // Open start menu from Ambrea?
-		levelMan = new LevelManager();
     }
 
     // Update is called once per frame
@@ -36,31 +36,30 @@ public static class GameManager : MonoBehaviour {
     }
 	
 	// Spawn the provided number of dogs at the next spawn locations
-	private static void SpawnDogs(int num) {
+	private void SpawnDogs(int num) {
 		Vector2 spawn = NextSpawn(); // get position to spawn dogs at next
 		
 		for (int i = 0; i < num; i++) {
-			dogs.add(new ZombieDog(spawn));
+			dogs.Add(new ZombieDog(spawn));
 		}
 	}
 	
 	// Returns the next position a dog should be spawned.
-	private static Vector2 NextSpawn() {
-		List<Vector2> points = levelMan.GetSpawnPoints();
+	private Vector3 NextSpawn() {
+		List<Vector3> sPoints = map.GetSpawnPoints();
 		
 		// Increment counter to next spawn point in the list
-		spawnID = (spawnID + 1) % (points.Count + 1);
+		spawnID = (spawnID + 1) % (sPoints.Count + 1);
 		
-		return points[spawnID];
+		return sPoints[spawnID];
 	}
 	
 	// Call to end the game when the player dies or quits.
-	public static void EndGame() {
+	public void EndGame() {
 		round = 0;
 		
 		dogs.ForEach(delegate(Dog dog) {
-			dog.Disable();
-			dogs.remove(dog);
+			dog.Death();
 		});
 		
 		// Reset level manager
@@ -69,21 +68,21 @@ public static class GameManager : MonoBehaviour {
 	
 	// Load the game background, create player and dogs.
 	// Provided difficulty sets dog AI level. 0 = BC mode
-	public static void StartGame(int difficulty) {
+	public void StartGame(int difficulty) {
 		round = 1;
 		
-		levelMan.StartGame();
+		map.StartGame();
 		
 		// Check if BC mode needs to be enabled
 		if (difficulty == 0) {
 			// create BC player
-			player = new BCPlayer();
+			//player = new BCPlayer();
 			
 			difficulty = 1;
 		}
 		else {
 			// create survival player
-			player = new SurvivalPlayer();
+			//player = new SurvivalPlayer();
 		}
 		
 		// Populate array with starting enemies
@@ -91,38 +90,43 @@ public static class GameManager : MonoBehaviour {
 	}
 	
 	// Getter function for current level (for modifying enemy speed, UI elements)
-	public static int GetRound() {
+	public int GetRound() {
 		return round;
 	}
 	
-	// Return player object.
-	public static Player GetPlayer() {
+	/*// Return player object.
+	public Player GetPlayer() {
 		return player;
 	}
 	
 	// Return player position (for dog AI).
-	public static Vector2 GetPlayerPos() {
+	public Vector2 GetPlayerPos() {
 		return player.GetPos();
-	}
+	}*/
 	
 	// Return number of seconds since the game started.
-	public static int GetSeconds() {
+	public int GetSeconds() {
 		return time;
 	}
 	
 	// Return number of minutes since the game started, floored.
-	public static int GetMinutes() {
+	public int GetMinutes() {
 		return time / 60;
 	}
 	
 	// Counts the number of dogs left to fight
-	public static int EnemiesLeft() {
+	public int EnemiesLeft() {
 		int count = 0;
 		
 		// Loop through dogs array
-		dogs.ForEach(if (dogs[i].IsAlive() == true) {
-			count++;
-		});
+		foreach(Dog d in dogs){
+			if (d != null) {
+				count++;
+			}
+			else {
+				dogs.Remove(d);
+			}
+		}
 		
 		return count;
 	}
