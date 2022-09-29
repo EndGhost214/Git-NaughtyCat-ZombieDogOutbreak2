@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 // Class to control UI elements and game event execution.
-public static class GameManager : MonoBehaviour {
+public class GameManager : MonoBehaviour {
 	private List<Dog> dogs = new List<Dog>();
 	private Player player;
 	
-	private LevelManager levelMan;
+	[SerializeField]
+	private MapManager map;
 	
 	private int round = 0;
 	private int time = 0;
@@ -17,7 +18,6 @@ public static class GameManager : MonoBehaviour {
     // Start is called before the first frame update
     void Start() {
         // Open start menu from Ambrea?
-		levelMan = new LevelManager();
     }
 
     // Update is called once per frame
@@ -46,12 +46,12 @@ public static class GameManager : MonoBehaviour {
 	
 	// Returns the next position a dog should be spawned.
 	private static Vector2 NextSpawn() {
-		List<Vector2> points = levelMan.GetSpawnPoints();
+		List<Vector2> sPoints = levelMan.GetSpawnPoints();
 		
 		// Increment counter to next spawn point in the list
-		spawnID = (spawnID + 1) % (points.Count + 1);
+		spawnID = (spawnID + 1) % (sPoints.Count + 1);
 		
-		return points[spawnID];
+		return sPoints[spawnID];
 	}
 	
 	// Call to end the game when the player dies or quits.
@@ -120,9 +120,11 @@ public static class GameManager : MonoBehaviour {
 		int count = 0;
 		
 		// Loop through dogs array
-		dogs.ForEach(if (dogs[i].IsAlive() == true) {
-			count++;
-		});
+		foreach(Dog d in dogs){
+			if (d.IsAlive() == true) {
+				count++;
+			}
+		}
 		
 		return count;
 	}
