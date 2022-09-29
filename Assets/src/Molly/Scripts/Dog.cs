@@ -6,7 +6,7 @@ public class Dog: MonoBehaviour
 {
 
     //remove the dog from the map
-    private void Death(){
+    public void Death(){
         //destroy();
         //call random item drop function
     }
