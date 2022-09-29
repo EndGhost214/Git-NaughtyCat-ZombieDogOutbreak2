@@ -17,7 +17,7 @@ public class Singleton<T> : MonoBehaviour where T : Component {
 		}
 	}
 	
-	protected virtual void Awake() {
+	public virtual void Awake() {
 		_instance = this as T;
 	}
 }
