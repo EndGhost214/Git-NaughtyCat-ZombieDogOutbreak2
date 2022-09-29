@@ -3,7 +3,8 @@ guid: bdd0e50c48001544ea602ff974db4d0f
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - ZomDog: {fileID: 5923800327474393751, guid: c5659ae8a31ed9147af5e38230d40c29, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

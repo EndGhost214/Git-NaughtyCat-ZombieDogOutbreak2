@@ -6,6 +6,7 @@ public class ZombieDog : Dog
 {
     //serialized field for sound management class
     [SerializeField]
+    private GameObject ZomDog;
     //private SoundManager sounds;
     
     // default constructor
@@ -17,6 +18,7 @@ public class ZombieDog : Dog
     public ZombieDog(Vector3 pos){
         transform.position = pos;
         //call dog noise sound from marissa's function
+        //sounds.
     }
 
     // Start is called before the first frame update
@@ -29,5 +31,17 @@ public class ZombieDog : Dog
     void Update()
     {
         
+    }
+    //if player walks into dog area, move
+    void OnTriggerEnter2D(Collider2D collision){
+        if(collision.gameObject.tag == "Player"){
+            Debug.Log("player is in zone");
+        }
+    }
+
+    void OnTriggerExit2D(Collider2D collision){
+        if(collision.gameObject.tag == "Player"){
+            Debug.Log("player exited dog zone");
+        }
     }
 }
