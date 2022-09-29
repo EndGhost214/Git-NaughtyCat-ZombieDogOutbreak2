@@ -258,9 +258,29 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5923800327474393750, guid: c5659ae8a31ed9147af5e38230d40c29, type: 3}
+      propertyPath: m_Size.x
+      value: 35
+      objectReference: {fileID: 0}
+    - target: {fileID: 5923800327474393750, guid: c5659ae8a31ed9147af5e38230d40c29, type: 3}
+      propertyPath: m_Size.y
+      value: 35
+      objectReference: {fileID: 0}
+    - target: {fileID: 5923800327474393750, guid: c5659ae8a31ed9147af5e38230d40c29, type: 3}
+      propertyPath: m_Offset.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5923800327474393750, guid: c5659ae8a31ed9147af5e38230d40c29, type: 3}
+      propertyPath: m_Offset.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5923800327474393751, guid: c5659ae8a31ed9147af5e38230d40c29, type: 3}
       propertyPath: m_Name
-      value: Dynamic Sprite
+      value: ZombieDog
+      objectReference: {fileID: 0}
+    - target: {fileID: 5923800327474393751, guid: c5659ae8a31ed9147af5e38230d40c29, type: 3}
+      propertyPath: m_TagString
+      value: ZombieDog
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c5659ae8a31ed9147af5e38230d40c29, type: 3}
