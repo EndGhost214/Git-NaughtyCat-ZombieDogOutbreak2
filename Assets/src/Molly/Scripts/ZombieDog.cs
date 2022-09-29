@@ -6,7 +6,7 @@ public class ZombieDog : Dog
 {
     //serialized field for sound management class
     [SerializeField]
-    private SoundManager sounds;
+    //private SoundManager sounds;
     
     // default constructor
     public ZombieDog(){
