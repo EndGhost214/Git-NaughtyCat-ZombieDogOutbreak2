@@ -6,7 +6,7 @@ public class ZombieDog : Dog
 {
     //serialized field for sound management class
     [SerializeField]
-    private GameObject ZomDog;
+    private Rigidbody2D ZomDog;
     //[SerializeField]
     //private SoundManager sounds;
 
