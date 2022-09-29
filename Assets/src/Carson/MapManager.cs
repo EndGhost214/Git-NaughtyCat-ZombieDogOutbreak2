@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class MapManager : MonoBehaviour {
-	[SerializeField]
-	GameObject StartMenu;
+	//[SerializeField]
+	//private GameObject StartMenu;
+	
+	private List<Vector3> spawnPoints = new List<Vector3>();
 	
     // Start is called before the first frame update
     void Start() {
@@ -15,10 +17,13 @@ public class MapManager : MonoBehaviour {
     }
 	
 	public List<Vector3> GetSpawnPoints() {
-		return new List<Vector3>();
+		return spawnPoints;
 	}
 	
 	public void StartGame() {
-		StartMenu.SetActive(false);
+		Debug.Log("Game started");
+		//StartMenu.SetActive(false);
+		
+		spawnPoints.Add(new Vector3(0, 0, 0));
 	}
 }

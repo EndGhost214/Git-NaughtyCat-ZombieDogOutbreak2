@@ -5,32 +5,43 @@ using UnityEngine;
 // Class to control UI elements and game event execution.
 public class GameManager : MonoBehaviour {
 	private List<Dog> dogs = new List<Dog>();
-	//private Player player;
+	private Player player;
 	
 	[SerializeField]
 	private MapManager map;
 	
 	private int round = 0;
+	private int startTime = 0;
 	private int time = 0;
 	
 	private int spawnID = 0; // index of next spawnpoint to use
+	private int spawnedWave = 0;
+	
+	[SerializeField]
+	private ZombieDog basicDog;
 	
     // Start is called before the first frame update
     void Start() {
         // Open start menu from Ambrea?
+		StartGame(1);
     }
 
     // Update is called once per frame
-    void Update() {
+    void FixedUpdate() {
+		time = (int) Time.time - startTime;
+		Debug.Log(time);
+		
 		// Check that the game is in progress
-        if (round > 0) {
+        if (round > 0 && spawnedWave < time) {
 			// Spawn 5 dogs every 12 seconds
 			if (time % 12 == 0) {
 				SpawnDogs(5);
+				spawnedWave = time;
 			}
 			// Spawn a larger group every 4 seconds
-			if (time % 4 == 0) {
+			if (time > 24 && time % 4 == 0) {
 				SpawnDogs(1);
+				spawnedWave = time;
 			}
 		}
     }
@@ -40,7 +51,7 @@ public class GameManager : MonoBehaviour {
 		Vector2 spawn = NextSpawn(); // get position to spawn dogs at next
 		
 		for (int i = 0; i < num; i++) {
-			dogs.Add(new ZombieDog(spawn));
+			dogs.Add(Instantiate(basicDog, spawn, Quaternion.identity));
 		}
 	}
 	
@@ -49,7 +60,7 @@ public class GameManager : MonoBehaviour {
 		List<Vector3> sPoints = map.GetSpawnPoints();
 		
 		// Increment counter to next spawn point in the list
-		spawnID = (spawnID + 1) % (sPoints.Count + 1);
+		spawnID = (spawnID + 1) % (sPoints.Count);
 		
 		return sPoints[spawnID];
 	}
@@ -82,7 +93,7 @@ public class GameManager : MonoBehaviour {
 		}
 		else {
 			// create survival player
-			//player = new SurvivalPlayer();
+			player = new SurvivalPlayer();
 		}
 		
 		// Populate array with starting enemies
@@ -94,15 +105,15 @@ public class GameManager : MonoBehaviour {
 		return round;
 	}
 	
-	/*// Return player object.
+	// Return player object.
 	public Player GetPlayer() {
 		return player;
 	}
 	
 	// Return player position (for dog AI).
-	public Vector2 GetPlayerPos() {
-		return player.GetPos();
-	}*/
+	public Vector3 GetPlayerPos() {
+		return player.transform.position;
+	}
 	
 	// Return number of seconds since the game started.
 	public int GetSeconds() {
