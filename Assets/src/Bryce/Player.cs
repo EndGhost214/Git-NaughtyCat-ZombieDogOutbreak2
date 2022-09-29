@@ -4,12 +4,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    
 
-   
-    
-    private void FixedUpdate()
-    {
-        //movment in here
-    }
+
+
 }
