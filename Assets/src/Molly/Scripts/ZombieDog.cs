@@ -15,15 +15,16 @@ public class ZombieDog : Dog
     private int health;
     private int speed;
     */
+    private Vector3 pos;
     
     // default constructor
     public ZombieDog(){
-        transform.position = new Vector3(0,0,0);
+        pos = new Vector3(0,0,0);
     }
 
     //constructor that takes inital spawn position
     public ZombieDog(Vector3 pos){
-        transform.position = pos;
+        this.pos = pos;
         //call dog noise sound from marissa's function
         SoundManager.Instance.ZombieSoundFunction();
     }
@@ -31,6 +32,7 @@ public class ZombieDog : Dog
     // Start is called before the first frame update
     void Start()
     {
+        transform.position = pos;
         SoundManager.Instance.ZombieSoundFunction();
     }
 
