@@ -8,17 +8,7 @@ public class SoundManager : Singleton<SoundManager>{
 
 
 
-private static SoundManager _instance;
 
-
-public static SoundManager Instance
-{
-  
-    get{
-
-        return _instance;
-    }
-}
     [SerializeField]
     private AudioSource zombieSound1;
     //Player
@@ -32,10 +22,6 @@ public static SoundManager Instance
     //ZombieDog
 
     
-    public override void Awake(){
-
-        _instance=this;
-    }
-
+  
 }
 
