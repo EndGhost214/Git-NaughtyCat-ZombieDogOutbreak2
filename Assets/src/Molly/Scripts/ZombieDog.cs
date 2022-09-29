@@ -9,6 +9,12 @@ public class ZombieDog : Dog
     private GameObject ZomDog;
     [SerializeField]
     private SoundManager sounds;
+
+    //other variables
+    /*
+    private int health;
+    private int speed;
+    */
     
     // default constructor
     public ZombieDog(){
@@ -36,7 +42,7 @@ public class ZombieDog : Dog
     //if player walks into dog area, move
     void OnTriggerEnter2D(Collider2D collision){
         if(collision.gameObject.tag == "Player"){
-            Debug.Log("player is in zone");
+            Debug.Log("player is in dog zone");
         }
     }
 
