@@ -9,12 +9,13 @@ public class GameManager : MonoBehaviour {
 	[SerializeField]
 	private MapManager map;
 	
-	private int round = 0;
+	// Keep track of how long the game has run
 	private int startTime = 0;
 	private int time = 0;
 	
 	private int spawnID = 0; // index of next spawnpoint to use
-	private int spawnedWave = 0;
+	private int spawnedWave = 0; // time of last spawned wave
+	private int round = 0;
 	
 	// Where the player begins the game
 	private Vector3 playerSpawn = new Vector3(0, 0, 0);
@@ -31,12 +32,13 @@ public class GameManager : MonoBehaviour {
 
     // Update is called once per frame
     void FixedUpdate() {
+		// Calculate the time the game has run
 		time = (int) Time.time - startTime;
-		Debug.Log(time);
+		//Debug.Log(time);
 		
 		// Check that the game is in progress
         if (round > 0 && spawnedWave < time) {
-			// Spawn 5 dogs every 12 seconds
+			// Spawn 5 (1 for now) dogs every 12 seconds
 			if (time % 12 == 0) {
 				SpawnDogs(1);
 				spawnedWave = time;
@@ -53,6 +55,7 @@ public class GameManager : MonoBehaviour {
 	private void SpawnDogs(int num) {
 		Vector3 spawn = NextSpawn(); // get position to spawn dogs at next
 		
+		// Clone the provided number of dogs
 		for (int i = 0; i < num; i++) {
 			dogs.Add(Instantiate(basicDog, spawn, Quaternion.identity));
 		}
@@ -72,6 +75,7 @@ public class GameManager : MonoBehaviour {
 	public void EndGame() {
 		round = 0;
 		
+		// Kill every dog in the list
 		dogs.ForEach(delegate(Dog dog) {
 			dog.Death();
 		});
@@ -85,7 +89,7 @@ public class GameManager : MonoBehaviour {
 	public void StartGame(int difficulty) {
 		round = 1;
 		
-		map.StartGame();
+		map.StartGame(); // initialize map rooms+spawnpoints
 		
 		// Check if BC mode needs to be enabled
 		if (difficulty == 0) {
@@ -134,11 +138,12 @@ public class GameManager : MonoBehaviour {
 		
 		// Loop through dogs array
 		foreach(Dog d in dogs){
+			// Count living dogs
 			if (d != null) {
 				count++;
 			}
 			else {
-				dogs.Remove(d);
+				dogs.Remove(d); // remove any null elements
 			}
 		}
 		
