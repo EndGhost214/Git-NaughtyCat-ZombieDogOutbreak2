@@ -5,7 +5,7 @@ using UnityEngine;
 // Class to control UI elements and game event execution.
 public class GameManager : MonoBehaviour {
 	private List<Dog> dogs = new List<Dog>();
-	private Player player;
+	//private Player player;
 	
 	[SerializeField]
 	private MapManager map;
@@ -76,13 +76,13 @@ public class GameManager : MonoBehaviour {
 		// Check if BC mode needs to be enabled
 		if (difficulty == 0) {
 			// create BC player
-			player = new BCPlayer();
+			//player = new BCPlayer();
 			
 			difficulty = 1;
 		}
 		else {
 			// create survival player
-			player = new SurvivalPlayer();
+			//player = new SurvivalPlayer();
 		}
 		
 		// Populate array with starting enemies
@@ -94,7 +94,7 @@ public class GameManager : MonoBehaviour {
 		return round;
 	}
 	
-	// Return player object.
+	/*// Return player object.
 	public Player GetPlayer() {
 		return player;
 	}
@@ -102,7 +102,7 @@ public class GameManager : MonoBehaviour {
 	// Return player position (for dog AI).
 	public Vector2 GetPlayerPos() {
 		return player.GetPos();
-	}
+	}*/
 	
 	// Return number of seconds since the game started.
 	public int GetSeconds() {
