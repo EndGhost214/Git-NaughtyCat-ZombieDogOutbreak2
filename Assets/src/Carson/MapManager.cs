@@ -19,6 +19,6 @@ public class MapManager : MonoBehaviour {
 	}
 	
 	public void StartGame() {
-		
+		StartMenu.SetActive(false);
 	}
 }
