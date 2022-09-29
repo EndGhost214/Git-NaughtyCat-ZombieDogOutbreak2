@@ -25,5 +25,6 @@ public class MapManager : MonoBehaviour {
 		//StartMenu.SetActive(false);
 		
 		spawnPoints.Add(new Vector3(0, 0, 0));
+		spawnPoints.Add(new Vector3(3, 3, 0));
 	}
 }

@@ -4,8 +4,7 @@ using UnityEngine;
 
 // Class to control UI elements and game event execution.
 public class GameManager : MonoBehaviour {
-	private List<Dog> dogs = new List<Dog>();
-	private Player player;
+	private Player player; // player object to reference
 	
 	[SerializeField]
 	private MapManager map;
@@ -17,12 +16,16 @@ public class GameManager : MonoBehaviour {
 	private int spawnID = 0; // index of next spawnpoint to use
 	private int spawnedWave = 0;
 	
+	// Where the player begins the game
+	private Vector3 playerSpawn = new Vector3(0, 0, 0);
+	
 	[SerializeField]
-	private ZombieDog basicDog;
+	private ZombieDog basicDog; // ZombieDog class for instantiating new dogs
+	private List<Dog> dogs = new List<Dog>(); // list of alive dogs
 	
     // Start is called before the first frame update
     void Start() {
-        // Open start menu from Ambrea?
+        // Open start menu from Ambrea
 		StartGame(1);
     }
 
@@ -35,10 +38,10 @@ public class GameManager : MonoBehaviour {
         if (round > 0 && spawnedWave < time) {
 			// Spawn 5 dogs every 12 seconds
 			if (time % 12 == 0) {
-				SpawnDogs(5);
+				SpawnDogs(1);
 				spawnedWave = time;
 			}
-			// Spawn a larger group every 4 seconds
+			// Spawn another group every 4 seconds
 			if (time > 24 && time % 4 == 0) {
 				SpawnDogs(1);
 				spawnedWave = time;
@@ -48,7 +51,7 @@ public class GameManager : MonoBehaviour {
 	
 	// Spawn the provided number of dogs at the next spawn locations
 	private void SpawnDogs(int num) {
-		Vector2 spawn = NextSpawn(); // get position to spawn dogs at next
+		Vector3 spawn = NextSpawn(); // get position to spawn dogs at next
 		
 		for (int i = 0; i < num; i++) {
 			dogs.Add(Instantiate(basicDog, spawn, Quaternion.identity));
@@ -61,7 +64,7 @@ public class GameManager : MonoBehaviour {
 		
 		// Increment counter to next spawn point in the list
 		spawnID = (spawnID + 1) % (sPoints.Count);
-		
+		//Debug.Log(spawnID);
 		return sPoints[spawnID];
 	}
 	
