@@ -6,15 +6,15 @@ public class ZombieDog : Dog
 {
     //serialized field for sound management class
     [SerializeField]
-    private 
+    private SoundManager sounds;
     
     // default constructor
     public ZombieDog(){
-        transform.position(0,0,0);
+        transform.position = new Vector3(0,0,0);
     }
 
     //constructor that takes inital spawn position
-    public ZombieDog(Vector2 pos){
+    public ZombieDog(Vector3 pos){
         transform.position = pos;
         //call dog noise sound from marissa's function
     }
