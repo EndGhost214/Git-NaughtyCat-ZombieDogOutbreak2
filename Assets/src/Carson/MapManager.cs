@@ -14,8 +14,8 @@ public class MapManager : MonoBehaviour {
     void Update() {
     }
 	
-	public List<Vector2> GetSpawnPoints() {
-		
+	public List<Vector3> GetSpawnPoints() {
+		return new List<Vector3>();
 	}
 	
 	public void StartGame() {

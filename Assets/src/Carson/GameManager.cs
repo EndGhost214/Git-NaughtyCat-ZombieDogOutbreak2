@@ -40,13 +40,13 @@ public class GameManager : MonoBehaviour {
 		Vector2 spawn = NextSpawn(); // get position to spawn dogs at next
 		
 		for (int i = 0; i < num; i++) {
-			dogs.add(new ZombieDog(spawn));
+			dogs.Add(new ZombieDog(spawn));
 		}
 	}
 	
 	// Returns the next position a dog should be spawned.
-	private Vector2 NextSpawn() {
-		List<Vector2> sPoints = map.GetSpawnPoints();
+	private Vector3 NextSpawn() {
+		List<Vector3> sPoints = map.GetSpawnPoints();
 		
 		// Increment counter to next spawn point in the list
 		spawnID = (spawnID + 1) % (sPoints.Count + 1);
@@ -124,7 +124,7 @@ public class GameManager : MonoBehaviour {
 				count++;
 			}
 			else {
-				dogs.remove(d);
+				dogs.Remove(d);
 			}
 		}
 		
