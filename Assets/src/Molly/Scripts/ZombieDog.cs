@@ -41,6 +41,7 @@ public class ZombieDog : Dog
     }
     //if player walks into dog area, move
     void OnTriggerEnter2D(Collider2D collision){
+        Debug.Log("testing");
         if(collision.gameObject.tag == "Player"){
             Debug.Log("player is in dog zone");
         }
