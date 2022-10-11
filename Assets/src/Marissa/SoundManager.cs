@@ -41,10 +41,20 @@ public class SoundManager : Singleton<SoundManager>{
 
     //zombie hurt
     [SerializeField]
-    private AudioSource zombieHurt;
+    private AudioSource zombieHurt1;
+
+    [SerializeField]
+    private AudioSource zombieHurt2;
 
     public void ZombieHurtFunction(){
-        zombieHurt.Play();
+        int play = Random.Range(1,10);
+       
+        if (play>3 && play<=10){
+            zombieHurt2.Play();
+        }
+        else if(play==1 || play==2){
+            zombieHurt1.Play();
+        }
     }
 
     //Player
