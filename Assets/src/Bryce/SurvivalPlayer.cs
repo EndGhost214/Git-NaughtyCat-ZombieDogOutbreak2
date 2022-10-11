@@ -12,19 +12,15 @@ public class SurvivalPlayer : Player
     private GameObject SrvPlayer;
 
     private Rigidbody2D body;
+
     
     private class Health
     {
         private uint healthActual;
 
-        public Health()
+        public  Health()
         {
-
-        }
-
-        public Health(uint h)
-        {
-            healthActual = h;
+            healthActual = 100;
         }
 
         public uint GetHealth()
@@ -47,6 +43,7 @@ public class SurvivalPlayer : Player
 
     }
 
+    
 
     private void Awake()
     {
