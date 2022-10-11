@@ -18,7 +18,7 @@ public class SoundManager : Singleton<SoundManager>{
     [SerializeField]
     private AudioSource zombieSound3;
     
-
+    //zombie exisiting sound
     public void ZombieSoundFunction(){
         int play = Random.Range(1,4);
         
@@ -39,6 +39,13 @@ public class SoundManager : Singleton<SoundManager>{
         
     }
 
+    //zombie hurt
+    [SerializeField]
+    private AudioSource zombieHurt;
+
+    public void ZombieHurtFunction(){
+        zombieHurt.Play();
+    }
 
     //Player
    
