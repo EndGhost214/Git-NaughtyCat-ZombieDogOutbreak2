@@ -13,7 +13,7 @@ public class ZombieDog : Dog
     //other variables
     
     [SerializeField]
-    private int health;
+    private int health = 100;
 
     private int speed;
     
@@ -59,5 +59,15 @@ public class ZombieDog : Dog
         if(collision.gameObject.tag == "Player"){
             Debug.Log("player exited dog zone");
         }
+    }
+
+    public int GetHealth(){
+        return health;
+    }
+
+    //temporary damage function
+    public int TakeDamage(){
+        health-=50;
+        return health;
     }
 }

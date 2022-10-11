@@ -6,7 +6,7 @@ public class Dog : MonoBehaviour
 {
     //remove the dog from the map
     public void Death(){
-        Debug.Log("This Dog is dying");
+        Debug.Log("This Dog is dead");
         Destroy(this.gameObject);
         //call random item drop function 
             //Drop();
