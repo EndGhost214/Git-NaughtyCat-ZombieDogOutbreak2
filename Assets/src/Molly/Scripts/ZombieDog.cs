@@ -11,12 +11,14 @@ public class ZombieDog : Dog
     //private SoundManager sounds;
 
     //other variables
-    /*
-    private int health;
-    private int speed;
-    */
-    private Vector3 pos;
     
+    [SerializeField]
+    private int health;
+
+    private int speed;
+    
+    private Vector3 pos;
+
     // default constructor
     public ZombieDog(){
         pos = new Vector3(0,0,0);
@@ -39,7 +41,11 @@ public class ZombieDog : Dog
     // Update is called once per frame
     void Update()
     {
-        
+        //BOUNDARY TEST: GO TO DOG SCRIPT TO SEE THE DEATH FUNCTION
+        //HEALTH IS SERIALIZED FIELD SO THAT YOU CAN CHANGE HEALTH AT RUN TIME
+        if(health==0){
+            Death();
+        }
     }
     //if player walks into dog area, move
     void OnCollisionEnter2D(Collision2D collision){
