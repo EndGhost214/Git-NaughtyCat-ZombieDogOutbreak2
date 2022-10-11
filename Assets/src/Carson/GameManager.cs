@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 // Class to control UI elements and game event execution.
-public class GameManager : MonoBehaviour {
+public class GameManager : Singleton<GameManager> {
+	[SerializeField]
+	private Player playerPrefab;
 	private Player player; // player object to reference
 	
-	[SerializeField]
 	private MapManager map;
 	
 	// Keep track of how long the game has run
@@ -87,6 +88,7 @@ public class GameManager : MonoBehaviour {
 	// Load the game background, create player and dogs.
 	// Provided difficulty sets dog AI level. 0 = BC mode
 	public void StartGame(int difficulty) {
+		map = MapManager.Instance;
 		round = 1;
 		
 		map.StartGame(); // initialize map rooms+spawnpoints
@@ -94,13 +96,13 @@ public class GameManager : MonoBehaviour {
 		// Check if BC mode needs to be enabled
 		if (difficulty == 0) {
 			// create BC player
-			//player = new BCPlayer();
+			player = Instantiate(playerPrefab, playerSpawn, Quaternion.identity);
 			
 			difficulty = 1;
 		}
 		else {
 			// create survival player
-			player = new SurvivalPlayer();
+			player = Instantiate(playerPrefab, playerSpawn, Quaternion.identity);
 		}
 		
 		// Populate array with starting enemies

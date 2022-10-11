@@ -130,6 +130,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1273976635761098844, guid: c5659ae8a31ed9147af5e38230d40c29, type: 3}
+      propertyPath: health
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 5923800327474393736, guid: c5659ae8a31ed9147af5e38230d40c29, type: 3}
       propertyPath: m_IsTrigger
       value: 0
@@ -187,6 +191,22 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5923800327474393750, guid: c5659ae8a31ed9147af5e38230d40c29, type: 3}
+      propertyPath: m_Size.x
+      value: 8.426016
+      objectReference: {fileID: 0}
+    - target: {fileID: 5923800327474393750, guid: c5659ae8a31ed9147af5e38230d40c29, type: 3}
+      propertyPath: m_Size.y
+      value: 8.364288
+      objectReference: {fileID: 0}
+    - target: {fileID: 5923800327474393750, guid: c5659ae8a31ed9147af5e38230d40c29, type: 3}
+      propertyPath: m_Offset.x
+      value: 0.022409678
+      objectReference: {fileID: 0}
+    - target: {fileID: 5923800327474393750, guid: c5659ae8a31ed9147af5e38230d40c29, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.08492184
+      objectReference: {fileID: 0}
+    - target: {fileID: 5923800327474393750, guid: c5659ae8a31ed9147af5e38230d40c29, type: 3}
       propertyPath: m_IsTrigger
       value: 1
       objectReference: {fileID: 0}
@@ -231,6 +251,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ZomDog: {fileID: 662194922}
+  health: 0
 --- !u!4 &1292487845
 Transform:
   m_ObjectHideFlags: 0

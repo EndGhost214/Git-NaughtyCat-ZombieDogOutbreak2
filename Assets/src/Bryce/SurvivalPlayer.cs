@@ -13,6 +13,34 @@ public class SurvivalPlayer : Player
 
     private Rigidbody2D body;
 
+    
+  
+        private uint healthActual;
+
+
+
+        public uint GetHealth()
+        {
+            return healthActual;
+        }
+
+        public void SetHealth(uint h)
+        {
+            healthActual = h;
+        }
+        public void DamagePlayer(uint damage)
+        {
+            uint newHealth = GetHealth() - damage;
+            SetHealth(newHealth);
+
+        }
+
+
+
+    
+
+    
+
     private void Awake()
     {
         body = SrvPlayer.GetComponent<Rigidbody2D>();
@@ -41,7 +69,8 @@ public class SurvivalPlayer : Player
 
     public SurvivalPlayer()
     {
-       // transform.position = new Vector3(0, 0, 0);
+        // transform.position = new Vector3(0, 0, 0);
+        SetHealth(100);
     }
 
     // Start is called before the first frame update
