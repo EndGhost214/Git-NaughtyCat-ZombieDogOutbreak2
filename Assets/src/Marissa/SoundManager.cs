@@ -24,6 +24,8 @@ public class SoundManager : Singleton<SoundManager>{
         
         if (play==1){
             zombieSound1.Play();
+            
+
         }
         else if(play==2){
             zombieSound2.Play();
@@ -34,11 +36,21 @@ public class SoundManager : Singleton<SoundManager>{
         else if(play==4){
             //no sound
         }
+        
     }
 
 
     //Player
+   
+    //walking sound
+    [SerializeField]
+    private AudioSource catWalk;
 
+    public void catWalkFunction(){
+
+        catWalk.Play();
+
+    }
 
     //Other
 
