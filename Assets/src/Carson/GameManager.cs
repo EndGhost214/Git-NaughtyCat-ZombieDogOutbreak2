@@ -28,7 +28,6 @@ public class GameManager : Singleton<GameManager> {
     // Start is called before the first frame update
     void Start() {
         // Open start menu from Ambrea
-		map = MapManager.Instance;
 		StartGame(1);
     }
 
@@ -89,6 +88,7 @@ public class GameManager : Singleton<GameManager> {
 	// Load the game background, create player and dogs.
 	// Provided difficulty sets dog AI level. 0 = BC mode
 	public void StartGame(int difficulty) {
+		map = MapManager.Instance;
 		round = 1;
 		
 		map.StartGame(); // initialize map rooms+spawnpoints

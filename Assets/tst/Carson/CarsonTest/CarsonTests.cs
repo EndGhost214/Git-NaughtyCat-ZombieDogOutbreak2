@@ -20,7 +20,9 @@ public class CarsonTests : MonoBehaviour {
 	[Test]
 	public void spawnDog() {
 		GameManager.Instance.StartGame(1);
+		int count = GameManager.Instance.EnemiesLeft();
 		
-		Assert.AreEqual(3, GameManager.Instance.EnemiesLeft());
+		Debug.Log(count);
+		Assert.AreEqual(3, count);
 	}
 }
