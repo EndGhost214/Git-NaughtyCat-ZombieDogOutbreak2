@@ -8,7 +8,6 @@ public class GameManager : Singleton<GameManager> {
 	private Player playerPrefab;
 	private Player player; // player object to reference
 	
-	[SerializeField]
 	private MapManager map;
 	
 	// Keep track of how long the game has run
@@ -29,6 +28,7 @@ public class GameManager : Singleton<GameManager> {
     // Start is called before the first frame update
     void Start() {
         // Open start menu from Ambrea
+		map = MapManager.Instance;
 		StartGame(1);
     }
 
@@ -96,13 +96,13 @@ public class GameManager : Singleton<GameManager> {
 		// Check if BC mode needs to be enabled
 		if (difficulty == 0) {
 			// create BC player
-			//player = gameObject.AddComponent(typeof(Player) as BCPlayer);
+			player = Instantiate(playerPrefab, playerSpawn, Quaternion.identity);
 			
 			difficulty = 1;
 		}
 		else {
 			// create survival player
-			player = Instantiate(playerPrefab, new Vector3(0, 0, 0), Quaternion.identity);
+			player = Instantiate(playerPrefab, playerSpawn, Quaternion.identity);
 		}
 		
 		// Populate array with starting enemies

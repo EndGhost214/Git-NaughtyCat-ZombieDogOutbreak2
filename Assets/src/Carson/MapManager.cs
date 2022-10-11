@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MapManager : MonoBehaviour {
+public class MapManager : Singleton<MapManager> {
 	//[SerializeField]
 	//private GameObject StartMenu;
 	
