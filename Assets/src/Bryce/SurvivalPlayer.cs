@@ -14,14 +14,10 @@ public class SurvivalPlayer : Player
     private Rigidbody2D body;
 
     
-    private class Health
-    {
+  
         private uint healthActual;
 
-        public  Health()
-        {
-            healthActual = 100;
-        }
+
 
         public uint GetHealth()
         {
@@ -41,7 +37,7 @@ public class SurvivalPlayer : Player
 
 
 
-    }
+    
 
     
 
@@ -73,7 +69,8 @@ public class SurvivalPlayer : Player
 
     public SurvivalPlayer()
     {
-       // transform.position = new Vector3(0, 0, 0);
+        // transform.position = new Vector3(0, 0, 0);
+        SetHealth(100);
     }
 
     // Start is called before the first frame update

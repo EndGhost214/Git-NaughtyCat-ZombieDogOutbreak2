@@ -9,19 +9,22 @@ public class Health_tests : MonoBehaviour
 
 
     [Test]
-    public void checkPlayerHealth()
+    public void checkPlayerHealthisFull()
     {
-
-    }
-    // Start is called before the first frame update
-    void Start()
-    {
-        
+        SurvivalPlayer bob = new SurvivalPlayer();
+        uint check;
+        check = bob.GetHealth();
+        Assert.AreEqual(check, 100);
     }
 
-    // Update is called once per frame
-    void Update()
+    [Test]
+    public void checkPlayerHealthAfterDamage()
     {
-        
+
+        SurvivalPlayer bob = new SurvivalPlayer();
+        uint check;
+        bob.DamagePlayer(50);
+        check = bob.GetHealth();
+        Assert.AreEqual(check, 50);
     }
 }
