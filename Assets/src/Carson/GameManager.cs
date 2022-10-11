@@ -4,6 +4,8 @@ using UnityEngine;
 
 // Class to control UI elements and game event execution.
 public class GameManager : Singleton<GameManager> {
+	[SerializeField]
+	private Player playerPrefab;
 	private Player player; // player object to reference
 	
 	[SerializeField]
@@ -100,7 +102,7 @@ public class GameManager : Singleton<GameManager> {
 		}
 		else {
 			// create survival player
-			//player = gameObject.AddComponent(typeof(Player) as SurvivalPlayer);
+			player = Instantiate(playerPrefab, new Vector3(0, 0, 0), Quaternion.identity);
 		}
 		
 		// Populate array with starting enemies
