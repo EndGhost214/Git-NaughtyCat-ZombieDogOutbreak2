@@ -12,6 +12,41 @@ public class SurvivalPlayer : Player
     private GameObject SrvPlayer;
 
     private Rigidbody2D body;
+    
+    private class Health
+    {
+        private uint healthActual;
+
+        public Health()
+        {
+
+        }
+
+        public Health(uint h)
+        {
+            healthActual = h;
+        }
+
+        public uint GetHealth()
+        {
+            return healthActual;
+        }
+
+        public void SetHealth(uint h)
+        {
+            healthActual = h;
+        }
+        public void DamagePlayer(uint damage)
+        {
+            uint newHealth = GetHealth() - damage;
+            SetHealth(newHealth);
+
+        }
+
+
+
+    }
+
 
     private void Awake()
     {
