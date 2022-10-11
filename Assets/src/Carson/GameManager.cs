@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 // Class to control UI elements and game event execution.
-public class GameManager : MonoBehaviour {
+public class GameManager : Singleton<GameManager> {
 	private Player player; // player object to reference
 	
 	[SerializeField]
@@ -94,13 +94,13 @@ public class GameManager : MonoBehaviour {
 		// Check if BC mode needs to be enabled
 		if (difficulty == 0) {
 			// create BC player
-			//player = new BCPlayer();
+			//player = gameObject.AddComponent(typeof(Player) as BCPlayer);
 			
 			difficulty = 1;
 		}
 		else {
 			// create survival player
-			player = new SurvivalPlayer();
+			//player = gameObject.AddComponent(typeof(Player) as SurvivalPlayer);
 		}
 		
 		// Populate array with starting enemies
