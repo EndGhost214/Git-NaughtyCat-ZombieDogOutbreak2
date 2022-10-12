@@ -5,9 +5,9 @@ using UnityEngine;
 
 public class SoundManager : Singleton<SoundManager>{
 
-    //Random rnd=new Random();
+   
 
-    //zombiedog
+    //zombiedog--------------------------------------
 
     private string recentlyPlayed;
 
@@ -20,32 +20,32 @@ public class SoundManager : Singleton<SoundManager>{
 
 
     [SerializeField]
-    private AudioSource zombieSound1;
+    private AudioSource zombieSound1; //mc zombie
 
     [SerializeField]
-    private AudioSource zombieSound2;
+    private AudioSource zombieSound2; //cod zombie
 
     [SerializeField]
-    private AudioSource zombieSound3;
+    private AudioSource zombieSound3; //dog growl
     
     //zombie exisiting sound
     public void ZombieSoundFunction(){
-        int play = Random.Range(1,4);
+        int play = Random.Range(1,100);
         
-        if (play==1){
+        if (play>=1 && play<=10){
             zombieSound1.Play();
             recentlyPlayed="zombieSound1";
 
         }
-        else if(play==2){
+        else if(play>=11 && play<=20){
             zombieSound2.Play();
             recentlyPlayed="zombieSound2";
         }
-        else if(play==3){
+        else if(play>=21 && play<=75){
             zombieSound3.Play();
             recentlyPlayed="zombieSound3";
         }
-        else if(play==4){
+        else if(play>=76 && play<=100){
             //no sound
              recentlyPlayed="NONE";
         }
@@ -54,10 +54,10 @@ public class SoundManager : Singleton<SoundManager>{
 
     //zombie hurt sounds
     [SerializeField]
-    private AudioSource zombieHurt1;
+    private AudioSource zombieHurt1;  //mc zombie hurt
 
     [SerializeField]
-    private AudioSource zombieHurt2;
+    private AudioSource zombieHurt2; //puppy whine
 
     //determines what sound will be played
     public void ZombieHurtFunction(){
@@ -73,7 +73,12 @@ public class SoundManager : Singleton<SoundManager>{
         }
     }
 
-    //Player
+    //zombie boss--------------------------------------
+
+
+
+
+    //Player---------------------------------------------
    
    //meow
 
@@ -89,7 +94,7 @@ public class SoundManager : Singleton<SoundManager>{
 
     //walking sound
     [SerializeField]
-    private AudioSource catWalk;
+    private AudioSource catWalk;  //squidward walk
 
     public void catWalkFunction(){
 
@@ -101,10 +106,42 @@ public class SoundManager : Singleton<SoundManager>{
 
 
 
+    //shoots
+    [SerializeField]
+    private AudioSource gunSound1;
 
-    //Other
+    public void gunSoundFunction(){
 
-    
+        gunSound1.Play();
+    }
+
+    //slashes
+    [SerializeField]
+    private AudioSource knifeSlash;
+
+    public void knifeSoundFunction(){
+
+        knifeSlash.Play();
+    }
+
+    //gets hurt
+
+
+    //Other-----------------------------------------
+
+    //background music
+
+
+    //unlock door
+
+
+    //create cure
+
+
+    //sprinklers
+
+
+
   
 }
 
