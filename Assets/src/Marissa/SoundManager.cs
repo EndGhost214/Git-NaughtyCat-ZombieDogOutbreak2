@@ -84,10 +84,17 @@ public class SoundManager : Singleton<SoundManager>{
 
     [SerializeField]
     private AudioSource catMeow1;
+    [SerializeField]
+    private AudioSource catMeow2;
 
     public void catMeowFunction(){
-
-        catMeow1.Play();
+        int play = Random.Range(1,2);
+        if(play==1){
+            catMeow1.Play();
+        }
+        else if(play==2){
+            catMeow2.Play();
+        }
 
     }
 
@@ -102,7 +109,7 @@ public class SoundManager : Singleton<SoundManager>{
 
     }
 
-    //random cat sounds while existing
+    
 
 
 
@@ -126,6 +133,27 @@ public class SoundManager : Singleton<SoundManager>{
 
     //gets hurt
 
+    [SerializeField]
+    private AudioSource catHurt1; //roblox oof
+    [SerializeField]
+    private AudioSource catHurt2; //cat hurt real
+    [SerializeField]
+    private AudioSource catHurt3; //cat hurt real
+    
+    public void catHurtSoundFunction(){
+
+        int play = Random.Range(1,10);
+
+        if(play==1){
+            catHurt1.Play();
+        }
+        else if(play>=2 && play<=7){
+            catHurt2.Play();
+        }
+        else if(play>=8 && play<=10){
+            catHurt3.Play();
+        }
+    }
 
     //Other-----------------------------------------
 
