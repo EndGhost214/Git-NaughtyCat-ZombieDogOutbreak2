@@ -75,8 +75,29 @@ public class SoundManager : Singleton<SoundManager>{
 
     //zombie boss--------------------------------------
 
+    //growl
+    [SerializeField]
+    private AudioSource bossGrowl;
 
+    public void bossGrowlFunction(){
+        bossGrowl.Play();
+    }
 
+    //attack
+    [SerializeField]
+    private AudioSource bossAttack;
+
+    public void bossAttackFunction(){
+        bossAttack.Play();
+    }
+
+    //hurt
+    [SerializeField]
+    private AudioSource bossHurt;
+
+    public void bossHurtFunction(){
+        bossHurt.Play();
+    }
 
     //Player---------------------------------------------
    
@@ -162,12 +183,29 @@ public class SoundManager : Singleton<SoundManager>{
 
     //unlock door
 
+    [SerializeField]
+    private AudioSource unlockDoor;
+
+    public void unlockDoorFunction(){
+        unlockDoor.Play();
+    }
 
     //create cure
 
+    [SerializeField]
+    private AudioSource createCure;
+
+    public void createCureFunction(){
+        createCure.Play();
+    }
 
     //sprinklers
+    [SerializeField]
+    private AudioSource playSprinkler;
 
+    public void playSprinklerFunction(){
+        playSprinkler.Play();
+    }
 
 
   
