@@ -119,6 +119,13 @@ public class SoundManager : Singleton<SoundManager>{
 
     }
 
+    //pick item up
+    [SerializeField]
+    private AudioSource pickUp;
+
+    public void pickUpFunction(){
+        pickUp.Play();
+    }
 
     //walking sound
     [SerializeField]
