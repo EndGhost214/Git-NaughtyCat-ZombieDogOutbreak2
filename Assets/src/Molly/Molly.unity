@@ -123,40 +123,28 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1001 &426613909
+--- !u!1001 &1336084328
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1273976635761098844, guid: c5659ae8a31ed9147af5e38230d40c29, type: 3}
-      propertyPath: health
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 5923800327474393736, guid: c5659ae8a31ed9147af5e38230d40c29, type: 3}
-      propertyPath: m_IsTrigger
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5923800327474393737, guid: c5659ae8a31ed9147af5e38230d40c29, type: 3}
-      propertyPath: m_BodyType
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5923800327474393737, guid: c5659ae8a31ed9147af5e38230d40c29, type: 3}
-      propertyPath: m_CollisionDetection
-      value: 1
-      objectReference: {fileID: 0}
+    - target: {fileID: 4439032927838498114, guid: c5659ae8a31ed9147af5e38230d40c29, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: b10a8652f2d958941b320a71f54452c5, type: 2}
     - target: {fileID: 5923800327474393738, guid: c5659ae8a31ed9147af5e38230d40c29, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5923800327474393738, guid: c5659ae8a31ed9147af5e38230d40c29, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.29
+      value: 0.13
       objectReference: {fileID: 0}
     - target: {fileID: 5923800327474393738, guid: c5659ae8a31ed9147af5e38230d40c29, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.11
+      value: -2.42
       objectReference: {fileID: 0}
     - target: {fileID: 5923800327474393738, guid: c5659ae8a31ed9147af5e38230d40c29, type: 3}
       propertyPath: m_LocalPosition.z
@@ -190,83 +178,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5923800327474393750, guid: c5659ae8a31ed9147af5e38230d40c29, type: 3}
-      propertyPath: m_Size.x
-      value: 8.426016
-      objectReference: {fileID: 0}
-    - target: {fileID: 5923800327474393750, guid: c5659ae8a31ed9147af5e38230d40c29, type: 3}
-      propertyPath: m_Size.y
-      value: 8.364288
-      objectReference: {fileID: 0}
-    - target: {fileID: 5923800327474393750, guid: c5659ae8a31ed9147af5e38230d40c29, type: 3}
-      propertyPath: m_Offset.x
-      value: 0.022409678
-      objectReference: {fileID: 0}
-    - target: {fileID: 5923800327474393750, guid: c5659ae8a31ed9147af5e38230d40c29, type: 3}
-      propertyPath: m_Offset.y
-      value: -0.08492184
-      objectReference: {fileID: 0}
-    - target: {fileID: 5923800327474393750, guid: c5659ae8a31ed9147af5e38230d40c29, type: 3}
-      propertyPath: m_IsTrigger
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 5923800327474393751, guid: c5659ae8a31ed9147af5e38230d40c29, type: 3}
       propertyPath: m_Name
-      value: Dynamic Sprite
+      value: ZombieDogSprite
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c5659ae8a31ed9147af5e38230d40c29, type: 3}
---- !u!1 &662194922 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5923800327474393751, guid: c5659ae8a31ed9147af5e38230d40c29, type: 3}
-  m_PrefabInstance: {fileID: 426613909}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1292487843
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1292487845}
-  - component: {fileID: 1292487844}
-  m_Layer: 0
-  m_Name: GameObject
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1292487844
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1292487843}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bdd0e50c48001544ea602ff974db4d0f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ZomDog: {fileID: 662194922}
-  health: 0
---- !u!4 &1292487845
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1292487843}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.890682, y: -0.10109574, z: -0.0976894}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1524566456
 GameObject:
   m_ObjectHideFlags: 0
@@ -360,7 +277,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2836298224403320763, guid: 1cbbf368df24c3a4a94fc04b100a7f14, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2836298224403320763, guid: 1cbbf368df24c3a4a94fc04b100a7f14, type: 3}
       propertyPath: m_LocalPosition.x
