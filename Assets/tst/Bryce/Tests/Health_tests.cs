@@ -11,7 +11,7 @@ public class Health_tests : MonoBehaviour
     [Test]
     public void checkPlayerHealthisFull()
     {
-        SurvivalPlayer bob = new SurvivalPlayer();
+        SurvivalPlayer bob = new SurvivalPlayer(new Player());
         uint check;
         check = bob.GetHealth();
         Assert.AreEqual(check, 100);
@@ -21,7 +21,7 @@ public class Health_tests : MonoBehaviour
     public void checkPlayerHealthAfterDamage()
     {
 
-        SurvivalPlayer bob = new SurvivalPlayer();
+        SurvivalPlayer bob = new SurvivalPlayer(new Player());
         uint check;
         bob.DamagePlayer(50);
         check = bob.GetHealth();

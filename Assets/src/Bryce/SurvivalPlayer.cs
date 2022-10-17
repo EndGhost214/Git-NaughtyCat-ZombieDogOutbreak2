@@ -5,18 +5,20 @@ using UnityEngine;
 public class SurvivalPlayer : Player
 {
 
-    [SerializeField]
-    private float walkspeed = 5f;
-   
-    [SerializeField]
-    private GameObject SrvPlayer;
+    private Player _player;
+    public SurvivalPlayer(Player player)
+    {
+        _player = player;
+        SetHealth(100);
+    }
 
-    private Rigidbody2D body;
+    //setting player skin to the survivalplayer prefab
+    protected override GameObject GetPlayerObject()
+    {
+        return GameObject.Find("SurvivalPlayer");
+    }
 
-    
-  
-        private uint healthActual;
-
+    private uint healthActual;
 
 
         public uint GetHealth()
@@ -34,50 +36,6 @@ public class SurvivalPlayer : Player
             SetHealth(newHealth);
 
         }
-
-
-
-    
-
-    
-
-    private void Awake()
-    {
-        body = SrvPlayer.GetComponent<Rigidbody2D>();
-    }
-
-
-    private void FixedUpdate()
-    {
-
-        float horizontalInput = Input.GetAxis("Horizontal");
-        float VerticalalInput = Input.GetAxis("Vertical");
-
-
-        //Flip player when moving left and right
-        if (horizontalInput > 0.01f)
-        {
-            SrvPlayer.transform.localScale = new Vector3(1, 1, 1);
-        }
-        else if (horizontalInput < -0.01f)
-        {
-            SrvPlayer.transform.localScale = new Vector3(-1, 1, 1);
-        }
-        body.velocity = new Vector2(horizontalInput * walkspeed, VerticalalInput * walkspeed);
-
-    }
-
-    public SurvivalPlayer()
-    {
-        // transform.position = new Vector3(0, 0, 0);
-        SetHealth(100);
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        SrvPlayer.transform.position = new Vector3(0, 0, 0);
-    }
 
 
 }
