@@ -5,17 +5,13 @@ using UnityEngine;
 public class ItemFunctions : MonoBehaviour
 {
     
-    public GameObject bulletModel;
-    public Transform transform;
+    public GameObject[] itemDrops;
 
+   private void ItemDrop(){
+        for(int i=0; i<itemDrops.Length; i++){
 
-    public void dropItem(){
-
-        Vector3 position = transform.position; //position of enemy
-        //GameObject bullets = Instantiate(bulletModel,position,Quarternion.identity); //bullet drop
-        //bullets.SetActive(true);
-    }
-
-   
+            Instantiate(itemDrops[i], transform.position, Quaternion.identity); 
+        }
+   }
 
 }
