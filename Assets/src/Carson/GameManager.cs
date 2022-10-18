@@ -58,7 +58,7 @@ public class GameManager : Singleton<GameManager> {
 		
 		// Clone the provided number of dogs
 		for (int i = 0; i < num; i++) {
-			dogs.Add(Instantiate(basicDog, spawn, Quaternion.identity));
+			dogs.Add((Level0ZomDecor) Instantiate(basicDog, spawn, Quaternion.identity));
 		}
 	}
 	
@@ -108,7 +108,7 @@ public class GameManager : Singleton<GameManager> {
 		}
 		
 		// Populate array with starting enemies
-		SpawnDogs(3 * difficulty);
+		//SpawnDogs(3 * difficulty);
 	}
 	
 	// Getter function for current level (for modifying enemy speed, UI elements)
