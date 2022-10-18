@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ItemDrop : Singleton<>
+public class ItemDrop : Singleton<ItemDrop>
 {
 
     private Rigidbody2D itemRb;

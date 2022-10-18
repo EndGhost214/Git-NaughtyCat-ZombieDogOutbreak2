@@ -216,5 +216,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea0c8fc5efb6a5146a145502a2e7e5ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemDrops:
-  - {fileID: 123828864607160359, guid: 360b401e374acd8498cbca339577694f, type: 3}
+  bulletModel: {fileID: 123828864607160359, guid: 360b401e374acd8498cbca339577694f, type: 3}
+  transform: {fileID: 5923800327474393738}

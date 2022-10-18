@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ItemFunctions : Singleton<>
+public class ItemFunctions : Singleton<ItemFunctions>
 {
     
     public GameObject[] itemDrops;

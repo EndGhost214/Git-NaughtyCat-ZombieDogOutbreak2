@@ -7,6 +7,7 @@ public class ZombieDog : Dog
     //serialized field for sound management class
     [SerializeField]
     private Rigidbody2D ZomDog;
+ 
     //[SerializeField]
     //private SoundManager sounds;
 
@@ -45,6 +46,7 @@ public class ZombieDog : Dog
         //HEALTH IS SERIALIZED FIELD SO THAT YOU CAN CHANGE HEALTH AT RUN TIME
         if(health==0){
             Death();
+            
         }
     }
     //if player walks into dog area, move

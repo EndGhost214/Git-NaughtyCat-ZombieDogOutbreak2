@@ -210,6 +210,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &1046673380 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5923800327474393738, guid: c5659ae8a31ed9147af5e38230d40c29, type: 3}
+  m_PrefabInstance: {fileID: 1336084328}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1336084328
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -221,6 +226,14 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: b10a8652f2d958941b320a71f54452c5, type: 2}
+    - target: {fileID: 5444712409996943294, guid: c5659ae8a31ed9147af5e38230d40c29, type: 3}
+      propertyPath: transform
+      value: 
+      objectReference: {fileID: 1046673380}
+    - target: {fileID: 5444712409996943294, guid: c5659ae8a31ed9147af5e38230d40c29, type: 3}
+      propertyPath: bulletModel
+      value: 
+      objectReference: {fileID: 123828864607160359, guid: 360b401e374acd8498cbca339577694f, type: 3}
     - target: {fileID: 5923800327474393738, guid: c5659ae8a31ed9147af5e38230d40c29, type: 3}
       propertyPath: m_RootOrder
       value: 3
