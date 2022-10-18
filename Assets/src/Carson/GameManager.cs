@@ -19,7 +19,7 @@ public class GameManager : Singleton<GameManager> {
 	private int round = 0;
 	
 	// Where the player begins the game
-	private Vector3 playerSpawn = new Vector3(0, 0, 0);
+	private Vector3 playerSpawn = new Vector3(-433, -195, 0);
 	
 	[SerializeField]
 	private ZombieDog basicDog; // ZombieDog class for instantiating new dogs
