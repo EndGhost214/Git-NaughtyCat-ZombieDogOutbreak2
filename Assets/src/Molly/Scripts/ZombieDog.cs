@@ -16,20 +16,20 @@ public class ZombieDog : Dog
     private int damage;
     private float speed;
 
-    void Awake(){
+    protected virtual void Awake(){
         damage = SetDamage();
         speed = SetSpeed();
         health = SetHealth();
     }
 
-    protected virtutal int SetDamage(){
-        return 5;
+    protected virtual int SetDamage(){
+        return based;
     }
-    protected virtutal int SetHealth(){
-        return 100;
+    protected virtual int SetHealth(){
+        return baseh;
     }
-    protected virtutal float SetSpeed(){
-        return .5f;
+    protected virtual float SetSpeed(){
+        return bases;
     }
 
     // default constructor
