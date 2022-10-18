@@ -16,6 +16,12 @@ public class Player : MonoBehaviour
     [SerializeField]
     private GameObject playerObject;
 
+    Vector2 movement;
+    Vector2 mousePos;
+
+    public Camera cam;
+
+    
 
 
    protected virtual GameObject GetPlayerObject()
@@ -33,23 +39,35 @@ public class Player : MonoBehaviour
     }
 
 
-    private void FixedUpdate()
+    private void Update()
     {
+        movement.x = Input.GetAxis("Horizontal");
+        movement.y = Input.GetAxis("Vertical");
 
-        float horizontalInput = Input.GetAxis("Horizontal");
-        float VerticalalInput = Input.GetAxis("Vertical");
-
+        mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
 
         //Flip player when moving left and right
-        if (horizontalInput > 0.01f)
+        if (movement.x > 0.01f)
         {
             playerObject.transform.localScale = new Vector3(1, 1, 1);
         }
-        else if (horizontalInput < -0.01f)
+        else if (movement.x < -0.01f)
         {
             playerObject.transform.localScale = new Vector3(-1, 1, 1);
         }
-        body.velocity = new Vector2(horizontalInput * walkspeed, VerticalalInput * walkspeed);
+
+    }
+
+    private void FixedUpdate()
+    {
+       
+        body.MovePosition(body.position + movement * walkspeed * Time.fixedDeltaTime);
+
+        Vector2 lookDir = mousePos - body.position;
+
+        float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg;
+
+        body.rotation = angle;
 
     }
 
