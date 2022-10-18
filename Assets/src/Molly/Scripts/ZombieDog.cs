@@ -7,18 +7,30 @@ public class ZombieDog : Dog
     //serialized field for sound management class
     [SerializeField]
     private Rigidbody2D ZomDog;
- 
-    //[SerializeField]
-    //private SoundManager sounds;
-
-    //other variables
     
     [SerializeField]
-    private int health = 100;
+    private int health;
 
-    private int speed;
-    
+    //other variables
     private Vector3 pos;
+    private int damage;
+    private float speed;
+
+    void Awake(){
+        damage = SetDamage();
+        speed = SetSpeed();
+        health = SetHealth();
+    }
+
+    protected virtutal int SetDamage(){
+        return 5;
+    }
+    protected virtutal int SetHealth(){
+        return 100;
+    }
+    protected virtutal float SetSpeed(){
+        return .5f;
+    }
 
     // default constructor
     public ZombieDog(){
@@ -45,8 +57,7 @@ public class ZombieDog : Dog
         //BOUNDARY TEST: GO TO DOG SCRIPT TO SEE THE DEATH FUNCTION
         //HEALTH IS SERIALIZED FIELD SO THAT YOU CAN CHANGE HEALTH AT RUN TIME
         if(health==0){
-            Death();
-            
+            Death();    
         }
     }
     //if player walks into dog area, move
@@ -63,8 +74,21 @@ public class ZombieDog : Dog
         }
     }
 
+    //returns the dogs health
     public int GetHealth(){
         return health;
+    }
+
+    //sets the health of the dog
+    public void SetHealth(int heal){
+        health = heal;
+    }
+
+    //Deals Damage to the player
+    //Decorator/depends on the level of the dog
+    public void DealDamage(int damage){
+        int temp = GetHealth() - damage;
+        SetHealth(temp);
     }
 
     //temporary damage function
