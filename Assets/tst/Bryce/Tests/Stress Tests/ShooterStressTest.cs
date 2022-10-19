@@ -9,6 +9,9 @@ public class ShooterStressTest : MonoBehaviour
     [SerializeField]
     TextMeshProUGUI Counter;
 
+    [SerializeField]
+    TextMeshProUGUI FrameRateDisplay;
+
     //[SerializeField]
     //private GameObject bulletCasingPrefab;
 
@@ -21,6 +24,8 @@ public class ShooterStressTest : MonoBehaviour
     [SerializeField]
     private float fireRate = 10f;
     private float nextTimeToFire = 0f;
+
+    int frameRate;
 
     long bulletCount = 0;
 
@@ -43,22 +48,28 @@ public class ShooterStressTest : MonoBehaviour
         //rotates sprite based off of rotation variable 
         transform.eulerAngles = new Vector3(transform.rotation.x, rotateY, transform.rotation.z);
 
-
+        frameRate = (int)(1f / Time.deltaTime);
 
         //Shooting with M1 click
-          if ( Time.time >= nextTimeToFire)
+        if ( Time.time >= nextTimeToFire)
           {
              nextTimeToFire =  1f / fireRate;
              Shoot();
              fireRate++;
              bulletCount++;
              Counter.SetText("Bullet Count = " + bulletCount);
-             //Debug.Log("Fire Rate: " + fireRate);
+             FrameRateDisplay.SetText("Frame Rate = " + (frameRate));
+            //Debug.Log("Fire Rate: " + fireRate);
 
-          }
+        }
+
+       
+
 
 
     }
+
+
 
     private void Shoot()
     {
