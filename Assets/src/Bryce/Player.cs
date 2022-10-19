@@ -41,12 +41,14 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
+        
         movement.x = Input.GetAxis("Horizontal");
         movement.y = Input.GetAxis("Vertical");
 
         mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
 
         //Flip player when moving left and right
+        /*
         if (movement.x > 0.01f)
         {
             playerObject.transform.localScale = new Vector3(1, 1, 1);
@@ -55,19 +57,20 @@ public class Player : MonoBehaviour
         {
             playerObject.transform.localScale = new Vector3(-1, 1, 1);
         }
+        */
 
     }
 
     private void FixedUpdate()
     {
-       
+       //Player vertical and horizontal movement
         body.MovePosition(body.position + movement * walkspeed * Time.fixedDeltaTime);
 
-        Vector2 lookDir = mousePos - body.position;
+       // Vector2 lookDir = mousePos - body.position;
 
-        float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg;
+        //float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg;
 
-        body.rotation = angle;
+        //body.rotation = angle;
 
     }
 
