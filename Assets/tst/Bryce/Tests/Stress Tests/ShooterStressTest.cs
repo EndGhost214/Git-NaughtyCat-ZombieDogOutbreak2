@@ -1,9 +1,13 @@
 using UnityEngine;
+using TMPro;
 
 public class ShooterStressTest : MonoBehaviour
 {
     [SerializeField]
     private GameObject bulletPrefab;
+
+    [SerializeField]
+    TextMeshProUGUI Counter;
 
     //[SerializeField]
     //private GameObject bulletCasingPrefab;
@@ -48,8 +52,8 @@ public class ShooterStressTest : MonoBehaviour
              Shoot();
              fireRate++;
              bulletCount++;
-             Debug.Log("Bullet Count: " + bulletCount);
-             Debug.Log("Fire Rate: " + fireRate);
+             Counter.SetText("Bullet Count = " + bulletCount);
+             //Debug.Log("Fire Rate: " + fireRate);
 
           }
 
