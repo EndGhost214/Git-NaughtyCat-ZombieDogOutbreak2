@@ -17,9 +17,9 @@ public class Player : MonoBehaviour
     private GameObject playerObject;
 
     Vector2 movement;
-    Vector2 mousePos;
+    //Vector2 mousePos;
 
-    public Camera cam;
+    //public Camera cam;
 
     
 
@@ -45,7 +45,7 @@ public class Player : MonoBehaviour
         movement.x = Input.GetAxis("Horizontal");
         movement.y = Input.GetAxis("Vertical");
 
-        mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
+        //mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
 
         //Flip player when moving left and right
         /*
