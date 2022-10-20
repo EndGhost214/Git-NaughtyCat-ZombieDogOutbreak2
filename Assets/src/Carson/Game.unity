@@ -617,10 +617,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 208711878}
-  - component: {fileID: 208711877}
   - component: {fileID: 208711881}
   - component: {fileID: 208711880}
   - component: {fileID: 208711884}
+  - component: {fileID: 208711885}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -628,20 +628,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &208711877
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 208711876}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2f794cda1de64714ca0c5554b3b9aa97, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  walkspeed: 5
-  playerObject: {fileID: 0}
 --- !u!4 &208711878
 Transform:
   m_ObjectHideFlags: 0
@@ -681,7 +667,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 026e4c30af6b7fa4f8a3e5b6fcbc545d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerPrefab: {fileID: 208711877}
+  playerPrefab: {fileID: 208711885}
   basicDog: {fileID: 1665822539}
 --- !u!114 &208711884
 MonoBehaviour:
@@ -695,6 +681,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9c97d07c8e9e5c49b98df80beb6f16f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &208711885
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 208711876}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea8d21cb231dda04d999774009bf381b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  walkspeed: 5
+  playerObject: {fileID: 362108800}
 --- !u!1001 &220835609
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1038,6 +1038,11 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 4611578576429974708, guid: 9900df05a9d144b4aa9f7e769a17dfbd, type: 3}
   m_PrefabInstance: {fileID: 335071399}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &362108800 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8596971514160928299, guid: 1cbbf368df24c3a4a94fc04b100a7f14, type: 3}
+  m_PrefabInstance: {fileID: 1901959757}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &467871272
 PrefabInstance:

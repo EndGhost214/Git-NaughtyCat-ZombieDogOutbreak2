@@ -23,7 +23,7 @@ public class GameManager : Singleton<GameManager> {
 	
 	[SerializeField]
 	private ZombieDog basicDog; // ZombieDog class for instantiating new dogs
-	private List<Dog> dogs = new List<Dog>(); // list of alive dogs
+	private List<Dog> dogs; // list of alive dogs
 	
     // Start is called before the first frame update
     void Start() {
@@ -88,6 +88,7 @@ public class GameManager : Singleton<GameManager> {
 	// Load the game background, create player and dogs.
 	// Provided difficulty sets dog AI level. 0 = BC mode
 	public void StartGame(int difficulty) {
+		dogs = new List<Dog>();
 		startTime = (int) Time.time;
 		
 		map = MapManager.Instance;
@@ -108,7 +109,7 @@ public class GameManager : Singleton<GameManager> {
 		}
 		
 		// Populate array with starting enemies
-		//SpawnDogs(3 * difficulty);
+		SpawnDogs(3 * difficulty);
 	}
 	
 	// Getter function for current level (for modifying enemy speed, UI elements)
