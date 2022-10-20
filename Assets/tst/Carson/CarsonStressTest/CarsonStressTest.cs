@@ -22,6 +22,6 @@ public class CarsonStressTest : MonoBehaviour {
     void Update()
     {
 		counter.text = "" + dogs.Count;
-        dogs.Add(Instantiate(basicDog, new Vector3(0, 0, 0), Quaternion.identity));
+        dogs.Add(Instantiate(basicDog, new Vector3(Random.Range(-5, 5), Random.Range(-2, 2), 0), Quaternion.identity));
     }
 }
