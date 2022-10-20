@@ -23,7 +23,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5923800327474393738
 Transform:
   m_ObjectHideFlags: 0
@@ -167,7 +167,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ZomDog: {fileID: 5923800327474393737}
-  health: 100
+  health: 0
 --- !u!70 &5562293355097833842
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -216,5 +216,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea0c8fc5efb6a5146a145502a2e7e5ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletModel: {fileID: 123828864607160359, guid: 360b401e374acd8498cbca339577694f, type: 3}
-  transform: {fileID: 5923800327474393738}
+  itemDrops:
+  - {fileID: 123828864607160359, guid: 360b401e374acd8498cbca339577694f, type: 3}
