@@ -58,7 +58,7 @@ public class GameManager : Singleton<GameManager> {
 		
 		// Clone the provided number of dogs
 		for (int i = 0; i < num; i++) {
-			dogs.Add((Level0ZomDecor) Instantiate(basicDog, spawn, Quaternion.identity));
+			dogs.Add(/*(Level0ZomDecor)*/ Instantiate(basicDog, spawn, Quaternion.identity));
 		}
 	}
 	
