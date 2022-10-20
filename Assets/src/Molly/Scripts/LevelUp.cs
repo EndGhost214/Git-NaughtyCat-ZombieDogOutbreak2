@@ -7,9 +7,17 @@ public class LevelUp : ZombieDog
 
     private ZombieDog ZomDog;
 
-    public LevelUp(ZombieDog dog)
+    /*void Awake(){
+        ZombieDog dog = GameObject.Find("ZombieDog").GetComponent<ZombieDog>();
+        ZomDog = dog;
+    }*/
+
+    public override void SetDog(ZombieDog dog)
     {
         ZomDog = dog;
+        damage = SetDamage();
+        speed = SetSpeed();
+        health = SetHealth();
     }
 
     //figure out how to append on to the base stats

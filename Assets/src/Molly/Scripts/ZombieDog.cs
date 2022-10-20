@@ -6,7 +6,7 @@ public class ZombieDog : Dog
 {
     //serialized field for sound management class
     [SerializeField]
-    private Rigidbody2D ZomDog;
+    private Rigidbody2D ZomDogRB;
     
     //other variables
     private Vector3 pos;
@@ -14,20 +14,19 @@ public class ZombieDog : Dog
     // default constructor
     public ZombieDog(){
         
-        pos = new Vector3(0,0,0);
     }
 
     //constructor that takes inital spawn position
     public ZombieDog(Vector3 pos){
         this.pos = pos;
         //call dog noise sound from marissa's function
-        SoundManager.Instance.ZombieSoundFunction();
+        //SoundManager.Instance.ZombieSoundFunction();
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        transform.position = pos;
+        //transform.position = pos;
         SoundManager.Instance.ZombieSoundFunction();
     }
 
@@ -81,5 +80,7 @@ public class ZombieDog : Dog
     }
     protected virtual float SetSpeed(){
         return speed;
+    }
+    public virtual void SetDog(ZombieDog dog){
     }
 }

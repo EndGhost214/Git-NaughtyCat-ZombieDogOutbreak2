@@ -8,7 +8,7 @@ public class BaseDog : ZombieDog
     //base variables for each zombie dog
     protected int baseh = 100;
     protected int based = 5;
-    protected float bases = .5f;
+    protected float bases = 0.5f;
 
     public BaseDog(){
         damage = SetDamage();
@@ -25,4 +25,7 @@ public class BaseDog : ZombieDog
     protected override float SetSpeed(){
         return bases;
     }
+    public override void SetDog(ZombieDog dog){
+    }
+
 }
