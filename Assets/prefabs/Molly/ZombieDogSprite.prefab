@@ -24,7 +24,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5923800327474393738
 Transform:
   m_ObjectHideFlags: 0
@@ -155,6 +155,23 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 34.40731, y: 34.24266}
   m_EdgeRadius: 0
+<<<<<<< HEAD
+=======
+--- !u!114 &1273976635761098844
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5923800327474393751}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bdd0e50c48001544ea602ff974db4d0f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ZomDog: {fileID: 5923800327474393737}
+  health: 0
+>>>>>>> 28e09b9666393913bfbbd4fe72b25fa658d8a0dc
 --- !u!70 &5562293355097833842
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -203,6 +220,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea0c8fc5efb6a5146a145502a2e7e5ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< HEAD
   itemDrops: []
 --- !u!114 &4103327233121584380
 MonoBehaviour:
@@ -236,3 +254,7 @@ MonoBehaviour:
   damage: 0
   speed: 0
   ZomDog: {fileID: 0}
+=======
+  itemDrops:
+  - {fileID: 123828864607160359, guid: 360b401e374acd8498cbca339577694f, type: 3}
+>>>>>>> 28e09b9666393913bfbbd4fe72b25fa658d8a0dc

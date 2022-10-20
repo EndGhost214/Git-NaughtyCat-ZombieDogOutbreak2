@@ -11,6 +11,7 @@ public class ItemFunctions : Singleton<ItemFunctions>
         for(int i=0; i<itemDrops.Length; i++){
 
             Instantiate(itemDrops[i], transform.position, Quaternion.identity); 
+
         }
    }
 
