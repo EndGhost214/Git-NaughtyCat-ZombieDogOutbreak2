@@ -8,32 +8,12 @@ public class ZombieDog : Dog
     [SerializeField]
     private Rigidbody2D ZomDog;
     
-    [SerializeField]
-    private int health;
-
     //other variables
     private Vector3 pos;
-    private int damage;
-    private float speed;
-
-    protected virtual void Awake(){
-        damage = SetDamage();
-        speed = SetSpeed();
-        health = SetHealth();
-    }
-
-    protected virtual int SetDamage(){
-        return based;
-    }
-    protected virtual int SetHealth(){
-        return baseh;
-    }
-    protected virtual float SetSpeed(){
-        return bases;
-    }
-
+   
     // default constructor
     public ZombieDog(){
+        
         pos = new Vector3(0,0,0);
     }
 
@@ -60,6 +40,11 @@ public class ZombieDog : Dog
             Death();    
         }
     }
+
+    void FixedUpdate(){
+        //update animation and which way it is facing dependent on movement with A*
+    }
+
     //if player walks into dog area, move
     void OnCollisionEnter2D(Collision2D collision){
         Debug.Log("testing");
@@ -74,26 +59,27 @@ public class ZombieDog : Dog
         }
     }
 
-    //returns the dogs health
-    public int GetHealth(){
-        return health;
-    }
-
-    //sets the health of the dog
-    public void SetHealth(int heal){
-        health = heal;
-    }
-
     //Deals Damage to the player
     //Decorator/depends on the level of the dog
     public void DealDamage(int damage){
-        int temp = GetHealth() - damage;
-        SetHealth(temp);
+        health -= damage;
+        
     }
 
     //temporary damage function
     public int TakeDamage(){
         health-=50;
         return health;
+    }
+
+    //set functions that don't do much
+    protected virtual int SetDamage(){
+        return damage;
+    }
+    protected virtual int SetHealth(){
+        return health;
+    }
+    protected virtual float SetSpeed(){
+        return speed;
     }
 }

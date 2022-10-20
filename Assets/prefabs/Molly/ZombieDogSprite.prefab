@@ -13,10 +13,11 @@ GameObject:
   - component: {fileID: 5923800327474393736}
   - component: {fileID: 5923800327474393737}
   - component: {fileID: 5923800327474393750}
-  - component: {fileID: 1273976635761098844}
   - component: {fileID: 5562293355097833842}
   - component: {fileID: 4439032927838498114}
   - component: {fileID: 5444712409996943294}
+  - component: {fileID: 4103327233121584380}
+  - component: {fileID: 1869959777575076090}
   m_Layer: 0
   m_Name: ZombieDogSprite
   m_TagString: Untagged
@@ -98,7 +99,7 @@ CircleCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5923800327474393751}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
@@ -135,7 +136,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5923800327474393751}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
@@ -154,20 +155,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 34.40731, y: 34.24266}
   m_EdgeRadius: 0
---- !u!114 &1273976635761098844
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5923800327474393751}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bdd0e50c48001544ea602ff974db4d0f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ZomDog: {fileID: 5923800327474393737}
-  health: 100
 --- !u!70 &5562293355097833842
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -216,5 +203,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea0c8fc5efb6a5146a145502a2e7e5ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletModel: {fileID: 123828864607160359, guid: 360b401e374acd8498cbca339577694f, type: 3}
-  transform: {fileID: 5923800327474393738}
+  itemDrops: []
+--- !u!114 &4103327233121584380
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5923800327474393751}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61d5c5a0a37236a4bbcaef5ccf87fb7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 100
+  damage: 5
+  speed: 0.5
+  ZomDog: {fileID: 5923800327474393737}
+--- !u!114 &1869959777575076090
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5923800327474393751}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bdd0e50c48001544ea602ff974db4d0f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 0
+  damage: 0
+  speed: 0
+  ZomDog: {fileID: 0}

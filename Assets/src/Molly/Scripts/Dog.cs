@@ -4,11 +4,10 @@ using UnityEngine;
 
 public class Dog : MonoBehaviour
 {
-    //base variables for each zombie dog
-    protected int baseh = 100;
-    protected int based = 5;
-    protected float bases = .5f;
-
+    //variables 
+    public int health;
+    public int damage;
+    public float speed;
 
     //remove the dog from the map
     public void Death(){

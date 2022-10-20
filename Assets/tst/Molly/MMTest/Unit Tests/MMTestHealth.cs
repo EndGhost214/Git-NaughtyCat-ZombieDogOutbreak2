@@ -13,7 +13,7 @@ public class MMTestHealth : MonoBehaviour
     
     ZombieDog t1 = new ZombieDog();
     //assertStatement
-    Assert.AreEqual(100, t1.GetHealth());
+    Assert.AreEqual(100, t1.health);
     }
    
    //Checks to see if the damage function will take 50 off of the health of the instance of the zombie dog
@@ -24,6 +24,6 @@ public class MMTestHealth : MonoBehaviour
     ZombieDog t1 = new ZombieDog();
     //assertStatement
     t1.TakeDamage();
-    Assert.AreEqual(50, t1.GetHealth());
+    Assert.AreEqual(50, t1.health);
    }
 }
