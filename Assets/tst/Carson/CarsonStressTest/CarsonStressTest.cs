@@ -35,8 +35,8 @@ public class CarsonStressTest : MonoBehaviour {
 		
 		counter.text = "Total: " + dogs.Count + "\nDPS: " + dps + "\n" + (dps <= 3 ? "Stress Achieved" : null);
 		
-        dogs.Add(Instantiate(basicDog, new Vector3(Random.Range(-5, 5), Random.Range(-2, 2), 0), Quaternion.identity));
+        dogs.Add(Instantiate(basicDog, new Vector3(Random.Range(-10, 10), Random.Range(-4, 4), 0), Quaternion.identity));
 		// Randomly nudge one dog every frame
-		dogs[(int) Random.Range(0, dogs.Count - 1)].GetComponent<Rigidbody2D>().AddForce(new Vector2(Random.Range(-12, 12), Random.Range(-5, 5)), ForceMode2D.Impulse);
+		dogs[(int) Random.Range(0, dogs.Count - 1)].GetComponent<Rigidbody2D>().AddForce(new Vector2(Random.Range(-25, 25), Random.Range(-15, 15)), ForceMode2D.Impulse);
     }
 }
