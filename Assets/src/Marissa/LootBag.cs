@@ -1,3 +1,11 @@
+/*
+*LootBag.cs
+*Marissa Samayoa
+*randomizes which item will be dropped
+*/
+
+
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -21,7 +29,7 @@ public class LootBag : MonoBehaviour
                 possibleItems.Add(item);
             }
         }
-        
+
         if(possibleItems.Count >0)
         {
             Loot droppedItem= possibleItems[Random.Range(0,possibleItems.Count)];
