@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 1273976635761098844}
   - component: {fileID: 5562293355097833842}
   - component: {fileID: 4439032927838498114}
+  - component: {fileID: 3312313970147636371}
   - component: {fileID: 5444712409996943294}
   - component: {fileID: 1641806335140759876}
   m_Layer: 0
@@ -167,7 +168,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdd0e50c48001544ea602ff974db4d0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
+  health: 0
   damage: 0
   speed: 0
   ZomDogRB: {fileID: 0}
@@ -207,6 +208,23 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &3312313970147636371
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5923800327474393751}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e731582aee8f6514d98be5ff3d63ad68, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  droppedItemPrefab: {fileID: 7982876938026357496, guid: 194b7cd55e4c6b84eab2c1312c8e4f58, type: 3}
+  lootList:
+  - {fileID: 11400000, guid: 374d7d9801ee5e949bc75103da53baf9, type: 2}
+  - {fileID: 11400000, guid: 090e8d0b114ce974e969eef0f6105a9c, type: 2}
+  - {fileID: 11400000, guid: adaea89b98515c34e90a8685d97fe91c, type: 2}
 --- !u!114 &5444712409996943294
 MonoBehaviour:
   m_ObjectHideFlags: 0
