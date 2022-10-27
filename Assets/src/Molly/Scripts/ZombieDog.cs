@@ -67,7 +67,7 @@ public class ZombieDog : Dog
             //set animate to bite
         }
         if(collision.gameObject.tag == "Bullet"){
-            SetHealth(health-=5);
+            TakeDamage(health);
         }
     }
 
@@ -87,9 +87,9 @@ public class ZombieDog : Dog
     }
 
     //temporary damage function
-    public int TakeDamage()
+    public int TakeDamage(int damage)
 	{
-        health-=50;
+        health-=damage;
         return health;
     }
 
