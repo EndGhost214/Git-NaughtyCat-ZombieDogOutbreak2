@@ -10,7 +10,7 @@ public class CameraFollow : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //player = GameManager.Instance.getPlayer();
+        player = GameManager.Instance.getPlayer();
     }
 
     // Update is called once per frame

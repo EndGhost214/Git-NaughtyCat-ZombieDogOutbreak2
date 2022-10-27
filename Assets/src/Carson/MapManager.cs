@@ -19,12 +19,12 @@ public class MapManager : Singleton<MapManager> {
     }
 	
 	// Return the list of spawnpoints
-	public List<Vector3> GetSpawnPoints() {
+	public List<Vector3> getSpawnPoints() {
 		return spawnPoints;
 	}
 	
 	// Initialize the rooms and spawnpoints, hide the menu
-	public void StartGame() {
+	public void startGame() {
 		//Debug.Log("Game started");
 		//StartMenu.SetActive(false);
 		
