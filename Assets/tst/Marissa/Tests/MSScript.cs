@@ -27,7 +27,7 @@ public class MSTestScript : MonoBehaviour
 
     public void checkzombieHurtFunction(){
 
-        SoundManager.Instance.ZombieHurtFunction();
+        SoundManager.Instance.zombieHurtFunction();
         string check=SoundManager.Instance.GetrecentlyPlayed();
         
         int flag=0;
