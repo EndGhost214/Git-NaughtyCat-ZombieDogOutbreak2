@@ -1,9 +1,17 @@
+/*
+*SoundManager.cs
+*Marissa Samayoa
+*to manage the sounds and make accessible to other developers
+*/
+
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 
-public class SoundManager : Singleton<SoundManager>{
+public class SoundManager : Singleton<SoundManager>
+{
 
    
 
@@ -18,8 +26,6 @@ public class SoundManager : Singleton<SoundManager>{
     }
 
 
-
-
     [SerializeField]
     private AudioSource zombieSound1; //mc zombie
 
@@ -30,7 +36,7 @@ public class SoundManager : Singleton<SoundManager>{
     private AudioSource zombieSound3; //dog growl
     
     //zombie exisiting sound
-    public void ZombieSoundFunction()
+    public void zombieSoundFunction()
     {
         int play = Random.Range(1,100);
         
@@ -58,6 +64,7 @@ public class SoundManager : Singleton<SoundManager>{
         
     }
 
+
     //zombie hurt sounds
     [SerializeField]
     private AudioSource zombieHurt1;  //mc zombie hurt
@@ -66,7 +73,7 @@ public class SoundManager : Singleton<SoundManager>{
     private AudioSource zombieHurt2; //puppy whine
 
     //determines what sound will be played
-    public void ZombieHurtFunction()
+    public void zombieHurtFunction()
     {
         int play = Random.Range(1,10);
        
@@ -82,6 +89,7 @@ public class SoundManager : Singleton<SoundManager>{
         }
     }
 
+
     //zombie boss--------------------------------------
 
     //growl
@@ -93,6 +101,7 @@ public class SoundManager : Singleton<SoundManager>{
         bossGrowl.Play();
     }
 
+
     //attack
     [SerializeField]
     private AudioSource bossAttack;
@@ -102,6 +111,7 @@ public class SoundManager : Singleton<SoundManager>{
         bossAttack.Play();
     }
 
+
     //hurt
     [SerializeField]
     private AudioSource bossHurt;
@@ -110,6 +120,7 @@ public class SoundManager : Singleton<SoundManager>{
     {
         bossHurt.Play();
     }
+
 
     //Player---------------------------------------------
    
@@ -134,6 +145,7 @@ public class SoundManager : Singleton<SoundManager>{
 
     }
 
+
     //pick item up
     [SerializeField]
     private AudioSource pickUp;
@@ -142,6 +154,7 @@ public class SoundManager : Singleton<SoundManager>{
     {
         pickUp.Play();
     }
+
 
     //walking sound
     [SerializeField]
@@ -155,9 +168,6 @@ public class SoundManager : Singleton<SoundManager>{
     }
 
     
-
-
-
     //shoots
     [SerializeField]
     private AudioSource gunSound1;
@@ -167,6 +177,7 @@ public class SoundManager : Singleton<SoundManager>{
         gunSound1.Play();
     }
 
+
     //slashes
     [SerializeField]
     private AudioSource knifeSlash;
@@ -175,6 +186,7 @@ public class SoundManager : Singleton<SoundManager>{
 
         knifeSlash.Play();
     }
+
 
     //gets hurt
 
@@ -200,6 +212,7 @@ public class SoundManager : Singleton<SoundManager>{
         }
     }
 
+
     //Other-----------------------------------------
 
     //background music
@@ -214,6 +227,7 @@ public class SoundManager : Singleton<SoundManager>{
         unlockDoor.Play();
     }
 
+
     //create cure
 
     [SerializeField]
@@ -222,6 +236,7 @@ public class SoundManager : Singleton<SoundManager>{
     public void createCureFunction(){
         createCure.Play();
     }
+
 
     //sprinklers
     [SerializeField]
@@ -232,6 +247,5 @@ public class SoundManager : Singleton<SoundManager>{
     }
 
 
-  
 }
 
