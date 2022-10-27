@@ -10,7 +10,7 @@ public class MSTestScript : MonoBehaviour
 
     public void checkZombieSoundFunction(){
 
-        SoundManager.Instance.ZombieSoundFunction();
+        SoundManager.Instance.zombieSoundFunction();
         string check=SoundManager.Instance.GetrecentlyPlayed();
         
         int flag=0;
@@ -25,7 +25,7 @@ public class MSTestScript : MonoBehaviour
 
      [Test]
 
-    public void checkZombieHurtFunction(){
+    public void checkzombieHurtFunction(){
 
         SoundManager.Instance.ZombieHurtFunction();
         string check=SoundManager.Instance.GetrecentlyPlayed();
