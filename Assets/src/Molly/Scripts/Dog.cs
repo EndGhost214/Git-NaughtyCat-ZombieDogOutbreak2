@@ -5,6 +5,7 @@ using Pathfinding;
 
 public class Dog : MonoBehaviour
 {
+    
     //variables 
     public int health = 100;
     public int damage;
