@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class LootBag : MonoBehaviour
 {
     
@@ -20,6 +21,7 @@ public class LootBag : MonoBehaviour
                 possibleItems.Add(item);
             }
         }
+        
         if(possibleItems.Count >0)
         {
             Loot droppedItem= possibleItems[Random.Range(0,possibleItems.Count)];
@@ -27,6 +29,7 @@ public class LootBag : MonoBehaviour
         }
             return null;
         }
+
         public void InstantiateLoot(Vector3 spawnPosition)
         {
             Loot droppedItem = GetDroppedItem();
@@ -36,6 +39,8 @@ public class LootBag : MonoBehaviour
                 lootGameObject.GetComponent<SpriteRenderer>().sprite = droppedItem.lootSprite;
             }
         }
+
+
     }
    
 

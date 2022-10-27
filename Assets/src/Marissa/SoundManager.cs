@@ -11,7 +11,8 @@ public class SoundManager : Singleton<SoundManager>{
 
     private string recentlyPlayed;
 
-    public string GetrecentlyPlayed(){
+    public string GetrecentlyPlayed()
+    {
 
         return recentlyPlayed;
     }
@@ -29,23 +30,28 @@ public class SoundManager : Singleton<SoundManager>{
     private AudioSource zombieSound3; //dog growl
     
     //zombie exisiting sound
-    public void ZombieSoundFunction(){
+    public void ZombieSoundFunction()
+    {
         int play = Random.Range(1,100);
         
-        if (play>=1 && play<=10){
+        if (play>=1 && play<=10)
+        {
             zombieSound1.Play();
             recentlyPlayed="zombieSound1";
 
         }
-        else if(play>=11 && play<=20){
+        else if(play>=11 && play<=20)
+        {
             zombieSound2.Play();
             recentlyPlayed="zombieSound2";
         }
-        else if(play>=21 && play<=75){
+        else if(play>=21 && play<=75)
+        {
             zombieSound3.Play();
             recentlyPlayed="zombieSound3";
         }
-        else if(play>=76 && play<=100){
+        else if(play>=76 && play<=100)
+        {
             //no sound
              recentlyPlayed="NONE";
         }
@@ -60,14 +66,17 @@ public class SoundManager : Singleton<SoundManager>{
     private AudioSource zombieHurt2; //puppy whine
 
     //determines what sound will be played
-    public void ZombieHurtFunction(){
+    public void ZombieHurtFunction()
+    {
         int play = Random.Range(1,10);
        
-        if (play>3 && play<=10){
+        if (play>3 && play<=10)
+        {
             zombieHurt2.Play();
             recentlyPlayed="zombieHurt2";
         }
-        else if(play==1 || play==2){
+        else if(play==1 || play==2)
+        {
             zombieHurt1.Play();
             recentlyPlayed="zombieHurt1";
         }
@@ -79,7 +88,8 @@ public class SoundManager : Singleton<SoundManager>{
     [SerializeField]
     private AudioSource bossGrowl;
 
-    public void bossGrowlFunction(){
+    public void bossGrowlFunction()
+    {
         bossGrowl.Play();
     }
 
@@ -87,7 +97,8 @@ public class SoundManager : Singleton<SoundManager>{
     [SerializeField]
     private AudioSource bossAttack;
 
-    public void bossAttackFunction(){
+    public void bossAttackFunction()
+    {
         bossAttack.Play();
     }
 
@@ -95,7 +106,8 @@ public class SoundManager : Singleton<SoundManager>{
     [SerializeField]
     private AudioSource bossHurt;
 
-    public void bossHurtFunction(){
+    public void bossHurtFunction()
+    {
         bossHurt.Play();
     }
 
@@ -108,12 +120,15 @@ public class SoundManager : Singleton<SoundManager>{
     [SerializeField]
     private AudioSource catMeow2;
 
-    public void catMeowFunction(){
+    public void catMeowFunction()
+    {
         int play = Random.Range(1,2);
-        if(play==1){
+        if(play==1)
+        {
             catMeow1.Play();
         }
-        else if(play==2){
+        else if(play==2)
+        {
             catMeow2.Play();
         }
 
@@ -123,7 +138,8 @@ public class SoundManager : Singleton<SoundManager>{
     [SerializeField]
     private AudioSource pickUp;
 
-    public void pickUpFunction(){
+    public void pickUpFunction()
+    {
         pickUp.Play();
     }
 
@@ -131,7 +147,8 @@ public class SoundManager : Singleton<SoundManager>{
     [SerializeField]
     private AudioSource catWalk;  //squidward walk
 
-    public void catWalkFunction(){
+    public void catWalkFunction()
+    {
 
         catWalk.Play();
 
