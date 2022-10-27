@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lootSprite: {fileID: 21300000, guid: 62493562923179542beb5cd014de5b3c, type: 3}
   lootName: Zomheart
-  dropChance: 20
+  dropChance: 40
