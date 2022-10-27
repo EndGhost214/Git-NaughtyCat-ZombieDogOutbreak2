@@ -36,6 +36,12 @@ public class SoundManager : Singleton<SoundManager>
     private AudioSource zombieSound3; //dog growl
     
     //zombie exisiting sound
+
+    /*
+    *function to play zombie exisiting sounds
+    *no parameter
+    *generates a random number between 1-100 which determines which zombie sound will be played
+    */
     public void zombieSoundFunction()
     {
         int play = Random.Range(1,100);
@@ -73,6 +79,12 @@ public class SoundManager : Singleton<SoundManager>
     private AudioSource zombieHurt2; //puppy whine
 
     //determines what sound will be played
+     
+    /*
+    *function to play zombie hurt sounds
+    *no parameter
+    *generates a random number between 1-10 which determines which zombie sound will be played
+    */
     public void zombieHurtFunction()
     {
         int play = Random.Range(1,10);
@@ -96,6 +108,11 @@ public class SoundManager : Singleton<SoundManager>
     [SerializeField]
     private AudioSource bossGrowl;
 
+     /*
+    *function to play boss growl sound
+    *no parameter
+    *plays the sound
+    */
     public void bossGrowlFunction()
     {
         bossGrowl.Play();
@@ -106,6 +123,11 @@ public class SoundManager : Singleton<SoundManager>
     [SerializeField]
     private AudioSource bossAttack;
 
+     /*
+    *function to play boss attack sound
+    *no parameter
+    *plays the sound
+    */
     public void bossAttackFunction()
     {
         bossAttack.Play();
@@ -116,6 +138,11 @@ public class SoundManager : Singleton<SoundManager>
     [SerializeField]
     private AudioSource bossHurt;
 
+     /*
+    *function to play boss hurt sound
+    *no parameter
+    *plays the sound
+    */
     public void bossHurtFunction()
     {
         bossHurt.Play();
@@ -131,6 +158,11 @@ public class SoundManager : Singleton<SoundManager>
     [SerializeField]
     private AudioSource catMeow2;
 
+     /*
+    *function to play cat meow sounds
+    *no parameter
+    *generates a random number between 1-2 which determines which cat sound will be played
+    */
     public void catMeowFunction()
     {
         int play = Random.Range(1,2);
@@ -150,6 +182,11 @@ public class SoundManager : Singleton<SoundManager>
     [SerializeField]
     private AudioSource pickUp;
 
+     /*
+    *function to play cat pickup sound
+    *no parameter
+    *plays the sound
+    */
     public void pickUpFunction()
     {
         pickUp.Play();
@@ -160,6 +197,11 @@ public class SoundManager : Singleton<SoundManager>
     [SerializeField]
     private AudioSource catWalk;  //squidward walk
 
+     /*
+    *function to play cat walk sound
+    *no parameter
+    *plays the sound
+    */
     public void catWalkFunction()
     {
 
@@ -172,6 +214,11 @@ public class SoundManager : Singleton<SoundManager>
     [SerializeField]
     private AudioSource gunSound1;
 
+     /*
+    *function to play cat gun sound
+    *no parameter
+    *plays the sound
+    */
     public void gunSoundFunction(){
 
         gunSound1.Play();
@@ -182,6 +229,11 @@ public class SoundManager : Singleton<SoundManager>
     [SerializeField]
     private AudioSource knifeSlash;
 
+     /*
+    *function to play cat knife sound
+    *no parameter
+    *plays the sound
+    */
     public void knifeSoundFunction(){
 
         knifeSlash.Play();
@@ -197,6 +249,11 @@ public class SoundManager : Singleton<SoundManager>
     [SerializeField]
     private AudioSource catHurt3; //cat hurt real
     
+     /*
+    *function to play cat hurt sounds
+    *no parameter
+    *generates a random number between 1-10 which determines which cat sound will be played
+    */
     public void catHurtSoundFunction(){
 
         int play = Random.Range(1,10);
@@ -223,6 +280,11 @@ public class SoundManager : Singleton<SoundManager>
     [SerializeField]
     private AudioSource unlockDoor;
 
+     /*
+    *function to play cat unlock sound
+    *no parameter
+    *plays the sound
+    */
     public void unlockDoorFunction(){
         unlockDoor.Play();
     }
@@ -233,6 +295,11 @@ public class SoundManager : Singleton<SoundManager>
     [SerializeField]
     private AudioSource createCure;
 
+     /*
+    *function to play create cure sound
+    *no parameter
+    *plays the sound
+    */
     public void createCureFunction(){
         createCure.Play();
     }
@@ -242,6 +309,11 @@ public class SoundManager : Singleton<SoundManager>
     [SerializeField]
     private AudioSource playSprinkler;
 
+     /*
+    *function to play sprinkler sound
+    *no parameter
+    *plays the sound
+    */
     public void playSprinklerFunction(){
         playSprinkler.Play();
     }

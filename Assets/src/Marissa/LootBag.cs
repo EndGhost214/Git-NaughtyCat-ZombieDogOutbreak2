@@ -11,12 +11,26 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
+/*
+*class that contains the items and their ability to drop
+*member variables:
+*droppedItemPrefab - the prefab for the item that was dropped
+*lootList - list that contains items
+*
+*
+*/
 public class LootBag : MonoBehaviour
 {
     
     public GameObject droppedItemPrefab;
     public List<Loot> lootList = new List<Loot>();
 
+
+    /*
+    *function to determine which item gets dropped
+    *no parameter
+    *drops the item
+    */
     Loot GetDroppedItem()
     {
         int randomNumber = Random.Range(1,101);
@@ -38,6 +52,12 @@ public class LootBag : MonoBehaviour
             return null;
         }
 
+
+        /*
+        *function to check if the zombie sound has been played
+        *spawn position parameter
+        *spawns the item where the zomdog was
+        */
         public void InstantiateLoot(Vector3 spawnPosition)
         {
             Loot droppedItem = GetDroppedItem();
