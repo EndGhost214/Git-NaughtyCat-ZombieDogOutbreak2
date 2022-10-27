@@ -40,13 +40,13 @@ public class GameManager : Singleton<GameManager> {
         if (round > 0 && spawnedWave < time) {
 			Debug.Log("Spawning");
 			// Spawn 5 (1 for now) dogs every 12 seconds
-			if (time % 12 == 0) {
+			if (time % 6 == 0) {
 				spawnDogs(1);
 				spawnedWave = time;
 			}
 			// Spawn another group every 4 seconds
 			if (time > 24 && time % 4 == 0) {
-				spawnDogs(1);
+				spawnDogs(2);
 				spawnedWave = time;
 			}
 		}

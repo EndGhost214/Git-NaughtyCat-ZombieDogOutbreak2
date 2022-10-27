@@ -69,7 +69,7 @@ public class ZombieDog : Dog
             //set animate to bite
         }
         if(collision.gameObject.tag == "Bullet"){
-            TakeDamage(health);
+            TakeDamage((int) collision.gameObject.GetComponent<Bullet>().getDamage());
         }
     }
 
