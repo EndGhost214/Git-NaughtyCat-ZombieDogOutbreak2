@@ -11,10 +11,10 @@ public class ZombieDog : Dog
     
     //other variables
     private Vector3 pos;
+
     private Animator animate;
-    //public Pathfinding aiPath;
-    //Path aipath;
-    //Transform tr;
+
+    //public AIPath aiPath;
    
     // default constructor
     public ZombieDog()
@@ -56,6 +56,7 @@ public class ZombieDog : Dog
         //BOUNDARY TEST: GO TO DOG SCRIPT TO SEE THE DEATH FUNCTION
         //HEALTH IS SERIALIZED FIELD SO THAT YOU CAN CHANGE HEALTH AT RUN TIME
         if(health==0){
+            animate.SetInteger("Health", health);
             Death();    
         }
     }
