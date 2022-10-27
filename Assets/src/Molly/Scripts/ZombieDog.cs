@@ -13,7 +13,7 @@ public class ZombieDog : Dog
     private Vector3 pos;
     private Animator animate;
     //public AIPath aiPath;
-    Path aipath;
+    //Path aipath;
    
     // default constructor
     public ZombieDog()
@@ -68,7 +68,7 @@ public class ZombieDog : Dog
             //set animate to bite
         }
         if(collision.gameObject.tag == "Bullet"){
-            TakeDamage(health);
+            TakeDamage((int) collision.gameObject.GetComponent<Bullet>().getDamage());
         }
     }
 
