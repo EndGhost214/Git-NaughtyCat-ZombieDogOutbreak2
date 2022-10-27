@@ -12,12 +12,14 @@ public class ZombieDog : Dog
     private Vector3 pos;
    
     // default constructor
-    public ZombieDog(){
+    public ZombieDog()
+	{
         
     }
 
     //constructor that takes inital spawn position
-    public ZombieDog(Vector3 pos){
+    public ZombieDog(Vector3 pos)
+	{
         this.pos = pos;
         //call dog noise sound from marissa's function
         //SoundManager.Instance.ZombieSoundFunction();
@@ -27,7 +29,7 @@ public class ZombieDog : Dog
     void Start()
     {
         //transform.position = pos;
-        SoundManager.Instance.ZombieSoundFunction();
+        SoundManager.Instance.zombieSoundFunction();
     }
 
     // Update is called once per frame
@@ -45,14 +47,16 @@ public class ZombieDog : Dog
     }
 
     //if player walks into dog area, move
-    void OnCollisionEnter2D(Collision2D collision){
+    void OnCollisionEnter2D(Collision2D collision)
+	{
         Debug.Log("testing");
         if(collision.gameObject.tag == "Player"){
             Debug.Log("player is in dog zone");
         }
     }
 
-    void OnCollisionExit2D(Collision2D collision){
+    void OnCollisionExit2D(Collision2D collision)
+	{
         if(collision.gameObject.tag == "Player"){
             Debug.Log("player exited dog zone");
         }
@@ -60,27 +64,33 @@ public class ZombieDog : Dog
 
     //Deals Damage to the player
     //Decorator/depends on the level of the dog
-    public void DealDamage(int damage){
+    public void DealDamage(int damage)
+	{
         health -= damage;
         
     }
 
     //temporary damage function
-    public int TakeDamage(){
+    public int TakeDamage()
+	{
         health-=50;
         return health;
     }
 
     //set functions that don't do much
-    protected virtual int SetDamage(){
+    protected virtual int SetDamage()
+	{
         return damage;
     }
-    protected virtual int SetHealth(){
+    protected virtual int SetHealth()
+	{
         return health;
     }
-    protected virtual float SetSpeed(){
+    protected virtual float SetSpeed()
+	{
         return speed;
     }
-    public virtual void SetDog(ZombieDog dog){
+    public virtual void SetDog(ZombieDog dog)
+	{
     }
 }
