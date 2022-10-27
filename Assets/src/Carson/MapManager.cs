@@ -33,5 +33,7 @@ public class MapManager : Singleton<MapManager> {
 		// Add default spawn locations
 		spawnPoints.Add(new Vector3(0, 0, 0));
 		spawnPoints.Add(new Vector3(3, 3, 0));
+		spawnPoints.Add(new Vector3(10, 7, 0));
+		spawnPoints.Add(new Vector3(20, -10, 0));
 	}
 }

@@ -27,7 +27,6 @@ public class GameManager : Singleton<GameManager> {
 	
     // Start is called before the first frame update
     void Start() {
-		player = GameObject.Find("Player");
         // Open start menu from Ambrea
 		startGame(1);
     }
@@ -107,6 +106,7 @@ public class GameManager : Singleton<GameManager> {
 		else {
 			// create survival player
 			//player = Instantiate(playerPrefab, playerSpawn, Quaternion.identity);
+			player = GameObject.Find("Player");
 		}
 		
 		// Populate array with starting enemies
