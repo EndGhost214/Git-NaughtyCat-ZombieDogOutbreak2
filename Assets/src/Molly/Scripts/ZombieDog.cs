@@ -12,7 +12,7 @@ public class ZombieDog : Dog
     //other variables
     private Vector3 pos;
     private Animator animate;
-    private AIPath aiPath;
+    //private AIPath aiPath;
    
     // default constructor
     public ZombieDog()
