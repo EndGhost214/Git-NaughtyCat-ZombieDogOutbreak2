@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Pathfinding;
 
 public class ZombieDog : Dog
 {
@@ -10,6 +11,8 @@ public class ZombieDog : Dog
     
     //other variables
     private Vector3 pos;
+    private Animator animate;
+    //private AIPath aiPath;
    
     // default constructor
     public ZombieDog()
@@ -30,11 +33,24 @@ public class ZombieDog : Dog
     {
         //transform.position = pos;
         SoundManager.Instance.zombieSoundFunction();
+        animate = gameObject.GetComponent<Animator>();
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
+        animate.SetFloat("Speed", speed);
+        animate.SetInteger("Health", health);
+
+        //if the dog is moving to the right, then flip it, visa versa for left
+        /*if(aiPath.desiredVelocity.x >= 0.01f){
+            transform.localScale = new Vector3(-1f,1f,1f);
+        }else if (aiPath.desiredVelocity.x <= -0.01f){
+            transform.localScale = new Vector3(1f,1f,1f);
+        }
+        */
+        //if the dog is moving down/up, flip it accordingly
+
         //BOUNDARY TEST: GO TO DOG SCRIPT TO SEE THE DEATH FUNCTION
         //HEALTH IS SERIALIZED FIELD SO THAT YOU CAN CHANGE HEALTH AT RUN TIME
         if(health==0){
@@ -42,16 +58,16 @@ public class ZombieDog : Dog
         }
     }
 
-    void FixedUpdate(){
-        //update animation and which way it is facing dependent on movement with A*
-    }
-
     //if player walks into dog area, move
     void OnCollisionEnter2D(Collision2D collision)
 	{
-        Debug.Log("testing");
+        //Debug.Log("testing");
         if(collision.gameObject.tag == "Player"){
             Debug.Log("player is in dog zone");
+            //set animate to bite
+        }
+        if(collision.gameObject.tag == "Bullet"){
+            TakeDamage(health);
         }
     }
 
@@ -71,9 +87,9 @@ public class ZombieDog : Dog
     }
 
     //temporary damage function
-    public int TakeDamage()
+    public int TakeDamage(int damage)
 	{
-        health-=50;
+        health-=damage;
         return health;
     }
 

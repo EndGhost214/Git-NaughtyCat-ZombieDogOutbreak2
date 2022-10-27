@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &5923800327474393751
+--- !u!1 &5755214478945553496
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,46 +8,49 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 5923800327474393738}
-  - component: {fileID: 5923800327474393739}
-  - component: {fileID: 5923800327474393736}
-  - component: {fileID: 5923800327474393737}
-  - component: {fileID: 5923800327474393750}
-  - component: {fileID: 1273976635761098844}
-  - component: {fileID: 5562293355097833842}
-  - component: {fileID: 4439032927838498114}
-  - component: {fileID: 3312313970147636371}
-  - component: {fileID: 5444712409996943294}
-  - component: {fileID: 1641806335140759876}
+  - component: {fileID: 5755214478945553477}
+  - component: {fileID: 5755214478945553476}
+  - component: {fileID: 5755214478945553479}
+  - component: {fileID: 5755214478945553478}
+  - component: {fileID: 5755214478945553497}
+  - component: {fileID: 884151455529320083}
+  - component: {fileID: 5825982564620795837}
+  - component: {fileID: 2337839887075201933}
+  - component: {fileID: 3466791025073097308}
+  - component: {fileID: 6225295226656743793}
+  - component: {fileID: 802747089947015051}
+  - component: {fileID: 2155869692190379592}
+  - component: {fileID: 2155869692190379607}
+  - component: {fileID: 2155869692190379606}
   m_Layer: 0
-  m_Name: ZombieDogSprite
+  m_Name: 'ZombieDogSprite '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &5923800327474393738
+--- !u!4 &5755214478945553477
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5923800327474393751}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.13, y: -2.42, z: 0}
-  m_LocalScale: {x: 0.1983, y: 0.1463, z: 1}
+  m_GameObject: {fileID: 5755214478945553496}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 9.984057, y: -0.9254002, z: 0.026491866}
+  m_LocalScale: {x: 0.12861232, y: 0.094886445, z: 0.6485745}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &5923800327474393739
+--- !u!212 &5755214478945553476
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5923800327474393751}
+  m_GameObject: {fileID: 5755214478945553496}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -93,13 +96,13 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!58 &5923800327474393736
+--- !u!58 &5755214478945553479
 CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5923800327474393751}
+  m_GameObject: {fileID: 5755214478945553496}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
@@ -109,14 +112,14 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
---- !u!50 &5923800327474393737
+--- !u!50 &5755214478945553478
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5923800327474393751}
+  m_GameObject: {fileID: 5755214478945553496}
   m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
@@ -130,13 +133,13 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!61 &5923800327474393750
+--- !u!61 &5755214478945553497
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5923800327474393751}
+  m_GameObject: {fileID: 5755214478945553496}
   m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
@@ -156,13 +159,13 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 34.40731, y: 34.24266}
   m_EdgeRadius: 0
---- !u!114 &1273976635761098844
+--- !u!114 &884151455529320083
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5923800327474393751}
+  m_GameObject: {fileID: 5755214478945553496}
   m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bdd0e50c48001544ea602ff974db4d0f, type: 3}
@@ -172,13 +175,13 @@ MonoBehaviour:
   damage: 0
   speed: 0
   ZomDogRB: {fileID: 0}
---- !u!70 &5562293355097833842
+--- !u!70 &5825982564620795837
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5923800327474393751}
+  m_GameObject: {fileID: 5755214478945553496}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
@@ -188,17 +191,17 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 4.6, y: 12.399999}
   m_Direction: 0
---- !u!95 &4439032927838498114
+--- !u!95 &2337839887075201933
 Animator:
   serializedVersion: 4
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5923800327474393751}
+  m_GameObject: {fileID: 5755214478945553496}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 5918a69aabf1f7440ad92a58cba99008, type: 2}
+  m_Controller: {fileID: 9100000, guid: b10a8652f2d958941b320a71f54452c5, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -208,13 +211,13 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &3312313970147636371
+--- !u!114 &3466791025073097308
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5923800327474393751}
+  m_GameObject: {fileID: 5755214478945553496}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e731582aee8f6514d98be5ff3d63ad68, type: 3}
@@ -225,13 +228,13 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 374d7d9801ee5e949bc75103da53baf9, type: 2}
   - {fileID: 11400000, guid: 090e8d0b114ce974e969eef0f6105a9c, type: 2}
   - {fileID: 11400000, guid: adaea89b98515c34e90a8685d97fe91c, type: 2}
---- !u!114 &5444712409996943294
+--- !u!114 &6225295226656743793
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5923800327474393751}
+  m_GameObject: {fileID: 5755214478945553496}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ea0c8fc5efb6a5146a145502a2e7e5ce, type: 3}
@@ -239,13 +242,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemDrops:
   - {fileID: 123828864607160359, guid: 360b401e374acd8498cbca339577694f, type: 3}
---- !u!114 &1641806335140759876
+--- !u!114 &802747089947015051
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5923800327474393751}
+  m_GameObject: {fileID: 5755214478945553496}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 61d5c5a0a37236a4bbcaef5ccf87fb7c, type: 3}
@@ -255,3 +258,87 @@ MonoBehaviour:
   damage: 5
   speed: 0.5
   ZomDogRB: {fileID: 0}
+--- !u!114 &2155869692190379592
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5755214478945553496}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9679e68a0f1144e79c664d9a11ca121, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 1
+  target: {fileID: 0}
+--- !u!114 &2155869692190379607
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5755214478945553496}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6eb1402c17e84a9282a7f0f62eb584f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 5
+  radius: 0.7
+  height: 2
+  canMove: 1
+  maxSpeed: 3
+  gravity: {x: 0, y: 0, z: 0}
+  groundMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  centerOffsetCompatibility: NaN
+  repathRateCompatibility: NaN
+  canSearchCompability: 0
+  orientation: 1
+  enableRotation: 0
+  autoRepath:
+    mode: 2
+    interval: 0.5
+    sensitivity: 10
+    maximumInterval: 2
+    visualizeSensitivity: 0
+  targetCompatibility: {fileID: 0}
+  maxAcceleration: -2.5
+  rotationSpeed: 360
+  slowdownDistance: 0.6
+  pickNextWaypointDist: 0.75
+  endReachedDistance: 0.2
+  alwaysDrawGizmos: 0
+  slowWhenNotFacingTarget: 1
+  whenCloseToDestination: 0
+  constrainInsideGraph: 0
+--- !u!114 &2155869692190379606
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5755214478945553496}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 373b52eb9bf8c40f785bb6947a1aee66, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 1
+  drawGizmos: 1
+  detailedGizmos: 0
+  startEndModifier:
+    addPoints: 0
+    exactStartPoint: 3
+    exactEndPoint: 3
+    useRaycasting: 0
+    mask:
+      serializedVersion: 2
+      m_Bits: 4294967295
+    useGraphRaycasting: 0
+  traversableTags: -1
+  tagPenalties: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+  graphMask:
+    value: -1

@@ -23,7 +23,7 @@ public class MMTestHealth : MonoBehaviour
    public void Take_50_Damage(){
     ZombieDog t1 = new ZombieDog();
     //assertStatement
-    t1.TakeDamage();
+    t1.TakeDamage(50);
     Assert.AreEqual(50, t1.health);
    }
 }
