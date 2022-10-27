@@ -7,6 +7,11 @@ public class Bullet : MonoBehaviour
     private float bulletSpeed = 100f;
     private float bulletDamage = 10f;
 
+    public float getDamage() {
+        return bulletDamage;
+
+    }
+
     Rigidbody2D rb;
 
     private void Start()
