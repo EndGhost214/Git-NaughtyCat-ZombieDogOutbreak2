@@ -635,7 +635,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 884151455529320083, guid: 5dfa5710869749b44aaf5da59ecbbf3f, type: 3}
   m_PrefabInstance: {fileID: 203419433}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 988911001}
   m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bdd0e50c48001544ea602ff974db4d0f, type: 3}
@@ -648,6 +648,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 884151455529320083, guid: 5dfa5710869749b44aaf5da59ecbbf3f, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2155869692190379592, guid: 5dfa5710869749b44aaf5da59ecbbf3f, type: 3}
       propertyPath: target
       value: 
@@ -2020,6 +2024,31 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4611578576429974708, guid: 9900df05a9d144b4aa9f7e769a17dfbd, type: 3}
   m_PrefabInstance: {fileID: 1493252294}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &988911001 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5755214478945553496, guid: 5dfa5710869749b44aaf5da59ecbbf3f, type: 3}
+  m_PrefabInstance: {fileID: 203419433}
+  m_PrefabAsset: {fileID: 0}
+--- !u!111 &988911015
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 988911001}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: 1f71987f12dd6fc4d8a4a9c782f55cc5, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: a774d262ce5e87e46bfa738d2bd9ce09, type: 2}
+  - {fileID: 7400000, guid: b2461e2baa5d5e54b9a97b816d47df91, type: 2}
+  - {fileID: 7400000, guid: 438efc88739093c4ab889910bdaa3699, type: 2}
+  - {fileID: 7400000, guid: 1f71987f12dd6fc4d8a4a9c782f55cc5, type: 2}
+  - {fileID: 7400000, guid: 29895c25479d46f488b190b3a424b7ab, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!4 &1027026688 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4611578576429974708, guid: 9900df05a9d144b4aa9f7e769a17dfbd, type: 3}

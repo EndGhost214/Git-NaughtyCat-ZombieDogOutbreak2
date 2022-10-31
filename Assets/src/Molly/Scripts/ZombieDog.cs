@@ -43,6 +43,7 @@ public class ZombieDog : Dog
     {
         animate.SetFloat("Speed", speed);
         animate.SetInteger("Health", health);
+        
 
         //if the dog is moving to the right, then flip it, visa versa for left
         /*if(aiPath.desiredVelocity.x >= 0.01f){
@@ -56,9 +57,15 @@ public class ZombieDog : Dog
         //BOUNDARY TEST: GO TO DOG SCRIPT TO SEE THE DEATH FUNCTION
         //HEALTH IS SERIALIZED FIELD SO THAT YOU CAN CHANGE HEALTH AT RUN TIME
         if(health==0){
-            animate.SetInteger("Health", health);
-            Death();    
+            //animate.SetInteger("Health", health);
+            gameObject.GetComponent<Animation>()["DeathAnim"].wrapMode = WrapMode.Once;
+            gameObject.GetComponent<Animation>().Play("DeathAnim");
+            //animate.Play("DeathAnim");
+            //Debug.Log("here");
+            Death();
         }
+        
+
     }
 
     //if player walks into dog area, move
