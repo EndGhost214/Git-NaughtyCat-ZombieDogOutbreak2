@@ -13,6 +13,7 @@ public class GameManager : Singleton<GameManager> {
 	// Keep track of how long the game has run
 	private int startTime;
 	private int time;
+	private int idleTime;
 	
 	private int spawnID = 0; // index of next spawnpoint to use
 	private int spawnedWave = 0; // time of last spawned wave
@@ -33,12 +34,14 @@ public class GameManager : Singleton<GameManager> {
 
     // Update is called once per frame
     void FixedUpdate() {
+		int frameTime = (int) Time.time;
+		
 		// Calculate the time the game has run
-		time = (int) Time.time - startTime;
+		time = frameTime - startTime;
 		
 		// Check that the game is in progress
         if (round > 0 && spawnedWave < time) {
-			Debug.Log("Spawning");
+			//Debug.Log("Spawning");
 			// Spawn 5 (1 for now) dogs every 12 seconds
 			if (time % 6 == 0) {
 				spawnDogs(1);
@@ -49,6 +52,13 @@ public class GameManager : Singleton<GameManager> {
 				spawnDogs(2);
 				spawnedWave = time;
 			}
+		}
+		
+		if (Input.anyKey) {
+			idleTime = frameTime;
+		}
+		else if (frameTime - idleTime > 60) {
+			Debug.Log("Player is idle");
 		}
     }
 	
@@ -90,6 +100,7 @@ public class GameManager : Singleton<GameManager> {
 	public void startGame(int difficulty) {
 		dogs = new List<Dog>();
 		startTime = (int) Time.time;
+		idleTime = (int) Time.time;
 		
 		map = MapManager.Instance;
 		round = 1;
