@@ -154,7 +154,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   walkspeed: 5
   playerObject: {fileID: 5923800327474393751, guid: c5659ae8a31ed9147af5e38230d40c29, type: 3}
-  cam: {fileID: 444708436}
 --- !u!4 &350256996
 Transform:
   m_ObjectHideFlags: 0

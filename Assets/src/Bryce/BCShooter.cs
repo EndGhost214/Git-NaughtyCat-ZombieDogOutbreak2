@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Shooter : MonoBehaviour
+public class BCShooter : MonoBehaviour
 {
     [SerializeField]
     private GameObject bulletPrefab;
@@ -18,10 +18,7 @@ public class Shooter : MonoBehaviour
     private float fireRate = 10f;
     private float nextTimeToFire = 0f;
 
-    private float maxAmmo = 270;
 
-    public float ammoCount = 270;
-    private float mag = 30;
 
 
 
@@ -46,28 +43,15 @@ public class Shooter : MonoBehaviour
         
 
         //Shooting with M1 click
-        if (Input.GetMouseButton(0) && Time.time >= nextTimeToFire && mag!=0)
+        if (Input.GetMouseButton(0) && Time.time >= nextTimeToFire )
         {
             nextTimeToFire = Time.time + 1f / fireRate;
             Shoot();
-            mag--;
+
             //ShootCoolDown();
         }
 
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            float reload = 30 - mag;
-            if(ammoCount >= 30)
-            {
-                ammoCount = ammoCount - reload;
-                mag = 30;
-            }
-            else
-            {
-                mag = ammoCount;
-                ammoCount = 0;
-            }
-        }
+
 
     }
 
