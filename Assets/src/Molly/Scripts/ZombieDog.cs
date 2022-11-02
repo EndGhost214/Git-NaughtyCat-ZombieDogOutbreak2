@@ -13,7 +13,7 @@ public class ZombieDog : Dog
     private Animator animate;
 
 
-    private bool isAttacking = false;
+    //public bool isAttacking = false;
    
     // default constructor
     public ZombieDog()
@@ -37,7 +37,7 @@ public class ZombieDog : Dog
         animate = gameObject.GetComponent<Animator>();
 
         
-        animate.SetBool("isAttack", isAttacking);
+        animate.SetBool("isAttack", false);
         //set the speed of the dog (will be dependent on the levelup class)
         animate.SetFloat("Speed", speed);
     }
@@ -84,9 +84,11 @@ public class ZombieDog : Dog
             //animate.SetInteger("Health", health);
             //gameObject.GetComponent<Animation>()["DeathAnim"].wrapMode = WrapMode.Once;
             //gameObject.GetComponent<Animation>().Play("DeathAnim");
-            //animate.Play("DeathAnim");
+            animate.Play("DeathAnim",  -1, 0f);
+            animate.SetFloat("Speed", 0f);
+            animate.SetBool("isAttack", false);
             //Debug.Log("here");
-            Death();
+            Invoke("Death", 1);
         }
         
 
@@ -96,10 +98,14 @@ public class ZombieDog : Dog
     void OnCollisionEnter2D(Collision2D collision)
 	{
         //Debug.Log("testing");
-        if(collision.gameObject.tag == "Player"){
-            isAttacking = true;
+        if(collision.gameObject.tag == "Player")
+        {
+            //isAttacking = true;
             Debug.Log("player is in dog zone");
-            animate.SetBool("isAttack", isAttacking);
+            if(health != 0)
+            {
+                animate.SetBool("isAttack", true);
+            }
         }
         if(collision.gameObject.tag == "Bullet"){
             TakeDamage((int) collision.gameObject.GetComponent<Bullet>().getDamage());
@@ -110,9 +116,9 @@ public class ZombieDog : Dog
 	{  
         
         if(collision.gameObject.tag == "Player"){
-            isAttacking = false;
+            //isAttacking = false;
             Debug.Log("player exited dog zone");
-            animate.SetBool("isAttack", isAttacking);
+            animate.SetBool("isAttack", false);
         }
     }
 
