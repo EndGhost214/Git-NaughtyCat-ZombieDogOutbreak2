@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/test.unity
     guid: 20e086dc6d30f504f9da9cb87795684d
+  - enabled: 0
+    path: Assets/src/Ambrea/StartMenu.unity
+    guid: 4f2078d114fbc4b7290906bccf302911
   m_configObjects: {}
