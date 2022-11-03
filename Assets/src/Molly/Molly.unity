@@ -693,6 +693,10 @@ PrefabInstance:
       propertyPath: m_GravityScale
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7096134792244171831, guid: 7f488346238bdd8418ad1af5b245e6db, type: 3}
+      propertyPath: target
+      value: 
+      objectReference: {fileID: 8596971514160928311, guid: 1cbbf368df24c3a4a94fc04b100a7f14, type: 3}
     - target: {fileID: 8985931492453228275, guid: 7f488346238bdd8418ad1af5b245e6db, type: 3}
       propertyPath: m_Name
       value: BossDog
