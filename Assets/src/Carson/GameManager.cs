@@ -4,9 +4,10 @@ using UnityEngine;
 
 // Class to control UI elements and game event execution.
 public class GameManager : Singleton<GameManager> {
+
+	private GameObject playerObject;
 	[SerializeField]
-	private GameObject playerPrefab;
-	private GameObject player; // player object to reference
+	private SurvivalPlayer playerScript; // player object to reference
 	
 	private MapManager map;
 	
@@ -23,7 +24,7 @@ public class GameManager : Singleton<GameManager> {
 	private Vector3 playerSpawn = new Vector3(-433, -195, 0);
 	
 	[SerializeField]
-	private ZombieDog basicDog; // ZombieDog class for instantiating new dogs
+	private Dog basicDog; // ZombieDog class for instantiating new dogs
 	private List<Dog> dogs; // list of alive dogs
 	
     // Start is called before the first frame update
@@ -83,7 +84,7 @@ public class GameManager : Singleton<GameManager> {
 	}
 	
 	// Call to end the game when the player dies or quits.
-	public void EndGame() {
+	public void endGame() {
 		round = 0;
 		
 		// Kill every dog in the list
@@ -112,12 +113,15 @@ public class GameManager : Singleton<GameManager> {
 			// create BC player
 			//player = Instantiate(playerPrefab, playerSpawn, Quaternion.identity);
 			
+			playerObject = GameObject.Find("BCPlayer");
+			
 			difficulty = 1;
 		}
 		else {
 			// create survival player
 			//player = Instantiate(playerPrefab, playerSpawn, Quaternion.identity);
-			player = GameObject.Find("Player");
+			//playerScript = GameObject.Find("Player");
+			playerObject = GameObject.Find("Player");
 		}
 		
 		// Populate array with starting enemies
@@ -130,14 +134,18 @@ public class GameManager : Singleton<GameManager> {
 	}
 	
 	// Return player object.
-	public GameObject getPlayer() {
-		return player;
+	public SurvivalPlayer getPlayer() {
+		return playerScript;
 	}
 	
-	// Return player position (for dog AI).
-	public Vector3 getPlayerPos() {
-		return player.transform.position;
+	public GameObject getPlayerObject() {
+		return playerObject;
 	}
+	
+	/*// Return player position (for dog AI).
+	public Vector3 getPlayerPos() {
+		return playerPrefab.transform.position;
+	}*/
 	
 	// Return number of seconds since the game started.
 	public int getSeconds() {

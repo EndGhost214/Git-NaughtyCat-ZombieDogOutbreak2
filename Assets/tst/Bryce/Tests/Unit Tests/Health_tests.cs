@@ -12,7 +12,7 @@ public class Health_tests : MonoBehaviour
     public void checkPlayerHealthisFull()
     {
         SurvivalPlayer bob = new SurvivalPlayer(new Player());
-        uint check;
+        float check;
         check = bob.GetHealth();
         Assert.AreEqual(check, 100);
     }
@@ -22,7 +22,7 @@ public class Health_tests : MonoBehaviour
     {
 
         SurvivalPlayer bob = new SurvivalPlayer(new Player());
-        uint check;
+        float check;
         bob.DamagePlayer(50);
         check = bob.GetHealth();
         Assert.AreEqual(check, 50);

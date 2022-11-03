@@ -10,15 +10,12 @@ GameObject:
   m_Component:
   - component: {fileID: 5755214478945553477}
   - component: {fileID: 5755214478945553476}
-  - component: {fileID: 5755214478945553479}
   - component: {fileID: 5755214478945553478}
-  - component: {fileID: 5755214478945553497}
-  - component: {fileID: 884151455529320083}
   - component: {fileID: 5825982564620795837}
   - component: {fileID: 2337839887075201933}
   - component: {fileID: 3466791025073097308}
-  - component: {fileID: 6225295226656743793}
   - component: {fileID: 802747089947015051}
+  - component: {fileID: 6225295226656743793}
   - component: {fileID: 2155869692190379592}
   - component: {fileID: 2155869692190379607}
   - component: {fileID: 2155869692190379606}
@@ -38,7 +35,7 @@ Transform:
   m_GameObject: {fileID: 5755214478945553496}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 9.984057, y: -0.9254002, z: 0.026491866}
-  m_LocalScale: {x: 0.12861232, y: 0.094886445, z: 0.6485745}
+  m_LocalScale: {x: 0.24910921, y: 0.18378556, z: 1.2562239}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -88,7 +85,7 @@ SpriteRenderer:
   m_Sprite: {fileID: -907049286, guid: 425b8d609250413459c89e81ef300600, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
-  m_FlipY: 0
+  m_FlipY: 1
   m_DrawMode: 0
   m_Size: {x: 0.32, y: 0.64}
   m_AdaptiveModeThreshold: 0.5
@@ -96,22 +93,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!58 &5755214478945553479
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5755214478945553496}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.5
 --- !u!50 &5755214478945553478
 Rigidbody2D:
   serializedVersion: 4
@@ -132,49 +113,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 4
---- !u!61 &5755214478945553497
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5755214478945553496}
-  m_Enabled: 0
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.80972385, y: -0.4851036}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 6.4, y: 12.8}
-    newSize: {x: 0.32, y: 0.64}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 34.40731, y: 34.24266}
-  m_EdgeRadius: 0
---- !u!114 &884151455529320083
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5755214478945553496}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bdd0e50c48001544ea602ff974db4d0f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 0
-  damage: 0
-  speed: 0
-  ZomDogRB: {fileID: 0}
+  m_Constraints: 0
 --- !u!70 &5825982564620795837
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -228,6 +167,21 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 374d7d9801ee5e949bc75103da53baf9, type: 2}
   - {fileID: 11400000, guid: 090e8d0b114ce974e969eef0f6105a9c, type: 2}
   - {fileID: 11400000, guid: adaea89b98515c34e90a8685d97fe91c, type: 2}
+--- !u!114 &802747089947015051
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5755214478945553496}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61d5c5a0a37236a4bbcaef5ccf87fb7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 0
+  damage: 0
+  speed: 0
 --- !u!114 &6225295226656743793
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -242,22 +196,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemDrops:
   - {fileID: 123828864607160359, guid: 360b401e374acd8498cbca339577694f, type: 3}
---- !u!114 &802747089947015051
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5755214478945553496}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 61d5c5a0a37236a4bbcaef5ccf87fb7c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 100
-  damage: 5
-  speed: 0.5
-  ZomDogRB: {fileID: 0}
 --- !u!114 &2155869692190379592
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -297,7 +235,7 @@ MonoBehaviour:
   repathRateCompatibility: NaN
   canSearchCompability: 0
   orientation: 1
-  enableRotation: 0
+  enableRotation: 1
   autoRepath:
     mode: 2
     interval: 0.5
@@ -307,11 +245,11 @@ MonoBehaviour:
   targetCompatibility: {fileID: 0}
   maxAcceleration: -2.5
   rotationSpeed: 360
-  slowdownDistance: 0.6
+  slowdownDistance: 1
   pickNextWaypointDist: 0.75
-  endReachedDistance: 0.2
+  endReachedDistance: 1
   alwaysDrawGizmos: 0
-  slowWhenNotFacingTarget: 1
+  slowWhenNotFacingTarget: 0
   whenCloseToDestination: 0
   constrainInsideGraph: 0
 --- !u!114 &2155869692190379606

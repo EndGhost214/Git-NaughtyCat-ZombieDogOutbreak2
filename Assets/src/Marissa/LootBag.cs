@@ -54,7 +54,7 @@ public class LootBag : MonoBehaviour
 
 
         /*
-        *function to check if the zombie sound has been played
+        *function to spawn the loot where the dog last was
         *spawn position parameter
         *spawns the item where the zomdog was
         */

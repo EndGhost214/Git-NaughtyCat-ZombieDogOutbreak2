@@ -272,6 +272,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4f90afd4dcc20254eb34b6606d030954, type: 3}
+--- !u!50 &1268323749 stripped
+Rigidbody2D:
+  m_CorrespondingSourceObject: {fileID: 5755214478945553478, guid: 5dfa5710869749b44aaf5da59ecbbf3f, type: 3}
+  m_PrefabInstance: {fileID: 2155869692700080551}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1503550831
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -406,7 +411,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1524566456}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalPosition: {x: 5.63, y: 0.18, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -466,10 +471,58 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 802747089947015051, guid: 5dfa5710869749b44aaf5da59ecbbf3f, type: 3}
+      propertyPath: speed
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 802747089947015051, guid: 5dfa5710869749b44aaf5da59ecbbf3f, type: 3}
+      propertyPath: damage
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 802747089947015051, guid: 5dfa5710869749b44aaf5da59ecbbf3f, type: 3}
+      propertyPath: health
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 884151455529320083, guid: 5dfa5710869749b44aaf5da59ecbbf3f, type: 3}
+      propertyPath: speed
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 884151455529320083, guid: 5dfa5710869749b44aaf5da59ecbbf3f, type: 3}
+      propertyPath: health
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 884151455529320083, guid: 5dfa5710869749b44aaf5da59ecbbf3f, type: 3}
+      propertyPath: ZomDogRB
+      value: 
+      objectReference: {fileID: 1268323749}
+    - target: {fileID: 884151455529320083, guid: 5dfa5710869749b44aaf5da59ecbbf3f, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2155869692190379592, guid: 5dfa5710869749b44aaf5da59ecbbf3f, type: 3}
       propertyPath: target
       value: 
       objectReference: {fileID: 180142942}
+    - target: {fileID: 2155869692190379607, guid: 5dfa5710869749b44aaf5da59ecbbf3f, type: 3}
+      propertyPath: rotationSpeed
+      value: 720
+      objectReference: {fileID: 0}
+    - target: {fileID: 2155869692190379607, guid: 5dfa5710869749b44aaf5da59ecbbf3f, type: 3}
+      propertyPath: enableRotation
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2155869692190379607, guid: 5dfa5710869749b44aaf5da59ecbbf3f, type: 3}
+      propertyPath: endReachedDistance
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2155869692190379607, guid: 5dfa5710869749b44aaf5da59ecbbf3f, type: 3}
+      propertyPath: slowWhenNotFacingTarget
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5755214478945553476, guid: 5dfa5710869749b44aaf5da59ecbbf3f, type: 3}
+      propertyPath: m_FlipY
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5755214478945553477, guid: 5dfa5710869749b44aaf5da59ecbbf3f, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -513,6 +566,14 @@ PrefabInstance:
     - target: {fileID: 5755214478945553477, guid: 5dfa5710869749b44aaf5da59ecbbf3f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5755214478945553478, guid: 5dfa5710869749b44aaf5da59ecbbf3f, type: 3}
+      propertyPath: m_Constraints
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5755214478945553478, guid: 5dfa5710869749b44aaf5da59ecbbf3f, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5755214478945553496, guid: 5dfa5710869749b44aaf5da59ecbbf3f, type: 3}
       propertyPath: m_Name

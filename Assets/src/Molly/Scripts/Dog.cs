@@ -7,8 +7,8 @@ public class Dog : MonoBehaviour
 {
     
     //variables 
-    public int health = 100;
-    public int damage;
+    public float health;
+    public float damage;
     public float speed;
 
     //remove the dog from the map

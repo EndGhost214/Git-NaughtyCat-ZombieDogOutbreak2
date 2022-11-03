@@ -5,110 +5,154 @@ using UnityEngine;
 
 public class ZombieDog : Dog
 {
-    //serialized field for sound management class
-    [SerializeField]
-    private Rigidbody2D ZomDogRB;
     
-    //other variables
+    //will hold the position of the zombie dog
     private Vector3 pos;
 
+    //will hold the animation variables to be set
     private Animator animate;
 
-    //public AIPath aiPath;
+
+    //public bool isAttacking = false;
    
     // default constructor
     public ZombieDog()
 	{
-        
     }
 
     //constructor that takes inital spawn position
     public ZombieDog(Vector3 pos)
 	{
         this.pos = pos;
-        //call dog noise sound from marissa's function
-        //SoundManager.Instance.ZombieSoundFunction();
     }
 
     // Start is called before the first frame update
     void Start()
     {
         //transform.position = pos;
+
+        //initiate sound upon spawning
         SoundManager.Instance.zombieSoundFunction();
+        //get the animator components in the object animate in order to set animations accordingly
         animate = gameObject.GetComponent<Animator>();
+
+        //make sure that 
+        animate.SetBool("isAttack", false);
+
+        //set the basic variables of the dogs
+        damage = SetDamage();
+        speed = SetSpeed();
+        health = SetHealth();
+
+        //set the speed of the dog (will be dependent on the levelup class)
+        animate.SetFloat("Speed", speed);
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
-        animate.SetFloat("Speed", speed);
-        animate.SetInteger("Health", health);
+        /*Vector2 moveDirection = gameObject.GetComponent<Rigidbody2D>().velocity;
+         if (moveDirection != Vector2.zero) 
+         {
+            float angle = Mathf.Atan2(moveDirection.y, moveDirection.x) * Mathf.Rad2Deg;
+            transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+         }*/
         
+        //retrieves the coordinates of the direction the zombie dog is moving
+        /*float horizontal = Player.transform.position.x;
+        float vertical = Player.transform.position.y;
+        float rotationSpeed = 720f;
 
-        //if the dog is moving to the right, then flip it, visa versa for left
-        /*if(aiPath.desiredVelocity.x >= 0.01f){
-            transform.localScale = new Vector3(-1f,1f,1f);
-        }else if (aiPath.desiredVelocity.x <= -0.01f){
-            transform.localScale = new Vector3(1f,1f,1f);
-        }
-        */
-        //if the dog is moving down/up, flip it accordingly
+        Vector2 moveDirection = new Vector2(horizontal,vertical);
+        transform.Translate(moveDirection * speed * Time.deltaTime, Space.World);
 
-        //BOUNDARY TEST: GO TO DOG SCRIPT TO SEE THE DEATH FUNCTION
-        //HEALTH IS SERIALIZED FIELD SO THAT YOU CAN CHANGE HEALTH AT RUN TIME
-        if(health==0){
-            //animate.SetInteger("Health", health);
-            gameObject.GetComponent<Animation>()["DeathAnim"].wrapMode = WrapMode.Once;
-            gameObject.GetComponent<Animation>().Play("DeathAnim");
-            //animate.Play("DeathAnim");
-            //Debug.Log("here");
-            Death();
-        }
-        
+        if (moveDirection != Vector2.zero) 
+         {
+            Quaternion toRotation = Quaternion.LookRotation(Vector3.forward, moveDirection);
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, rotationSpeed * Time.deltaTime);
+         }
+*/
+
+    
 
     }
 
-    //if player walks into dog area, move
+    
+    void FixedUpdate()
+    {
+        //set the speed and the health
+        animate.SetFloat("Health", health);
+        
+        //BOUNDARY TEST: GO TO DOG SCRIPT TO SEE THE DEATH FUNCTION
+        //HEALTH IS SERIALIZED FIELD SO THAT YOU CAN CHANGE HEALTH AT RUN TIME
+        if(health<=0)
+        {
+            speed = 0;
+            //animate.Setfloateger("Health", health);
+            //gameObject.GetComponent<Animation>()["DeathAnim"].wrapMode = WrapMode.Once;
+            //gameObject.GetComponent<Animation>().Play("DeathAnim");
+            animate.Play("DeathAnim",  -1, 0f);
+            animate.SetFloat("Speed", 0f);
+            animate.SetBool("isAttack", false);
+            //Debug.Log("here");
+            Invoke("Death", 1);
+        }
+        
+        //Debug.Log("Health: " + health + " Speed: " + speed + " Damage: " + damage);
+    }
+
+    //if player walks floato dog area, move
     void OnCollisionEnter2D(Collision2D collision)
 	{
         //Debug.Log("testing");
-        if(collision.gameObject.tag == "Player"){
+        if(collision.gameObject.tag == "Player")
+        {
+            //isAttacking = true;
             Debug.Log("player is in dog zone");
-            //set animate to bite
+            Debug.Log("health = " + health);
+            GameManager.Instance.getPlayer().DamagePlayer(damage);
+            //collision.gameObject.GetComponent<Player>().DamagePlayer(damage);
+            if(health >= 0)
+            {
+                animate.SetBool("isAttack", true);
+            }
         }
         if(collision.gameObject.tag == "Bullet"){
-            TakeDamage((int) collision.gameObject.GetComponent<Bullet>().getDamage());
+            TakeDamage((float) collision.gameObject.GetComponent<Bullet>().getDamage());
         }
     }
 
     void OnCollisionExit2D(Collision2D collision)
-	{
+	{  
+        
         if(collision.gameObject.tag == "Player"){
+            //isAttacking = false;
             Debug.Log("player exited dog zone");
+            animate.SetBool("isAttack", false);
         }
     }
 
     //Deals Damage to the player
     //Decorator/depends on the level of the dog
-    public void DealDamage(int damage)
+    public void DealDamage(float damage)
 	{
         health -= damage;
         
     }
 
     //temporary damage function
-    public int TakeDamage(int damage)
+    public float TakeDamage(float damage)
 	{
         health-=damage;
         return health;
     }
 
     //set functions that don't do much
-    protected virtual int SetDamage()
+    protected virtual float SetDamage()
 	{
         return damage;
     }
-    protected virtual int SetHealth()
+    protected virtual float SetHealth()
 	{
         return health;
     }
