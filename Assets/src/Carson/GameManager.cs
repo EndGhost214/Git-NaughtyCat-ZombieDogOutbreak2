@@ -23,7 +23,7 @@ public class GameManager : Singleton<GameManager> {
 	private Vector3 playerSpawn = new Vector3(-433, -195, 0);
 	
 	[SerializeField]
-	private ZombieDog basicDog; // ZombieDog class for instantiating new dogs
+	private Dog basicDog; // ZombieDog class for instantiating new dogs
 	private List<Dog> dogs; // list of alive dogs
 	
     // Start is called before the first frame update
