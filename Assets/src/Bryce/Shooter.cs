@@ -56,6 +56,8 @@ public class Shooter : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.R))
         {
+            SoundManager.Instance.gunReloadSoundFunction();
+
             float reload = 30 - mag;
             if(ammoCount >= 30)
             {
