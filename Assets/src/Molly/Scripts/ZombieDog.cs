@@ -86,6 +86,7 @@ public class ZombieDog : Dog
         //BOUNDARY TEST: GO TO DOG SCRIPT TO SEE THE DEATH FUNCTION
         //HEALTH IS SERIALIZED FIELD SO THAT YOU CAN CHANGE HEALTH AT RUN TIME
         if(health==0){
+            speed = 0;
             //animate.SetInteger("Health", health);
             //gameObject.GetComponent<Animation>()["DeathAnim"].wrapMode = WrapMode.Once;
             //gameObject.GetComponent<Animation>().Play("DeathAnim");
