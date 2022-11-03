@@ -4,10 +4,9 @@ using UnityEngine;
 
 // Class to control UI elements and game event execution.
 public class GameManager : Singleton<GameManager> {
+
+	private GameObject playerObject;
 	[SerializeField]
-	private GameObject playerPrefab;
-	[SerializeField]
-	private GameObject BCPrefab;
 	private SurvivalPlayer playerScript; // player object to reference
 	
 	private MapManager map;
@@ -114,12 +113,15 @@ public class GameManager : Singleton<GameManager> {
 			// create BC player
 			//player = Instantiate(playerPrefab, playerSpawn, Quaternion.identity);
 			
+			playerObject = GameObject.Find("BCPlayer");
+			
 			difficulty = 1;
 		}
 		else {
 			// create survival player
 			//player = Instantiate(playerPrefab, playerSpawn, Quaternion.identity);
 			//playerScript = GameObject.Find("Player");
+			playerObject = GameObject.Find("Player");
 		}
 		
 		// Populate array with starting enemies
@@ -132,14 +134,18 @@ public class GameManager : Singleton<GameManager> {
 	}
 	
 	// Return player object.
-	public Player getPlayer() {
+	public SurvivalPlayer getPlayer() {
 		return playerScript;
 	}
 	
-	// Return player position (for dog AI).
-	public Vector3 getPlayerPos() {
-		return null; //player.transform.position;
+	public GameObject getPlayerObject() {
+		return playerObject;
 	}
+	
+	/*// Return player position (for dog AI).
+	public Vector3 getPlayerPos() {
+		return playerPrefab.transform.position;
+	}*/
 	
 	// Return number of seconds since the game started.
 	public int getSeconds() {
