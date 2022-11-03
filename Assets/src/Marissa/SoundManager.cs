@@ -236,9 +236,9 @@ public class SoundManager : Singleton<SoundManager>
     *no parameter
     *plays the sound
     */
-     public void gunReloadSoundFunction(){
+    public void gunReloadSoundFunction(){
 
-        gunSound1.Play();
+        gunReload.Play();
     }
 
     //slashes
