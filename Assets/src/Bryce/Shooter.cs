@@ -76,11 +76,11 @@ public class Shooter : MonoBehaviour
 
     private void Shoot()
     {
-        //SoundManager.Instance.gunSoundFunction();
-        //GameObject bullet = Instantiate(bulletPrefab, firePoint.transform.position, firePoint.transform.rotation);
+        SoundManager.Instance.gunSoundFunction();
+       
         ObjectPooler.Instance.SpawnFromPool("Bullet", firePoint.transform.position, firePoint.transform.rotation);
        
-      //  Destroy(bullet, 5f);
+      
      
     }
 
