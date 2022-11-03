@@ -224,6 +224,18 @@ public class SoundManager : Singleton<SoundManager>
         gunSound1.Play();
     }
 
+    [SerializeField]
+    private AudioSource gunReload;
+
+    /*
+    *function to play cat gun reload sound
+    *no parameter
+    *plays the sound
+    */
+     public void gunReloadSoundFunction(){
+
+        gunSound1.Play();
+    }
 
     //slashes
     [SerializeField]
