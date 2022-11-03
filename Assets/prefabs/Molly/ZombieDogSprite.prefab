@@ -162,11 +162,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e731582aee8f6514d98be5ff3d63ad68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  droppedItemPrefab: {fileID: 7982876938026357496, guid: 194b7cd55e4c6b84eab2c1312c8e4f58, type: 3}
-  lootList:
-  - {fileID: 11400000, guid: 374d7d9801ee5e949bc75103da53baf9, type: 2}
-  - {fileID: 11400000, guid: 090e8d0b114ce974e969eef0f6105a9c, type: 2}
-  - {fileID: 11400000, guid: adaea89b98515c34e90a8685d97fe91c, type: 2}
+  tuftPrefab: {fileID: 3653544909829557377, guid: e0a2ac0cd4c456042a0cde0b3c343a7d, type: 3}
+  heartPrefab: {fileID: 124301775980067589, guid: e5c838be5e9a16041978b4416e7aed58, type: 3}
+  bulletPrefab: {fileID: 123828864607160359, guid: 360b401e374acd8498cbca339577694f, type: 3}
 --- !u!114 &802747089947015051
 MonoBehaviour:
   m_ObjectHideFlags: 0

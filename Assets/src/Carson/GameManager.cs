@@ -54,6 +54,10 @@ public class GameManager : Singleton<GameManager> {
 				spawnDogs(2);
 				spawnedWave = time;
 			}
+			
+			if (time > 30) {
+				round++;
+			}
 		}
 		
 		if (Input.anyKey) {

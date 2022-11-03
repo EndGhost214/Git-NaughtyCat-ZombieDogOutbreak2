@@ -10,6 +10,9 @@ TagManager:
   - item
   - Bullet
   - Boss
+  - heartdrop
+  - bulletdrop
+  - tuftdrop
   layers:
   - Default
   - TransparentFX

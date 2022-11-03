@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class CameraFollow : MonoBehaviour
 {
-	[SerializeField]
 	private GameObject player;
 
     // Start is called before the first frame update
