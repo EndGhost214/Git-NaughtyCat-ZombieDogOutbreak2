@@ -12,7 +12,8 @@ public class Dog : MonoBehaviour
     public float speed;
 
     //remove the dog from the map
-    public void Death(){
+    public void Death()
+    {
         Debug.Log("This Dog is dead");
         //Call Marissa's item drop function
         //ItemFunctions.Instance.ItemDrop();
@@ -23,6 +24,13 @@ public class Dog : MonoBehaviour
         //call random item drop function 
             //Drop();
         //return a -1 to the list of dogs
+    }
+
+    //temporary damage function
+    public float TakeDamage(float damage)
+	{
+        health-=damage;
+        return health;
     }
 
 
