@@ -11,22 +11,27 @@ public class BaseDog : ZombieDog
     protected float based = 5;
     protected float bases = 1f;
 
-    public BaseDog(){
+    public BaseDog()
+    {
         damage = SetDamage();
         speed = SetSpeed();
         health = SetHealth();
     }
 
-    protected override float SetDamage(){
+    protected override float SetDamage()
+    {
         return based;
     }
-    protected override float SetHealth(){
+    protected override float SetHealth()
+    {
         return baseh;
     }
-    protected override float SetSpeed(){
+    protected override float SetSpeed()
+    {
         return bases;
     }
-    public override void SetDog(ZombieDog dog){
+    public override void SetDog(ZombieDog dog)
+    {
     }
 
 }
