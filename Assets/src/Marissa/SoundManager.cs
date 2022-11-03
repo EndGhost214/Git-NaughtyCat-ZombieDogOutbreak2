@@ -214,6 +214,9 @@ public class SoundManager : Singleton<SoundManager>
     [SerializeField]
     private AudioSource gunSound1;
 
+    [SerializeField]
+    private AudioClip gunClip;
+
      /*
     *function to play cat gun sound
     *no parameter
@@ -221,7 +224,8 @@ public class SoundManager : Singleton<SoundManager>
     */
     public void gunSoundFunction(){
 
-        //gunSound1.PlayOneShot();
+        
+        gunSound1.PlayOneShot(gunClip, 0.7F);
     }
 
     [SerializeField]
