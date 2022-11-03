@@ -7,8 +7,8 @@ public class BaseDog : ZombieDog
 {
     
     //base variables for each zombie dog
-    protected int baseh = 100;
-    protected int based = 5;
+    protected float baseh = 100;
+    protected float based = 5;
     protected float bases = 1f;
 
     public BaseDog(){
@@ -17,10 +17,10 @@ public class BaseDog : ZombieDog
         health = SetHealth();
     }
 
-    protected override int SetDamage(){
+    protected override float SetDamage(){
         return based;
     }
-    protected override int SetHealth(){
+    protected override float SetHealth(){
         return baseh;
     }
     protected override float SetSpeed(){

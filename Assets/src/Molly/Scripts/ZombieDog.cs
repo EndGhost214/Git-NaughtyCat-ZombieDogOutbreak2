@@ -36,9 +36,10 @@ public class ZombieDog : Dog
         //get the animator components in the object animate in order to set animations accordingly
         animate = gameObject.GetComponent<Animator>();
 
-        
+        //make sure that 
         animate.SetBool("isAttack", false);
 
+        //set the basic variables of the dogs
         damage = SetDamage();
         speed = SetSpeed();
         health = SetHealth();
@@ -80,14 +81,14 @@ public class ZombieDog : Dog
     void FixedUpdate()
     {
         //set the speed and the health
-        
-        animate.SetInteger("Health", health);
+        animate.SetFloat("Health", health);
         
         //BOUNDARY TEST: GO TO DOG SCRIPT TO SEE THE DEATH FUNCTION
         //HEALTH IS SERIALIZED FIELD SO THAT YOU CAN CHANGE HEALTH AT RUN TIME
-        if(health<=0){
+        if(health<=0)
+        {
             speed = 0;
-            //animate.SetInteger("Health", health);
+            //animate.Setfloateger("Health", health);
             //gameObject.GetComponent<Animation>()["DeathAnim"].wrapMode = WrapMode.Once;
             //gameObject.GetComponent<Animation>().Play("DeathAnim");
             animate.Play("DeathAnim",  -1, 0f);
@@ -97,10 +98,10 @@ public class ZombieDog : Dog
             Invoke("Death", 1);
         }
         
-        Debug.Log("Health: " + health + " Speed: " + speed + " Damage: " + damage);
+        //Debug.Log("Health: " + health + " Speed: " + speed + " Damage: " + damage);
     }
 
-    //if player walks into dog area, move
+    //if player walks floato dog area, move
     void OnCollisionEnter2D(Collision2D collision)
 	{
         //Debug.Log("testing");
@@ -109,13 +110,15 @@ public class ZombieDog : Dog
             //isAttacking = true;
             Debug.Log("player is in dog zone");
             Debug.Log("health = " + health);
+            GameManager.Instance.getPlayer().DamagePlayer(damage);
+            //collision.gameObject.GetComponent<Player>().DamagePlayer(damage);
             if(health >= 0)
             {
                 animate.SetBool("isAttack", true);
             }
         }
         if(collision.gameObject.tag == "Bullet"){
-            TakeDamage((int) collision.gameObject.GetComponent<Bullet>().getDamage());
+            TakeDamage((float) collision.gameObject.GetComponent<Bullet>().getDamage());
         }
     }
 
@@ -131,25 +134,25 @@ public class ZombieDog : Dog
 
     //Deals Damage to the player
     //Decorator/depends on the level of the dog
-    public void DealDamage(int damage)
+    public void DealDamage(float damage)
 	{
         health -= damage;
         
     }
 
     //temporary damage function
-    public int TakeDamage(int damage)
+    public float TakeDamage(float damage)
 	{
         health-=damage;
         return health;
     }
 
     //set functions that don't do much
-    protected virtual int SetDamage()
+    protected virtual float SetDamage()
 	{
         return damage;
     }
-    protected virtual int SetHealth()
+    protected virtual float SetHealth()
 	{
         return health;
     }
