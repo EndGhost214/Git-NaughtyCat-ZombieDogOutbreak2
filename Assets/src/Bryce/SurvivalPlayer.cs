@@ -18,21 +18,32 @@ public class SurvivalPlayer : Player
         return GameObject.Find("SurvivalPlayer");
     }
 
-    private uint healthActual;
+    private float healthActual;
 
 
-        public uint GetHealth()
+        public float GetHealth()
         {
             return healthActual;
         }
 
-        public void SetHealth(uint h)
+        public void SetHealth(float h)
         {
             healthActual = h;
         }
-        public void DamagePlayer(uint damage)
+        public void DamagePlayer(float damage)
         {
-            uint newHealth = GetHealth() - damage;
+        if(damage < 1)
+        {
+            return;
+        }
+            float newHealth = GetHealth() - damage;
+
+        if(newHealth >= 0)
+        {
+            SetHealth(0);
+            Time.timeScale = 0f;
+            return;
+        }
             SetHealth(newHealth);
 
         }
