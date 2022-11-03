@@ -2,13 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-// Class that defines the general attributes and behavior for room objects
-public class Room : MonoBehaviour
+public class Closet : Room
 {
-	protected List<Vector3> spawnPoints;
-	protected string name;
-	protected int id;
-	
     // Start is called before the first frame update
     void Start()
     {
@@ -20,4 +15,12 @@ public class Room : MonoBehaviour
     {
         
     }
+	
+	public Closet(int i) {
+		id = i;
+	}
+	
+	public Closet() {
+		
+	}
 }
