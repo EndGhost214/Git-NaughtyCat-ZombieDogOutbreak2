@@ -48,36 +48,7 @@ public class ZombieDog : Dog
         animate.SetFloat("Speed", speed);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        /*Vector2 moveDirection = gameObject.GetComponent<Rigidbody2D>().velocity;
-         if (moveDirection != Vector2.zero) 
-         {
-            float angle = Mathf.Atan2(moveDirection.y, moveDirection.x) * Mathf.Rad2Deg;
-            transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
-         }*/
-        
-        //retrieves the coordinates of the direction the zombie dog is moving
-        /*float horizontal = Player.transform.position.x;
-        float vertical = Player.transform.position.y;
-        float rotationSpeed = 720f;
-
-        Vector2 moveDirection = new Vector2(horizontal,vertical);
-        transform.Translate(moveDirection * speed * Time.deltaTime, Space.World);
-
-        if (moveDirection != Vector2.zero) 
-         {
-            Quaternion toRotation = Quaternion.LookRotation(Vector3.forward, moveDirection);
-            transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, rotationSpeed * Time.deltaTime);
-         }
-*/
-
-    
-
-    }
-
-    
+    //updates not based on frames
     void FixedUpdate()
     {
         //set the speed and the health
@@ -117,7 +88,8 @@ public class ZombieDog : Dog
                 animate.SetBool("isAttack", true);
             }
         }
-        if(collision.gameObject.tag == "Bullet"){
+        if(collision.gameObject.tag == "Bullet")
+        {
             TakeDamage((float) collision.gameObject.GetComponent<Bullet>().getDamage());
         }
     }
@@ -125,7 +97,8 @@ public class ZombieDog : Dog
     void OnCollisionExit2D(Collision2D collision)
 	{  
         
-        if(collision.gameObject.tag == "Player"){
+        if(collision.gameObject.tag == "Player")
+        {
             //isAttacking = false;
             Debug.Log("player exited dog zone");
             animate.SetBool("isAttack", false);
@@ -136,15 +109,7 @@ public class ZombieDog : Dog
     //Decorator/depends on the level of the dog
     public void DealDamage(float damage)
 	{
-        health -= damage;
-        
-    }
-
-    //temporary damage function
-    public float TakeDamage(float damage)
-	{
-        health-=damage;
-        return health;
+        health -= damage;     
     }
 
     //set functions that don't do much
