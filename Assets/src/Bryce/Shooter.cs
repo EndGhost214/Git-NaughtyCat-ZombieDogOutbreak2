@@ -73,6 +73,7 @@ public class Shooter : MonoBehaviour
 
     private void Shoot()
     {
+        SoundManager.Instance.gunSoundFunction();
         GameObject bullet = Instantiate(bulletPrefab, firePoint.transform.position, firePoint.transform.rotation);
         //Quaternion casingRotation = Quaternion.Euler(0, 0, -90);
        // GameObject bulletCasing = Instantiate(bulletCasingPrefab, ejectPoint.transform.position, casingRotation);
