@@ -5,20 +5,24 @@ using UnityEngine.TestTools;
 using UnityEngine.SceneManagement;
 using UnityEngine;
 
-namespace Tests
+public class TestScript
 {
-
-    public class TestScript : MonoBehaviour
+    [OneTimeSetUp]
+    public void LoadScene()
     {
-        [OneTimeSetUp]
-        public void LoadScene()
-        {
-            SceneManager.LoadScene("Cutscene#1");
-        }
-        [UnityTest]
-        public IEnumerator Bounds1()
-        {
-            yield return 50;
-        }
+        SceneManager.LoadScene("Cutscene#1");
     }
+
+    [Test]
+    public void CutSceneTest1()
+    {
+        Assert.That(8, Is.InRange(2,100));
+    }
+
+    // [Test]
+    // public void Bounds1()
+    // {
+    //     private b1 = GameObject.Find("Bound1").transform.position;
+    //     Assert.That(b1.hasChanged, false);
+    // }
 }
