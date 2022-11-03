@@ -7,7 +7,7 @@ public class Dog : MonoBehaviour
 {
     
     //variables 
-    public int health = 100;
+    public int health;
     public int damage;
     public float speed;
 

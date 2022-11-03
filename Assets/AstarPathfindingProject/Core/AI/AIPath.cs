@@ -341,6 +341,9 @@ namespace Pathfinding {
 
 		/// <summary>Called during either Update or FixedUpdate depending on if rigidbodies are used for movement or not</summary>
 		protected override void MovementUpdateInternal (float deltaTime, out Vector3 nextPosition, out Quaternion nextRotation) {
+			// Addition to the original script to update movement with the object's speed
+			maxSpeed = gameObject.GetComponent<BaseDog>().speed;
+
 			float currentAcceleration = maxAcceleration;
 
 			// If negative, calculate the acceleration from the max speed
@@ -351,8 +354,9 @@ namespace Pathfinding {
 				// (at least compared to a local variable)
 				simulatedPosition = tr.position;
 			}
-			if (updateRotation) simulatedRotation = tr.rotation;
-
+			if (/*updateRotation*/ true) {
+				simulatedRotation = tr.rotation;
+			}
 			var currentPosition = simulatedPosition;
 
 			// Update which point we are moving towards

@@ -38,6 +38,11 @@ public class ZombieDog : Dog
 
         
         animate.SetBool("isAttack", false);
+
+        damage = SetDamage();
+        speed = SetSpeed();
+        health = SetHealth();
+
         //set the speed of the dog (will be dependent on the levelup class)
         animate.SetFloat("Speed", speed);
     }
@@ -67,6 +72,8 @@ public class ZombieDog : Dog
          }
 */
 
+    
+
     }
 
     
@@ -76,8 +83,6 @@ public class ZombieDog : Dog
         
         animate.SetInteger("Health", health);
         
-        
-
         //BOUNDARY TEST: GO TO DOG SCRIPT TO SEE THE DEATH FUNCTION
         //HEALTH IS SERIALIZED FIELD SO THAT YOU CAN CHANGE HEALTH AT RUN TIME
         if(health==0){
@@ -91,7 +96,7 @@ public class ZombieDog : Dog
             Invoke("Death", 1);
         }
         
-
+        Debug.Log("Health: " + health + " Speed: " + speed + " Damage: " + damage);
     }
 
     //if player walks into dog area, move
@@ -102,7 +107,8 @@ public class ZombieDog : Dog
         {
             //isAttacking = true;
             Debug.Log("player is in dog zone");
-            if(health != 0)
+            Debug.Log("health = " + health);
+            if(health >= 0)
             {
                 animate.SetBool("isAttack", true);
             }
