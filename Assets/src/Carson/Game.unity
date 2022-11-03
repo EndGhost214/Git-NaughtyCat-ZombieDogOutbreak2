@@ -951,7 +951,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 026e4c30af6b7fa4f8a3e5b6fcbc545d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerPrefab: {fileID: 830016616}
+  playerScript: {fileID: 0}
   basicDog: {fileID: 871002381}
 --- !u!114 &208711886
 MonoBehaviour:
@@ -4085,6 +4085,10 @@ PrefabInstance:
       propertyPath: m_Volume
       value: 0.584
       objectReference: {fileID: 0}
+    - target: {fileID: 1010230268175427260, guid: 4f90afd4dcc20254eb34b6606d030954, type: 3}
+      propertyPath: gunClip
+      value: 
+      objectReference: {fileID: 8300000, guid: dff015026ca424a468fa7d6d9e3a9aac, type: 3}
     - target: {fileID: 1010230268175427260, guid: 4f90afd4dcc20254eb34b6606d030954, type: 3}
       propertyPath: gunReload
       value: 
