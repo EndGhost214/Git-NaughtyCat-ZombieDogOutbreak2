@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 970635778056043595}
   m_Layer: 0
   m_Name: Bullets
-  m_TagString: item
+  m_TagString: bulletdrop
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
