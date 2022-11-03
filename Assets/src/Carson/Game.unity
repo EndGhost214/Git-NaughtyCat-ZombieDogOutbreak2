@@ -4086,6 +4086,10 @@ PrefabInstance:
       value: 0.584
       objectReference: {fileID: 0}
     - target: {fileID: 1010230268175427260, guid: 4f90afd4dcc20254eb34b6606d030954, type: 3}
+      propertyPath: gunClip
+      value: 
+      objectReference: {fileID: 8300000, guid: dff015026ca424a468fa7d6d9e3a9aac, type: 3}
+    - target: {fileID: 1010230268175427260, guid: 4f90afd4dcc20254eb34b6606d030954, type: 3}
       propertyPath: gunReload
       value: 
       objectReference: {fileID: 581123996}

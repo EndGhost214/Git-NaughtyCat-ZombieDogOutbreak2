@@ -32,18 +32,23 @@ public class SurvivalPlayer : Player
         }
         public void DamagePlayer(float damage)
         {
-        if(damage < 1)
-        {
+
+            if(damage < 1)
+            {
             return;
-        }
+
+            }
+
             float newHealth = GetHealth() - damage;
 
-        if(newHealth >= 0)
-        {
+            if(newHealth >= 0)
+            {
             SetHealth(0);
             Time.timeScale = 0f;
             return;
-        }
+            }
+
+
             SetHealth(newHealth);
 
         }
