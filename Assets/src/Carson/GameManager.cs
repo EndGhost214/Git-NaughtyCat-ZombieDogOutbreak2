@@ -6,7 +6,9 @@ using UnityEngine;
 public class GameManager : Singleton<GameManager> {
 	[SerializeField]
 	private GameObject playerPrefab;
-	private GameObject player; // player object to reference
+	[SerializeField]
+	private GameObject BCPrefab;
+	private SurvivalPlayer playerScript; // player object to reference
 	
 	private MapManager map;
 	
@@ -83,7 +85,7 @@ public class GameManager : Singleton<GameManager> {
 	}
 	
 	// Call to end the game when the player dies or quits.
-	public void EndGame() {
+	public void endGame() {
 		round = 0;
 		
 		// Kill every dog in the list
@@ -117,7 +119,7 @@ public class GameManager : Singleton<GameManager> {
 		else {
 			// create survival player
 			//player = Instantiate(playerPrefab, playerSpawn, Quaternion.identity);
-			player = GameObject.Find("Player");
+			//playerScript = GameObject.Find("Player");
 		}
 		
 		// Populate array with starting enemies
@@ -130,13 +132,13 @@ public class GameManager : Singleton<GameManager> {
 	}
 	
 	// Return player object.
-	public GameObject getPlayer() {
-		return player;
+	public Player getPlayer() {
+		return playerScript;
 	}
 	
 	// Return player position (for dog AI).
 	public Vector3 getPlayerPos() {
-		return player.transform.position;
+		return null; //player.transform.position;
 	}
 	
 	// Return number of seconds since the game started.
