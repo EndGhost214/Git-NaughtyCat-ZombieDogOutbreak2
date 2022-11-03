@@ -56,16 +56,17 @@ public class Shooter : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.R))
         {
-            SoundManager.Instance.gunReloadSoundFunction();
 
             float reload = 30 - mag;
             if(ammoCount >= 30)
             {
+                SoundManager.Instance.gunReloadSoundFunction();
                 ammoCount = ammoCount - reload;
                 mag = 30;
             }
             else
             {
+                SoundManager.Instance.gunReloadSoundFunction();
                 mag = ammoCount;
                 ammoCount = 0;
             }
@@ -75,13 +76,12 @@ public class Shooter : MonoBehaviour
 
     private void Shoot()
     {
-        SoundManager.Instance.gunSoundFunction();
-        GameObject bullet = Instantiate(bulletPrefab, firePoint.transform.position, firePoint.transform.rotation);
-        //Quaternion casingRotation = Quaternion.Euler(0, 0, -90);
-       // GameObject bulletCasing = Instantiate(bulletCasingPrefab, ejectPoint.transform.position, casingRotation);
-        Destroy(bullet, 5f);
-       // Destroy(bulletCasing, 15f);
-        //Debug.Log("Shoot!");
+        //SoundManager.Instance.gunSoundFunction();
+        //GameObject bullet = Instantiate(bulletPrefab, firePoint.transform.position, firePoint.transform.rotation);
+        ObjectPooler.Instance.SpawnFromPool("Bullet", firePoint.transform.position, firePoint.transform.rotation);
+       
+      //  Destroy(bullet, 5f);
+     
     }
 
    
