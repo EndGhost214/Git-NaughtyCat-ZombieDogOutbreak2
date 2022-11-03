@@ -221,7 +221,7 @@ public class SoundManager : Singleton<SoundManager>
     */
     public void gunSoundFunction(){
 
-        gunSound1.Play();
+        gunSound1.Play-OneShot();
     }
 
     [SerializeField]
