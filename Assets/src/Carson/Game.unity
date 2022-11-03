@@ -951,7 +951,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 026e4c30af6b7fa4f8a3e5b6fcbc545d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerPrefab: {fileID: 830016616}
+  playerScript: {fileID: 1215895306}
   basicDog: {fileID: 871002381}
 --- !u!114 &208711886
 MonoBehaviour:
@@ -3227,7 +3227,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a92a5cfe99859945ba2799ef76e3777, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  walkspeed: 0
+  walkspeed: 5
   playerObject: {fileID: 0}
 --- !u!1 &1226735239
 GameObject:

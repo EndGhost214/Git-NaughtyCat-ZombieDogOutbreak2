@@ -6,8 +6,9 @@ using UnityEngine;
 public class GameManager : Singleton<GameManager> {
 
 	private GameObject playerObject;
+	// Player object for molly to reference to allow the dogs to do damage
 	[SerializeField]
-	private SurvivalPlayer playerScript; // player object to reference
+	private SurvivalPlayer playerScript; 
 	
 	private MapManager map;
 	
@@ -110,19 +111,16 @@ public class GameManager : Singleton<GameManager> {
 		
 		// Check if BC mode needs to be enabled
 		if (difficulty == 0) {
-			// create BC player
-			//player = Instantiate(playerPrefab, playerSpawn, Quaternion.identity);
-			
+			// Move BC player onto the map			
 			playerObject = GameObject.Find("BCPlayer");
-			
-			difficulty = 1;
 		}
 		else {
-			// create survival player
-			//player = Instantiate(playerPrefab, playerSpawn, Quaternion.identity);
-			//playerScript = GameObject.Find("Player");
+			// Move survival player onto the map
 			playerObject = GameObject.Find("Player");
 		}
+		
+		playerObject.transform.position = playerSpawn;
+		difficulty++;
 		
 		// Populate array with starting enemies
 		spawnDogs(3 * difficulty);
