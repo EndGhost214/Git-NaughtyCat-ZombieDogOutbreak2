@@ -21,9 +21,15 @@ using UnityEngine;
 */
 public class LootBag : MonoBehaviour
 {
-    
-    public GameObject droppedItemPrefab;
-    public List<Loot> lootList = new List<Loot>();
+    [SerializeField]
+    public GameObject tuftPrefab;
+
+    [SerializeField]
+    public GameObject heartPrefab;
+
+    [SerializeField]
+    public GameObject bulletPrefab;
+    //public List<Loot> lootList = new List<Loot>();
 
 
     /*
@@ -31,9 +37,15 @@ public class LootBag : MonoBehaviour
     *no parameter
     *drops the item
     */
+    
+    /*
     Loot GetDroppedItem()
     {
-        int randomNumber = Random.Range(1,101);
+        //int randomNumber = Random.Range(1,101);
+
+        
+
+        /*
         List<Loot> possibleItems = new List<Loot>();
 
         foreach(Loot item in lootList)
@@ -51,8 +63,8 @@ public class LootBag : MonoBehaviour
         }
             return null;
         }
-
-
+        */
+        
         /*
         *function to spawn the loot where the dog last was
         *spawn position parameter
@@ -60,12 +72,30 @@ public class LootBag : MonoBehaviour
         */
         public void InstantiateLoot(Vector3 spawnPosition)
         {
-            Loot droppedItem = GetDroppedItem();
-            if(droppedItem != null)
-            {
-                GameObject lootGameObject = Instantiate(droppedItemPrefab,spawnPosition,Quaternion.identity);
-                lootGameObject.GetComponent<SpriteRenderer>().sprite = droppedItem.lootSprite;
-            }
+            //Loot droppedItem = GetDroppedItem();
+            
+                int randomNumber = Random.Range(1,101);
+
+                if(randomNumber>=1 && randomNumber<=45)
+                {
+                    GameObject lootGameObject = Instantiate(bulletPrefab,spawnPosition,Quaternion.identity);
+                    
+                }
+                if(randomNumber>=46 && randomNumber<=65)
+                {
+                    GameObject lootGameObject = Instantiate(tuftPrefab,spawnPosition,Quaternion.identity);
+                    
+                }
+                if(randomNumber>=66 && randomNumber<=85)
+                {
+                    GameObject lootGameObject = Instantiate(heartPrefab,spawnPosition,Quaternion.identity);
+                    
+                }
+
+
+                //GameObject lootGameObject = Instantiate(droppedItemPrefab,spawnPosition,Quaternion.identity);
+                //lootGameObject.GetComponent<SpriteRenderer>().sprite = droppedItem.lootSprite;
+           
         }
 
 
