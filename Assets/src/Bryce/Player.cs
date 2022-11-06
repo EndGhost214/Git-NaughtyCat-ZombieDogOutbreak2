@@ -7,19 +7,14 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
 
-
     [SerializeField]
     private float walkspeed = 5f;
-
     private Rigidbody2D body;
 
     [SerializeField]
     private GameObject playerObject;
-
-    Vector2 movement;
-    //Vector2 mousePos;
-
-    //public Camera cam;
+    private Vector2 movement;
+    
 
     
 
