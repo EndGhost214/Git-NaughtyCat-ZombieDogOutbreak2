@@ -24,11 +24,11 @@ public class LevelUp : ZombieDog
     //figure out how to append on to the base stats
     protected override float SetDamage()
     {
-        return ZomDog.damage + 5;
+        return ZomDog.damage + 5f;
     }
     protected override float SetHealth()
     {
-        return ZomDog.health + 10;
+        return ZomDog.health + 10f;
     }
     protected override float SetSpeed()
     {

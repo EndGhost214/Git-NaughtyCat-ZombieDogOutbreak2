@@ -44,6 +44,16 @@ public class ZombieDog : Dog
         speed = SetSpeed();
         health = SetHealth();
 
+        //if the round is greater than 1, wrap a level up script onto the dog for the number of rounds
+        int round =  GameManager.Instance.getRound();
+        if (round > 1)
+        {
+            for (int i = 0; i < round; i++){
+                //wrap the levelup script onto the dog
+                gameObject.GetComponent<LevelUp>().SetDog(this);
+            }
+        }
+
         //set the speed of the dog (will be dependent on the levelup class)
         animate.SetFloat("Speed", speed);
     }
