@@ -86,6 +86,21 @@ public class Shooter : MonoBehaviour
         }
 
     }
+    
+    //Oncollision to check for bullet pickup, adds bullets then deletes bullet drop
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.gameObject.tag == "bulletdrop")
+        {
+            ammoCount = ammoCount + (mag* 6);
+            if(ammoCount > MAX_AMMO)
+            {
+                ammoCount = MAX_AMMO;
+            }
+            Destroy(collision.gameObject);
+        }
+    }
+
 
     //Plays gun sound and spawns a bullet from the ObjectPooler
     private void Shoot()

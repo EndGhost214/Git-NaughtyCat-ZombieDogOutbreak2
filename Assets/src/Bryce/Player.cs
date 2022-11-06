@@ -14,9 +14,10 @@ public class Player : MonoBehaviour
     [SerializeField]
     private GameObject playerObject;
     private Vector2 movement;
-    
 
     
+
+
 
 
    protected virtual GameObject GetPlayerObject()
@@ -76,6 +77,8 @@ public class Player : MonoBehaviour
     {
         //playerObject.transform.position = new Vector3(0, 0, 0);
     }
+
+   
 
 
 }
