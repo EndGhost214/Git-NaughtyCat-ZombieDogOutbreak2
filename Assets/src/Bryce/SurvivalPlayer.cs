@@ -25,6 +25,8 @@ public class SurvivalPlayer : Player
     private Player _player;
     private float healthActual;
 
+
+
     //constructor sets health to 100 and sets player type to control player
     public SurvivalPlayer(Player player)
     {
@@ -54,15 +56,16 @@ public class SurvivalPlayer : Player
     //Damages player, takes in a float. Does not do anything if damage is less than 1
     public void DamagePlayer(float damage)
     {
-
-        if(damage < 1)
+        Debug.Log("Player has been damaged for: " + damage);
+        if (damage < 1)
         {
             return;
         }
 
         float newHealth = GetHealth() - damage;
 
-        if(newHealth >= 0)
+        Debug.Log("new player health is: " + newHealth);
+        if(newHealth <= 0)
         {
             SetHealth(0);
             Time.timeScale = 0f;
