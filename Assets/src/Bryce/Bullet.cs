@@ -5,7 +5,8 @@ public class Bullet : MonoBehaviour, IPooledObject
 {
     [SerializeField]
     private float bulletSpeed = 15f;
-    private float bulletDamage = 10f;
+    
+    private float bulletDamage = 100f;
 
     public float getDamage() {
         return bulletDamage;
