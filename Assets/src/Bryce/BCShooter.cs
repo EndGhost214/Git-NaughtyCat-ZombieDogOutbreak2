@@ -58,12 +58,8 @@ public class BCShooter : MonoBehaviour
     private void Shoot()
     {
         SoundManager.Instance.gunSoundFunction();
-        GameObject bullet = Instantiate(bulletPrefab, firePoint.transform.position, firePoint.transform.rotation);
-        //Quaternion casingRotation = Quaternion.Euler(0, 0, -90);
-       // GameObject bulletCasing = Instantiate(bulletCasingPrefab, ejectPoint.transform.position, casingRotation);
-        Destroy(bullet, 5f);
-       // Destroy(bulletCasing, 15f);
-        //Debug.Log("Shoot!");
+        ObjectPooler.Instance.SpawnFromPool("Bullet", firePoint.transform.position, firePoint.transform.rotation);
+
     }
 
    
