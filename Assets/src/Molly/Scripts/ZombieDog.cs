@@ -29,6 +29,7 @@ public class ZombieDog : Dog
     // Start is called before the first frame update
     void Start()
     {
+        //ZombieDog dog = gameObject.GetComponent<ZombieDog>();
         //transform.position = pos;
 
         //initiate sound upon spawning
@@ -44,15 +45,12 @@ public class ZombieDog : Dog
         speed = SetSpeed();
         health = SetHealth();
 
-        //if the round is greater than 1, wrap a level up script onto the dog for the number of rounds
-        int round =  GameManager.Instance.getRound();
-        if (round > 1)
-        {
-            for (int i = 0; i < round; i++){
-                //wrap the levelup script onto the dog
-                gameObject.GetComponent<LevelUp>().SetDog(this);
-            }
-        }
+        //debug statements to see values of dog
+        Debug.Log("Damage: " + damage);
+        Debug.Log("speed: " + speed);
+        Debug.Log("health: " + health);
+
+        
 
         //set the speed of the dog (will be dependent on the levelup class)
         animate.SetFloat("Speed", speed);
