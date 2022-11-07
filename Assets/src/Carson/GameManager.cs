@@ -78,6 +78,7 @@ public class GameManager : Singleton<GameManager> {
 		}
 		else if (frameTime - idleTime > 60) {
 			Debug.Log("Player is idle");
+			gameObject.GetComponent<pausemenu>().pause();
 		}
     }
 	
@@ -168,12 +169,14 @@ public class GameManager : Singleton<GameManager> {
 		if (difficulty == 0) {
 			// Move BC player onto the map			
 			playerObject = GameObject.Find("BCPlayer");
+			GameObject.Find("SurvivalPlayer").SetActive(false);
 		}
 		else {
 			// Move survival player onto the map
 			playerObject = GameObject.Find("SurvivalPlayer");
+			GameObject.Find("BCPlayer").SetActive(false);
 		}
-		
+
 		playerObject.transform.position = playerSpawn;
 		inventory = playerObject.GetComponent<PlayerInventory>();
 		playerScript.SetHealth(100f);
