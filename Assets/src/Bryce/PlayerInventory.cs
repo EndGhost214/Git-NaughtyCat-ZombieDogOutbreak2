@@ -5,6 +5,8 @@ public class PlayerInventory : MonoBehaviour
 {
     private bool invHeart = false;
     private bool invTuft = false;
+    private bool invCure = false;
+    private bool invSerum = false;
 
     public bool hasHeart()
     {
@@ -27,6 +29,18 @@ public class PlayerInventory : MonoBehaviour
         if (collision.gameObject.tag == "tuftdrop")
         {
             invTuft = true;
+            Destroy(collision.gameObject);
+        }
+
+        if (collision.gameObject.tag == "cure")
+        {
+            invCure = true;
+            Destroy(collision.gameObject);
+        }
+
+        if (collision.gameObject.tag == "serum")
+        {
+            invSerum = true;
             Destroy(collision.gameObject);
         }
     }
