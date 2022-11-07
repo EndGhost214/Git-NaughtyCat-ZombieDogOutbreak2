@@ -52,6 +52,8 @@ public class GameManager : Singleton<GameManager> {
 		// Calculate the time the game has run
 		time = frameTime - startTime;
 		
+		HUD.transform.Find("time").GetComponent<TextMeshProUGUI>().text = getMinutes() + ":" + getSeconds();
+		
 		// Check that the game is in progress
         if (round > 0 && spawnedWave < time) {
 			//Debug.Log("Spawning");
@@ -89,10 +91,17 @@ public class GameManager : Singleton<GameManager> {
 		HUD.transform.Find("round").GetComponent<TextMeshProUGUI>().text = "" + getRound();
 		
 		if (round < 2 && shooter.MagAmmoCount() == 0) {
-			HUD.transform.Find("hint").gameObject.SetActive(true);
+			HUD.transform.Find("hint1").gameObject.SetActive(true);
 		}
 		else {
-			HUD.transform.Find("hint").gameObject.SetActive(false);
+			HUD.transform.Find("hint1").gameObject.SetActive(false);
+		}
+		
+		if (shooter.ReserveAmmoCount() == 0) {
+			HUD.transform.Find("hint2").gameObject.SetActive(true);
+		}
+		else {
+			HUD.transform.Find("hint2").gameObject.SetActive(false);
 		}
 		
 		HUD.transform.Find("inventory").Find("heart").gameObject.SetActive(inventory.hasHeart());
@@ -189,19 +198,17 @@ public class GameManager : Singleton<GameManager> {
 		return playerObject;
 	}
 	
-	/*// Return player position (for dog AI).
-	public Vector3 getPlayerPos() {
-		return playerPrefab.transform.position;
-	}*/
-	
 	// Return number of seconds since the game started.
-	public int getSeconds() {
-		return time;
+	public string getSeconds() {
+		int seconds = time % 60;
+		return seconds < 10 ? "0" + seconds : "" + seconds;
 	}
 	
 	// Return number of minutes since the game started, floored.
-	public int getMinutes() {
-		return time / 60;
+	public string getMinutes() {
+		int minutes = time / 60;
+		
+		return minutes < 60 ? "" + minutes : minutes / 60 + ":" + (minutes % 60 < 10 ? "0" : "") + minutes % 60;
 	}
 	
 	// Counts the number of dogs left to fight
