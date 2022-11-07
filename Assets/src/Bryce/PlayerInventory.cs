@@ -1,7 +1,7 @@
 
 using UnityEngine;
 
-public class PlayerInvintory : MonoBehaviour
+public class PlayerInventory : MonoBehaviour
 {
     private bool invHeart = false;
     private bool invTuft = false;

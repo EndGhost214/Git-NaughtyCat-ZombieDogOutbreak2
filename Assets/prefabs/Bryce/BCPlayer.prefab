@@ -142,7 +142,7 @@ GameObject:
   - component: {fileID: 2905647270266078455}
   - component: {fileID: 2905647270266078454}
   - component: {fileID: 2905647270266078449}
-  - component: {fileID: 351864682233865291}
+  - component: {fileID: 8217803317163716998}
   - component: {fileID: 7238832937979725875}
   m_Layer: 0
   m_Name: BCPlayer
@@ -266,7 +266,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.4600298, y: 0.98435754}
   m_EdgeRadius: 0
---- !u!114 &351864682233865291
+--- !u!114 &8217803317163716998
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

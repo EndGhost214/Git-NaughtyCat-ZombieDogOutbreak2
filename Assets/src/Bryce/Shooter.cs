@@ -29,8 +29,18 @@ public class Shooter : MonoBehaviour
     private float fireRate = 10f;
     private float nextTimeToFire = 0f;
     private float MAX_AMMO = 270;
-    public float ammoCount = 270;
+    private float ammoCount = 270;
     private float mag = 30;
+
+    public float ReserveAmmoCount()
+    {
+        return ammoCount;
+    }
+
+    public float MagAmmoCount()
+    {
+        return mag;
+    }
 
     /*
      * Update function
