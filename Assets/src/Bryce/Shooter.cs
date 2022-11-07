@@ -28,16 +28,16 @@ public class Shooter : MonoBehaviour
     [SerializeField]
     private float fireRate = 10f;
     private float nextTimeToFire = 0f;
-    private float MAX_AMMO = 270;
-    private float ammoCount = 270;
-    private float mag = 30;
+    private int MAX_AMMO = 270;
+    private int ammoCount = 270;
+    private int mag = 30;
 
-    public float ReserveAmmoCount()
+    public int ReserveAmmoCount()
     {
         return ammoCount;
     }
 
-    public float MagAmmoCount()
+    public int MagAmmoCount()
     {
         return mag;
     }
@@ -80,7 +80,7 @@ public class Shooter : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.R))
         {
 
-            float reload = 30 - mag;
+            int reload = 30 - mag;
             if(ammoCount >= 30)
             {
                 SoundManager.Instance.gunReloadSoundFunction();
