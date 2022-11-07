@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 
 // Class to control UI elements and game event execution.
@@ -12,6 +13,7 @@ public class GameManager : Singleton<GameManager> {
 	private TextMeshProUGUI bulletCount;
 	private TextMeshProUGUI magCount;
 	private TextMeshProUGUI health;
+	private Slider healthBar;
 	
 	// Player object for molly to reference to allow the dogs to do damage
 	[SerializeField]
@@ -80,10 +82,11 @@ public class GameManager : Singleton<GameManager> {
 	private void updateHUD() {
 		bulletCount.text = "" + playerObject.GetComponent<Shooter>().ReserveAmmoCount();
 		magCount.text = "" + playerObject.GetComponent<Shooter>().MagAmmoCount();
-		health.text = "Health: " + playerScript.GetHealth();
+		health.text = "" + playerScript.GetHealth();
+		healthBar.value = playerScript.GetHealth() / 100;
 		
-		HUD.transform.Find("heart").gameObject.SetActive(inventory.hasHeart());
-		HUD.transform.Find("tuft").gameObject.SetActive(inventory.hasTuft());
+		HUD.transform.Find("inventory").Find("heart").gameObject.SetActive(inventory.hasHeart());
+		HUD.transform.Find("inventory").Find("tuft").gameObject.SetActive(inventory.hasTuft());
 		//HUD.transform.Find("cure").gameObject.SetActive(inventory.hasCure());
 		//HUD.transform.Find("serum").gameObject.SetActive(inventory.hasSerum());
 	}
@@ -135,9 +138,12 @@ public class GameManager : Singleton<GameManager> {
 		
 		HUD = GameObject.Find("HUD");
 		HUD.SetActive(true);
-		bulletCount = HUD.transform.Find("bulletCount").gameObject.transform.Find("Bullets").gameObject.GetComponent<TextMeshProUGUI>();
-		magCount = HUD.transform.Find("bulletCount").gameObject.transform.Find("Magazine").gameObject.GetComponent<TextMeshProUGUI>();
-		health = HUD.transform.Find("Health").gameObject.GetComponent<TextMeshProUGUI>();
+		bulletCount = HUD.transform.Find("inventory").Find("bulletCount").Find("Bullets").gameObject.GetComponent<TextMeshProUGUI>();
+		magCount = HUD.transform.Find("inventory").Find("bulletCount").Find("Magazine").gameObject.GetComponent<TextMeshProUGUI>();
+		healthBar = HUD.transform.Find("healthBar").GetComponent<Slider>();
+		health = healthBar.gameObject.transform.Find("Health").gameObject.GetComponent<TextMeshProUGUI>();
+		
+		GameObject.Find("Notes (disable on start)").SetActive(false);
 		
 		// Check if BC mode needs to be enabled
 		if (difficulty == 0) {
@@ -146,11 +152,13 @@ public class GameManager : Singleton<GameManager> {
 		}
 		else {
 			// Move survival player onto the map
-			playerObject = GameObject.Find("Player");
+			playerObject = GameObject.Find("SurvivalPlayer");
 		}
 		
 		playerObject.transform.position = playerSpawn;
 		inventory = playerObject.GetComponent<PlayerInventory>();
+		playerScript.SetHealth(100f);
+		
 		difficulty++;
 		
 		// Populate array with starting enemies
