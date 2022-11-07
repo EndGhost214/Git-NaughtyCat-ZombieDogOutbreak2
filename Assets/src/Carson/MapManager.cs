@@ -34,7 +34,7 @@ public class MapManager : Singleton<MapManager> {
 		int id = 0;
 		
 		// Initialize rooms
-		Room Lab = new Laboratory(id);
+		/*Room Lab = new Laboratory(id);
 		id++;
 		Room Kitchen = new Kitchen(id);
 		id++;
@@ -49,7 +49,7 @@ public class MapManager : Singleton<MapManager> {
 		rooms.Add(Lab);
 		rooms.Add(Kitchen);
 		rooms.Add(Exam1);
-		rooms.Add(Closet);
+		rooms.Add(Closet);*/
 		
 		// Add default spawn locations
 		spawnPoints.Add(new Vector3(0, 0, 0));
