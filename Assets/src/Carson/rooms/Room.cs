@@ -5,10 +5,11 @@ using UnityEngine;
 // Class that defines the general attributes and behavior for room objects
 public class Room : MonoBehaviour
 {
-	protected List<Vector3> spawnPoints;
-	protected string name;
-	protected int id;
-	protected bool locked;
+	private List<Vector3> spawnPoints;
+	private GameObject doorPrefab;
+	private string name;
+	private int id;
+	private bool locked;
 	
     // Start is called before the first frame update
     void Start()
@@ -24,13 +25,19 @@ public class Room : MonoBehaviour
 
 	public void unlockRoom() {
 		locked = false;
+		doorPrefab.SetActive(false);
 	}
 	
 	public void lockRoom() {
 		locked = true;
+		doorPrefab.SetActive(true);
 	}
 	
 	public bool isLocked() {
 		return locked;
+	}
+	
+	public void setSpawnPoints(List<Vector3> p) {
+		spawnPoints = p;
 	}
 }
