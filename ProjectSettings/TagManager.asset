@@ -13,6 +13,8 @@ TagManager:
   - heartdrop
   - bulletdrop
   - tuftdrop
+  - cure
+  - serum
   layers:
   - Default
   - TransparentFX
