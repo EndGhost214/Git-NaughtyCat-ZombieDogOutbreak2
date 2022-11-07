@@ -66,7 +66,7 @@ public class GameManager : Singleton<GameManager> {
 				spawnedWave = time;
 			}
 			
-			if (time > 30) {
+			if (time > 10) {
 				round++;
 			}
 		}
@@ -80,10 +80,20 @@ public class GameManager : Singleton<GameManager> {
     }
 	
 	private void updateHUD() {
-		bulletCount.text = "" + playerObject.GetComponent<Shooter>().ReserveAmmoCount();
-		magCount.text = "" + playerObject.GetComponent<Shooter>().MagAmmoCount();
+		Shooter shooter = playerObject.GetComponent<Shooter>();
+		
+		bulletCount.text = "" + shooter.ReserveAmmoCount();
+		magCount.text = "" + shooter.MagAmmoCount();
 		health.text = "" + playerScript.GetHealth();
 		healthBar.value = playerScript.GetHealth() / 100;
+		HUD.transform.Find("round").GetComponent<TextMeshProUGUI>().text = "" + getRound();
+		
+		if (round < 2 && shooter.MagAmmoCount() == 0) {
+			HUD.transform.Find("hint").gameObject.SetActive(true);
+		}
+		else {
+			HUD.transform.Find("hint").gameObject.SetActive(false);
+		}
 		
 		HUD.transform.Find("inventory").Find("heart").gameObject.SetActive(inventory.hasHeart());
 		HUD.transform.Find("inventory").Find("tuft").gameObject.SetActive(inventory.hasTuft());
