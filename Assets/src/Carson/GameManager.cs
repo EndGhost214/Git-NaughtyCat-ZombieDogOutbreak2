@@ -1,11 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 // Class to control UI elements and game event execution.
 public class GameManager : Singleton<GameManager> {
 
 	private GameObject playerObject;
+	private PlayerInventory inventory;
+	private GameObject HUD;
+	private TextMeshProUGUI bulletCount;
+	private TextMeshProUGUI magCount;
+	private TextMeshProUGUI health;
+	
 	// Player object for molly to reference to allow the dogs to do damage
 	[SerializeField]
 	private SurvivalPlayer playerScript; 
@@ -36,6 +43,8 @@ public class GameManager : Singleton<GameManager> {
 
     // Update is called once per frame
     void FixedUpdate() {
+		updateHUD();
+		
 		int frameTime = (int) Time.time;
 		
 		// Calculate the time the game has run
@@ -67,6 +76,17 @@ public class GameManager : Singleton<GameManager> {
 			Debug.Log("Player is idle");
 		}
     }
+	
+	private void updateHUD() {
+		bulletCount.text = "" + playerObject.GetComponent<Shooter>().ReserveAmmoCount();
+		magCount.text = "" + playerObject.GetComponent<Shooter>().MagAmmoCount();
+		health.text = "Health: " + playerScript.GetHealth();
+		
+		HUD.transform.Find("heart").gameObject.SetActive(inventory.hasHeart());
+		HUD.transform.Find("tuft").gameObject.SetActive(inventory.hasTuft());
+		//HUD.transform.Find("cure").gameObject.SetActive(inventory.hasCure());
+		//HUD.transform.Find("serum").gameObject.SetActive(inventory.hasSerum());
+	}
 	
 	// Spawn the provided number of dogs at the next spawn locations
 	private void spawnDogs(int num) {
@@ -113,6 +133,12 @@ public class GameManager : Singleton<GameManager> {
 		
 		map.startGame(); // initialize map rooms+spawnpoints
 		
+		HUD = GameObject.Find("HUD");
+		HUD.SetActive(true);
+		bulletCount = HUD.transform.Find("bulletCount").gameObject.transform.Find("Bullets").gameObject.GetComponent<TextMeshProUGUI>();
+		magCount = HUD.transform.Find("bulletCount").gameObject.transform.Find("Magazine").gameObject.GetComponent<TextMeshProUGUI>();
+		health = HUD.transform.Find("Health").gameObject.GetComponent<TextMeshProUGUI>();
+		
 		// Check if BC mode needs to be enabled
 		if (difficulty == 0) {
 			// Move BC player onto the map			
@@ -124,6 +150,7 @@ public class GameManager : Singleton<GameManager> {
 		}
 		
 		playerObject.transform.position = playerSpawn;
+		inventory = playerObject.GetComponent<PlayerInventory>();
 		difficulty++;
 		
 		// Populate array with starting enemies
