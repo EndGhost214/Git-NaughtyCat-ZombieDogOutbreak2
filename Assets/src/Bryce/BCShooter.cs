@@ -60,7 +60,7 @@ public class BCShooter : MonoBehaviour
     {
         if (collision.gameObject.tag == "bulletdrop")
         {
-            Destroy(collision.gameObject);
+            collision.gameObject.SetActive(false);
         }
         
     }
