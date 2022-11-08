@@ -27,7 +27,7 @@ public class Dog : MonoBehaviour
     }
 
     //temporary damage function
-    public float TakeDamage(float damage)
+    public virtual float TakeDamage(float damage)
 	{
         health-=damage;
         return health;

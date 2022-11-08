@@ -9,7 +9,7 @@ public class BossDog : Dog
     {
         damage = 100f;
         health = 500f;
-        speed = 10f;
+        speed = 5f;
     }
 
     //called on a fixed frame rate
@@ -23,12 +23,20 @@ public class BossDog : Dog
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        TakeDamage((float) collision.gameObject.GetComponent<Bullet>().getDamage());
+        if(collision.gameObject.tag == "Bullet")
+        {
+            TakeDamage((float) collision.gameObject.GetComponent<Bullet>().getDamage());
+        }
+        if(collision.gameObject.tag == "Player")
+        {
+            GameManager.Instance.getPlayer().DamagePlayer(damage);
+        }
     }
 
     //override the death method since it doesn't match the object pooler
     public override void Death()
-    {
+    {   
+        Debug.Log("The boss dog is dead");
         Destroy(this);
     }
 
