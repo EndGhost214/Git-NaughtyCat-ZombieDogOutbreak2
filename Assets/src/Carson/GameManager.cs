@@ -13,6 +13,8 @@ public class GameManager : Singleton<GameManager> {
 	private TextMeshProUGUI bulletCount;
 	private TextMeshProUGUI magCount;
 	private TextMeshProUGUI health;
+	private TextMeshProUGUI roundText;
+	private TextMeshProUGUI timeText;
 	private Slider healthBar;
 	
 	// Player object for molly to reference to allow the dogs to do damage
@@ -32,11 +34,20 @@ public class GameManager : Singleton<GameManager> {
 	
 	// Where the player begins the game
 	private Vector3 playerSpawn = new Vector3(-1, 0, 0);
-	
-	[SerializeField]
-	private Dog basicDog; // ZombieDog class for instantiating new dogs
-	private List<Dog> dogs; // list of alive dogs
-	
+
+	/*
+	 * Create references to scene objects to be updated later.
+	 */
+	void Awake() {
+		HUD = GameObject.Find("HUD");
+		bulletCount = HUD.transform.Find("inventory").Find("bulletCount").Find("Bullets").gameObject.GetComponent<TextMeshProUGUI>();
+		magCount = HUD.transform.Find("inventory").Find("bulletCount").Find("Magazine").gameObject.GetComponent<TextMeshProUGUI>();
+		healthBar = HUD.transform.Find("healthBar").GetComponent<Slider>();
+		health = healthBar.gameObject.transform.Find("Health").gameObject.GetComponent<TextMeshProUGUI>();
+		roundText = HUD.transform.Find("round").GetComponent<TextMeshProUGUI>();
+		timeText = HUD.transform.Find("time").GetComponent<TextMeshProUGUI>();
+	}
+
     // Start is called before the first frame update
     void Start() {
         // Open start menu from Ambrea
@@ -52,7 +63,7 @@ public class GameManager : Singleton<GameManager> {
 		// Calculate the time the game has run
 		time = frameTime - startTime;
 		
-		HUD.transform.Find("time").GetComponent<TextMeshProUGUI>().text = getMinutes() + ":" + getSeconds();
+		timeText.text = getMinutes() + ":" + getSeconds();
 		
 		// Check that the game is in progress
         if (round > 0 && spawnedWave < time) {
@@ -89,7 +100,7 @@ public class GameManager : Singleton<GameManager> {
 		magCount.text = "" + shooter.MagAmmoCount();
 		health.text = "" + playerScript.GetHealth();
 		healthBar.value = playerScript.GetHealth() / 100;
-		HUD.transform.Find("round").GetComponent<TextMeshProUGUI>().text = "" + getRound();
+		roundText.text = "" + getRound();
 		
 		if (round < 2 && shooter.MagAmmoCount() == 0) {
 			HUD.transform.Find("hint1").gameObject.SetActive(true);
@@ -117,7 +128,7 @@ public class GameManager : Singleton<GameManager> {
 		
 		// Clone the provided number of dogs
 		for (int i = 0; i < num; i++) {
-			dogs.Add(Instantiate(basicDog, spawn, Quaternion.identity));
+			DogPool.Instance.SpawnFromDogPool("ZombieDog", spawn, Quaternion.identity);
 		}
 	}
 	
@@ -134,20 +145,11 @@ public class GameManager : Singleton<GameManager> {
 	// Call to end the game when the player dies or quits.
 	public void endGame() {
 		round = 0;
-		
-		// Kill every dog in the list
-		dogs.ForEach(delegate(Dog dog) {
-			dog.Death();
-		});
-		
-		// Reset level manager
-		// Display start menu
 	}
 	
 	// Load the game background, create player and dogs.
 	// Provided difficulty sets dog AI level. 0 = BC mode
 	public void startGame(int difficulty) {
-		dogs = new List<Dog>();
 		startTime = (int) Time.time;
 		idleTime = (int) Time.time;
 		
@@ -156,12 +158,7 @@ public class GameManager : Singleton<GameManager> {
 		
 		map.startGame(); // initialize map rooms+spawnpoints
 		
-		HUD = GameObject.Find("HUD");
 		HUD.SetActive(true);
-		bulletCount = HUD.transform.Find("inventory").Find("bulletCount").Find("Bullets").gameObject.GetComponent<TextMeshProUGUI>();
-		magCount = HUD.transform.Find("inventory").Find("bulletCount").Find("Magazine").gameObject.GetComponent<TextMeshProUGUI>();
-		healthBar = HUD.transform.Find("healthBar").GetComponent<Slider>();
-		health = healthBar.gameObject.transform.Find("Health").gameObject.GetComponent<TextMeshProUGUI>();
 		
 		GameObject.Find("Notes (disable on start)").SetActive(false);
 		
@@ -219,7 +216,7 @@ public class GameManager : Singleton<GameManager> {
 		int count = 0;
 		
 		// Loop through dogs array
-		foreach(Dog d in dogs){
+		/*foreach(Dog d in dogs){
 			// Count living dogs
 			if (d != null) {
 				count++;
@@ -227,7 +224,7 @@ public class GameManager : Singleton<GameManager> {
 			else {
 				dogs.Remove(d); // remove any null elements
 			}
-		}
+		}*/
 		
 		return count;
 	}
