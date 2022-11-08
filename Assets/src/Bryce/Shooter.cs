@@ -108,7 +108,7 @@ public class Shooter : MonoBehaviour
             {
                 ammoCount = MAX_AMMO;
             }
-            Destroy(collision.gameObject);
+            collision.gameObject.SetActive(false);
         }
     }
 

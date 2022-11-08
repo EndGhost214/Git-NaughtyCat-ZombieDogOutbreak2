@@ -23,25 +23,25 @@ public class PlayerInventory : MonoBehaviour
         if (collision.gameObject.tag == "heartdrop")
         {
             invHeart = true;
-            Destroy(collision.gameObject);
+            collision.gameObject.SetActive(false);
         }
 
         if (collision.gameObject.tag == "tuftdrop")
         {
             invTuft = true;
-            Destroy(collision.gameObject);
+            collision.gameObject.SetActive(false);
         }
 
         if (collision.gameObject.tag == "cure")
         {
             invCure = true;
-            Destroy(collision.gameObject);
+            collision.gameObject.SetActive(false);
         }
 
         if (collision.gameObject.tag == "serum")
         {
             invSerum = true;
-            Destroy(collision.gameObject);
+            collision.gameObject.SetActive(false);
         }
     }
 }
