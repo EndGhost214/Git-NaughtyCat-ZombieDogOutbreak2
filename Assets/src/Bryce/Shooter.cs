@@ -31,6 +31,7 @@ public class Shooter : MonoBehaviour
     private int MAX_AMMO = 270;
     private int ammoCount = 270;
     private int mag = 30;
+    private int MAG_SIZE = 30;
 
     public int ReserveAmmoCount()
     {
@@ -102,7 +103,7 @@ public class Shooter : MonoBehaviour
     {
         if(collision.gameObject.tag == "bulletdrop")
         {
-            ammoCount = ammoCount + (mag* 6);
+            ammoCount = ammoCount + (MAG_SIZE* 6);
             if(ammoCount > MAX_AMMO)
             {
                 ammoCount = MAX_AMMO;

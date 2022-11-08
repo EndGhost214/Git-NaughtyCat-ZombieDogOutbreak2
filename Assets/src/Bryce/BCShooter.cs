@@ -58,7 +58,11 @@ public class BCShooter : MonoBehaviour
     //Oncollision to check for bullet pickup and deletes bullet drop
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        Destroy(collision.gameObject);
+        if (collision.gameObject.tag == "bulletdrop")
+        {
+            Destroy(collision.gameObject);
+        }
+        
     }
 
     private void Shoot()
