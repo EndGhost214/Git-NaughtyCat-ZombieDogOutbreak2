@@ -17,8 +17,8 @@ public class Dog : MonoBehaviour
         Debug.Log("This Dog is dead");
         //Call Marissa's item drop function
         //ItemFunctions.Instance.ItemDrop();
-
-        GetComponent<LootBag>().InstantiateLoot(transform.position);
+        gameObject.GetComponent<LootBag>().InstantiateLoot(transform.position);
+        //GetComponent<LootBag>().InstantiateLoot(transform.position);
 
         gameObject.SetActive(false);
         //call random item drop function 

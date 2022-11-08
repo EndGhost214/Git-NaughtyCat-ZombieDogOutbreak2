@@ -342,7 +342,7 @@ namespace Pathfinding {
 		/// <summary>Called during either Update or FixedUpdate depending on if rigidbodies are used for movement or not</summary>
 		protected override void MovementUpdateInternal (float deltaTime, out Vector3 nextPosition, out Quaternion nextRotation) {
 			// Addition to the original script to update movement with the object's speed
-			maxSpeed = gameObject.GetComponent<BaseDog>().speed;
+			maxSpeed = gameObject.GetComponent<Dog>().speed;
 
 			float currentAcceleration = maxAcceleration;
 
