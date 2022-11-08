@@ -9,13 +9,13 @@ public class DemoShow : MonoBehaviour
 
     public void ShowVideo()
     {
-        videoPlayer.SetActive(false);
+        game.SetActive(false);
         videoPlayer.SetActive(true);
     }
 
     public void HideVideo()
     {
         videoPlayer.SetActive(false);
-        videoPlayer.SetActive(true);
+        game.SetActive(true);
     }
 }
