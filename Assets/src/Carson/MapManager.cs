@@ -3,10 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class MapManager : Singleton<MapManager> {
-	//[SerializeField]
-	//private GameObject StartMenu;
+	[SerializeField]
+	private GameObject basicRoom;
 	
-	//private List<Room> rooms = new List<Room>();
 	
 	private List<Vector3> spawnPoints;
 	private List<Room> rooms;
@@ -37,11 +36,11 @@ public class MapManager : Singleton<MapManager> {
 		spawnPoints.Add(new Vector3(10, 7, 0));
 		spawnPoints.Add(new Vector3(20, -10, 0));*/
 		
-		AbstractRoomFactory factory = new LargeRoomFactory();
+		AbstractRoomFactory factory = new LargeRoomFactory(basicRoom);
 		rooms.Add(factory.createRoom("Laboratory"));
 		rooms.Add(factory.createRoom("Kitchen"));
 		
-		factory = new SmallRoomFactory();
+		factory = new SmallRoomFactory(basicRoom);
 		rooms.Add(factory.createRoom("Exam1"));
 		rooms.Add(factory.createRoom("Exam2"));
 		rooms.Add(factory.createRoom("Closet"));
