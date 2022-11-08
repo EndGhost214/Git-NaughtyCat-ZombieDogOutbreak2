@@ -19,8 +19,17 @@ public class BossDog : Dog
         {
             Death();
         }
-        
     }
 
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        TakeDamage((float) collision.gameObject.GetComponent<Bullet>().getDamage());
+    }
+
+    //override the death method since it doesn't match the object pooler
+    public override void Death()
+    {
+        Destroy(this);
+    }
 
 }
