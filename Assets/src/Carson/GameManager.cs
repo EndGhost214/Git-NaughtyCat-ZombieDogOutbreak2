@@ -48,7 +48,7 @@ public class GameManager : Singleton<GameManager> {
 		health = healthBar.gameObject.transform.Find("Health").gameObject.GetComponent<TextMeshProUGUI>();
 		roundText = HUD.transform.Find("round").GetComponent<TextMeshProUGUI>();
 		timeText = HUD.transform.Find("time").GetComponent<TextMeshProUGUI>();
-		demo = gameObject.GetComponent<DemoShow>();
+		//demo = gameObject.GetComponent<DemoShow>();
 	}
 
     // Start is called before the first frame update
@@ -56,6 +56,17 @@ public class GameManager : Singleton<GameManager> {
         // Open start menu from Ambrea
 		startGame(1);
     }
+	
+	void Update() {
+		if (Input.anyKey) {
+			idleTime = (int) Time.time;
+			demo.HideVideo();
+		}
+		else if (Time.time - idleTime > 10) {
+			Debug.Log("Player is idle");
+			demo.ShowVideo();
+		}
+	}
 
     // Update is called once per frame
     void FixedUpdate() {
@@ -85,15 +96,6 @@ public class GameManager : Singleton<GameManager> {
 			if (time > 10) {
 				round++;
 			}
-		}
-		
-		if (Input.anyKey) {
-			demo.ShowVideo();
-		}
-		else if (frameTime - idleTime > 60) {
-			Debug.Log("Player is idle");
-			demo.HideVideo();
-			//gameObject.GetComponent<pausemenu>().pause();
 		}
     }
 	
