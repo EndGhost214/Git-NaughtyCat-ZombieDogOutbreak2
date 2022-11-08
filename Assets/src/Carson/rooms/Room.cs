@@ -40,4 +40,8 @@ public class Room : MonoBehaviour
 	public void setSpawnPoints(List<Vector3> p) {
 		spawnPoints = p;
 	}
+	
+	public List<Vector3> getSpawnPoints() {
+		return spawnPoints;
+	}
 }

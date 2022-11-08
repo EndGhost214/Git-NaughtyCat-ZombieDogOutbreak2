@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class SmallRoomFactory : AbstractRoomFactory
 {
-	private GameObject roomPrefab;
+	public GameObject roomPrefab;
 	
-	public SmallRoomFactory(GameObject basicRoom) {
-		roomPrefab = basicRoom;
+	protected override void setUp() {
+		
 	}
 	
 	public override Room createRoom(string name) {
