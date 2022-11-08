@@ -74,19 +74,19 @@ public class LootBag : MonoBehaviour
         {
             //Loot droppedItem = GetDroppedItem();
             
-                int randomNumber = Random.Range(1,101);
+                int randomNumber = Random.Range(1,70);
 
                 if(randomNumber>=1 && randomNumber<=45)
                 {
                     GameObject lootGameObject = Instantiate(bulletPrefab,spawnPosition,Quaternion.identity);
                     
                 }
-                if(randomNumber>=46 && randomNumber<=65)
+                if(randomNumber>=46 && randomNumber<=50)
                 {
                     GameObject lootGameObject = Instantiate(tuftPrefab,spawnPosition,Quaternion.identity);
                     
                 }
-                if(randomNumber>=66 && randomNumber<=85)
+                if(randomNumber>=51 && randomNumber<=61)
                 {
                     GameObject lootGameObject = Instantiate(heartPrefab,spawnPosition,Quaternion.identity);
                     
