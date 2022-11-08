@@ -1981,7 +1981,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerScript: {fileID: 1215895306}
-  basicDog: {fileID: 871002381}
 --- !u!114 &208711886
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6378,17 +6377,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 5.848373, y: 1.2730546}
   m_EdgeRadius: 0
---- !u!114 &871002381 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 802747089947015051, guid: 5dfa5710869749b44aaf5da59ecbbf3f, type: 3}
-  m_PrefabInstance: {fileID: 1965858179}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 61d5c5a0a37236a4bbcaef5ccf87fb7c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &894999321 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6776495002897439426, guid: 5254fe803934e4149acb83633cb3008d, type: 3}
@@ -11242,7 +11230,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1010230268175427241, guid: 4f90afd4dcc20254eb34b6606d030954, type: 3}
       propertyPath: m_Volume
-      value: 0.7
+      value: 0.064
       objectReference: {fileID: 0}
     - target: {fileID: 1010230268175427241, guid: 4f90afd4dcc20254eb34b6606d030954, type: 3}
       propertyPath: m_audioClip
@@ -11282,7 +11270,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1010230268175427250, guid: 4f90afd4dcc20254eb34b6606d030954, type: 3}
       propertyPath: m_Volume
-      value: 0.621
+      value: 0.164
       objectReference: {fileID: 0}
     - target: {fileID: 1010230268175427251, guid: 4f90afd4dcc20254eb34b6606d030954, type: 3}
       propertyPath: m_RootOrder
@@ -11354,7 +11342,7 @@ PrefabInstance:
       objectReference: {fileID: 581123996}
     - target: {fileID: 1010230268175427261, guid: 4f90afd4dcc20254eb34b6606d030954, type: 3}
       propertyPath: m_Volume
-      value: 0.468
+      value: 0.15
       objectReference: {fileID: 0}
     - target: {fileID: 1010230268175427262, guid: 4f90afd4dcc20254eb34b6606d030954, type: 3}
       propertyPath: m_Name
