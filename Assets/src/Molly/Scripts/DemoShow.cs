@@ -10,14 +10,14 @@ public class DemoShow : MonoBehaviour
     public void ShowVideo()
     {
         game.SetActive(false);
-        time.TimeScale = 0f;
+        Time.timeScale = 0f;
         videoPlayer.SetActive(true);
     }
 
     public void HideVideo()
     {
         videoPlayer.SetActive(false);
-        time.TimeScale = 1f;
+        Time.timeScale = 1f;
         game.SetActive(true);
     }
 }
