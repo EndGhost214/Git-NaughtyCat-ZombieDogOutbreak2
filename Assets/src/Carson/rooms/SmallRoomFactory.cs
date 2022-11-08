@@ -12,8 +12,4 @@ public class SmallRoomFactory : AbstractRoomFactory
 		
 		return room;
 	}
-	
-    protected override void setDoor() {
-		
-	}
 }

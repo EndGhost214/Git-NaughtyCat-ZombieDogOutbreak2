@@ -85,11 +85,12 @@ public class GameManager : Singleton<GameManager> {
 		}
 		
 		if (Input.anyKey) {
-			idleTime = frameTime;
+			DemoShow.Instance.ShowVideo();
 		}
 		else if (frameTime - idleTime > 60) {
 			Debug.Log("Player is idle");
-			gameObject.GetComponent<pausemenu>().pause();
+			DemoShow.Instance.HideVideo();
+			//gameObject.GetComponent<pausemenu>().pause();
 		}
     }
 	
