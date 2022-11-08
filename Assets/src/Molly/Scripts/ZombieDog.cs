@@ -4,17 +4,13 @@ using UnityEngine;
 //using Pathfinding;
 
 public class ZombieDog : Dog, IDogP
-{
-    
+{  
     //will hold the position of the zombie dog
     private Vector3 pos;
 
     //will hold the animation variables to be set
     private Animator animate;
 
-
-    //public bool isAttacking = false;
-   
     // default constructor
     public ZombieDog()
 	{
@@ -59,22 +55,7 @@ public class ZombieDog : Dog, IDogP
     {
         //set the speed and the health
         animate.SetFloat("Health", health);
-        
-        //BOUNDARY TEST: GO TO DOG SCRIPT TO SEE THE DEATH FUNCTION
-        //HEALTH IS SERIALIZED FIELD SO THAT YOU CAN CHANGE HEALTH AT RUN TIME
-        if(health<=0)
-        {
-            speed = 0;
-            //animate.Setfloateger("Health", health);
-            //gameObject.GetComponent<Animation>()["DeathAnim"].wrapMode = WrapMode.Once;
-            //gameObject.GetComponent<Animation>().Play("DeathAnim");
-            animate.Play("DeathAnim",  -1, 0f);
-            animate.SetFloat("Speed", 0f);
-            animate.SetBool("isAttack", false);
-            //Debug.Log("here");
-            Invoke("Death", 1);
-        }
-        
+
         //Debug.Log("Health: " + health + " Speed: " + speed + " Damage: " + damage);
     }
 
@@ -100,6 +81,17 @@ public class ZombieDog : Dog, IDogP
             SoundManager.Instance.zombieHurtFunction();
             //take the damage of the bullet
             TakeDamage((float) collision.gameObject.GetComponent<Bullet>().getDamage());
+
+            //if the health is at zero
+            if(health<=0)
+            {
+                speed = 0;
+                animate.Play("DeathAnim",  -1, 0f);
+                animate.SetFloat("Speed", 0f);
+                animate.SetBool("isAttack", false);
+                //Debug.Log("here");
+                Invoke("Death", 1);
+            }
         }
     }
 

@@ -17,7 +17,11 @@ public class Dog : MonoBehaviour
         Debug.Log("This Dog is dead");
         //Call Marissa's item drop function
         //ItemFunctions.Instance.ItemDrop();
-        gameObject.GetComponent<LootBag>().InstantiateLoot(transform.position);
+        if(gameObject.activeInHierarchy==true)
+        {
+            gameObject.GetComponent<LootBag>().InstantiateLoot(transform.position);
+        }
+        
         //GetComponent<LootBag>().InstantiateLoot(transform.position);
 
         gameObject.SetActive(false);
