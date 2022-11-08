@@ -33,15 +33,11 @@ public class ZombieDog : Dog, IDogP
     // called from DogPool
     public void onObjectSpawn()
     {
-        //ZombieDog dog = gameObject.GetComponent<ZombieDog>();
-        //transform.position = pos;
-
         //initiate sound upon spawning
         SoundManager.Instance.zombieSoundFunction();
         //get the animator components in the object animate in order to set animations accordingly
         animate = gameObject.GetComponent<Animator>();
 
-    
         //set the basic variables of the dogs
         damage = SetDamage();
         speed = SetSpeed();
@@ -51,8 +47,6 @@ public class ZombieDog : Dog, IDogP
         Debug.Log("Damage: " + damage);
         Debug.Log("speed: " + speed);
         Debug.Log("health: " + health);
-
-        
 
         //set the speed of the dog (will be dependent on the levelup class)
         animate.SetFloat("Speed", speed);
@@ -64,7 +58,6 @@ public class ZombieDog : Dog, IDogP
     void FixedUpdate()
     {
         //set the speed and the health
-        //gets brokened
         animate.SetFloat("Health", health);
         
         //BOUNDARY TEST: GO TO DOG SCRIPT TO SEE THE DEATH FUNCTION
@@ -103,6 +96,9 @@ public class ZombieDog : Dog, IDogP
         }
         if(collision.gameObject.tag == "Bullet")
         {
+            //hurt sound 
+            SoundManager.Instance.zombieHurtFunction();
+            //take the damage of the bullet
             TakeDamage((float) collision.gameObject.GetComponent<Bullet>().getDamage());
         }
     }

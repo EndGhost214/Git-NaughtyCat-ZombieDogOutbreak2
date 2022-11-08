@@ -12,7 +12,7 @@ public class Dog : MonoBehaviour
     public float speed;
 
     //remove the dog from the map
-    public void Death()
+    public virtual void Death()
     {
         Debug.Log("This Dog is dead");
         //Call Marissa's item drop function
