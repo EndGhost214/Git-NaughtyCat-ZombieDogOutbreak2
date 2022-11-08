@@ -37,30 +37,28 @@ public class LootBag : MonoBehaviour
         */
         public void InstantiateLoot(Vector3 spawnPosition)
         {
-            //Loot droppedItem = GetDroppedItem();
+            
             
                 int randomNumber = Random.Range(1,70);
 
                 if(randomNumber>=1 && randomNumber<=45)
                 {
-                    GameObject lootGameObject = Instantiate(bulletPrefab,spawnPosition,Quaternion.identity);
+                    Instantiate(bulletPrefab,spawnPosition,Quaternion.identity);
                     
                 }
                 if(randomNumber>=46 && randomNumber<=50)
                 {
-                    GameObject lootGameObject = Instantiate(tuftPrefab,spawnPosition,Quaternion.identity);
+                    Instantiate(tuftPrefab,spawnPosition,Quaternion.identity);
                     
                 }
                 if(randomNumber>=51 && randomNumber<=61)
                 {
-                    GameObject lootGameObject = Instantiate(heartPrefab,spawnPosition,Quaternion.identity);
+                    Instantiate(heartPrefab,spawnPosition,Quaternion.identity);
                     
                 }
 
 
-                //GameObject lootGameObject = Instantiate(droppedItemPrefab,spawnPosition,Quaternion.identity);
-                //lootGameObject.GetComponent<SpriteRenderer>().sprite = droppedItem.lootSprite;
-           
+               
         }
 
 
