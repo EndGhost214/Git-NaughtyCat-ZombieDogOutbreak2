@@ -19,7 +19,9 @@ public class GameManager : Singleton<GameManager> {
 	
 	// Player object for molly to reference to allow the dogs to do damage
 	[SerializeField]
-	private SurvivalPlayer playerScript; 
+	private SurvivalPlayer playerScript;
+	[SerializeField]
+	private DemoShow demo;
 	
 	private MapManager map;
 	
@@ -46,6 +48,7 @@ public class GameManager : Singleton<GameManager> {
 		health = healthBar.gameObject.transform.Find("Health").gameObject.GetComponent<TextMeshProUGUI>();
 		roundText = HUD.transform.Find("round").GetComponent<TextMeshProUGUI>();
 		timeText = HUD.transform.Find("time").GetComponent<TextMeshProUGUI>();
+		demo = gameObject.GetComponent<DemoShow>();
 	}
 
     // Start is called before the first frame update
@@ -85,11 +88,11 @@ public class GameManager : Singleton<GameManager> {
 		}
 		
 		if (Input.anyKey) {
-			DemoShow.Instance.ShowVideo();
+			demo.ShowVideo();
 		}
 		else if (frameTime - idleTime > 60) {
 			Debug.Log("Player is idle");
-			DemoShow.Instance.HideVideo();
+			demo.HideVideo();
 			//gameObject.GetComponent<pausemenu>().pause();
 		}
     }
