@@ -88,14 +88,20 @@ public class DogPool : MonoBehaviour
         //put the object back in the queue to spawn
         dogPoolDictionary[tag].Enqueue(objectToSpawn);
 
-        IDogP pooledObj = objectToSpawn.GetComponent<IDogP>();
+        //remove all level up components from the current dog
+        LevelUp[] objs = objectToSpawn.GetComponents<LevelUp>();
 
-        if(pooledObj != null)
-        {
-            pooledObj.onObjectSpawn();
+        foreach (LevelUp obj in objs) {
+            Destroy(obj);
         }
-            //old return
-       /* dog = GameObject.Find("ZombieDogSprite").GetComponent<ZombieDog>();
+        
+        //get base dog component from the objectToSpawn
+        dog = objectToSpawn.GetComponent<BaseDog>();
+
+        if(dog != null)
+        {
+            dog.onObjectSpawn();
+        }
 
         //if the round is greater than 1, wrap a level up script onto the dog for the number of rounds
         int round =  GameManager.Instance.getRound();
@@ -113,7 +119,7 @@ public class DogPool : MonoBehaviour
                 //dog.SetDog(dog);
             }
         }
-        */
+        
         //objectToSpawn = dog;
         //return the object
         return objectToSpawn;

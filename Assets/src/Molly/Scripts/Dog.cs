@@ -20,7 +20,7 @@ public class Dog : MonoBehaviour
 
         GetComponent<LootBag>().InstantiateLoot(transform.position);
 
-        Destroy(this.gameObject);
+        gameObject.SetActive(false);
         //call random item drop function 
             //Drop();
         //return a -1 to the list of dogs

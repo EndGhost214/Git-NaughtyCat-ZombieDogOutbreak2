@@ -96,7 +96,7 @@ public class ZombieDog : Dog, IDogP
             Debug.Log("health = " + health);
             GameManager.Instance.getPlayer().DamagePlayer(damage);
             //collision.gameObject.GetComponent<Player>().DamagePlayer(damage);
-            if(health >= 0)
+            if(health >= 0f)
             {
                 animate.SetBool("isAttack", true);
             }

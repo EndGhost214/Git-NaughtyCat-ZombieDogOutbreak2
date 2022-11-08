@@ -180,11 +180,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!4 &180142942 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8596971514160928311, guid: 1cbbf368df24c3a4a94fc04b100a7f14, type: 3}
-  m_PrefabInstance: {fileID: 1503550831}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &448731916
 GameObject:
   m_ObjectHideFlags: 0
@@ -625,7 +620,7 @@ PrefabInstance:
     - target: {fileID: 2155869692190379592, guid: 5dfa5710869749b44aaf5da59ecbbf3f, type: 3}
       propertyPath: target
       value: 
-      objectReference: {fileID: 180142942}
+      objectReference: {fileID: 0}
     - target: {fileID: 2155869692190379607, guid: 5dfa5710869749b44aaf5da59ecbbf3f, type: 3}
       propertyPath: rotationSpeed
       value: 720
