@@ -14,10 +14,9 @@ using UnityEngine;
 /*
 *class that contains the items and their ability to drop
 *member variables:
-*droppedItemPrefab - the prefab for the item that was dropped
-*lootList - list that contains items
-*
-*
+*tuftPrefab - prefab for tuft item
+*heartPrefab - prefab for heart item
+*bulletPrefab - prefab for bullet item
 */
 public class LootBag : MonoBehaviour
 {
@@ -29,42 +28,8 @@ public class LootBag : MonoBehaviour
 
     [SerializeField]
     public GameObject bulletPrefab;
-    //public List<Loot> lootList = new List<Loot>();
-
-
-    /*
-    *function to determine which item gets dropped
-    *no parameter
-    *drops the item
-    */
     
-    /*
-    Loot GetDroppedItem()
-    {
-        //int randomNumber = Random.Range(1,101);
 
-        
-
-        /*
-        List<Loot> possibleItems = new List<Loot>();
-
-        foreach(Loot item in lootList)
-        {
-            if(randomNumber<=item.dropChance)
-            {
-                possibleItems.Add(item);
-            }
-        }
-
-        if(possibleItems.Count >0)
-        {
-            Loot droppedItem= possibleItems[Random.Range(0,possibleItems.Count)];
-            return droppedItem;
-        }
-            return null;
-        }
-        */
-        
         /*
         *function to spawn the loot where the dog last was
         *spawn position parameter
