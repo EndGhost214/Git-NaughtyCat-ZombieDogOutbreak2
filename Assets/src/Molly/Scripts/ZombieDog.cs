@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 //using Pathfinding;
 
-public class ZombieDog : Dog
+public class ZombieDog : Dog, IDogP
 {
     
     //will hold the position of the zombie dog
@@ -26,8 +26,12 @@ public class ZombieDog : Dog
         this.pos = pos;
     }
 
-    // Start is called before the first frame update
-    void Start()
+    void Awake() {
+        animate = gameObject.GetComponent<Animator>();
+    }
+
+    // called from DogPool
+    public void onObjectSpawn()
     {
         //ZombieDog dog = gameObject.GetComponent<ZombieDog>();
         //transform.position = pos;
@@ -37,9 +41,7 @@ public class ZombieDog : Dog
         //get the animator components in the object animate in order to set animations accordingly
         animate = gameObject.GetComponent<Animator>();
 
-        //make sure that 
-        animate.SetBool("isAttack", false);
-
+    
         //set the basic variables of the dogs
         damage = SetDamage();
         speed = SetSpeed();
@@ -54,12 +56,15 @@ public class ZombieDog : Dog
 
         //set the speed of the dog (will be dependent on the levelup class)
         animate.SetFloat("Speed", speed);
+        animate.SetBool("isAttack", false);
+        animate.SetFloat("Health", health);
     }
 
     //updates not based on frames
     void FixedUpdate()
     {
         //set the speed and the health
+        //gets brokened
         animate.SetFloat("Health", health);
         
         //BOUNDARY TEST: GO TO DOG SCRIPT TO SEE THE DEATH FUNCTION
