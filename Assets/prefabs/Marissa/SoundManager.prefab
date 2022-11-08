@@ -78,7 +78,7 @@ MonoBehaviour:
   pickUp: {fileID: 1010230268175427232}
   catWalk: {fileID: 1010230268175427254}
   gunSound1: {fileID: 1010230268175427241}
-  gunClip: {fileID: 8300000, guid: dff015026ca424a468fa7d6d9e3a9aac, type: 3}
+  gunClip: {fileID: 8300000, guid: d530e0443edd6354ebe6fa5994b2813f, type: 3}
   gunReload: {fileID: 7343248892872170048}
   knifeSlash: {fileID: 1010230268175427242}
   catHurt1: {fileID: 1010230268175427243}
@@ -865,7 +865,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 3483646231cfb5d4ca9c1331053aa3ac, type: 3}
+  m_audioClip: {fileID: 8300000, guid: d530e0443edd6354ebe6fa5994b2813f, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.202
   m_Pitch: 1
