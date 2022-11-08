@@ -4,15 +4,18 @@ using UnityEngine;
 
 public class DemoShow : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public GameObject videoPlayer;
+    public GameObject game;
+
+    public void ShowVideo()
     {
-        
+        videoPlayer.SetActive(false);
+        videoPlayer.SetActive(true);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void HideVideo()
     {
-        
+        videoPlayer.SetActive(false);
+        videoPlayer.SetActive(true);
     }
 }
