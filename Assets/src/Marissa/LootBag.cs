@@ -20,6 +20,7 @@ using UnityEngine;
 */
 public class LootBag : MonoBehaviour
 {
+    /*
     [SerializeField]
     public GameObject tuftPrefab;
 
@@ -29,7 +30,16 @@ public class LootBag : MonoBehaviour
     [SerializeField]
     public GameObject bulletPrefab;
     
+    */
 
+    //to be able to store the pool
+    ItemPooler itemPooler;
+/*
+    public void onItemSpawn()
+    {
+        itemPooler = ItemPooler.Instance;
+    }
+    */
         /*
         *function to spawn the loot where the dog last was
         *spawn position parameter
@@ -43,18 +53,18 @@ public class LootBag : MonoBehaviour
 
                 if(randomNumber>=1 && randomNumber<=45)
                 {
-                    Instantiate(bulletPrefab,spawnPosition,Quaternion.identity);
-                    
+                    //Instantiate(bulletPrefab,spawnPosition,Quaternion.identity);
+                    ItemPooler.Instance.spawnFromPool("Bullet", transform.position, Quaternion.identity);
                 }
                 if(randomNumber>=46 && randomNumber<=50)
                 {
-                    Instantiate(tuftPrefab,spawnPosition,Quaternion.identity);
-                    
+                    //Instantiate(tuftPrefab,spawnPosition,Quaternion.identity);
+                    ItemPooler.Instance.spawnFromPool("Tuft", transform.position, Quaternion.identity);
                 }
                 if(randomNumber>=51 && randomNumber<=61)
                 {
-                    Instantiate(heartPrefab,spawnPosition,Quaternion.identity);
-                    
+                    //Instantiate(heartPrefab,spawnPosition,Quaternion.identity);
+                    ItemPooler.Instance.spawnFromPool("Heart", transform.position, Quaternion.identity);
                 }
 
 
