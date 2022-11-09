@@ -107,7 +107,7 @@ public class DogPool : MonoBehaviour
 
         //if the round is greater than 1, wrap a level up script onto the dog for the number of rounds
         int round =  GameManager.Instance.getRound();
-        round = 2;
+        //round = 2;
         if (round > 1)
         {
             Debug.Log("Here" + " Round: " + round);

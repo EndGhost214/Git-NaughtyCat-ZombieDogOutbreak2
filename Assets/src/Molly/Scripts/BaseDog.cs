@@ -8,7 +8,7 @@ public class BaseDog : ZombieDog
     //base variables for each zombie dog
     protected float baseh = 100;
     protected float based = 5;
-    protected float bases = 1f;
+    protected float bases = 1.5f;
 
     public BaseDog()
     {
