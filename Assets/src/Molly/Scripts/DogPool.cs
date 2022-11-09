@@ -13,6 +13,10 @@ public class DogPool : MonoBehaviour
     //list of pools from pool class
     public List<lDogPool> dogPools;
 
+    //serialized field for hierarchy container
+    [SerializeField]
+    private Transform container;
+
     //object pooler using a dictionary
     public Dictionary<string, Queue<GameObject>> dogPoolDictionary;
 
@@ -48,7 +52,7 @@ public class DogPool : MonoBehaviour
 
             for( int i = 0; i < dogPool.size; i++)
             {
-                GameObject obj = Instantiate(dogPool.prefab);
+                GameObject obj = Instantiate(dogPool.prefab, container, false);
                 //sets the object false in the hierarchy
                 obj.SetActive(false);
                 //push the object onto the queue
