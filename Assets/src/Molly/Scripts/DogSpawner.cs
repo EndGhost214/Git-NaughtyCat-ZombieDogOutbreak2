@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class DogSpawner : MonoBehaviour
 {
-
     void FixedUpdate(){
         //Debug.Log(gameObject.transform.position);
         if (Input.GetKeyDown(KeyCode.L))

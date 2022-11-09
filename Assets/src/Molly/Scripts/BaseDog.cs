@@ -1,11 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Pathfinding;
 
 public class BaseDog : ZombieDog
 {
-    
     //base variables for each zombie dog
     protected float baseh = 100;
     protected float based = 5;
