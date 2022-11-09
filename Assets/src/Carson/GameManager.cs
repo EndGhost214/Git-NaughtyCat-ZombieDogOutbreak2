@@ -25,6 +25,8 @@ public class GameManager : Singleton<GameManager> {
 	private TextMeshProUGUI health;
 	private TextMeshProUGUI roundText;
 	private TextMeshProUGUI timeText;
+	private TextMeshProUGUI roundTimeText;
+	private TextMeshProUGUI enemyCount;
 	
 	private Slider healthBar;
 	
@@ -40,16 +42,21 @@ public class GameManager : Singleton<GameManager> {
 	private int startTime;
 	private int time;
 	private int idleTime;
+	private int roundTime;
+	private int lastRoundTime = 0;
 	
 	private int spawnID = 0; // index of next spawnpoint to use
 	private int spawnedWave = 0; // time of last spawned wave
 	private int round = 0;
+	private bool finished = false;
 	
 	// Where the player begins the game
-	private Vector3 playerSpawn = new Vector3(-1, 0, 0);
+	private Vector3 playerSpawn = new Vector3(-9, 1, -0.5f);
 
 	/*
-	 * Create references to scene objects to be updated later.
+	 * Create references to scene objects to be updated later. Since Find is a very
+	 * expensive method, it's much more efficient to assign these fields initially
+	 * than to search for them multiple times later.
 	 */
 	void Awake() {
 		HUD = GameObject.Find("HUD");
@@ -70,6 +77,8 @@ public class GameManager : Singleton<GameManager> {
 		health = healthBar.gameObject.transform.Find("Health").gameObject.GetComponent<TextMeshProUGUI>();
 		roundText = HUD.transform.Find("round").GetComponent<TextMeshProUGUI>();
 		timeText = HUD.transform.Find("time").GetComponent<TextMeshProUGUI>();
+		enemyCount = HUD.transform.Find("enemies").GetComponent<TextMeshProUGUI>();
+		roundTimeText = HUD.transform.Find("roundTime").GetComponent<TextMeshProUGUI>();
 		
 		enemies = GameObject.Find("Enemies");
 		
@@ -82,56 +91,115 @@ public class GameManager : Singleton<GameManager> {
 		startGame(1);
     }
 	
+	/*
+	 * Update is called many times per second regardless of what
+	 * Time.timeScale is set to. This allows me to check for user input
+	 * even when the game is paused for the demo mode.
+	 */
 	void Update() {
+		// When the user presses something
 		if (Input.anyKey) {
-			idleTime = (int) Time.time;
-			demo.HideVideo();
+			// Check if they were idle
+			if (Time.time - idleTime > 60) {
+				demo.HideVideo(); // stop the video, resume time
+			}
+			
+			idleTime = (int) Time.time; // reset the timer
 		}
 		else if (Time.time - idleTime > 60) {
-			Debug.Log("Player is idle");
-			demo.ShowVideo();
+			//Debug.Log("Player is idle");
+			demo.ShowVideo(); // freeze the game and show the video
 		}
 	}
 
-    // Update is called once per frame
+    /*
+	 * Called by Unity a fixed number of times per second, based on the time scale.
+	 */
     void FixedUpdate() {
 		updateHUD();
-		Debug.Log(enemiesLeft());
 		
 		int frameTime = (int) Time.time;
 		
 		// Calculate the time the game has run
 		time = frameTime - startTime;
+		roundTime = frameTime - lastRoundTime;
 		
 		timeText.text = getMinutes() + ":" + getSeconds();
+		roundTimeText.text = "" + roundTime;
 		
 		// Check that the game is in progress
-        if (round > 0 && spawnedWave < time) {
-			if (time == 4) {
-				newRound();
-				spawnedWave = time;
+        if (spawnedWave < time) {
+			if (round == 0) {
+				// Begin the game after 4 seconds
+				if (time == 4) {
+					newRound();
+				}
 			}
-			
-			//Debug.Log("Spawning");
-			// Spawn 5 (1 for now) dogs every 12 seconds
-			if (time % 6 == 0) {
-				spawnDogs(1);
-				spawnedWave = time;
+			else if (round == 1) {
+				if (!finished) {
+					if (roundTime % 6 == 0) {
+						spawnDogs(2);
+						spawnedWave = time;
+					}
+					if (roundTime > 19 && roundTime % 4 == 0) {
+						spawnDogs(1);
+						spawnedWave = time;
+					}
+					if (roundTime == 30) {
+						finished = true;
+					}
+				}
+				else if (enemiesLeft() == 0) {
+					newRound();
+				}
 			}
-			// Spawn another group every 4 seconds
-			if (time > 24 && time % 4 == 0) {
-				spawnDogs(2);
-				spawnedWave = time;
+			else if (round == 2) {
+				if (!finished) {
+					if (time % 5 == 0) {
+						spawnDogs(2);
+						spawnedWave = time;
+					}
+					if (time > 17 && time % 3 == 0) {
+						spawnDogs(1);
+						spawnedWave = time;
+					}
+					if (roundTime == 33) {
+						finished = true;
+					}
+				}
+				else if (enemiesLeft() == 0) {
+					newRound();
+				}
 			}
-			
-			if (time > 10) {
-				round++;
+			else if (round == 3) {
+				if (!finished) {
+					if (time % 5 == 0) {
+						spawnDogs(2);
+						spawnedWave = time;
+					}
+					if (time > 11 && time % 3 == 0) {
+						spawnDogs(1);
+						spawnedWave = time;
+					}
+					if (time > 29 && time % 3 == 0) {
+						spawnDogs(1);
+						spawnedWave = time;
+					}
+					if (roundTime == 40) {
+						finished = true;
+					}
+				}
+				else if (enemiesLeft() == 0) {
+					newRound();
+				}
 			}
 		}
     }
 	
 	private void newRound() {
+		lastRoundTime = (int) Time.time;
 		round++;
+		finished = false;
 		roundText.text = "" + getRound();
 		Debug.Log(map.unlockRoom() + " has just been unlocked!");
 		currentSpawnPoints = map.getSpawnPoints();
@@ -143,6 +211,8 @@ public class GameManager : Singleton<GameManager> {
 		bulletCount.text = "" + shooter.ReserveAmmoCount();
 		magCount.text = "" + shooter.MagAmmoCount();
 		health.text = "" + playerScript.GetHealth();
+		enemyCount.text = "zombies left: " + enemiesLeft();
+		
 		healthBar.value = playerScript.GetHealth() / 100;
 		
 		if (round < 2 && shooter.MagAmmoCount() == 0) {
@@ -197,7 +267,7 @@ public class GameManager : Singleton<GameManager> {
 		idleTime = (int) Time.time;
 		
 		map = MapManager.Instance;
-		round = 1;
+		round = 0;
 		
 		map.startGame(); // initialize map rooms
 		
@@ -255,8 +325,10 @@ public class GameManager : Singleton<GameManager> {
 		return minutes < 60 ? "" + minutes : minutes / 60 + ":" + (minutes % 60 < 10 ? "0" : "") + minutes % 60;
 	}
 	
-	// Counts the number of dogs left to fight
+	/*
+	 * Counts the number of dogs to fight on the map.
+	 */
 	private int enemiesLeft() {
-		return GameObject.FindGameObjectsWithTag("ZombieDog").Length;
+		return GameObject.FindGameObjectsWithTag("ZombieDog").Length - 1;
 	}
 }

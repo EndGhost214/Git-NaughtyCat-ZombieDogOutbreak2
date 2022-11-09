@@ -42,6 +42,7 @@ public abstract class AbstractRoomFactory : MonoBehaviour
 		GameObject newRoom = Instantiate(roomPrefab, roomInfo[name].home, Quaternion.identity);
 		newRoom.name = name;
 		Room room = newRoom.GetComponent<Room>();
+		room.name = name;
 		
 		List<Vector3> spawnPoints = new List<Vector3>();
 		spawnPoints.AddRange(roomInfo[name].spawn);
