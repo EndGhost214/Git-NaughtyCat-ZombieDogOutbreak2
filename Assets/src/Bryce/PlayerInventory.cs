@@ -18,6 +18,16 @@ public class PlayerInventory : MonoBehaviour
         return invTuft;
     }
 
+    public bool hasCure()
+    {
+        return invCure;
+    }
+
+    public bool hasSerum()
+    {
+        return invSerum;
+    }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "heartdrop")
