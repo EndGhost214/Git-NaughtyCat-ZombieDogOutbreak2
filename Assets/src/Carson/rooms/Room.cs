@@ -10,6 +10,10 @@ public class Room : MonoBehaviour
 	//private GameObject doorPrefab;
 	public string name;
 	private bool locked = true;
+	
+	void Awake() {
+		spawnPoints = new List<Vector3>();
+	}
 
 	public void unlockRoom() {
 		locked = false;
@@ -31,8 +35,15 @@ public class Room : MonoBehaviour
 		return locked;
 	}
 	
+	/*
+	 * Add the provided list of spawn points to the room.
+	 * Spawn points are first converted from local space relative to the GameObject
+	 * this script is attached to into world space.
+	 */
 	public void setSpawnPoints(List<Vector3> p) {
-		spawnPoints = p;
+		foreach (Vector3 point in p) {
+			spawnPoints.Add(transform.TransformPoint(point));
+		}
 	}
 	
 	public void setDoors(List<GameObject> d) {

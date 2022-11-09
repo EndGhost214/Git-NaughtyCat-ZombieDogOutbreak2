@@ -8,6 +8,8 @@ using TMPro;
 public class GameManager : Singleton<GameManager> {
 
 	private GameObject playerObject;
+	private GameObject enemies;
+	
 	private PlayerInventory inventory;
 	
 	private GameObject HUD;
@@ -51,10 +53,14 @@ public class GameManager : Singleton<GameManager> {
 	 */
 	void Awake() {
 		HUD = GameObject.Find("HUD");
-		heart = HUD.transform.Find("heart").gameObject;
-		tuft = HUD.transform.Find("tuft").gameObject;
-		cure = HUD.transform.Find("cure").gameObject;
-		serum = HUD.transform.Find("serum").gameObject;
+		
+		Transform inventory = HUD.transform.Find("inventory");
+		
+		heart = inventory.Find("heart").gameObject;
+		tuft = inventory.Find("tuft").gameObject;
+		cure = inventory.Find("cure").gameObject;
+		serum = inventory.Find("serum").gameObject;
+		
 		hint1 = HUD.transform.Find("hint1").gameObject;
 		hint2 = HUD.transform.Find("hint2").gameObject;
 		
@@ -64,6 +70,8 @@ public class GameManager : Singleton<GameManager> {
 		health = healthBar.gameObject.transform.Find("Health").gameObject.GetComponent<TextMeshProUGUI>();
 		roundText = HUD.transform.Find("round").GetComponent<TextMeshProUGUI>();
 		timeText = HUD.transform.Find("time").GetComponent<TextMeshProUGUI>();
+		
+		enemies = GameObject.Find("Enemies");
 		
 		demo = gameObject.GetComponent<DemoShow>();
 	}
@@ -88,6 +96,7 @@ public class GameManager : Singleton<GameManager> {
     // Update is called once per frame
     void FixedUpdate() {
 		updateHUD();
+		Debug.Log(enemiesLeft());
 		
 		int frameTime = (int) Time.time;
 		
@@ -98,6 +107,11 @@ public class GameManager : Singleton<GameManager> {
 		
 		// Check that the game is in progress
         if (round > 0 && spawnedWave < time) {
+			if (time == 4) {
+				newRound();
+				spawnedWave = time;
+			}
+			
 			//Debug.Log("Spawning");
 			// Spawn 5 (1 for now) dogs every 12 seconds
 			if (time % 6 == 0) {
@@ -185,32 +199,33 @@ public class GameManager : Singleton<GameManager> {
 		map = MapManager.Instance;
 		round = 1;
 		
-		map.startGame(); // initialize map rooms+spawnpoints
+		map.startGame(); // initialize map rooms
 		
 		HUD.SetActive(true);
 		
 		GameObject.Find("Notes (disable on start)").SetActive(false);
 		
-		// Check if BC mode needs to be enabled
+		// Check if BC mode needs to be enabled, get the correct player and disable the other
 		if (difficulty == 0) {
-			// Move BC player onto the map			
+			// Set the reference to the BCPlayer			
 			playerObject = GameObject.Find("BCPlayer");
 			GameObject.Find("SurvivalPlayer").SetActive(false);
 		}
 		else {
-			// Move survival player onto the map
 			playerObject = GameObject.Find("SurvivalPlayer");
 			GameObject.Find("BCPlayer").SetActive(false);
 		}
 
+		// Move player onto the map
 		playerObject.transform.position = playerSpawn;
+		// Get a reference to the inventory script
 		inventory = playerObject.GetComponent<PlayerInventory>();
 		playerScript.SetHealth(100f);
 		
 		difficulty++;
 		
-		// Populate array with starting enemies
-		spawnDogs(3 * difficulty);
+		// Populate map with starting enemies
+		//spawnDogs(3 * difficulty);
 	}
 	
 	// Getter function for current level (for modifying enemy speed, UI elements)
@@ -241,20 +256,7 @@ public class GameManager : Singleton<GameManager> {
 	}
 	
 	// Counts the number of dogs left to fight
-	public int enemiesLeft() {
-		int count = 0;
-		
-		// Loop through dogs array
-		/*foreach(Dog d in dogs){
-			// Count living dogs
-			if (d != null) {
-				count++;
-			}
-			else {
-				dogs.Remove(d); // remove any null elements
-			}
-		}*/
-		
-		return count;
+	private int enemiesLeft() {
+		return GameObject.FindGameObjectsWithTag("ZombieDog").Length;
 	}
 }

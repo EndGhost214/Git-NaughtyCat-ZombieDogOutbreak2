@@ -15,6 +15,7 @@ TagManager:
   - tuftdrop
   - cure
   - serum
+  - container
   layers:
   - Default
   - TransparentFX
