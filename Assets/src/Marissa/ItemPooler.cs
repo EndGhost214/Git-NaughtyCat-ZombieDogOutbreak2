@@ -1,10 +1,30 @@
+/*
+*ItemPooler.cs
+*Marissa Samayoa
+*contains the item pool scripts
+*/
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+/*
+*class that creates item pool for items and moves them between the queue and game
+*member variables:
+* ItemPool - details of the item pool
+*/
 public class ItemPooler : MonoBehaviour
 {
     
+    /*
+    *class that contains the item pool details
+    *member variables:
+    * tag - to be able to call the item
+    * prefab - the prefab for the item
+    * size - size of that pool of items
+    */
+
     [System.Serializable]   //makes it visible in inspector
     public class ItemPool
     {
@@ -49,7 +69,7 @@ public class ItemPooler : MonoBehaviour
             //create a queue of objects
             Queue<GameObject> objectPool = new Queue<GameObject>();
 
-            //cretae each of the objects in the queue
+            //create each of the objects in the queue
             for(int i=0;i<pool.size;i++)
             {
                 GameObject obj = Instantiate(pool.prefab); //instantiates the item
@@ -65,9 +85,18 @@ public class ItemPooler : MonoBehaviour
 
     }
 
-    //taking inactive cubes and spawning them in the world
+    /* function taking inactive items and spawning them in the world
+    *
+    * parameters:
+    * tag - which item pool you want
+    * position - where the item will spawn
+    * roatation - the rotation of the item to spawn
+    *
+    * spawns the item then adds it back to the queue to be reused
+    */
     public GameObject spawnFromPool(string tag, Vector3 position, Quaternion rotation)
     {
+        //makes sure the item pool we're calling exists
         if(!poolDictionary.ContainsKey(tag))
         {
             Debug.LogWarning("Pool with tag " + tag + " doesnt exist");
