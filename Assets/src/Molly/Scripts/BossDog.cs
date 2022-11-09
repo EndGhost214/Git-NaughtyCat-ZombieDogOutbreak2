@@ -8,6 +8,7 @@ public class BossDog : Dog
     // Start is called before the first frame update
     void Start()
     {
+        SoundManager.Instance.bossGrowlFunction();
         damage = 100f;
         health = 500f;
         speed = 5f;
@@ -27,10 +28,12 @@ public class BossDog : Dog
         if(collision.gameObject.tag == "Bullet")
         {
             TakeDamage((float) collision.gameObject.GetComponent<Bullet>().GetDamage());
+            SoundManager.Instance.bossHurtFunction();
         }
         if(collision.gameObject.tag == "Player")
         {
             GameManager.Instance.getPlayer().DamagePlayer(damage);
+            SoundManager.Instance.bossAttackFunction();
         }
     }
 
