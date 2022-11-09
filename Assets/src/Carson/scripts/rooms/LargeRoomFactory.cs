@@ -8,7 +8,7 @@ public class LargeRoomFactory : AbstractRoomFactory
 		Positions lab = new Positions("Laboratory");
 		lab.door.Add(new Vector3(18.4099998f, 16.2800007f, -0.115999997f));
 		lab.door.Add(new Vector3(-3.55999994f, 5.55999994f, -0.225589991f));
-		lab.spawn.Add(new Vector3(-18.2700005f, 4.15999985f, -0.225590006f));
+		lab.spawn.Add(new Vector3(-12.0600004f, 3.81999993f, -0.225590006f));
 		lab.spawn.Add(new Vector3(37.7999992f , 9f, 0f));
 		lab.rotated.Add(false);
 		lab.rotated.Add(true);
