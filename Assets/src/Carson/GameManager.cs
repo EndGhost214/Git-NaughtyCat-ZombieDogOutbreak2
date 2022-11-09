@@ -9,21 +9,30 @@ public class GameManager : Singleton<GameManager> {
 
 	private GameObject playerObject;
 	private PlayerInventory inventory;
+	
 	private GameObject HUD;
+	private GameObject heart;
+	private GameObject serum;
+	private GameObject tuft;
+	private GameObject cure;
+	private GameObject hint1;
+	private GameObject hint2;
+
 	private TextMeshProUGUI bulletCount;
 	private TextMeshProUGUI magCount;
 	private TextMeshProUGUI health;
 	private TextMeshProUGUI roundText;
 	private TextMeshProUGUI timeText;
+	
 	private Slider healthBar;
 	
 	// Player object for molly to reference to allow the dogs to do damage
 	[SerializeField]
 	private SurvivalPlayer playerScript;
-	[SerializeField]
 	private DemoShow demo;
 	
 	private MapManager map;
+	private List<Vector3> currentSpawnPoints;
 	
 	// Keep track of how long the game has run
 	private int startTime;
@@ -42,13 +51,21 @@ public class GameManager : Singleton<GameManager> {
 	 */
 	void Awake() {
 		HUD = GameObject.Find("HUD");
+		heart = HUD.transform.Find("heart").gameObject;
+		tuft = HUD.transform.Find("tuft").gameObject;
+		cure = HUD.transform.Find("cure").gameObject;
+		serum = HUD.transform.Find("serum").gameObject;
+		hint1 = HUD.transform.Find("hint1").gameObject;
+		hint2 = HUD.transform.Find("hint2").gameObject;
+		
 		bulletCount = HUD.transform.Find("inventory").Find("bulletCount").Find("Bullets").gameObject.GetComponent<TextMeshProUGUI>();
 		magCount = HUD.transform.Find("inventory").Find("bulletCount").Find("Magazine").gameObject.GetComponent<TextMeshProUGUI>();
 		healthBar = HUD.transform.Find("healthBar").GetComponent<Slider>();
 		health = healthBar.gameObject.transform.Find("Health").gameObject.GetComponent<TextMeshProUGUI>();
 		roundText = HUD.transform.Find("round").GetComponent<TextMeshProUGUI>();
 		timeText = HUD.transform.Find("time").GetComponent<TextMeshProUGUI>();
-		//demo = gameObject.GetComponent<DemoShow>();
+		
+		demo = gameObject.GetComponent<DemoShow>();
 	}
 
     // Start is called before the first frame update
@@ -99,6 +116,13 @@ public class GameManager : Singleton<GameManager> {
 		}
     }
 	
+	private void newRound() {
+		round++;
+		roundText.text = "" + getRound();
+		Debug.Log(map.unlockRoom() + " has just been unlocked!");
+		currentSpawnPoints = map.getSpawnPoints();
+	}
+	
 	private void updateHUD() {
 		Shooter shooter = playerObject.GetComponent<Shooter>();
 		
@@ -106,26 +130,25 @@ public class GameManager : Singleton<GameManager> {
 		magCount.text = "" + shooter.MagAmmoCount();
 		health.text = "" + playerScript.GetHealth();
 		healthBar.value = playerScript.GetHealth() / 100;
-		roundText.text = "" + getRound();
 		
 		if (round < 2 && shooter.MagAmmoCount() == 0) {
-			HUD.transform.Find("hint1").gameObject.SetActive(true);
+			hint1.SetActive(true);
 		}
 		else {
-			HUD.transform.Find("hint1").gameObject.SetActive(false);
+			hint1.SetActive(false);
 		}
 		
 		if (shooter.ReserveAmmoCount() == 0) {
-			HUD.transform.Find("hint2").gameObject.SetActive(true);
+			hint2.SetActive(true);
 		}
 		else {
-			HUD.transform.Find("hint2").gameObject.SetActive(false);
+			hint2.SetActive(false);
 		}
 		
-		HUD.transform.Find("inventory").Find("heart").gameObject.SetActive(inventory.hasHeart());
-		HUD.transform.Find("inventory").Find("tuft").gameObject.SetActive(inventory.hasTuft());
-		//HUD.transform.Find("cure").gameObject.SetActive(inventory.hasCure());
-		//HUD.transform.Find("serum").gameObject.SetActive(inventory.hasSerum());
+		heart.SetActive(inventory.hasHeart());
+		tuft.SetActive(inventory.hasTuft());
+		cure.SetActive(inventory.hasCure());
+		serum.SetActive(inventory.hasSerum());
 	}
 	
 	// Spawn the provided number of dogs at the next spawn locations
@@ -140,7 +163,7 @@ public class GameManager : Singleton<GameManager> {
 	
 	// Returns the next position a dog should be spawned.
 	private Vector3 nextSpawn() {
-		List<Vector3> sPoints = map.getSpawnPoints();
+		List<Vector3> sPoints = currentSpawnPoints;
 		
 		// Increment counter to next spawn point in the list
 		spawnID = (spawnID + 1) % (sPoints.Count);

@@ -8,21 +8,8 @@ public class Room : MonoBehaviour
 	private List<Vector3> spawnPoints;
 	private List<GameObject> doors;
 	//private GameObject doorPrefab;
-	private string name;
-	private int id;
+	public string name;
 	private bool locked = true;
-	
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
 	public void unlockRoom() {
 		locked = false;

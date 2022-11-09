@@ -4,50 +4,34 @@ using UnityEngine;
 
 public class LargeRoomFactory : AbstractRoomFactory
 {	
-	public GameObject roomPrefab;
-	
 	protected override void setUp() {
-		roomInfo = new Dictionary<string, Positions>();
-		/*
-		locations = new List<Vector3>();
-		locations.Add(new Vector3(32.98f, 5.45f, 0));
-		locations.Add(new Vector3(9.96f, -5.31f, -0.11f));
-		locations.Add(new Vector3(-17.73f, 3.46f, -1));
-		locations.Add(new Vector3(10.34f, -6.82f, -1));
-		roomInfo.Add("Laboratory", locations);
-		
-		locations1 = new List<Vector3>();
-		locations1.Add(new Vector3(36.79f, 27.9f, -0.12f));
-		locations1.Add(new Vector3(5.91f, 27.9f, -0.12f));
-		locations1.Add(new Vector3(18.87f, 41.2f, -1));
-		locations1.Add(new Vector3(6.57f, 48.65f, -1));
-		roomInfo.Add("Kitchen", locations1);
-		
-		foreach(string key in roomInfo.Keys) {
-			Debug.Log(key);
-		}*/
-		
 		Positions lab = new Positions("Laboratory");
-		lab.door.Add(new Vector3(19.0079f, 16.8899f, -0.116f));
-		lab.door.Add(new Vector3(-4.01432419f,6.12993574f,-0.225589991f));
+		lab.door.Add(new Vector3(18.4099998f, 16.2800007f, -0.115999997f));
+		lab.door.Add(new Vector3(-3.55999994f, 5.55999994f, -0.225589991f));
 		lab.spawn.Add(new Vector3(-18.2700005f, 4.15999985f, -0.225590006f));
 		lab.spawn.Add(new Vector3(37.7999992f , 9f, 0f));
-		lab.home = new Vector3(16.5747f,-10.4444f,0.22559f);
+		lab.rotated.Add(false);
+		lab.rotated.Add(true);
+		lab.home = new Vector3(16.5747f, -10.4444f, 0.22559f);
 		
 		Positions kitchen = new Positions("Kitchen");
-		kitchen.door.Add(new Vector3(5.90793419f,27.8999348f,-0.116151907f));
-		kitchen.door.Add(new Vector3(36.7879333f,27.8999348f,-0.116151907f));
-		kitchen.spawn.Add(new Vector3(27.2000008f,39.5999985f,0));
-		kitchen.spawn.Add(new Vector3(5.9000001f,58.4000015f,0));
-		kitchen.home = new Vector3(16.5747395f,-10.4444351f,0.225589991f);
+		kitchen.door.Add(new Vector3(5.67000008f, 27.2700005f, -0.116151907f));
+		kitchen.door.Add(new Vector3(35.9599991f, 27.2199993f, -0.116151907f));
+		kitchen.spawn.Add(new Vector3(27.2000008f, 39.5999985f, 0));
+		kitchen.spawn.Add(new Vector3(5.9000001f, 58.4000015f, 0));
+		kitchen.rotated.Add(true);
+		kitchen.rotated.Add(true);
+		kitchen.home = new Vector3(16.5747395f, -10.4444351f, 0.225589991f);
 		
-		roomInfo.Add(lab.roomName, lab);
-		roomInfo.Add(kitchen.roomName, kitchen);
+		addToDictionary(lab);
+		addToDictionary(kitchen);
 	}
 	
 	public override Room createRoom(string name) {
 		GameObject newRoom = Instantiate(roomPrefab, roomInfo[name].home, Quaternion.identity);
+		newRoom.name = name;
 		Room room = newRoom.GetComponent<Room>();
+		room.name = name;
 		
 		List<Vector3> spawnPoints = new List<Vector3>();
 		spawnPoints.AddRange(roomInfo[name].spawn);
@@ -67,7 +51,13 @@ public class LargeRoomFactory : AbstractRoomFactory
 		doors[0].transform.position = newRoom.transform.TransformPoint(doorPositions[0]);
 		// Make a copy for the second door
 		doors.Add(Instantiate(doors[0], newRoom.transform.TransformPoint(doorPositions[1]), Quaternion.identity, newRoom.transform));
-		doors[1].transform.rotation = Quaternion.Lerp(doors[1].transform.rotation, Quaternion.Euler(doors[1].transform.eulerAngles + new Vector3(0, 0, 90f)), 1f);
+		
+		// Rotate doors by 90 degrees if required
+		for (int i = 0; i < 2; i++) {
+			if (roomInfo[name].rotated[i]) {
+				doors[i].transform.Rotate(0, 0, 90);
+			}
+		}
 		
 		room.setSpawnPoints(spawnPoints);
 		room.setDoors(doors);
