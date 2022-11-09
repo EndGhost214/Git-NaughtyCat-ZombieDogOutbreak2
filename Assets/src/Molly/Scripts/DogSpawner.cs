@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class DogSpawner : MonoBehaviour
 {
     void FixedUpdate(){
@@ -10,3 +11,4 @@ public class DogSpawner : MonoBehaviour
         DogPool.Instance.SpawnFromDogPool("ZombieDog", gameObject.transform.position, Quaternion.identity);
     } 
 }
+

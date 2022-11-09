@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class ZombieDog : Dog, IDogP
 {  
     //will hold the position of the zombie dog
@@ -26,7 +27,7 @@ public class ZombieDog : Dog, IDogP
     }
 
     // called from DogPool
-    public void onObjectSpawn()
+    public void OnObjectSpawn()
     {
         //initiate sound upon spawning
         SoundManager.Instance.zombieSoundFunction();
@@ -64,7 +65,6 @@ public class ZombieDog : Dog, IDogP
         //Debug.Log("testing");
         if(collision.gameObject.tag == "Player")
         {
-            //isAttacking = true;
             Debug.Log("player is in dog zone");
             Debug.Log("health = " + health);
             GameManager.Instance.getPlayer().DamagePlayer(damage);
@@ -78,8 +78,9 @@ public class ZombieDog : Dog, IDogP
         {
             //hurt sound 
             SoundManager.Instance.zombieHurtFunction();
+
             //take the damage of the bullet
-            TakeDamage((float) collision.gameObject.GetComponent<Bullet>().getDamage());
+            TakeDamage((float) collision.gameObject.GetComponent<Bullet>().GetDamage());
 
             //if the health is at zero
             if(health<=0)
@@ -105,26 +106,21 @@ public class ZombieDog : Dog, IDogP
         }
     }
 
-    //Deals Damage to the player
-    //Decorator/depends on the level of the dog
-    public void DealDamage(float damage)
-	{
-        health -= damage;     
-    }
-
-    //set functions that don't do much
     protected virtual float SetDamage()
 	{
         return damage;
     }
+
     protected virtual float SetHealth()
 	{
         return health;
     }
+
     protected virtual float SetSpeed()
 	{
         return speed;
     }
+
     public virtual void SetDog(ZombieDog dog)
 	{
     }

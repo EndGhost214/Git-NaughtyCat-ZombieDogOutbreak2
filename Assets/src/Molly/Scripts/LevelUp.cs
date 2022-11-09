@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class LevelUp : ZombieDog
 {
     private ZombieDog ZomDog;
@@ -27,3 +28,4 @@ public class LevelUp : ZombieDog
         return ZomDog.speed + 0.1f;
     }
 }
+

@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class Dog : MonoBehaviour
 {
-    
     //variables 
     public float health;
     public float damage;
@@ -21,12 +21,7 @@ public class Dog : MonoBehaviour
             gameObject.GetComponent<LootBag>().InstantiateLoot(transform.position);
         }
         
-        //GetComponent<LootBag>().InstantiateLoot(transform.position);
-
         gameObject.SetActive(false);
-        //call random item drop function 
-            //Drop();
-        //return a -1 to the list of dogs
     }
 
     //temporary damage function
@@ -35,6 +30,5 @@ public class Dog : MonoBehaviour
         health-=damage;
         return health;
     }
-
-
 }
+

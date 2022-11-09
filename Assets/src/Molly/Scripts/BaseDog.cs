@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class BaseDog : ZombieDog
 {
     //base variables for each zombie dog
@@ -33,3 +34,4 @@ public class BaseDog : ZombieDog
     }
 
 }
+

@@ -2,13 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 //got object pooler code from: https://youtu.be/tdSmKaJvCoA 
 
 public class DogPool : MonoBehaviour
 {
-    
     //create a zombie dog instance to decorate the level up components
     private ZombieDog dog;
+
+    //list of pools from pool class
+    public List<lDogPool> dogPools;
+
+    //object pooler using a dictionary
+    public Dictionary<string, Queue<GameObject>> dogPoolDictionary;
 
     //create a class to keep the stats of the pool
     [System.Serializable]
@@ -26,14 +32,7 @@ public class DogPool : MonoBehaviour
     void Awake() {
         Instance = this;
     }
-
     #endregion
-
-    //list of pools from pool class
-    public List<lDogPool> dogPools;
-
-    //object pooler using a dictionary
-    public Dictionary<string, Queue<GameObject>> dogPoolDictionary;
 
     // Start is called before the first frame update
     void Start()
@@ -54,7 +53,6 @@ public class DogPool : MonoBehaviour
                 obj.SetActive(false);
                 //push the object onto the queue
                 objectPool.Enqueue(obj);
-
             }
             //Debug.Log(dogPool.tag);
 
@@ -63,8 +61,8 @@ public class DogPool : MonoBehaviour
         }
     }
 
-        //will spawn the dogs from the queue, need to get the position and rotation from carson's function
-        //need to make a reset so that the level component only adds as many scripts as there are rounds and not exponentially
+    //will spawn the dogs from the queue, need to get the position and rotation from carson's function
+    //need to make a reset so that the level component only adds as many scripts as there are rounds and not exponentially
     public GameObject SpawnFromDogPool (string tag, Vector3 position, Quaternion rotation)
     {
         //Debug.Log(tag);
@@ -100,7 +98,7 @@ public class DogPool : MonoBehaviour
 
         if(dog != null)
         {
-            dog.onObjectSpawn();
+            dog.OnObjectSpawn();
         }
 
         //if the round is greater than 1, wrap a level up script onto the dog for the number of rounds
