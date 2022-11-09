@@ -3,8 +3,6 @@
  * Bryce Hendrickson
  * A decorator class that will assign the player with health and control of the survival player prefab.
  */
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 /*
@@ -25,21 +23,12 @@ public class SurvivalPlayer : Player
     private Player _player;
     private float healthActual;
 
-
-
     //constructor sets health to 100 and sets player type to control player
     public SurvivalPlayer(Player player)
     {
         _player = player;
         SetHealth(100);
     }
-
-    //setting player to the survivalplayer prefab
-    protected override GameObject GetPlayerObject()
-    {
-        return GameObject.Find("SurvivalPlayer");
-    }
-
 
     //Returns health as float
     public float GetHealth()
@@ -74,6 +63,12 @@ public class SurvivalPlayer : Player
 
         SetHealth(newHealth);
 
+    }
+
+    //setting player to the survivalplayer prefab
+    protected override GameObject GetPlayerObject()
+    {
+        return GameObject.Find("SurvivalPlayer");
     }
 
 

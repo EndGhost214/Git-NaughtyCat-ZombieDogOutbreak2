@@ -5,6 +5,7 @@
  */
 using UnityEngine;
 
+
 /*
  * Shooter class to control gun and gun inputs
  * 
@@ -16,6 +17,11 @@ using UnityEngine;
  * MAX_AMMO - maximum amount of ammo the player can carry
  * ammoCount - current count of player ammo
  * mag - size of mag
+ * Update() - called every frame
+ * ReserveAmmoCount() - returns the count of the reserve ammo
+ * MagAmmoCount() - returns the count of the ammo in the mag
+ * OnCollisionEnter2D() - Inactivates the bullet drop on colission
+ * Shoot() - spawns a bullet in from the object pool
  */
 public class Shooter : MonoBehaviour
 {
@@ -33,16 +39,6 @@ public class Shooter : MonoBehaviour
     private int mag = 30;
     private int MAG_SIZE = 30;
 
-    public int ReserveAmmoCount()
-    {
-        return ammoCount;
-    }
-
-    public int MagAmmoCount()
-    {
-        return mag;
-    }
-
     /*
      * Update function
      * Will rotate sprite based off of mouse position
@@ -57,8 +53,6 @@ public class Shooter : MonoBehaviour
         //rotation variable for flipping character
         float rotateY = 0f;
 
-
-
         //checking if the mouse flipped to the opposite side of the character - sets roate to 180deg
         if(mousePos.x < transform.position.x)
         {
@@ -67,7 +61,6 @@ public class Shooter : MonoBehaviour
 
         //rotates sprite based off of rotation variable 
         transform.eulerAngles = new Vector3(transform.rotation.x, rotateY, transform.rotation.z);
-        
 
         //Shooting with M1 click
         if (Input.GetMouseButton(0) && Time.time >= nextTimeToFire && mag!=0)
@@ -78,6 +71,7 @@ public class Shooter : MonoBehaviour
             
         }
 
+        //Repload with R
         if (Input.GetKeyDown(KeyCode.R))
         {
 
@@ -97,20 +91,33 @@ public class Shooter : MonoBehaviour
         }
 
     }
-    
+
     //Oncollision to check for bullet pickup, adds bullets then deletes bullet drop
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.tag == "bulletdrop")
+        if (collision.gameObject.tag == "bulletdrop")
         {
-            ammoCount = ammoCount + (MAG_SIZE* 6);
-            if(ammoCount > MAX_AMMO)
+            ammoCount = ammoCount + (MAG_SIZE * 6);
+            if (ammoCount > MAX_AMMO)
             {
                 ammoCount = MAX_AMMO;
             }
             collision.gameObject.SetActive(false);
         }
     }
+
+    //Returns the count of thr reserve ammo
+    public int ReserveAmmoCount()
+    {
+        return ammoCount;
+    }
+
+    //Returns the count of the ammo left in the mag
+    public int MagAmmoCount()
+    {
+        return mag;
+    }
+
 
 
     //Plays gun sound and spawns a bullet from the ObjectPooler
@@ -121,7 +128,5 @@ public class Shooter : MonoBehaviour
         ObjectPooler.Instance.SpawnFromPool("Bullet", firePoint.transform.position, firePoint.transform.rotation);
      
     }
-
-   
 
 }

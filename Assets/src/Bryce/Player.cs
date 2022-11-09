@@ -1,84 +1,52 @@
-using System.Collections;
-using System.Collections.Generic;
+/*
+ * Player.cs
+ * Bryce Hendrickson
+ * Movement script for all players
+ */
 using UnityEngine;
 
 
-
+/*
+ * Player movement script for all players
+ * 
+ * Member variables:
+ * walkSpeed -walk speed of the player
+ * body - rigidbody of the player
+ * playerOject - object of the player
+ * movement - x and y values for the players movement
+ */
 public class Player : MonoBehaviour
 {
 
     [SerializeField]
-    private float walkspeed = 5f;
+    private float walkSpeed = 5f;
     private Rigidbody2D body;
 
     [SerializeField]
     private GameObject playerObject;
     private Vector2 movement;
 
-    
-
-
-
-
-   protected virtual GameObject GetPlayerObject()
-    {
-        return GameObject.Find("Player");
-    }
-
-
+    //Awake function called when the gameobject is first spawned
     protected virtual void Awake()
     {
         playerObject = GetPlayerObject();
         body = playerObject.GetComponent<Rigidbody2D>();
-        
-
     }
-
 
     private void Update()
     {
-        
         movement.x = Input.GetAxis("Horizontal");
         movement.y = Input.GetAxis("Vertical");
-
-        //mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
-
-        //Flip player when moving left and right
-        /*
-        if (movement.x > 0.01f)
-        {
-            playerObject.transform.localScale = new Vector3(1, 1, 1);
-        }
-        else if (movement.x < -0.01f)
-        {
-            playerObject.transform.localScale = new Vector3(-1, 1, 1);
-        }
-        */
-
     }
 
     private void FixedUpdate()
     {
-       //Player vertical and horizontal movement
-        body.MovePosition(body.position + movement * walkspeed * Time.fixedDeltaTime);
-
-       // Vector2 lookDir = mousePos - body.position;
-
-        //float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg;
-
-        //body.rotation = angle;
-
+        body.MovePosition(body.position + movement * walkSpeed * Time.fixedDeltaTime);
     }
 
-
-
-    // Start is called before the first frame update
-    void Start()
+    protected virtual GameObject GetPlayerObject()
     {
-        //playerObject.transform.position = new Vector3(0, 0, 0);
+        return GameObject.Find("Player");
     }
-
-   
-
 
 }
