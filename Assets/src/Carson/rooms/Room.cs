@@ -6,10 +6,11 @@ using UnityEngine;
 public class Room : MonoBehaviour
 {
 	private List<Vector3> spawnPoints;
-	private GameObject doorPrefab;
+	private List<GameObject> doors;
+	//private GameObject doorPrefab;
 	private string name;
 	private int id;
-	private bool locked;
+	private bool locked = true;
 	
     // Start is called before the first frame update
     void Start()
@@ -25,12 +26,18 @@ public class Room : MonoBehaviour
 
 	public void unlockRoom() {
 		locked = false;
-		doorPrefab.SetActive(false);
+		SoundManager.Instance.unlockDoorFunction();
+		foreach (GameObject d in doors) {
+			d.SetActive(false);
+		}
 	}
 	
 	public void lockRoom() {
 		locked = true;
-		doorPrefab.SetActive(true);
+		// Play
+		foreach (GameObject d in doors) {
+			d.SetActive(true);
+		}
 	}
 	
 	public bool isLocked() {
@@ -41,7 +48,13 @@ public class Room : MonoBehaviour
 		spawnPoints = p;
 	}
 	
+	public void setDoors(List<GameObject> d) {
+		doors = d;
+	}
+	
 	public List<Vector3> getSpawnPoints() {
 		return spawnPoints;
 	}
+	
+	
 }

@@ -9,6 +9,8 @@ public abstract class AbstractRoomFactory : MonoBehaviour
 {
 	protected class Positions {
 		public string roomName {get;}
+		public Vector3 home;
+		public Quaternion rotation;
 		public List<Vector3> spawn {get;}
 		public List<Vector3> door {get;}
 		

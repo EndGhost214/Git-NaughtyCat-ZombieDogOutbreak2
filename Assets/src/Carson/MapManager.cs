@@ -59,6 +59,8 @@ public class MapManager : Singleton<MapManager> {
 		rooms.Add(factory.createRoom("Exam1"));
 		rooms.Add(factory.createRoom("Exam2"));
 		rooms.Add(factory.createRoom("Closet"));*/
+		
+		rooms[0].unlockRoom();
 	}
 	
 	public int unlockRoom() {

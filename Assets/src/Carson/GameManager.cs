@@ -62,7 +62,7 @@ public class GameManager : Singleton<GameManager> {
 			idleTime = (int) Time.time;
 			demo.HideVideo();
 		}
-		else if (Time.time - idleTime > 10) {
+		else if (Time.time - idleTime > 60) {
 			Debug.Log("Player is idle");
 			demo.ShowVideo();
 		}

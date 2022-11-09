@@ -8,7 +8,7 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1307694255988130434}
+  - component: {fileID: 1625954293001990163}
   - component: {fileID: 1307694255988130432}
   - component: {fileID: 1307694255988130433}
   m_Layer: 5
@@ -18,26 +18,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!224 &1307694255988130434
-RectTransform:
+--- !u!4 &1625954293001990163
+Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1307694255988130445}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -1}
+  m_LocalPosition: {x: -25.58, y: 21.21, z: 0}
   m_LocalScale: {x: 1.221, y: 1.221, z: 1.221}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -17.47, y: 3.6}
-  m_SizeDelta: {x: 1.5142, y: 1.1402}
-  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1307694255988130432
 CanvasRenderer:
   m_ObjectHideFlags: 0
