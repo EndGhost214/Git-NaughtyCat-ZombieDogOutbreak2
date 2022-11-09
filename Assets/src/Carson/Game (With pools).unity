@@ -2800,6 +2800,14 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 1625954293001990163, guid: 696f9d901e8997244a7fd1261cf05a44, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 27.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1625954293001990163, guid: 696f9d901e8997244a7fd1261cf05a44, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 39.6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 696f9d901e8997244a7fd1261cf05a44, type: 3}
 --- !u!1 &296071121
@@ -4281,6 +4289,14 @@ PrefabInstance:
     - target: {fileID: 1625954293001990163, guid: 696f9d901e8997244a7fd1261cf05a44, type: 3}
       propertyPath: m_RootOrder
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1625954293001990163, guid: 696f9d901e8997244a7fd1261cf05a44, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 5.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1625954293001990163, guid: 696f9d901e8997244a7fd1261cf05a44, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 58.4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 696f9d901e8997244a7fd1261cf05a44, type: 3}
@@ -10014,7 +10030,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea8d21cb231dda04d999774009bf381b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  walkspeed: 5
+  walkSpeed: 5
   playerObject: {fileID: 0}
 --- !u!4 &1215895305
 Transform:
@@ -10043,7 +10059,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f794cda1de64714ca0c5554b3b9aa97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  walkspeed: 5
+  walkSpeed: 0
   playerObject: {fileID: 0}
 --- !u!114 &1215895307
 MonoBehaviour:
@@ -10057,7 +10073,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a92a5cfe99859945ba2799ef76e3777, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  walkspeed: 5
+  walkSpeed: 0
   playerObject: {fileID: 0}
 --- !u!114 &1215895308
 MonoBehaviour:
@@ -17577,7 +17593,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 779128374993172646, guid: b215dab0c81032e4188ef2b9da434624, type: 3}
       propertyPath: m_Name
-      value: Exam1
+      value: Room
       objectReference: {fileID: 0}
     - target: {fileID: 779128374993172665, guid: b215dab0c81032e4188ef2b9da434624, type: 3}
       propertyPath: m_RootOrder
