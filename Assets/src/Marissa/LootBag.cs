@@ -14,32 +14,15 @@ using UnityEngine;
 /*
 *class that contains the items and their ability to drop
 *member variables:
-*tuftPrefab - prefab for tuft item
-*heartPrefab - prefab for heart item
-*bulletPrefab - prefab for bullet item
+*itemPooler - stores the item pools
 */
 public class LootBag : MonoBehaviour
 {
-    /*
-    [SerializeField]
-    public GameObject tuftPrefab;
-
-    [SerializeField]
-    public GameObject heartPrefab;
-
-    [SerializeField]
-    public GameObject bulletPrefab;
     
-    */
 
     //to be able to store the pool
     ItemPooler itemPooler;
-/*
-    public void onItemSpawn()
-    {
-        itemPooler = ItemPooler.Instance;
-    }
-    */
+
         /*
         *function to spawn the loot where the dog last was
         *spawn position parameter
@@ -48,22 +31,22 @@ public class LootBag : MonoBehaviour
         public void InstantiateLoot(Vector3 spawnPosition)
         {
             
-            
-                int randomNumber = Random.Range(1,70);
+                //picks a number 1-70
+                int randomNumber = Random.Range(1,71);
 
                 if(randomNumber>=1 && randomNumber<=45)
                 {
-                    //Instantiate(bulletPrefab,spawnPosition,Quaternion.identity);
+                    //spawns the bullet from the item pool
                     ItemPooler.Instance.spawnFromPool("Bullet", transform.position, Quaternion.identity);
                 }
                 if(randomNumber>=46 && randomNumber<=50)
                 {
-                    //Instantiate(tuftPrefab,spawnPosition,Quaternion.identity);
+                    //spawns the tuft from the item pool
                     ItemPooler.Instance.spawnFromPool("Tuft", transform.position, Quaternion.identity);
                 }
                 if(randomNumber>=51 && randomNumber<=61)
                 {
-                    //Instantiate(heartPrefab,spawnPosition,Quaternion.identity);
+                    //spawns the heart from the item pool
                     ItemPooler.Instance.spawnFromPool("Heart", transform.position, Quaternion.identity);
                 }
 
