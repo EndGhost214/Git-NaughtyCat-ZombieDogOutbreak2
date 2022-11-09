@@ -26,7 +26,7 @@ public class BossDog : Dog
     {
         if(collision.gameObject.tag == "Bullet")
         {
-            TakeDamage((float) collision.gameObject.GetComponent<Bullet>().getDamage());
+            TakeDamage((float) collision.gameObject.GetComponent<Bullet>().GetDamage());
         }
         if(collision.gameObject.tag == "Player")
         {
