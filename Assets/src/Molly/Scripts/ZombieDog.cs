@@ -1,32 +1,31 @@
+/*
+ * ZombieDog.cs
+ * Molly Meadows
+ * Description: This is a child class script of Dog. This does all the animations of the zombie dog sprites and handles the collisions. It also includes the functionality
+ * called from DogPool in order to set the stats of the dog when they are spawned into the scene.
+*/
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 
+/*
+ * Description: This class handles the initialization of the variables for each zombie dog sprite when they get spawned. 
+ * There are also collision functions inside this class that handles when a sprite collides with a bullet or player prefab.
+ *
+ * Member Variables:
+ * private Animator animate: sets the variables in the zombie dog sprite animator
+*/
 public class ZombieDog : Dog, IDogP
 {  
-    //will hold the position of the zombie dog
-    private Vector3 pos;
-
     //will hold the animation variables to be set
     private Animator animate;
-
-    // default constructor
-    public ZombieDog()
-	{
-    }
-
-    //constructor that takes inital spawn position
-    public ZombieDog(Vector3 pos)
-	{
-        this.pos = pos;
-    }
 
     void Awake() {
         animate = gameObject.GetComponent<Animator>();
     }
 
-    // called from DogPool
+    //called from DogPool
     public void OnObjectSpawn()
     {
         //initiate sound upon spawning

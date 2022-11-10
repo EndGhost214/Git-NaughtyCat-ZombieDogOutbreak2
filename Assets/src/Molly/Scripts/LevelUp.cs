@@ -1,8 +1,20 @@
+/*
+ * LevelUp.cs
+ * Molly Meadows
+ * Description: This is the class for the decorator pattern for the zombie dog sprites. It also includes dynamic binding to set the stats to slightly better than they
+ * were for the round previous. 
+*/
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 
+/*
+ * Description: This is the decorator class that sets the base components and adds to each stat
+ * 
+ * Member Variables:
+ * private ZombieDog ZomDog: type of zombiedog that will set the sprite to have increased stats
+*/
 public class LevelUp : ZombieDog
 {
     private ZombieDog ZomDog;

@@ -1,3 +1,8 @@
+/*
+ * DogSpawner.cs
+ * Molly Meadows
+ * Description: Temporary Class to demonstrate the spawning of the zombie dogs.
+*/
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
