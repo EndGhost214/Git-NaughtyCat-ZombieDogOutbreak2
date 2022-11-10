@@ -60,6 +60,7 @@ public class BCShooter : MonoBehaviour
     {
         if (other.gameObject.tag == "bulletdrop")
         {
+            SoundManager.Instance.pickUpFunction();
             other.gameObject.SetActive(false);
         }
         

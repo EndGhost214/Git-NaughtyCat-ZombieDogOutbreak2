@@ -70,6 +70,10 @@ public class Shooter : MonoBehaviour
             mag--;
             
         }
+        else if (Input.GetMouseButton(0) && mag == 0)
+        {
+            SoundManager.Instance.gunEmptySoundFunction();
+        }
 
         //Repload with R
         if (Input.GetKeyDown(KeyCode.R))
@@ -97,6 +101,8 @@ public class Shooter : MonoBehaviour
     {
         if (other.gameObject.tag == "bulletdrop")
         {
+            
+            SoundManager.Instance.pickUpFunction();
             ammoCount = ammoCount + (MAG_SIZE * 3);
             if (ammoCount > MAX_AMMO)
             {

@@ -32,24 +32,28 @@ public class PlayerInventory : MonoBehaviour
     {
         if (other.gameObject.tag == "heartdrop")
         {
+            SoundManager.Instance.pickUpFunction();
             invHeart = true;
             other.gameObject.SetActive(false);
         }
 
         if (other.gameObject.tag == "tuftdrop")
         {
+            SoundManager.Instance.pickUpFunction();
             invTuft = true;
             other.gameObject.SetActive(false);
         }
 
         if (other.gameObject.tag == "cure")
         {
+            SoundManager.Instance.pickUpFunction();
             invCure = true;
             other.gameObject.SetActive(false);
         }
 
         if (other.gameObject.tag == "serum")
         {
+            SoundManager.Instance.pickUpFunction();
             invSerum = true;
             other.gameObject.SetActive(false);
         }

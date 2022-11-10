@@ -14,6 +14,7 @@ using UnityEngine;
  * body - rigidbody of the player
  * playerOject - object of the player
  * movement - x and y values for the players movement
+ * random - random number 1-100 for player meow sound
  */
 public class Player : MonoBehaviour
 {
@@ -25,6 +26,8 @@ public class Player : MonoBehaviour
     [SerializeField]
     private GameObject playerObject;
     private Vector2 movement;
+
+    private int random;
 
     //Awake function called when the gameobject is first spawned
     protected virtual void Awake()
@@ -42,6 +45,13 @@ public class Player : MonoBehaviour
     private void FixedUpdate()
     {
         body.MovePosition(body.position + movement * walkSpeed * Time.fixedDeltaTime);
+
+        random = Random.Range(0, 100);
+        if(random >= 90)
+        {
+            SoundManager.Instance.catMeowFunction();
+        }
+
     }
 
     protected virtual GameObject GetPlayerObject()
