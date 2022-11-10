@@ -13,10 +13,14 @@ using UnityEngine;
 *class that creates item pool for items and moves them between the queue and game
 *member variables:
 * ItemPool - details of the item pool
+* container - for scene organization with the item pool
 */
 public class ItemPooler : MonoBehaviour
 {
-    
+    //for scene organization with the item pool
+    [SerializeField]
+    Transform container;
+
     /*
     *class that contains the item pool details
     *member variables:
@@ -72,7 +76,7 @@ public class ItemPooler : MonoBehaviour
             //create each of the objects in the queue
             for(int i=0;i<pool.size;i++)
             {
-                GameObject obj = Instantiate(pool.prefab); //instantiates the item
+                GameObject obj = Instantiate(pool.prefab, container, false); //instantiates the item
                 obj.SetActive(false); //disables it so you cant see it yet
                 objectPool.Enqueue(obj);  //add it to the end of our queue
             }
