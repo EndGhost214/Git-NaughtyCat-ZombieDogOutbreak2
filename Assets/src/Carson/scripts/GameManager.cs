@@ -104,13 +104,13 @@ public class GameManager : Singleton<GameManager> {
 		// When the user presses something
 		if (Input.anyKey) {
 			// Check if they were idle
-			if (Time.time - idleTime > 60) {
+			if (Time.time - idleTime > 10) {
 				demo.HideVideo(); // stop the video, resume time
 			}
 			
 			idleTime = (int) Time.time; // reset the timer
 		}
-		else if (Time.time - idleTime > 60) {
+		else if (Time.time - idleTime > 10) {
 			//Debug.Log("Player is idle");
 			demo.ShowVideo(); // freeze the game and show the video
 		}
