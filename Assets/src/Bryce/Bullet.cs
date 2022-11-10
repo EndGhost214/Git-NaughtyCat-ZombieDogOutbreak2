@@ -20,7 +20,7 @@ public class Bullet : MonoBehaviour, IPooledObject
 {
     [SerializeField]
     private float bulletSpeed = 15f;
-    private float bulletDamage = 100f;
+    private float bulletDamage = 35f;
 
     private Rigidbody2D rb;
 

@@ -97,7 +97,7 @@ public class Shooter : MonoBehaviour
     {
         if (other.gameObject.tag == "bulletdrop")
         {
-            ammoCount = ammoCount + (MAG_SIZE * 6);
+            ammoCount = ammoCount + (MAG_SIZE * 3);
             if (ammoCount > MAX_AMMO)
             {
                 ammoCount = MAX_AMMO;
