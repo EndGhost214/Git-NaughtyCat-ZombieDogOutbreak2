@@ -232,29 +232,6 @@ public class GameManager : Singleton<GameManager> {
 						spawnDogs(2);
 						spawnedWave = time;
 					}
-					if (roundTime > 50 && roundTime % 10 == 0) {
-						Instantiate(bossDog, new Vector3(11.1999998f, 3f, 0f), Quaternion.identity);
-						spawnedWave = time;
-					}
-				}
-				else if (enemiesLeft() == 0) {
-					newRound();
-				}
-			}
-			else if (round == 6) {
-				if (!finished) {
-					if (time % 4 == 0) {
-						spawnDogs(2);
-						spawnedWave = time;
-					}
-					if (time > 11 && time % 3 == 0) {
-						spawnDogs(1);
-						spawnedWave = time;
-					}
-					if (time > 20 && time % 3 == 0) {
-						spawnDogs(2);
-						spawnedWave = time;
-					}
 					if (roundTime == 50) {
 						Instantiate(bossDog, new Vector3(11.1999998f, 3f, 0f), Quaternion.identity);
 						finished = true;
@@ -264,22 +241,53 @@ public class GameManager : Singleton<GameManager> {
 					newRound();
 				}
 			}
+			else if (round == 6) {
+				if (!finished) {
+					if (roundTime % 4 == 0) {
+						spawnDogs(2);
+						spawnedWave = time;
+					}
+					if (roundTime > 11 && time % 3 == 0) {
+						spawnDogs(1);
+						spawnedWave = time;
+					}
+					if (roundTime > 20 && time % 3 == 0) {
+						spawnDogs(2);
+						spawnedWave = time;
+					}
+					if (roundTime == 30) {
+						Instantiate(bossDog, new Vector3(11.1999998f, 3f, 0f), Quaternion.identity);
+						spawnedWave = time;
+					}
+					if (roundTime == 45) {
+						Instantiate(bossDog, new Vector3(11.1999998f, 3f, 0f), Quaternion.identity);
+						spawnedWave = time;
+					}
+					if (roundTime == 60) {
+						Instantiate(bossDog, new Vector3(11.1999998f, 3f, 0f), Quaternion.identity);
+						finished = true;
+					}
+				}
+				else if (enemiesLeft() == 0) {
+					newRound();
+				}
+			}
 			else if (round == 7) {
-				if (time % 4 == 0) {
+				if (roundTime % 4 == 0) {
 					spawnDogs(2);
 					spawnedWave = time;
 				}
-				if (time > 11 && time % 3 == 0) {
+				if (roundTime > 11 && roundTime % 3 == 0) {
 					spawnDogs(1);
 					spawnedWave = time;
 				}
-				if (time > 20 && time % 3 == 0) {
+				if (roundTime > 20 && roundTime % 3 == 0) {
 					spawnDogs(2);
 					spawnedWave = time;
 				}
-				if (roundTime > 50) {
+				if (roundTime > 50 && roundTime % 10 == 0) {
 					Instantiate(bossDog, new Vector3(11.1999998f, 3f, 0f), Quaternion.identity);
-					finished = true;
+					spawnedWave = time;
 				}
 			}
 		}
