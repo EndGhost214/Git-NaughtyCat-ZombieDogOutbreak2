@@ -16,7 +16,9 @@ using UnityEngine;
 */
 public class ItemPooler : MonoBehaviour
 {
-    
+    [SerializeField]
+    Transform container;
+
     /*
     *class that contains the item pool details
     *member variables:
@@ -72,7 +74,7 @@ public class ItemPooler : MonoBehaviour
             //create each of the objects in the queue
             for(int i=0;i<pool.size;i++)
             {
-                GameObject obj = Instantiate(pool.prefab); //instantiates the item
+                GameObject obj = Instantiate(pool.prefab, container, false); //instantiates the item
                 obj.SetActive(false); //disables it so you cant see it yet
                 objectPool.Enqueue(obj);  //add it to the end of our queue
             }
