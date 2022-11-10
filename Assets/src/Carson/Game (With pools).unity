@@ -2880,6 +2880,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 026e4c30af6b7fa4f8a3e5b6fcbc545d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bossDog: {fileID: 0}
   playerScript: {fileID: 1215895306}
 --- !u!114 &208711886
 MonoBehaviour:
@@ -17027,6 +17028,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34e93f65bbc7e9a43b077d56c211e00a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  container: {fileID: 856903998}
   pools:
   - tag: Bullet
     prefab: {fileID: 1055505892}
