@@ -89,6 +89,9 @@ public class ZombieDog : Dog, IDogP
                 animate.SetFloat("Speed", 0f);
                 animate.SetBool("isAttack", false);
                 //Debug.Log("here");
+                //disables the collider so dogs can run past them
+                CapsuleCollider2D mcollider = GetComponent<CapsuleCollider2D>();
+                mcollider.enabled = !mcollider.enabled;
                 Invoke("Death", 1);
             }
         }

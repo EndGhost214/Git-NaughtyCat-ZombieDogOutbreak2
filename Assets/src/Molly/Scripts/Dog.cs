@@ -26,6 +26,8 @@ public class Dog : MonoBehaviour
     public float damage;
     public float speed;
 
+
+
     //Set the ZombieDog Sprite as inactive in the hierarchy. 
     public virtual void Death()
     {
@@ -34,6 +36,10 @@ public class Dog : MonoBehaviour
         {
             //calls the drop item function
             gameObject.GetComponent<LootBag>().InstantiateLoot(transform.position);
+
+            //disables the collider so dogs can run past them
+            CapsuleCollider2D mcollider = GetComponent<CapsuleCollider2D>();
+            mcollider.enabled = !mcollider.enabled;
         }
         
         gameObject.SetActive(false);
