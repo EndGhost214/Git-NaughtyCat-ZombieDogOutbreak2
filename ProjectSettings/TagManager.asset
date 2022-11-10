@@ -16,6 +16,9 @@ TagManager:
   - cure
   - serum
   - container
+  - TriggerCutscene1
+  - TriggerCutsceneCure
+  - TriggerCutsceneFinal
   layers:
   - Default
   - TransparentFX
