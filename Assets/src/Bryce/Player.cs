@@ -30,7 +30,7 @@ public class Player : MonoBehaviour
     private int random;
 
     //Awake function called when the gameobject is first spawned
-    protected virtual void Awake()
+    protected void Awake()
     {
         playerObject = GetPlayerObject();
         body = playerObject.GetComponent<Rigidbody2D>();
