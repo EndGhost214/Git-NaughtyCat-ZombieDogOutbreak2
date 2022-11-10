@@ -26,7 +26,7 @@ public class Dog : MonoBehaviour
     public float damage;
     public float speed;
 
-
+    private UpgradedLootBag bag;
 
     //Set the ZombieDog Sprite as inactive in the hierarchy. 
     public virtual void Death()
@@ -34,8 +34,10 @@ public class Dog : MonoBehaviour
         //Debug.Log("This Dog is dead");
         if(gameObject.activeInHierarchy==true)
         {
+            bag = new LootBag();
             //calls the drop item function
-            gameObject.GetComponent<LootBag>().InstantiateLoot(transform.position);
+            //gameObject.GetComponent<LootBag>().InstantiateLoot(transform.position);
+            bag.InstantiateLoot(gameObject.transform.position);
         }
         
         gameObject.SetActive(false);
