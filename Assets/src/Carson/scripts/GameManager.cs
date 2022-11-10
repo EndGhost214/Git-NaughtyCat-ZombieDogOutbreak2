@@ -354,6 +354,13 @@ public class GameManager : Singleton<GameManager> {
 		}
 	}
 	
+	/*
+	 * Returns the inventory script of the player for Tosin to reference.
+	 */
+	public PlayerInventory getInventory() {
+		return inventory;
+	}
+	
 	// Returns the next position a dog should be spawned.
 	private Vector3 nextSpawn() {
 		List<Vector3> sPoints = currentSpawnPoints;
