@@ -8,6 +8,8 @@ using TMPro;
 public class GameManager : Singleton<GameManager> {
 
 	private GameObject playerObject;
+	[SerializeField]
+	private GameObject bossDog;
 	private GameObject enemies;
 	
 	private PlayerInventory inventory;
@@ -186,6 +188,7 @@ public class GameManager : Singleton<GameManager> {
 						spawnedWave = time;
 					}
 					if (roundTime == 40) {
+						Instantiate(bossDog, new Vector3(11.1999998f, 3f, 0f), Quaternion.identity);
 						finished = true;
 					}
 				}
