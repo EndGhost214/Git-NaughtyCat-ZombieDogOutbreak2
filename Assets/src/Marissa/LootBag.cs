@@ -11,12 +11,14 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
+
+
 /*
 *class that contains the items and their ability to drop
 *member variables:
 *itemPooler - stores the item pools
 */
-public class LootBag : MonoBehaviour
+public class LootBag : UpgradedLootBag
 {
     
 
@@ -24,7 +26,7 @@ public class LootBag : MonoBehaviour
     ItemPooler itemPooler;
 
         /*
-        *function to spawn the loot where the dog last was
+        *function to spawn random loot where the dog last was
         *spawn position parameter
         *spawns the item where the zomdog was
         */
@@ -37,17 +39,17 @@ public class LootBag : MonoBehaviour
                 if(randomNumber>=1 && randomNumber<=45)
                 {
                     //spawns the bullet from the item pool
-                    ItemPooler.Instance.spawnFromPool("Bullet", transform.position, Quaternion.identity);
+                    ItemPooler.Instance.spawnFromPool("Bullet", spawnPosition, Quaternion.identity);
                 }
                 if(randomNumber>=46 && randomNumber<=50)
                 {
                     //spawns the tuft from the item pool
-                    ItemPooler.Instance.spawnFromPool("Tuft", transform.position, Quaternion.identity);
+                    ItemPooler.Instance.spawnFromPool("Tuft", spawnPosition, Quaternion.identity);
                 }
                 if(randomNumber>=51 && randomNumber<=61)
                 {
                     //spawns the heart from the item pool
-                    ItemPooler.Instance.spawnFromPool("Heart", transform.position, Quaternion.identity);
+                    ItemPooler.Instance.spawnFromPool("Heart", spawnPosition, Quaternion.identity);
                 }
 
 
