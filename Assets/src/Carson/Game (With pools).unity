@@ -7132,7 +7132,6 @@ GameObject:
   m_Component:
   - component: {fileID: 626864310}
   - component: {fileID: 626864309}
-  - component: {fileID: 626864308}
   m_Layer: 0
   m_Name: StartCutscene1
   m_TagString: Untagged
@@ -7140,18 +7139,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &626864308
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 626864307}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 29f0bd70fd79b3d4fa60d7ec0f5ed756, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!61 &626864309
 BoxCollider2D:
   m_ObjectHideFlags: 0

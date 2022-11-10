@@ -347,6 +347,7 @@ public class GameManager : Singleton<GameManager> {
 	// Spawn the provided number of dogs at the next spawn locations
 	private void spawnDogs(int num) {
 		Vector3 spawn = nextSpawn(); // get position to spawn dogs at next
+		spawn.z = -0.1f;
 		
 		// Clone the provided number of dogs
 		for (int i = 0; i < num; i++) {
