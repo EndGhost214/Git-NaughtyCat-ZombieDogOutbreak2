@@ -12,6 +12,9 @@ public class ObjectPooler : MonoBehaviour
         public int size;
     }
 
+    [SerializeField]
+    private Transform container;
+
     #region Singleton
 
     public static ObjectPooler Instance;
@@ -36,7 +39,7 @@ public class ObjectPooler : MonoBehaviour
             
             for(int i = 0; i< pool.size; i++)
             {
-               GameObject obj = Instantiate(pool.prefab);
+               GameObject obj = Instantiate(pool.prefab, container, false);
                 obj.SetActive(false);
                 objectPool.Enqueue(obj);
             }
