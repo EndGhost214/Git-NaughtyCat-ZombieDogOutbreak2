@@ -36,10 +36,6 @@ public class Dog : MonoBehaviour
         {
             //calls the drop item function
             gameObject.GetComponent<LootBag>().InstantiateLoot(transform.position);
-
-            //disables the collider so dogs can run past them
-            CapsuleCollider2D mcollider = GetComponent<CapsuleCollider2D>();
-            mcollider.enabled = !mcollider.enabled;
         }
         
         gameObject.SetActive(false);

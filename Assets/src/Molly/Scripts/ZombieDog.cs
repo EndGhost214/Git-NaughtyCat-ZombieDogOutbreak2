@@ -74,6 +74,7 @@ public class ZombieDog : Dog, IDogP
             Debug.Log("player is in dog zone");
             Debug.Log("health = " + health);
             GameManager.Instance.getPlayer().DamagePlayer(damage);
+            SoundManager.Instance.catHurtSoundFunction();
             //collision.gameObject.GetComponent<Player>().DamagePlayer(damage);
             if(health >= 0f)
             {
