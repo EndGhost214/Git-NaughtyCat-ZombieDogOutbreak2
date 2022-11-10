@@ -15,7 +15,6 @@ GameObject:
   - component: {fileID: 2337839887075201933}
   - component: {fileID: 3466791025073097308}
   - component: {fileID: 802747089947015051}
-  - component: {fileID: 6225295226656743793}
   - component: {fileID: 2155869692190379592}
   - component: {fileID: 2155869692190379607}
   - component: {fileID: 2155869692190379606}
@@ -162,9 +161,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e731582aee8f6514d98be5ff3d63ad68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tuftPrefab: {fileID: 3653544909829557377, guid: e0a2ac0cd4c456042a0cde0b3c343a7d, type: 3}
-  heartPrefab: {fileID: 124301775980067589, guid: e5c838be5e9a16041978b4416e7aed58, type: 3}
-  bulletPrefab: {fileID: 123828864607160359, guid: 360b401e374acd8498cbca339577694f, type: 3}
 --- !u!114 &802747089947015051
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -180,20 +176,6 @@ MonoBehaviour:
   health: 100
   damage: 5
   speed: 1
---- !u!114 &6225295226656743793
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5755214478945553496}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ea0c8fc5efb6a5146a145502a2e7e5ce, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemDrops:
-  - {fileID: 123828864607160359, guid: 360b401e374acd8498cbca339577694f, type: 3}
 --- !u!114 &2155869692190379592
 MonoBehaviour:
   m_ObjectHideFlags: 0
