@@ -28,30 +28,30 @@ public class PlayerInventory : MonoBehaviour
         return invSerum;
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        if (collision.gameObject.tag == "heartdrop")
+        if (other.gameObject.tag == "heartdrop")
         {
             invHeart = true;
-            collision.gameObject.SetActive(false);
+            other.gameObject.SetActive(false);
         }
 
-        if (collision.gameObject.tag == "tuftdrop")
+        if (other.gameObject.tag == "tuftdrop")
         {
             invTuft = true;
-            collision.gameObject.SetActive(false);
+            other.gameObject.SetActive(false);
         }
 
-        if (collision.gameObject.tag == "cure")
+        if (other.gameObject.tag == "cure")
         {
             invCure = true;
-            collision.gameObject.SetActive(false);
+            other.gameObject.SetActive(false);
         }
 
-        if (collision.gameObject.tag == "serum")
+        if (other.gameObject.tag == "serum")
         {
             invSerum = true;
-            collision.gameObject.SetActive(false);
+            other.gameObject.SetActive(false);
         }
     }
 }

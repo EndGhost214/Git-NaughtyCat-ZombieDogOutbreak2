@@ -55,12 +55,12 @@ public class BCShooter : MonoBehaviour
 
     }
 
-    //Oncollision to check for bullet pickup and deletes bullet drop
-    private void OnCollisionEnter2D(Collision2D collision)
+    //OnTrigger to check for bullet pickup and inactivates bullet drop
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        if (collision.gameObject.tag == "bulletdrop")
+        if (other.gameObject.tag == "bulletdrop")
         {
-            collision.gameObject.SetActive(false);
+            other.gameObject.SetActive(false);
         }
         
     }

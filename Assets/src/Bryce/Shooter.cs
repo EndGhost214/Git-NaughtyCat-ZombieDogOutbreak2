@@ -92,19 +92,21 @@ public class Shooter : MonoBehaviour
 
     }
 
-    //Oncollision to check for bullet pickup, adds bullets then deletes bullet drop
-    private void OnCollisionEnter2D(Collision2D collision)
+    //OnTrigger to check for bullet pickup, adds bullets then inactivates bullet drop
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        if (collision.gameObject.tag == "bulletdrop")
+        if (other.gameObject.tag == "bulletdrop")
         {
             ammoCount = ammoCount + (MAG_SIZE * 6);
             if (ammoCount > MAX_AMMO)
             {
                 ammoCount = MAX_AMMO;
             }
-            collision.gameObject.SetActive(false);
+            other.gameObject.SetActive(false);
         }
     }
+
+   
 
     //Returns the count of thr reserve ammo
     public int ReserveAmmoCount()
