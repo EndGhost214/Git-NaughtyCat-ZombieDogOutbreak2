@@ -28,7 +28,7 @@ public class LootBag : MonoBehaviour
         *spawn position parameter
         *spawns the item where the zomdog was
         */
-        public void InstantiateLoot(Vector3 spawnPosition)
+        public override void InstantiateLoot(Vector3 spawnPosition)
         {
             
                 //picks a number 1-70
@@ -37,17 +37,17 @@ public class LootBag : MonoBehaviour
                 if(randomNumber>=1 && randomNumber<=45)
                 {
                     //spawns the bullet from the item pool
-                    ItemPooler.Instance.spawnFromPool("Bullet", transform.position, Quaternion.identity);
+                    ItemPooler.Instance.spawnFromPool("Bullet", spawnPosition, Quaternion.identity);
                 }
                 if(randomNumber>=46 && randomNumber<=50)
                 {
                     //spawns the tuft from the item pool
-                    ItemPooler.Instance.spawnFromPool("Tuft", transform.position, Quaternion.identity);
+                    ItemPooler.Instance.spawnFromPool("Tuft", spawnPosition, Quaternion.identity);
                 }
                 if(randomNumber>=51 && randomNumber<=61)
                 {
                     //spawns the heart from the item pool
-                    ItemPooler.Instance.spawnFromPool("Heart", transform.position, Quaternion.identity);
+                    ItemPooler.Instance.spawnFromPool("Heart", spawnPosition, Quaternion.identity);
                 }
 
 
