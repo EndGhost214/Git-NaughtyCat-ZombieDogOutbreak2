@@ -18,7 +18,7 @@ public class LargeRoomFactory : AbstractRoomFactory
 		kitchen.door.Add(new Vector3(5.67000008f, 27.2700005f, -0.116151907f));
 		kitchen.door.Add(new Vector3(35.9599991f, 27.2199993f, -0.116151907f));
 		kitchen.spawn.Add(new Vector3(27.2000008f, 39.5999985f, 0));
-		kitchen.spawn.Add(new Vector3(5.9000001f, 58.4000015f, 0));
+		kitchen.spawn.Add(new Vector3(3.4000001f, 37.5999985f, 0));
 		kitchen.rotated.Add(true);
 		kitchen.rotated.Add(true);
 		kitchen.home = new Vector3(16.5747395f, -10.4444351f, 0.225589991f);

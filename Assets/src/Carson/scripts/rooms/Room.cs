@@ -5,7 +5,7 @@ using UnityEngine;
 // Class that defines the general attributes and behavior for room objects
 public class Room : MonoBehaviour
 {
-	public string name;
+	public new string name;
 
 	//private List<Vector3> spawnPoints;
 	private List<GameObject> doors;

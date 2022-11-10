@@ -4,7 +4,7 @@ using UnityEngine;
 
 // Singlton pattern to be inherited by other classes
 public class Singleton<T> : MonoBehaviour where T : Component {
-	private static T _instance;
+	protected static T _instance;
 	
 	//Reference to the instance accessible by other classes
 	public static T Instance {

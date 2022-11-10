@@ -54,7 +54,12 @@ public class MapManager : Singleton<MapManager> {
 	public Vector3 nextSpawn() {
 		// Increment counter to next spawn point in the list
 		spawnID = (spawnID + 1) % (vents.Count);
+		// Start the vent open animation
 		vents[spawnID].GetComponent<Animator>().Play("open", 0, 0);
+		// Disable the red closed texture
+		vents[spawnID].GetComponent<Animator>().SetBool("spawning", false);
+		// Enable the red texture for the next vent to spawn
+		vents[(spawnID + 1) % (vents.Count)].GetComponent<Animator>().SetBool("spawning", true);
 		return vents[spawnID].transform.position;
 	}
 	
@@ -62,12 +67,20 @@ public class MapManager : Singleton<MapManager> {
 		unlocked++;
 		
 		if (unlocked == rooms.Count) {
-			return "No room ";
+			return "";
 		}
 		
 		rooms[unlocked].unlockRoom();
 		
 		updateSpawnPoints();
+		
+		foreach (GameObject vent in vents) {
+			// Disable the red closed texture
+			vent.GetComponent<Animator>().SetBool("spawning", false);
+		}
+		
+		// Make the next vent to spawn red
+		vents[(spawnID + 1) % (vents.Count)].GetComponent<Animator>().SetBool("spawning", true);
 		
 		return rooms[unlocked].name;
 	}

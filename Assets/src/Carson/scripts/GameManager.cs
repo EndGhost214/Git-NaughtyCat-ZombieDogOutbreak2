@@ -57,7 +57,10 @@ public class GameManager : Singleton<GameManager> {
 	 * expensive method, it's much more efficient to assign these fields initially
 	 * than to search for them multiple times later.
 	 */
-	void Awake() {
+	public override void Awake() {
+		// Set the singleton instance property
+		_instance = this;
+		
 		HUD = GameObject.Find("HUD");
 		
 		Transform inventory = HUD.transform.Find("inventory");

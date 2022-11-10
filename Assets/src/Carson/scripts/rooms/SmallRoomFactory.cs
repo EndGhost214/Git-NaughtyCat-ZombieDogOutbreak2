@@ -7,7 +7,7 @@ public class SmallRoomFactory : AbstractRoomFactory
 	protected override void setUp() {
 		Positions exam1 = new Positions("Exam1");
 		exam1.door.Add(new Vector3(-21.3620663f, 11.2799358f, -0.116151907f));
-		exam1.spawn.Add(new Vector3(-25.5799999f, 21.2099991f, 0));
+		exam1.spawn.Add(new Vector3(-25.5799999f, 19.6299992f, 0));
 		exam1.rotated.Add(false);
 		exam1.home = new Vector3(16.5747395f, -10.4444351f, 0.225589991f);
 		
