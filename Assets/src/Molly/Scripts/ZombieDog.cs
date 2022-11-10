@@ -15,14 +15,14 @@ using UnityEngine;
  *
  * Member Variables:
  * private Animator animate: sets the variables in the zombie dog sprite animator
- *
+ *  private CapsuleCollider2D mcollider
 */
 public class ZombieDog : Dog, IDogP
 {  
     //will hold the animation variables to be set
     private Animator animate;
 
-    CapsuleCollider2D mcollider;
+    private CapsuleCollider2D mcollider;
 
     void Awake() {
         animate = gameObject.GetComponent<Animator>();
@@ -34,7 +34,7 @@ public class ZombieDog : Dog, IDogP
     {
         //enable the collider
         mcollider = gameObject.GetComponent<CapsuleCollider2D>();
-        mcollider.enabled = mcollider.enabled;
+        mcollider.enabled = true;
         //initiate sound upon spawning
         SoundManager.Instance.zombieSoundFunction();
         //get the animator components in the object animate in order to set animations accordingly
