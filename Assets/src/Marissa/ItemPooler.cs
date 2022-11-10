@@ -13,9 +13,11 @@ using UnityEngine;
 *class that creates item pool for items and moves them between the queue and game
 *member variables:
 * ItemPool - details of the item pool
+* container - for scene organization with the item pool
 */
 public class ItemPooler : MonoBehaviour
 {
+    //for scene organization with the item pool
     [SerializeField]
     Transform container;
 
