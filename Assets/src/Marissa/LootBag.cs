@@ -21,7 +21,7 @@ public class LootBag : UpgradedLootBag
     
 
     //to be able to store the pool
-    ItemPooler itemPooler;
+    //ItemPooler itemPooler;
 
         /*
         *function to spawn the loot where the dog last was
