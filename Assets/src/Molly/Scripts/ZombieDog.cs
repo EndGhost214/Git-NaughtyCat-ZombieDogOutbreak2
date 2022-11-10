@@ -22,17 +22,19 @@ public class ZombieDog : Dog, IDogP
     //will hold the animation variables to be set
     private Animator animate;
 
-    CapsuleCollider2D mcollider = GetComponent<CapsuleCollider2D>();
+    CapsuleCollider2D mcollider;
 
     void Awake() {
         animate = gameObject.GetComponent<Animator>();
+        mcollider = gameObject.GetComponent<CapsuleCollider2D>();
     }
 
     //called from DogPool
     public void OnObjectSpawn()
     {
         //enable the collider
-        mcollider = mcollider.enabled;
+        mcollider = gameObject.GetComponent<CapsuleCollider2D>();
+        mcollider.enabled = mcollider.enabled;
         //initiate sound upon spawning
         SoundManager.Instance.zombieSoundFunction();
         //get the animator components in the object animate in order to set animations accordingly
