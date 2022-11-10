@@ -54,6 +54,7 @@ public class MapManager : Singleton<MapManager> {
 	public Vector3 nextSpawn() {
 		// Increment counter to next spawn point in the list
 		spawnID = (spawnID + 1) % (vents.Count);
+		vents[spawnID].GetComponent<Animator>().SetBool("spawning", true);
 		return vents[spawnID].transform.position;
 	}
 	
