@@ -87,9 +87,11 @@ public class GameManager : Singleton<GameManager> {
 		demo = gameObject.GetComponent<DemoShow>();
 	}
 
-    // Start is called before the first frame update
+    /*
+	 * Start is called before the first frame update by Unity.
+	 */
     void Start() {
-        // Open start menu from Ambrea
+        // Open start menu from Ambrea?
 		startGame(1);
     }
 	
@@ -129,8 +131,17 @@ public class GameManager : Singleton<GameManager> {
 		timeText.text = getMinutes() + ":" + getSeconds();
 		roundTimeText.text = "" + roundTime;
 		
-		// Check that the game is in progress
-        if (spawnedWave < time) {
+		// Don't spawn for the first 5 (0-4) seconds of each round
+		if (round > 0 && roundTime < 5) {
+			spawnedWave = roundTime;
+			
+			if (round == 2 || round == 7) {
+				playerScript.SetHealth(100f);
+			}
+		}
+		
+ 		// Check that the game is in progress
+		if (spawnedWave < roundTime) {
 			if (round == 0) {
 				// Begin the game after 4 seconds
 				if (time == 4) {
@@ -141,11 +152,11 @@ public class GameManager : Singleton<GameManager> {
 				if (!finished) {
 					if (roundTime % 6 == 0) {
 						spawnDogs(2);
-						spawnedWave = time;
+						spawnedWave = roundTime;
 					}
 					if (roundTime > 19 && roundTime % 4 == 0) {
 						spawnDogs(1);
-						spawnedWave = time;
+						spawnedWave = roundTime;
 					}
 					if (roundTime == 30) {
 						finished = true;
@@ -159,11 +170,11 @@ public class GameManager : Singleton<GameManager> {
 				if (!finished) {
 					if (roundTime % 5 == 0) {
 						spawnDogs(2);
-						spawnedWave = time;
+						spawnedWave = roundTime;
 					}
 					if (roundTime > 17 && roundTime % 3 == 0) {
 						spawnDogs(1);
-						spawnedWave = time;
+						spawnedWave = roundTime;
 					}
 					if (roundTime == 33) {
 						finished = true;
@@ -177,15 +188,15 @@ public class GameManager : Singleton<GameManager> {
 				if (!finished) {
 					if (roundTime % 5 == 0) {
 						spawnDogs(2);
-						spawnedWave = time;
+						spawnedWave = roundTime;
 					}
 					if (roundTime > 11 && roundTime % 3 == 0) {
 						spawnDogs(1);
-						spawnedWave = time;
+						spawnedWave = roundTime;
 					}
 					if (roundTime > 29 && roundTime % 3 == 0) {
 						spawnDogs(1);
-						spawnedWave = time;
+						spawnedWave = roundTime;
 					}
 					if (roundTime == 40) {
 						finished = true;
@@ -199,15 +210,15 @@ public class GameManager : Singleton<GameManager> {
 				if (!finished) {
 					if (roundTime % 4 == 0) {
 						spawnDogs(2);
-						spawnedWave = time;
+						spawnedWave = roundTime;
 					}
 					if (roundTime > 11 && roundTime % 3 == 0) {
 						spawnDogs(1);
-						spawnedWave = time;
+						spawnedWave = roundTime;
 					}
 					if (roundTime > 29 && roundTime % 3 == 0) {
 						spawnDogs(1);
-						spawnedWave = time;
+						spawnedWave = roundTime;
 					}
 					if (roundTime == 40) {
 						Instantiate(bossDog, new Vector3(11.1999998f, 3f, 0f), Quaternion.identity);
@@ -222,15 +233,15 @@ public class GameManager : Singleton<GameManager> {
 				if (!finished) {
 					if (roundTime % 4 == 0) {
 						spawnDogs(2);
-						spawnedWave = time;
+						spawnedWave = roundTime;
 					}
 					if (roundTime > 11 && roundTime % 3 == 0) {
 						spawnDogs(1);
-						spawnedWave = time;
+						spawnedWave = roundTime;
 					}
 					if (roundTime > 20 && roundTime % 3 == 0) {
 						spawnDogs(2);
-						spawnedWave = time;
+						spawnedWave = roundTime;
 					}
 					if (roundTime == 50) {
 						Instantiate(bossDog, new Vector3(-7.55000019f, 14.7200003f, 0), Quaternion.identity);
@@ -245,23 +256,23 @@ public class GameManager : Singleton<GameManager> {
 				if (!finished) {
 					if (roundTime % 4 == 0) {
 						spawnDogs(2);
-						spawnedWave = time;
+						spawnedWave = roundTime;
 					}
-					if (roundTime > 11 && time % 3 == 0) {
+					if (roundTime > 11 && roundTime % 3 == 0) {
 						spawnDogs(1);
-						spawnedWave = time;
+						spawnedWave = roundTime;
 					}
-					if (roundTime > 20 && time % 3 == 0) {
+					if (roundTime > 20 && roundTime % 3 == 0) {
 						spawnDogs(2);
-						spawnedWave = time;
+						spawnedWave = roundTime;
 					}
 					if (roundTime == 30) {
 						Instantiate(bossDog, new Vector3(44.5f, -13.6999998f, 0), Quaternion.identity);
-						spawnedWave = time;
+						spawnedWave = roundTime;
 					}
 					if (roundTime == 45) {
 						Instantiate(bossDog, new Vector3(11.1999998f, 3f, 0), Quaternion.identity);
-						spawnedWave = time;
+						spawnedWave = roundTime;
 					}
 					if (roundTime == 60) {
 						Instantiate(bossDog, new Vector3(-7.55000019f, 14.7200003f, 0), Quaternion.identity);
@@ -275,19 +286,19 @@ public class GameManager : Singleton<GameManager> {
 			else if (round == 7) {
 				if (roundTime % 4 == 0) {
 					spawnDogs(2);
-					spawnedWave = time;
+					spawnedWave = roundTime;
 				}
 				if (roundTime > 11 && roundTime % 3 == 0) {
 					spawnDogs(1);
-					spawnedWave = time;
+					spawnedWave = roundTime;
 				}
 				if (roundTime > 20 && roundTime % 3 == 0) {
 					spawnDogs(2);
-					spawnedWave = time;
+					spawnedWave = roundTime;
 				}
 				if (roundTime > 50 && roundTime % 10 == 0) {
 					Instantiate(bossDog, new Vector3(25.6299992f, 26.2199993f, 0), Quaternion.identity);
-					spawnedWave = time;
+					spawnedWave = roundTime;
 				}
 			}
 		}
@@ -296,6 +307,7 @@ public class GameManager : Singleton<GameManager> {
 	private void newRound() {
 		lastRoundTime = (int) Time.time;
 		round++;
+		spawnedWave = 0;
 		finished = false;
 		roundText.text = "" + getRound();
 		Debug.Log(map.unlockRoom() + " has just been unlocked!");
