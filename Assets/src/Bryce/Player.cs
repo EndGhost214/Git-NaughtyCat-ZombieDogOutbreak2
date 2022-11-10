@@ -34,6 +34,7 @@ public class Player : MonoBehaviour
     {
         playerObject = GetPlayerObject();
         body = playerObject.GetComponent<Rigidbody2D>();
+        
     }
 
     private void Update()
@@ -46,8 +47,9 @@ public class Player : MonoBehaviour
     {
         body.MovePosition(body.position + movement * walkSpeed * Time.fixedDeltaTime);
 
-        random = Random.Range(0, 100);
-        if(random >= 90)
+        //Player meow sound played with a chance of ~10% each second as fixed update is called 50 times a second
+        random = Random.Range(0, 1000);
+        if(random >= 999)
         {
             SoundManager.Instance.catMeowFunction();
         }
