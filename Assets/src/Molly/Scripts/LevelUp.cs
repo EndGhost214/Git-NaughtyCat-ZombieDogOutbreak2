@@ -43,7 +43,7 @@ public class LevelUp : ZombieDog
     //sets the health to 10 more than the existing health
     protected override float SetHealth()
     {
-        return ZomDog.health + 10f;
+        return ZomDog.health + 20f;
     }
 
     //sets the speed to .1 more than the existing speed
