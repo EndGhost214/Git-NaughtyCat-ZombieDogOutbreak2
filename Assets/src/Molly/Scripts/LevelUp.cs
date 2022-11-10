@@ -19,6 +19,13 @@ public class LevelUp : ZombieDog
 {
     private ZombieDog ZomDog;
 
+    /*
+     *This function sets the stats of the sprite passed in
+     *
+     *Parameter: Zombie dog sprite
+     *
+     * Uses the dynamically bound functions below to set the stats
+    */
     public override void SetDog(ZombieDog dog)
     {
         ZomDog = dog;
@@ -27,14 +34,19 @@ public class LevelUp : ZombieDog
         health = SetHealth();
     }
     
+    //sets the damage of the dog to 5 more than the existing damage
     protected override float SetDamage()
     {
         return ZomDog.damage + 5f;
     }
+
+    //sets the health to 10 more than the existing health
     protected override float SetHealth()
     {
         return ZomDog.health + 10f;
     }
+
+    //sets the speed to .1 more than the existing speed
     protected override float SetSpeed()
     {
         return ZomDog.speed + 0.1f;

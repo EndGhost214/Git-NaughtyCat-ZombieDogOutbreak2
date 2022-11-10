@@ -15,7 +15,7 @@ using UnityEngine;
  *
  * Member Variables:
  * private Animator animate: sets the variables in the zombie dog sprite animator
- *  private CapsuleCollider2D mcollider
+ *  private CapsuleCollider2D mcollider: checks to see if collider is enabled
 */
 public class ZombieDog : Dog, IDogP
 {  
@@ -29,7 +29,11 @@ public class ZombieDog : Dog, IDogP
         mcollider = gameObject.GetComponent<CapsuleCollider2D>();
     }
 
-    //called from DogPool
+    /*
+     * this function enables the collider, sets the stats of the dog,
+     * and also sets the animations to the correct state upon spawning
+     *
+    */
     public void OnObjectSpawn()
     {
         //enable the collider
@@ -46,9 +50,9 @@ public class ZombieDog : Dog, IDogP
         health = SetHealth();
 
         //debug statements to see values of dog
-        Debug.Log("Damage: " + damage);
-        Debug.Log("speed: " + speed);
-        Debug.Log("health: " + health);
+        //Debug.Log("Damage: " + damage);
+        //Debug.Log("speed: " + speed);
+        //Debug.Log("health: " + health);
 
         //set the speed of the dog (will be dependent on the levelup class)
         animate.SetFloat("Speed", speed);
@@ -56,7 +60,10 @@ public class ZombieDog : Dog, IDogP
         animate.SetFloat("Health", health);
     }
 
-    //updates not based on frames
+    /*
+     *This function will make sure the death animation plays for the health variable
+     *
+    */
     void FixedUpdate()
     {
         //set the speed and the health
@@ -65,25 +72,34 @@ public class ZombieDog : Dog, IDogP
         //Debug.Log("Health: " + health + " Speed: " + speed + " Damage: " + damage);
     }
 
-    //if player walks floato dog area, move
+    /*
+     * This function checks the collision of the zombie dog sprite with other prefabs
+     * 
+     * Parameter: type of collision
+     *
+     * If it collides with player is does damage to the player
+     * If it collides with a bullet, it does damage to the zombie dog
+    */
     void OnCollisionEnter2D(Collision2D collision)
 	{
-        //Debug.Log("testing");
+        // if the collision is with the player
         if(collision.gameObject.tag == "Player")
         {
-            Debug.Log("player is in dog zone");
-            Debug.Log("health = " + health);
+            //damage player
             GameManager.Instance.getPlayer().DamagePlayer(damage);
             SoundManager.Instance.catHurtSoundFunction();
-            //collision.gameObject.GetComponent<Player>().DamagePlayer(damage);
+
+            //if colliding with player and the dog is not dead, then set the attack animation
             if(health >= 0f)
             {
                 animate.SetBool("isAttack", true);
             }
         }
+
+        // if the collision is with a bullet prefab
         if(collision.gameObject.tag == "Bullet")
         {
-            //hurt sound 
+            // plays the hurt sound
             SoundManager.Instance.zombieHurtFunction();
 
             //take the damage of the bullet
@@ -105,6 +121,11 @@ public class ZombieDog : Dog, IDogP
         }
     }
 
+    /*
+     *This function will stop the attack animation if the player is no longer touching the dog
+     *
+     * Parameter: collision2D, the object that is colliding
+    */
     void OnCollisionExit2D(Collision2D collision)
 	{  
         
@@ -116,21 +137,31 @@ public class ZombieDog : Dog, IDogP
         }
     }
 
+    //sets the damage of the zombie dog
     protected virtual float SetDamage()
 	{
         return damage;
     }
 
+    //sets the health of the zombie dog
     protected virtual float SetHealth()
 	{
         return health;
     }
 
+    //sets the speed of the zombie dog
     protected virtual float SetSpeed()
 	{
         return speed;
     }
 
+    /*
+     *This function calls the functions that set the stats of the zombie dog
+     *
+     * Parameter of type ZombieDog
+     *
+     * No code here, gets overriden by child classes
+    */
     public virtual void SetDog(ZombieDog dog)
 	{
     }
