@@ -50,9 +50,11 @@ public abstract class AbstractRoomFactory : MonoBehaviour
 		List<Vector3> doorPositions = new List<Vector3>();
 		doorPositions.AddRange(roomInfo[name].door);
 
+		// Store the vents in a list so the map manager can control them
+		List<GameObject> vents = new List<GameObject>();
 		// Get the prefab vent
-		Transform temp = newRoom.transform.Find("vent");
-		temp.position = newRoom.transform.TransformPoint(spawnPoints[0]);
+		vents.Add(newRoom.transform.Find("vent").gameObject);
+		vents[0].transform.position = newRoom.transform.TransformPoint(spawnPoints[0]);
 		
 		// Store the doors in a list so the map manager can open them
 		List<GameObject> doors = new List<GameObject>();
@@ -63,7 +65,7 @@ public abstract class AbstractRoomFactory : MonoBehaviour
 			doors[0].transform.Rotate(0, 0, 90);
 		}
 		
-		room.setSpawnPoints(spawnPoints);
+		room.setSpawnPoints(vents);
 		room.setDoors(doors);
 		return room;
 	}

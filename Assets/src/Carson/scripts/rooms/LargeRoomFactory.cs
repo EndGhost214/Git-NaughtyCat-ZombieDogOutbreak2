@@ -39,10 +39,13 @@ public class LargeRoomFactory : AbstractRoomFactory
 		List<Vector3> doorPositions = new List<Vector3>();
 		doorPositions.AddRange(roomInfo[name].door);
 
+		// Store the vents in a list so their animations can be individually controlled later
+		List<GameObject> vents = new List<GameObject>();
+
 		// Get the prefab vent
-		Transform temp = newRoom.transform.Find("vent");
-		temp.position = newRoom.transform.TransformPoint(spawnPoints[0]);
-		Instantiate(temp.gameObject, newRoom.transform.TransformPoint(spawnPoints[1]), Quaternion.identity, newRoom.transform);
+		vents.Add(newRoom.transform.Find("vent").gameObject);
+		vents[0].transform.position = newRoom.transform.TransformPoint(spawnPoints[0]);
+		vents.Add(Instantiate(vents[0], newRoom.transform.TransformPoint(spawnPoints[1]), Quaternion.identity, newRoom.transform));
 		
 		// Store the doors in a list so the map manager can open them
 		List<GameObject> doors = new List<GameObject>();
@@ -59,7 +62,7 @@ public class LargeRoomFactory : AbstractRoomFactory
 			}
 		}
 		
-		room.setSpawnPoints(spawnPoints);
+		room.setSpawnPoints(vents);
 		room.setDoors(doors);
 		return room;
 	}

@@ -6,13 +6,14 @@ public class MapManager : Singleton<MapManager> {
 	[SerializeField]
 	private GameObject basicRoom;
 	
-	private List<Vector3> spawnPoints;
+	private List<GameObject> vents;
 	private List<Room> rooms;
 	private int unlocked;
+	private int spawnID = 0; // index of next spawnpoint to use
+
 	
     // Start is called before the first frame update
     void Start() {
-		spawnPoints = new List<Vector3>();
 		rooms = new List<Room>();
 		
 		unlocked = -1;
@@ -39,26 +40,33 @@ public class MapManager : Singleton<MapManager> {
 	}
 
 	// Return the list of spawnpoints
-	public List<Vector3> getSpawnPoints() {
-		spawnPoints = new List<Vector3>();
+	private void updateSpawnPoints() {
+		vents = new List<GameObject>();
 		
 		foreach (Room room in rooms) {
 			if (!room.isLocked()) {
-				spawnPoints.AddRange(room.getSpawnPoints());
+				vents.AddRange(room.getSpawnPoints());
 			}
 		}
-		
-		return spawnPoints;
+	}
+	
+	// Returns the next position a dog should be spawned.
+	public Vector3 nextSpawn() {
+		// Increment counter to next spawn point in the list
+		spawnID = (spawnID + 1) % (vents.Count);
+		return vents[spawnID].transform.position;
 	}
 	
 	public string unlockRoom() {
 		unlocked++;
 		
 		if (unlocked == rooms.Count) {
-			return "No ";
+			return "No room ";
 		}
 		
 		rooms[unlocked].unlockRoom();
+		
+		updateSpawnPoints();
 		
 		return rooms[unlocked].name;
 	}

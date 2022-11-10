@@ -14,6 +14,7 @@ public class GameManager : Singleton<GameManager> {
 	
 	private PlayerInventory inventory;
 	
+	// HUD elements to enable/set the text of
 	private GameObject HUD;
 	private GameObject heart;
 	private GameObject serum;
@@ -21,7 +22,6 @@ public class GameManager : Singleton<GameManager> {
 	private GameObject cure;
 	private GameObject hint1;
 	private GameObject hint2;
-
 	private TextMeshProUGUI bulletCount;
 	private TextMeshProUGUI magCount;
 	private TextMeshProUGUI health;
@@ -29,7 +29,6 @@ public class GameManager : Singleton<GameManager> {
 	private TextMeshProUGUI timeText;
 	private TextMeshProUGUI roundTimeText;
 	private TextMeshProUGUI enemyCount;
-	
 	private Slider healthBar;
 	
 	// Player object for molly to reference to allow the dogs to do damage
@@ -38,7 +37,6 @@ public class GameManager : Singleton<GameManager> {
 	private DemoShow demo;
 	
 	private MapManager map;
-	private List<Vector3> currentSpawnPoints;
 	
 	// Keep track of how long the game has run
 	private int startTime;
@@ -47,7 +45,6 @@ public class GameManager : Singleton<GameManager> {
 	private int roundTime;
 	private int lastRoundTime = 0;
 	
-	private int spawnID = 0; // index of next spawnpoint to use
 	private int spawnedWave = 0; // time of last spawned wave
 	private int round = 0;
 	private bool finished = false;
@@ -104,13 +101,13 @@ public class GameManager : Singleton<GameManager> {
 		// When the user presses something
 		if (Input.anyKey) {
 			// Check if they were idle
-			if (Time.time - idleTime > 10) {
+			if (Time.time - idleTime > 30) {
 				demo.HideVideo(); // stop the video, resume time
 			}
 			
 			idleTime = (int) Time.time; // reset the timer
 		}
-		else if (Time.time - idleTime > 10) {
+		else if (Time.time - idleTime > 30) {
 			//Debug.Log("Player is idle");
 			demo.ShowVideo(); // freeze the game and show the video
 		}
@@ -311,7 +308,6 @@ public class GameManager : Singleton<GameManager> {
 		finished = false;
 		roundText.text = "" + getRound();
 		Debug.Log(map.unlockRoom() + " has just been unlocked!");
-		currentSpawnPoints = map.getSpawnPoints();
 	}
 	
 	private void updateHUD() {
@@ -346,7 +342,7 @@ public class GameManager : Singleton<GameManager> {
 	
 	// Spawn the provided number of dogs at the next spawn locations
 	private void spawnDogs(int num) {
-		Vector3 spawn = nextSpawn(); // get position to spawn dogs at next
+		Vector3 spawn = MapManager.Instance.nextSpawn(); // get position to spawn dogs at next
 		spawn.z = -0.1f;
 		
 		// Clone the provided number of dogs
@@ -360,16 +356,6 @@ public class GameManager : Singleton<GameManager> {
 	 */
 	public PlayerInventory getInventory() {
 		return inventory;
-	}
-	
-	// Returns the next position a dog should be spawned.
-	private Vector3 nextSpawn() {
-		List<Vector3> sPoints = currentSpawnPoints;
-		
-		// Increment counter to next spawn point in the list
-		spawnID = (spawnID + 1) % (sPoints.Count);
-		//Debug.Log(spawnID);
-		return sPoints[spawnID];
 	}
 	
 	// Call to end the game when the player dies or quits.
