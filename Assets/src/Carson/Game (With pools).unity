@@ -2880,7 +2880,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 026e4c30af6b7fa4f8a3e5b6fcbc545d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bossDog: {fileID: 0}
+  bossDog: {fileID: 1787611474}
   playerScript: {fileID: 1215895306}
 --- !u!114 &208711886
 MonoBehaviour:
@@ -17631,6 +17631,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1779685740}
   m_CullTransparentMesh: 1
+--- !u!1 &1787611474 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8985931492453228275, guid: 7f488346238bdd8418ad1af5b245e6db, type: 3}
+  m_PrefabInstance: {fileID: 1257173661}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1789612609
 GameObject:
   m_ObjectHideFlags: 0
