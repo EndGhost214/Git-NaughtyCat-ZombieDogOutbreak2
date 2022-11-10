@@ -233,7 +233,7 @@ public class GameManager : Singleton<GameManager> {
 						spawnedWave = time;
 					}
 					if (roundTime == 50) {
-						Instantiate(bossDog, new Vector3(11.1999998f, 3f, 0f), Quaternion.identity);
+						Instantiate(bossDog, new Vector3(-7.55000019f, 14.7200003f, 0), Quaternion.identity);
 						finished = true;
 					}
 				}
@@ -256,15 +256,15 @@ public class GameManager : Singleton<GameManager> {
 						spawnedWave = time;
 					}
 					if (roundTime == 30) {
-						Instantiate(bossDog, new Vector3(11.1999998f, 3f, 0f), Quaternion.identity);
+						Instantiate(bossDog, new Vector3(44.5f, -13.6999998f, 0), Quaternion.identity);
 						spawnedWave = time;
 					}
 					if (roundTime == 45) {
-						Instantiate(bossDog, new Vector3(11.1999998f, 3f, 0f), Quaternion.identity);
+						Instantiate(bossDog, new Vector3(11.1999998f, 3f, 0), Quaternion.identity);
 						spawnedWave = time;
 					}
 					if (roundTime == 60) {
-						Instantiate(bossDog, new Vector3(11.1999998f, 3f, 0f), Quaternion.identity);
+						Instantiate(bossDog, new Vector3(-7.55000019f, 14.7200003f, 0), Quaternion.identity);
 						finished = true;
 					}
 				}
@@ -286,7 +286,7 @@ public class GameManager : Singleton<GameManager> {
 					spawnedWave = time;
 				}
 				if (roundTime > 50 && roundTime % 10 == 0) {
-					Instantiate(bossDog, new Vector3(11.1999998f, 3f, 0f), Quaternion.identity);
+					Instantiate(bossDog, new Vector3(25.6299992f, 26.2199993f, 0), Quaternion.identity);
 					spawnedWave = time;
 				}
 			}
