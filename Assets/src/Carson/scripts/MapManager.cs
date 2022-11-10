@@ -54,6 +54,10 @@ public class MapManager : Singleton<MapManager> {
 	public string unlockRoom() {
 		unlocked++;
 		
+		if (unlocked == rooms.Count) {
+			return "No ";
+		}
+		
 		rooms[unlocked].unlockRoom();
 		
 		return rooms[unlocked].name;

@@ -157,11 +157,11 @@ public class GameManager : Singleton<GameManager> {
 			}
 			else if (round == 2) {
 				if (!finished) {
-					if (time % 5 == 0) {
+					if (roundTime % 5 == 0) {
 						spawnDogs(2);
 						spawnedWave = time;
 					}
-					if (time > 17 && time % 3 == 0) {
+					if (roundTime > 17 && roundTime % 3 == 0) {
 						spawnDogs(1);
 						spawnedWave = time;
 					}
@@ -175,15 +175,37 @@ public class GameManager : Singleton<GameManager> {
 			}
 			else if (round == 3) {
 				if (!finished) {
-					if (time % 5 == 0) {
+					if (roundTime % 5 == 0) {
 						spawnDogs(2);
 						spawnedWave = time;
 					}
-					if (time > 11 && time % 3 == 0) {
+					if (roundTime > 11 && roundTime % 3 == 0) {
 						spawnDogs(1);
 						spawnedWave = time;
 					}
-					if (time > 29 && time % 3 == 0) {
+					if (roundTime > 29 && roundTime % 3 == 0) {
+						spawnDogs(1);
+						spawnedWave = time;
+					}
+					if (roundTime == 40) {
+						finished = true;
+					}
+				}
+				else if (enemiesLeft() == 0) {
+					newRound();
+				}
+			}
+			else if (round == 4) {
+				if (!finished) {
+					if (roundTime % 4 == 0) {
+						spawnDogs(2);
+						spawnedWave = time;
+					}
+					if (roundTime > 11 && roundTime % 3 == 0) {
+						spawnDogs(1);
+						spawnedWave = time;
+					}
+					if (roundTime > 29 && roundTime % 3 == 0) {
 						spawnDogs(1);
 						spawnedWave = time;
 					}
@@ -194,6 +216,70 @@ public class GameManager : Singleton<GameManager> {
 				}
 				else if (enemiesLeft() == 0) {
 					newRound();
+				}
+			}
+			else if (round == 5) {
+				if (!finished) {
+					if (roundTime % 4 == 0) {
+						spawnDogs(2);
+						spawnedWave = time;
+					}
+					if (roundTime > 11 && roundTime % 3 == 0) {
+						spawnDogs(1);
+						spawnedWave = time;
+					}
+					if (roundTime > 20 && roundTime % 3 == 0) {
+						spawnDogs(2);
+						spawnedWave = time;
+					}
+					if (roundTime > 50 && roundTime % 10 == 0) {
+						Instantiate(bossDog, new Vector3(11.1999998f, 3f, 0f), Quaternion.identity);
+						spawnedWave = time;
+					}
+				}
+				else if (enemiesLeft() == 0) {
+					newRound();
+				}
+			}
+			else if (round == 6) {
+				if (!finished) {
+					if (time % 4 == 0) {
+						spawnDogs(2);
+						spawnedWave = time;
+					}
+					if (time > 11 && time % 3 == 0) {
+						spawnDogs(1);
+						spawnedWave = time;
+					}
+					if (time > 20 && time % 3 == 0) {
+						spawnDogs(2);
+						spawnedWave = time;
+					}
+					if (roundTime == 50) {
+						Instantiate(bossDog, new Vector3(11.1999998f, 3f, 0f), Quaternion.identity);
+						finished = true;
+					}
+				}
+				else if (enemiesLeft() == 0) {
+					newRound();
+				}
+			}
+			else if (round == 7) {
+				if (time % 4 == 0) {
+					spawnDogs(2);
+					spawnedWave = time;
+				}
+				if (time > 11 && time % 3 == 0) {
+					spawnDogs(1);
+					spawnedWave = time;
+				}
+				if (time > 20 && time % 3 == 0) {
+					spawnDogs(2);
+					spawnedWave = time;
+				}
+				if (roundTime > 50) {
+					Instantiate(bossDog, new Vector3(11.1999998f, 3f, 0f), Quaternion.identity);
+					finished = true;
 				}
 			}
 		}
