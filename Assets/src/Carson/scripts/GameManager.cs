@@ -1,17 +1,62 @@
+/*
+ * GameManager.cs
+ * Carson Sloan
+ * Control game infrastructure and flow.
+ */
+
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
 
-// Class to control UI elements and game event execution.
-public class GameManager : Singleton<GameManager> {
-
+/*
+ * Class to control UI elements and game event execution. Extends the Singleton
+ * class to follow the singleton pattern.
+ *
+ * PRIVATE PROPERTIES:
+ * playerObject - the player prefab controlled by the user, updated by start menu
+ * playerScript - player controller script that dogs use to deal damage
+ * bossDog - a prefab outside the map from which bosses are instantiated
+ * enemies - the container GameObject under which enemies are instantiated
+ * inventory - the inventory script attached to the user's character
+ * HUD - HUD container to make it more efficient to find children
+ * heart - image to show when a heart is in the inventory
+ * serum - image to show when the serum is picked up
+ * cure - image to show when the cure is created
+ * hint1 - remind the user to reload with R
+ * hint2 - remind the user to pick up bullet items
+ * hint3 - display which room was just unlocked
+ * bulletCount - number of bullets the player has in reserve
+ * magCount - number of bullets currently loaded
+ * health - text object displaying current player health
+ * roundText - displays the current round
+ * roundTimeText - displays the amount of time the current round has been going
+ * enemyCount - number of enemies currently alive
+ * healthBar - health bar slider object to scale with the player health
+ * demo - script that displays/hides the demo video
+ * map - MapManager to query spawn locations from and initialize+unlock rooms
+ * startTime - time the game was started
+ * time - time since the game started
+ * idleTime - time that the player last moved
+ * roundTime - time that has passed since the last round ended
+ * lastRoundTime - time that the last round ended
+ * spawnedWave - game time at which the last round was spawned
+ * round - current round number
+ * finished - whether or not the round is done spawning dogs
+ * PLAYER_SPAWN - constant position to spawn the player at
+ */
+public class GameManager : Singleton<GameManager>
+{
 	private GameObject playerObject;
+	// Player controller reference to allow the dogs to do damage
+	[SerializeField]
+	private SurvivalPlayer playerScript;
 	[SerializeField]
 	private GameObject bossDog;
 	private GameObject enemies;
 	
+	// Used to control which items display on the HUD
 	private PlayerInventory inventory;
 	
 	// HUD elements to enable/set the text of
@@ -22,6 +67,7 @@ public class GameManager : Singleton<GameManager> {
 	private GameObject cure;
 	private GameObject hint1;
 	private GameObject hint2;
+	private GameObject hint3;
 	private TextMeshProUGUI bulletCount;
 	private TextMeshProUGUI magCount;
 	private TextMeshProUGUI health;
@@ -31,14 +77,11 @@ public class GameManager : Singleton<GameManager> {
 	private TextMeshProUGUI enemyCount;
 	private Slider healthBar;
 	
-	// Player object for molly to reference to allow the dogs to do damage
-	[SerializeField]
-	private SurvivalPlayer playerScript;
 	private DemoShow demo;
 	
 	private MapManager map;
 	
-	// Keep track of how long the game has run
+	// Keep track of how long the game and rounds have run
 	private int startTime;
 	private int time;
 	private int idleTime;
@@ -50,7 +93,7 @@ public class GameManager : Singleton<GameManager> {
 	private bool finished = false;
 	
 	// Where the player begins the game
-	private Vector3 playerSpawn = new Vector3(-9, 1, -0.5f);
+	private readonly Vector3 PLAYER_SPAWN = new Vector3(-9, 1, -0.5f);
 
 	/*
 	 * Create references to scene objects to be updated later. Since Find is a very
@@ -62,17 +105,17 @@ public class GameManager : Singleton<GameManager> {
 		_instance = this;
 		
 		HUD = GameObject.Find("HUD");
-		
+		// Get inventory objects
 		Transform inventory = HUD.transform.Find("inventory");
-		
 		heart = inventory.Find("heart").gameObject;
 		tuft = inventory.Find("tuft").gameObject;
 		cure = inventory.Find("cure").gameObject;
 		serum = inventory.Find("serum").gameObject;
-		
+		// Get HUD objects
 		hint1 = HUD.transform.Find("hint1").gameObject;
 		hint2 = HUD.transform.Find("hint2").gameObject;
-		
+		hint3 = HUD.transform.Find("hint3").gameObject;
+		// Text objects in the HUD
 		bulletCount = HUD.transform.Find("inventory").Find("bulletCount").Find("Bullets").gameObject.GetComponent<TextMeshProUGUI>();
 		magCount = HUD.transform.Find("inventory").Find("bulletCount").Find("Magazine").gameObject.GetComponent<TextMeshProUGUI>();
 		healthBar = HUD.transform.Find("healthBar").GetComponent<Slider>();
@@ -118,6 +161,7 @@ public class GameManager : Singleton<GameManager> {
 
     /*
 	 * Called by Unity a fixed number of times per second, based on the time scale.
+	 * Used to control when enemies spawn and update the timer variables.
 	 */
     void FixedUpdate() {
 		updateHUD();
@@ -221,7 +265,7 @@ public class GameManager : Singleton<GameManager> {
 						spawnedWave = roundTime;
 					}
 					if (roundTime == 40) {
-						Instantiate(bossDog, new Vector3(11.1999998f, 3f, -0.1f), Quaternion.identity);
+						Instantiate(bossDog, new Vector3(11.1999998f, 3f, -0.1f), Quaternion.identity, enemies.transform);
 						finished = true;
 					}
 				}
@@ -244,7 +288,7 @@ public class GameManager : Singleton<GameManager> {
 						spawnedWave = roundTime;
 					}
 					if (roundTime == 50) {
-						Instantiate(bossDog, new Vector3(-7.55000019f, 14.7200003f, -0.1f), Quaternion.identity);
+						Instantiate(bossDog, new Vector3(-7.55000019f, 14.7200003f, -0.1f), Quaternion.identity, enemies.transform);
 						finished = true;
 					}
 				}
@@ -267,15 +311,15 @@ public class GameManager : Singleton<GameManager> {
 						spawnedWave = roundTime;
 					}
 					if (roundTime == 30) {
-						Instantiate(bossDog, new Vector3(44.5f, -13.6999998f, -0.1f), Quaternion.identity);
+						Instantiate(bossDog, new Vector3(44.5f, -13.6999998f, -0.1f), Quaternion.identity, enemies.transform);
 						spawnedWave = roundTime;
 					}
 					if (roundTime == 45) {
-						Instantiate(bossDog, new Vector3(11.1999998f, 3f, -0.1f), Quaternion.identity);
+						Instantiate(bossDog, new Vector3(11.1999998f, 3f, -0.1f), Quaternion.identity, enemies.transform);
 						spawnedWave = roundTime;
 					}
 					if (roundTime == 60) {
-						Instantiate(bossDog, new Vector3(-7.55000019f, 14.7200003f, -0.1f), Quaternion.identity);
+						Instantiate(bossDog, new Vector3(-7.55000019f, 14.7200003f, -0.1f), Quaternion.identity, enemies.transform);
 						finished = true;
 					}
 				}
@@ -297,22 +341,30 @@ public class GameManager : Singleton<GameManager> {
 					spawnedWave = roundTime;
 				}
 				if (roundTime > 50 && roundTime % 10 == 0) {
-					Instantiate(bossDog, new Vector3(25.6299992f, 26.2199993f, -0.1f), Quaternion.identity);
+					Instantiate(bossDog, new Vector3(25.6299992f, 26.2199993f, -0.1f), Quaternion.identity, enemies.transform);
 					spawnedWave = roundTime;
 				}
 			}
 		}
     }
 	
+	/*
+	 * Cleans up from the previous round and sets all the necessary variables for the new round.
+	 */
 	private void newRound() {
+		// Update timers
 		lastRoundTime = (int) Time.time;
-		round++;
 		spawnedWave = 0;
-		finished = false;
+		finished = false; // prepare to spawn again
+		round++;
 		roundText.text = "" + getRound();
+		// Unlock next room and display which it was
 		Debug.Log(map.unlockRoom() + " has just been unlocked!");
 	}
 	
+	/*
+	 * Updates all HUD objects to the values they should have.
+	 */
 	private void updateHUD() {
 		Shooter shooter = playerObject.GetComponent<Shooter>();
 		
@@ -343,7 +395,10 @@ public class GameManager : Singleton<GameManager> {
 		serum.SetActive(inventory.hasSerum());
 	}
 	
-	// Spawn the provided number of dogs at the next spawn locations
+	/*
+	 * Spawn zombie dogs at the next spawn location provided by the MapManager.
+	 * Parameter num is the number of dogs to spawn at once.
+	 */
 	private void spawnDogs(int num) {
 		Vector3 spawn = MapManager.Instance.nextSpawn(); // get position to spawn dogs at next
 		spawn.z = -0.1f;
@@ -361,13 +416,18 @@ public class GameManager : Singleton<GameManager> {
 		return inventory;
 	}
 	
-	// Call to end the game when the player dies or quits.
+	/*
+	 * Call to end the game when the player dies or quits.
+	 */
 	public void endGame() {
 		round = 0;
+		/* ###### Implement death screen and call it here! ###### */
 	}
 	
-	// Load the game background, create player and dogs.
-	// Provided difficulty sets dog AI level. 0 = BC mode
+	/*
+	 * Load2 the map, sets necessary objects to active, gets the correct player and spawns it.
+	 * Parameter difficulty sets player type, where 0 = BC mode.
+	 */
 	public void startGame(int difficulty) {
 		startTime = (int) Time.time;
 		idleTime = (int) Time.time;
@@ -393,7 +453,7 @@ public class GameManager : Singleton<GameManager> {
 		}
 
 		// Move player onto the map
-		playerObject.transform.position = playerSpawn;
+		playerObject.transform.position = PLAYER_SPAWN;
 		// Get a reference to the inventory script
 		inventory = playerObject.GetComponent<PlayerInventory>();
 		playerScript.SetHealth(100f);
@@ -404,27 +464,38 @@ public class GameManager : Singleton<GameManager> {
 		//spawnDogs(3 * difficulty);
 	}
 	
-	// Getter function for current level (for modifying enemy speed, UI elements)
+	/*
+	 * Getter function for current level (for modifying enemy speed, UI elements).
+	 */
 	public int getRound() {
 		return round;
 	}
 	
-	// Return player object.
+	/*
+	 * Returns the SurvivalPlayer controller script for damaging the player.
+	 */
 	public SurvivalPlayer getPlayer() {
 		return playerScript;
 	}
 	
+	/*
+	 * Returns a reference to the player GameObject.
+	 */
 	public GameObject getPlayerObject() {
 		return playerObject;
 	}
 	
-	// Return number of seconds since the game started.
+	/*
+	 * Returns the number of seconds since the game started, formatted for use in a h:mm:ss format.
+	 */
 	public string getSeconds() {
 		int seconds = time % 60;
 		return seconds < 10 ? "0" + seconds : "" + seconds;
 	}
 	
-	// Return number of minutes since the game started, floored.
+	/*
+	 * Return number of minutes (and hours if applicable) since the game started. Formatted in h:mm.
+	 */
 	public string getMinutes() {
 		int minutes = time / 60;
 		
@@ -432,9 +503,9 @@ public class GameManager : Singleton<GameManager> {
 	}
 	
 	/*
-	 * Counts the number of dogs to fight on the map.
+	 * Returns the number of dogs currently alive on the map.
 	 */
 	private int enemiesLeft() {
-		return GameObject.FindGameObjectsWithTag("ZombieDog").Length - 1;
+		return enemies.transform.GetComponentsInChildren<Transform>(false).Length - 1;
 	}
 }
