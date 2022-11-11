@@ -100,7 +100,8 @@ public class GameManager : Singleton<GameManager>
 	 * expensive method, it's much more efficient to assign these fields initially
 	 * than to search for them multiple times later.
 	 */
-	public override void Awake() {
+	public override void Awake()
+	{
 		// Set the singleton instance property
 		_instance = this;
 		
@@ -133,7 +134,8 @@ public class GameManager : Singleton<GameManager>
     /*
 	 * Start is called before the first frame update by Unity.
 	 */
-    void Start() {
+    void Start()
+	{
         // Open start menu from Ambrea?
 		startGame(1);
     }
@@ -143,17 +145,21 @@ public class GameManager : Singleton<GameManager>
 	 * Time.timeScale is set to. This allows me to check for user input
 	 * even when the game is paused for the demo mode.
 	 */
-	void Update() {
+	void Update()
+	{
 		// When the user presses something
-		if (Input.anyKey) {
+		if (Input.anyKey)
+		{
 			// Check if they were idle
-			if (Time.time - idleTime > 30) {
+			if (Time.time - idleTime > 30)
+			{
 				demo.HideVideo(); // stop the video, resume time
 			}
 			
 			idleTime = (int) Time.time; // reset the timer
 		}
-		else if (Time.time - idleTime > 30) {
+		else if (Time.time - idleTime > 30)
+		{
 			//Debug.Log("Player is idle");
 			demo.ShowVideo(); // freeze the game and show the video
 		}
@@ -163,7 +169,8 @@ public class GameManager : Singleton<GameManager>
 	 * Called by Unity a fixed number of times per second, based on the time scale.
 	 * Used to control when enemies spawn and update the timer variables.
 	 */
-    void FixedUpdate() {
+    void FixedUpdate()
+	{
 		updateHUD();
 		
 		int frameTime = (int) Time.time;
@@ -176,171 +183,223 @@ public class GameManager : Singleton<GameManager>
 		roundTimeText.text = "" + roundTime;
 		
 		// Don't spawn for the first 5 (0-4) seconds of each round
-		if (round > 0 && roundTime < 5) {
+		if (round > 0 && roundTime < 5)
+		{
 			spawnedWave = roundTime;
 			
-			if (round == 2 || round == 7) {
+			if (round == 2 || round == 7)
+			{
 				playerScript.SetHealth(100f);
 			}
 		}
 		
  		// Check that the game is in progress
-		if (spawnedWave < roundTime) {
-			if (round == 0) {
+		if (spawnedWave < roundTime)
+		{
+			if (round == 0)
+			{
 				// Begin the game after 4 seconds
-				if (time == 4) {
+				if (time == 4)
+				{
 					newRound();
 				}
 			}
-			else if (round == 1) {
-				if (!finished) {
-					if (roundTime % 6 == 0) {
+			else if (round == 1)
+			{
+				if (!finished)
+				{
+					if (roundTime % 6 == 0)
+					{
 						spawnDogs(2);
 						spawnedWave = roundTime;
 					}
-					if (roundTime > 19 && roundTime % 4 == 0) {
+					if (roundTime > 19 && roundTime % 4 == 0)
+					{
 						spawnDogs(1);
 						spawnedWave = roundTime;
 					}
-					if (roundTime == 30) {
+					if (roundTime == 30)
+					{
 						finished = true;
 					}
 				}
-				else if (enemiesLeft() == 0) {
+				else if (enemiesLeft() == 0)
+				{
 					newRound();
 				}
 			}
-			else if (round == 2) {
-				if (!finished) {
-					if (roundTime % 5 == 0) {
+			else if (round == 2)
+			{
+				if (!finished)
+				{
+					if (roundTime % 5 == 0)
+					{
 						spawnDogs(2);
 						spawnedWave = roundTime;
 					}
-					if (roundTime > 17 && roundTime % 3 == 0) {
+					if (roundTime > 17 && roundTime % 3 == 0)
+					{
 						spawnDogs(1);
 						spawnedWave = roundTime;
 					}
-					if (roundTime == 33) {
+					if (roundTime == 33)
+					{
 						finished = true;
 					}
 				}
-				else if (enemiesLeft() == 0) {
+				else if (enemiesLeft() == 0)
+				{
 					newRound();
 				}
 			}
-			else if (round == 3) {
-				if (!finished) {
-					if (roundTime % 5 == 0) {
+			else if (round == 3)
+			{
+				if (!finished)
+				{
+					if (roundTime % 5 == 0)
+					{
 						spawnDogs(2);
 						spawnedWave = roundTime;
 					}
-					if (roundTime > 11 && roundTime % 3 == 0) {
+					if (roundTime > 11 && roundTime % 3 == 0)
+					{
 						spawnDogs(1);
 						spawnedWave = roundTime;
 					}
-					if (roundTime > 29 && roundTime % 3 == 0) {
+					if (roundTime > 29 && roundTime % 3 == 0)
+					{
 						spawnDogs(1);
 						spawnedWave = roundTime;
 					}
-					if (roundTime == 40) {
+					if (roundTime == 40)
+					{
 						finished = true;
 					}
 				}
-				else if (enemiesLeft() == 0) {
+				else if (enemiesLeft() == 0)
+				{
 					newRound();
 				}
 			}
-			else if (round == 4) {
-				if (!finished) {
-					if (roundTime % 4 == 0) {
+			else if (round == 4)
+			{
+				if (!finished)
+				{
+					if (roundTime % 4 == 0)
+					{
 						spawnDogs(2);
 						spawnedWave = roundTime;
 					}
-					if (roundTime > 11 && roundTime % 3 == 0) {
+					if (roundTime > 11 && roundTime % 3 == 0)
+					{
 						spawnDogs(1);
 						spawnedWave = roundTime;
 					}
-					if (roundTime > 29 && roundTime % 3 == 0) {
+					if (roundTime > 29 && roundTime % 3 == 0)
+					{
 						spawnDogs(1);
 						spawnedWave = roundTime;
 					}
-					if (roundTime == 40) {
+					if (roundTime == 40)
+					{
 						Instantiate(bossDog, new Vector3(11.1999998f, 3f, -0.1f), Quaternion.identity, enemies.transform);
 						finished = true;
 					}
 				}
-				else if (enemiesLeft() == 0) {
+				else if (enemiesLeft() == 0)
+				{
 					newRound();
 				}
 			}
-			else if (round == 5) {
-				if (!finished) {
-					if (roundTime % 4 == 0) {
+			else if (round == 5)
+			{
+				if (!finished)
+				{
+					if (roundTime % 4 == 0)
+					{
 						spawnDogs(2);
 						spawnedWave = roundTime;
 					}
-					if (roundTime > 11 && roundTime % 3 == 0) {
+					if (roundTime > 11 && roundTime % 3 == 0)
+					{
 						spawnDogs(1);
 						spawnedWave = roundTime;
 					}
-					if (roundTime > 20 && roundTime % 3 == 0) {
+					if (roundTime > 20 && roundTime % 3 == 0)
+					{
 						spawnDogs(2);
 						spawnedWave = roundTime;
 					}
-					if (roundTime == 50) {
+					if (roundTime == 50)
+					{
 						Instantiate(bossDog, new Vector3(-7.55000019f, 14.7200003f, -0.1f), Quaternion.identity, enemies.transform);
 						finished = true;
 					}
 				}
-				else if (enemiesLeft() == 0) {
+				else if (enemiesLeft() == 0)
+				{
 					newRound();
 				}
 			}
-			else if (round == 6) {
-				if (!finished) {
-					if (roundTime % 4 == 0) {
+			else if (round == 6)
+			{
+				if (!finished)
+				{
+					if (roundTime % 4 == 0)
+					{
 						spawnDogs(2);
 						spawnedWave = roundTime;
 					}
-					if (roundTime > 11 && roundTime % 3 == 0) {
+					if (roundTime > 11 && roundTime % 3 == 0)
+					{
 						spawnDogs(1);
 						spawnedWave = roundTime;
 					}
-					if (roundTime > 20 && roundTime % 3 == 0) {
+					if (roundTime > 20 && roundTime % 3 == 0)
+					{
 						spawnDogs(2);
 						spawnedWave = roundTime;
 					}
-					if (roundTime == 30) {
+					if (roundTime == 30)
+					{
 						Instantiate(bossDog, new Vector3(44.5f, -13.6999998f, -0.1f), Quaternion.identity, enemies.transform);
 						spawnedWave = roundTime;
 					}
-					if (roundTime == 45) {
+					if (roundTime == 45)
+					{
 						Instantiate(bossDog, new Vector3(11.1999998f, 3f, -0.1f), Quaternion.identity, enemies.transform);
 						spawnedWave = roundTime;
 					}
-					if (roundTime == 60) {
+					if (roundTime == 60)
+					{
 						Instantiate(bossDog, new Vector3(-7.55000019f, 14.7200003f, -0.1f), Quaternion.identity, enemies.transform);
 						finished = true;
 					}
 				}
-				else if (enemiesLeft() == 0) {
+				else if (enemiesLeft() == 0)
+				{
 					newRound();
 				}
 			}
-			else if (round == 7) {
-				if (roundTime % 4 == 0) {
+			else if (round == 7)
+			{
+				if (roundTime % 4 == 0)
+				{
 					spawnDogs(2);
 					spawnedWave = roundTime;
 				}
-				if (roundTime > 11 && roundTime % 3 == 0) {
+				if (roundTime > 11 && roundTime % 3 == 0)
+				{
 					spawnDogs(1);
 					spawnedWave = roundTime;
 				}
-				if (roundTime > 20 && roundTime % 3 == 0) {
+				if (roundTime > 20 && roundTime % 3 == 0)
+				{
 					spawnDogs(2);
 					spawnedWave = roundTime;
 				}
-				if (roundTime > 50 && roundTime % 10 == 0) {
+				if (roundTime > 50 && roundTime % 10 == 0)
+				{
 					Instantiate(bossDog, new Vector3(25.6299992f, 26.2199993f, -0.1f), Quaternion.identity, enemies.transform);
 					spawnedWave = roundTime;
 				}
@@ -351,7 +410,8 @@ public class GameManager : Singleton<GameManager>
 	/*
 	 * Cleans up from the previous round and sets all the necessary variables for the new round.
 	 */
-	private void newRound() {
+	private void newRound()
+	{
 		// Update timers
 		lastRoundTime = (int) Time.time;
 		spawnedWave = 0;
@@ -365,7 +425,8 @@ public class GameManager : Singleton<GameManager>
 	/*
 	 * Updates all HUD objects to the values they should have.
 	 */
-	private void updateHUD() {
+	private void updateHUD()
+	{
 		Shooter shooter = playerObject.GetComponent<Shooter>();
 		
 		bulletCount.text = "" + shooter.ReserveAmmoCount();
@@ -375,17 +436,21 @@ public class GameManager : Singleton<GameManager>
 		
 		healthBar.value = playerScript.GetHealth() / 100;
 		
-		if (round < 2 && shooter.MagAmmoCount() == 0) {
+		if (round < 2 && shooter.MagAmmoCount() == 0)
+		{
 			hint1.SetActive(true);
 		}
-		else {
+		else
+		{
 			hint1.SetActive(false);
 		}
 		
-		if (shooter.ReserveAmmoCount() == 0) {
+		if (shooter.ReserveAmmoCount() == 0)
+		{
 			hint2.SetActive(true);
 		}
-		else {
+		else
+		{
 			hint2.SetActive(false);
 		}
 		
@@ -399,12 +464,14 @@ public class GameManager : Singleton<GameManager>
 	 * Spawn zombie dogs at the next spawn location provided by the MapManager.
 	 * Parameter num is the number of dogs to spawn at once.
 	 */
-	private void spawnDogs(int num) {
+	private void spawnDogs(int num)
+	{
 		Vector3 spawn = MapManager.Instance.nextSpawn(); // get position to spawn dogs at next
 		spawn.z = -0.1f;
 		
 		// Clone the provided number of dogs
-		for (int i = 0; i < num; i++) {
+		for (int i = 0; i < num; i++)
+		{
 			DogPool.Instance.SpawnFromDogPool("ZombieDog", spawn, Quaternion.identity);
 		}
 	}
@@ -412,14 +479,16 @@ public class GameManager : Singleton<GameManager>
 	/*
 	 * Returns the inventory script of the player for Tosin to reference.
 	 */
-	public PlayerInventory getInventory() {
+	public PlayerInventory getInventory()
+	{
 		return inventory;
 	}
 	
 	/*
 	 * Call to end the game when the player dies or quits.
 	 */
-	public void endGame() {
+	public void endGame()
+	{
 		round = 0;
 		/* ###### Implement death screen and call it here! ###### */
 	}
@@ -428,7 +497,8 @@ public class GameManager : Singleton<GameManager>
 	 * Load2 the map, sets necessary objects to active, gets the correct player and spawns it.
 	 * Parameter difficulty sets player type, where 0 = BC mode.
 	 */
-	public void startGame(int difficulty) {
+	public void startGame(int difficulty)
+	{
 		startTime = (int) Time.time;
 		idleTime = (int) Time.time;
 		
@@ -442,12 +512,14 @@ public class GameManager : Singleton<GameManager>
 		GameObject.Find("Notes (disable on start)").SetActive(false);
 		
 		// Check if BC mode needs to be enabled, get the correct player and disable the other
-		if (difficulty == 0) {
+		if (difficulty == 0)
+		{
 			// Set the reference to the BCPlayer			
 			playerObject = GameObject.Find("BCPlayer");
 			GameObject.Find("SurvivalPlayer").SetActive(false);
 		}
-		else {
+		else
+		{
 			playerObject = GameObject.Find("SurvivalPlayer");
 			GameObject.Find("BCPlayer").SetActive(false);
 		}
@@ -460,35 +532,39 @@ public class GameManager : Singleton<GameManager>
 		
 		difficulty++;
 		
-		// Populate map with starting enemies
+		// Populate map with testing enemies
 		//spawnDogs(3 * difficulty);
 	}
 	
 	/*
 	 * Getter function for current level (for modifying enemy speed, UI elements).
 	 */
-	public int getRound() {
+	public int getRound()
+	{
 		return round;
 	}
 	
 	/*
 	 * Returns the SurvivalPlayer controller script for damaging the player.
 	 */
-	public SurvivalPlayer getPlayer() {
+	public SurvivalPlayer getPlayer()
+	{
 		return playerScript;
 	}
 	
 	/*
 	 * Returns a reference to the player GameObject.
 	 */
-	public GameObject getPlayerObject() {
+	public GameObject getPlayerObject()
+	{
 		return playerObject;
 	}
 	
 	/*
 	 * Returns the number of seconds since the game started, formatted for use in a h:mm:ss format.
 	 */
-	public string getSeconds() {
+	public string getSeconds()
+	{
 		int seconds = time % 60;
 		return seconds < 10 ? "0" + seconds : "" + seconds;
 	}
@@ -496,7 +572,8 @@ public class GameManager : Singleton<GameManager>
 	/*
 	 * Return number of minutes (and hours if applicable) since the game started. Formatted in h:mm.
 	 */
-	public string getMinutes() {
+	public string getMinutes()
+	{
 		int minutes = time / 60;
 		
 		return minutes < 60 ? "" + minutes : minutes / 60 + ":" + (minutes % 60 < 10 ? "0" : "") + minutes % 60;
@@ -505,7 +582,8 @@ public class GameManager : Singleton<GameManager>
 	/*
 	 * Returns the number of dogs currently alive on the map.
 	 */
-	private int enemiesLeft() {
+	private int enemiesLeft()
+	{
 		return enemies.transform.GetComponentsInChildren<Transform>(false).Length - 1;
 	}
 }
