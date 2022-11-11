@@ -1,8 +1,24 @@
+/*
+ * MapManager.cs
+ * Carson Sloan
+ * Controls and initializes map elements.
+ */
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MapManager : Singleton<MapManager> {
+/*
+ * Class to create room objects and handle unlocking rooms, enemy spawnpoints and vent animations.
+ * 
+ * PRIVATE PROPERTIES:
+ * basicRoom - room prefab to be copied by the room factories
+ * vents - list of spawnable vent objects in unlocked rooms 
+ * unlocked - index of the last room to be unlocked
+ * spawnID - index of the last vent to be used to spawn enemies
+ */
+public class MapManager : Singleton<MapManager>
+{
 	[SerializeField]
 	private GameObject basicRoom;
 	
@@ -12,46 +28,63 @@ public class MapManager : Singleton<MapManager> {
 	private int spawnID = 0; // index of next spawnpoint to use
 
 	
-    // Start is called before the first frame update
-    void Start() {
+    /*
+	 * Start is called before the first frame update by Unity.
+	 */
+    void Start()
+	{
 		rooms = new List<Room>();
 		
 		unlocked = -1;
     }
 	
-	// Initialize the rooms and spawnpoints, hide the menu
-	public void startGame() {
-		AbstractRoomFactory factory = gameObject.AddComponent<LargeRoomFactory>();
+	/*
+	 * Generate rooms and add them to the room list. Called by startGame in GameManger.
+	 */
+	public void startGame()
+	{
+		// Create abstract factory variable to hold either factory type
+		AbstractRoomFactory factory = gameObject.AddComponent<LargeRoomFactory>(); // make large room factory
 		factory.roomPrefab = basicRoom;
-
+		// Create the two large rooms and add them to the list
 		rooms.Add(factory.createRoom("Laboratory"));
 		rooms.Add(factory.createRoom("Kitchen"));
 
-		Destroy(factory);
-		factory = gameObject.AddComponent<SmallRoomFactory>();
+		Destroy(factory); // remove the old factory component
+		factory = gameObject.AddComponent<SmallRoomFactory>(); // make small room factory
 		factory.roomPrefab = basicRoom;
-
+		// Create the four small rooms and position them in unlocked order in the list
 		rooms.Insert(0, factory.createRoom("Exam1"));
 		rooms.Insert(1, factory.createRoom("Exam2"));
 		rooms.Insert(3, factory.createRoom("Closet"));
 		rooms.Add(factory.createRoom("Hallway"));
 		
-		Destroy(factory);
+		Destroy(factory); // remove the old factory component
 	}
 
-	// Return the list of spawnpoints
-	private void updateSpawnPoints() {
-		vents = new List<GameObject>();
+	/*
+	 * Updates the internal list of vent GameObjects that can be spawned at during the next round.
+	 * Called only by unlockRoom.
+	 */
+	private void updateSpawnPoints()
+	{
+		vents = new List<GameObject>(); // reset vents
 		
-		foreach (Room room in rooms) {
-			if (!room.isLocked()) {
+		// Add the vents from each unlocked room to the list
+		foreach (Room room in rooms)
+		{
+			if (!room.isLocked())
+			{
 				vents.AddRange(room.getSpawnPoints());
 			}
 		}
 	}
 	
-	// Returns the next position a dog should be spawned.
-	public Vector3 nextSpawn() {
+	/*
+	 * Returns the next position a dog should be spawned, and controls the animations of the affected vents.
+	 */
+	public Vector3 nextSpawn()
+	{
 		// Increment counter to next spawn point in the list
 		spawnID = (spawnID + 1) % (vents.Count);
 		// Start the vent open animation
@@ -63,10 +96,16 @@ public class MapManager : Singleton<MapManager> {
 		return vents[spawnID].transform.position;
 	}
 	
-	public string unlockRoom() {
+	/*
+	 * Unlocks the next locked room, updates the vent list and resets animations for the first wave of the new round.
+	 * Returns the name of the room that was just unlocked, "" if all rooms are already unlocked.
+	 */
+	public string unlockRoom()
+	{
 		unlocked++;
 		
-		if (unlocked == rooms.Count) {
+		if (unlocked == rooms.Count)
+		{
 			return "";
 		}
 		
@@ -74,7 +113,8 @@ public class MapManager : Singleton<MapManager> {
 		
 		updateSpawnPoints();
 		
-		foreach (GameObject vent in vents) {
+		foreach (GameObject vent in vents)
+		{
 			// Disable the red closed texture
 			vent.GetComponent<Animator>().SetBool("spawning", false);
 		}
