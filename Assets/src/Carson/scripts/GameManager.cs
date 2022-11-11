@@ -10,6 +10,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
+
 /*
  * Class to control UI elements and game event execution. Extends the Singleton
  * class to follow the singleton pattern.
@@ -134,7 +135,7 @@ public class GameManager : Singleton<GameManager>
     /*
 	 * Start is called before the first frame update by Unity.
 	 */
-    void Start()
+    public void Start()
 	{
         // Open start menu from Ambrea?
 		startGame(1);
@@ -145,7 +146,7 @@ public class GameManager : Singleton<GameManager>
 	 * Time.timeScale is set to. This allows me to check for user input
 	 * even when the game is paused for the demo mode.
 	 */
-	void Update()
+	public void Update()
 	{
 		// When the user presses something
 		if (Input.anyKey)
@@ -169,7 +170,7 @@ public class GameManager : Singleton<GameManager>
 	 * Called by Unity a fixed number of times per second, based on the time scale.
 	 * Used to control when enemies spawn and update the timer variables.
 	 */
-    void FixedUpdate()
+    public void FixedUpdate()
 	{
 		updateHUD();
 		
@@ -408,75 +409,6 @@ public class GameManager : Singleton<GameManager>
     }
 	
 	/*
-	 * Cleans up from the previous round and sets all the necessary variables for the new round.
-	 */
-	private void newRound()
-	{
-		// Update timers
-		lastRoundTime = (int) Time.time;
-		spawnedWave = 0;
-		finished = false; // prepare to spawn again
-		round++;
-		roundText.text = "" + getRound();
-		// Unlock next room and display which it was
-		Debug.Log(map.unlockRoom() + " has just been unlocked!");
-	}
-	
-	/*
-	 * Updates all HUD objects to the values they should have.
-	 */
-	private void updateHUD()
-	{
-		Shooter shooter = playerObject.GetComponent<Shooter>();
-		
-		bulletCount.text = "" + shooter.ReserveAmmoCount();
-		magCount.text = "" + shooter.MagAmmoCount();
-		health.text = "" + playerScript.GetHealth();
-		enemyCount.text = "zombies left: " + enemiesLeft();
-		
-		healthBar.value = playerScript.GetHealth() / 100;
-		
-		if (round < 2 && shooter.MagAmmoCount() == 0)
-		{
-			hint1.SetActive(true);
-		}
-		else
-		{
-			hint1.SetActive(false);
-		}
-		
-		if (shooter.ReserveAmmoCount() == 0)
-		{
-			hint2.SetActive(true);
-		}
-		else
-		{
-			hint2.SetActive(false);
-		}
-		
-		heart.SetActive(inventory.hasHeart());
-		tuft.SetActive(inventory.hasTuft());
-		cure.SetActive(inventory.hasCure());
-		serum.SetActive(inventory.hasSerum());
-	}
-	
-	/*
-	 * Spawn zombie dogs at the next spawn location provided by the MapManager.
-	 * Parameter num is the number of dogs to spawn at once.
-	 */
-	private void spawnDogs(int num)
-	{
-		Vector3 spawn = MapManager.Instance.nextSpawn(); // get position to spawn dogs at next
-		spawn.z = -0.1f;
-		
-		// Clone the provided number of dogs
-		for (int i = 0; i < num; i++)
-		{
-			DogPool.Instance.SpawnFromDogPool("ZombieDog", spawn, Quaternion.identity);
-		}
-	}
-	
-	/*
 	 * Returns the inventory script of the player for Tosin to reference.
 	 */
 	public PlayerInventory getInventory()
@@ -580,6 +512,75 @@ public class GameManager : Singleton<GameManager>
 	}
 	
 	/*
+	 * Cleans up from the previous round and sets all the necessary variables for the new round.
+	 */
+	private void newRound()
+	{
+		// Update timers
+		lastRoundTime = (int) Time.time;
+		spawnedWave = 0;
+		finished = false; // prepare to spawn again
+		round++;
+		roundText.text = "" + getRound();
+		// Unlock next room and display which it was
+		Debug.Log(map.unlockRoom() + " has just been unlocked!");
+	}
+	
+	/*
+	 * Updates all HUD objects to the values they should have.
+	 */
+	private void updateHUD()
+	{
+		Shooter shooter = playerObject.GetComponent<Shooter>();
+		
+		bulletCount.text = "" + shooter.ReserveAmmoCount();
+		magCount.text = "" + shooter.MagAmmoCount();
+		health.text = "" + playerScript.GetHealth();
+		enemyCount.text = "zombies left: " + enemiesLeft();
+		
+		healthBar.value = playerScript.GetHealth() / 100;
+		
+		if (round < 2 && shooter.MagAmmoCount() == 0)
+		{
+			hint1.SetActive(true);
+		}
+		else
+		{
+			hint1.SetActive(false);
+		}
+		
+		if (shooter.ReserveAmmoCount() == 0)
+		{
+			hint2.SetActive(true);
+		}
+		else
+		{
+			hint2.SetActive(false);
+		}
+		
+		heart.SetActive(inventory.hasHeart());
+		tuft.SetActive(inventory.hasTuft());
+		cure.SetActive(inventory.hasCure());
+		serum.SetActive(inventory.hasSerum());
+	}
+	
+	/*
+	 * Spawn zombie dogs at the next spawn location provided by the MapManager.
+	 * Parameter num is the number of dogs to spawn at once.
+	 */
+	private void spawnDogs(int num)
+	{
+		Vector3 spawn = MapManager.Instance.nextSpawn(); // get position to spawn dogs at next
+		spawn.z = -0.1f;
+		
+		// Clone the provided number of dogs
+		for (int i = 0; i < num; i++)
+		{
+			DogPool.Instance.SpawnFromDogPool("ZombieDog", spawn, Quaternion.identity);
+		}
+	}
+	
+	/*
 	 * Returns the number of dogs currently alive on the map.
 	 */
 	private int enemiesLeft()
@@ -587,3 +588,4 @@ public class GameManager : Singleton<GameManager>
 		return enemies.transform.GetComponentsInChildren<Transform>(false).Length - 1;
 	}
 }
+

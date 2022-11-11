@@ -8,47 +8,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 /*
  * Class that extends AbstractRoomFactory. Implements the abstract setUp method, which adds
  * an entry to the roomInfo dictionary for each large room to be created on the map.
  */
 public class LargeRoomFactory : AbstractRoomFactory
 {
-	/*
-	 * Sets the door and vent positions for the Laboratory and Kitchen, and adds them to roomInfo.
-	 * Called once by Awake in AbstractRoomFactory.
-	 */
-	protected override void setUp()
-	{
-		// Initialize positions object
-		Positions lab = new Positions("Laboratory");
-		// Set door positions
-		lab.door.Add(new Vector3(18.4099998f, 16.2800007f, -0.115999997f));
-		lab.door.Add(new Vector3(-3.55999994f, 5.55999994f, -0.225589991f));
-		// Set vent positions
-		lab.spawn.Add(new Vector3(-12.0600004f, 3.81999993f, -0.225590006f));
-		lab.spawn.Add(new Vector3(37.7999992f , 9f, 0f));
-		// Set door rotations
-		lab.rotated.Add(false);
-		lab.rotated.Add(true);
-		// Set parent GameObject position for translating vent positions to world space for spawning
-		lab.home = new Vector3(16.5747f, -10.4444f, 0.22559f);
-		
-		// Set up Kitchen positions
-		Positions kitchen = new Positions("Kitchen");
-		kitchen.door.Add(new Vector3(5.67000008f, 27.2700005f, -0.116151907f));
-		kitchen.door.Add(new Vector3(35.9599991f, 27.2199993f, -0.116151907f));
-		kitchen.spawn.Add(new Vector3(27.2000008f, 39.5999985f, 0));
-		kitchen.spawn.Add(new Vector3(3.4000001f, 37.5999985f, 0));
-		kitchen.rotated.Add(true);
-		kitchen.rotated.Add(true);
-		kitchen.home = new Vector3(16.5747395f, -10.4444351f, 0.225589991f);
-		
-		// Add the new rooms to the dictionary
-		addToDictionary(lab);
-		addToDictionary(kitchen);
-	}
-	
 	/*
 	 * Instantiates a new copy of the basic room prefab, makes a copy of its vent and door, and sets the
 	 * positions of each child object. The attached room script is initialized as well, then returned.
@@ -100,4 +66,40 @@ public class LargeRoomFactory : AbstractRoomFactory
 		room.setDoors(doors);
 		return room;
 	}
+	
+	/*
+	 * Sets the door and vent positions for the Laboratory and Kitchen, and adds them to roomInfo.
+	 * Called once by Awake in AbstractRoomFactory.
+	 */
+	protected override void setUp()
+	{
+		// Initialize positions object
+		Positions lab = new Positions("Laboratory");
+		// Set door positions
+		lab.door.Add(new Vector3(18.4099998f, 16.2800007f, -0.115999997f));
+		lab.door.Add(new Vector3(-3.55999994f, 5.55999994f, -0.225589991f));
+		// Set vent positions
+		lab.spawn.Add(new Vector3(-12.0600004f, 3.81999993f, -0.225590006f));
+		lab.spawn.Add(new Vector3(37.7999992f , 9f, 0f));
+		// Set door rotations
+		lab.rotated.Add(false);
+		lab.rotated.Add(true);
+		// Set parent GameObject position for translating vent positions to world space for spawning
+		lab.home = new Vector3(16.5747f, -10.4444f, 0.22559f);
+		
+		// Set up Kitchen positions
+		Positions kitchen = new Positions("Kitchen");
+		kitchen.door.Add(new Vector3(5.67000008f, 27.2700005f, -0.116151907f));
+		kitchen.door.Add(new Vector3(35.9599991f, 27.2199993f, -0.116151907f));
+		kitchen.spawn.Add(new Vector3(27.2000008f, 39.5999985f, 0));
+		kitchen.spawn.Add(new Vector3(3.4000001f, 37.5999985f, 0));
+		kitchen.rotated.Add(true);
+		kitchen.rotated.Add(true);
+		kitchen.home = new Vector3(16.5747395f, -10.4444351f, 0.225589991f);
+		
+		// Add the new rooms to the dictionary
+		addToDictionary(lab);
+		addToDictionary(kitchen);
+	}
 }
+

@@ -2827,8 +2827,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 208711878}
-  - component: {fileID: 208711881}
-  - component: {fileID: 208711880}
   - component: {fileID: 208711886}
   - component: {fileID: 208711887}
   - component: {fileID: 208711888}
@@ -2855,33 +2853,6 @@ Transform:
   m_Father: {fileID: 1846128220}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &208711880
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 208711876}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dbbc070472a76b345964558e1a67ede1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  basicRoom: {fileID: 2141965967}
---- !u!114 &208711881
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 208711876}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 026e4c30af6b7fa4f8a3e5b6fcbc545d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerScript: {fileID: 1215895306}
-  bossDog: {fileID: 1787611474}
 --- !u!114 &208711886
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16581,6 +16552,66 @@ MonoBehaviour:
     tag: ZombieDog
     prefab: {fileID: 1965858180}
   container: {fileID: 1326298428}
+--- !u!1 &1620627991
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1620627992}
+  - component: {fileID: 1620627994}
+  - component: {fileID: 1620627993}
+  m_Layer: 0
+  m_Name: Managers
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1620627992
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1620627991}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1846128220}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1620627993
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1620627991}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 026e4c30af6b7fa4f8a3e5b6fcbc545d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerScript: {fileID: 1215895306}
+  bossDog: {fileID: 1787611474}
+--- !u!114 &1620627994
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1620627991}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbbc070472a76b345964558e1a67ede1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  basicRoom: {fileID: 2141965967}
 --- !u!1 &1638743166
 GameObject:
   m_ObjectHideFlags: 0
@@ -18841,6 +18872,7 @@ Transform:
   - {fileID: 759536174}
   - {fileID: 546297429}
   - {fileID: 1796227598}
+  - {fileID: 1620627992}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

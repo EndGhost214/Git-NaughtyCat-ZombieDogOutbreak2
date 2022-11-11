@@ -8,6 +8,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 /*
  * AbstractFactory class defining the methods and fields implemented by all child factories.
  *
@@ -56,10 +57,11 @@ public abstract class AbstractRoomFactory : MonoBehaviour
 		}
 	}
 	
+	
 	/*
 	 * Unity method that is called when the script loads for the first time.
 	 */
-	void Awake()
+	public void Awake()
 	{
 		roomInfo = new Dictionary<string, Positions>();
 		setUp(); // call the setUp method implemented by the child factories
@@ -125,3 +127,4 @@ public abstract class AbstractRoomFactory : MonoBehaviour
 		roomInfo.Add(newPos.roomName, newPos);
 	}
 }
+

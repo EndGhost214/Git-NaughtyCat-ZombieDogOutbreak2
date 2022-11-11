@@ -8,6 +8,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 /*
  * Class to create room objects and handle unlocking rooms, enemy spawnpoints and vent animations.
  * 
@@ -27,11 +28,10 @@ public class MapManager : Singleton<MapManager>
 	private int unlocked;
 	private int spawnID = 0; // index of next spawnpoint to use
 
-	
     /*
 	 * Start is called before the first frame update by Unity.
 	 */
-    void Start()
+    public void Start()
 	{
 		rooms = new List<Room>();
 		
@@ -60,24 +60,6 @@ public class MapManager : Singleton<MapManager>
 		rooms.Add(factory.createRoom("Hallway"));
 		
 		Destroy(factory); // remove the old factory component
-	}
-
-	/*
-	 * Updates the internal list of vent GameObjects that can be spawned at during the next round.
-	 * Called only by unlockRoom.
-	 */
-	private void updateSpawnPoints()
-	{
-		vents = new List<GameObject>(); // reset vents
-		
-		// Add the vents from each unlocked room to the list
-		foreach (Room room in rooms)
-		{
-			if (!room.isLocked())
-			{
-				vents.AddRange(room.getSpawnPoints());
-			}
-		}
 	}
 	
 	/*
@@ -124,4 +106,23 @@ public class MapManager : Singleton<MapManager>
 		
 		return rooms[unlocked].name;
 	}
+
+	/*
+	 * Updates the internal list of vent GameObjects that can be spawned at during the next round.
+	 * Called only by unlockRoom.
+	 */
+	private void updateSpawnPoints()
+	{
+		vents = new List<GameObject>(); // reset vents
+		
+		// Add the vents from each unlocked room to the list
+		foreach (Room room in rooms)
+		{
+			if (!room.isLocked())
+			{
+				vents.AddRange(room.getSpawnPoints());
+			}
+		}
+	}
 }
+

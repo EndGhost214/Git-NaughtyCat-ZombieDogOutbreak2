@@ -1,14 +1,35 @@
+/*
+ * SmallRoomFactory.cs
+ * Carson Sloan
+ * Provides the set up information for rooms with one door and one vent.
+ */
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+/*
+ * Class that extends AbstractRoomFactory. Implements the abstract setUp method, which adds
+ * an entry to the roomInfo dictionary for each small room to be created on the map. Does
+ * not override the virtual createRoom metod in AbstractRoomFactory.
+ */
 public class SmallRoomFactory : AbstractRoomFactory
 {
-	protected override void setUp() {
+	/*
+	 * Sets the door and vent positions for the exam rooms, the closet, and  thehallway, then
+	 * adds them to roomInfo. Called once by Awake in AbstractRoomFactory.
+	 */
+	protected override void setUp()
+	{
+		// Create new Positions object for the first exam room
 		Positions exam1 = new Positions("Exam1");
+		// Add the door and vent positions
 		exam1.door.Add(new Vector3(-21.3620663f, 11.2799358f, -0.116151907f));
 		exam1.spawn.Add(new Vector3(-25.5799999f, 19.6299992f, 0));
+		// Set the door rotation
 		exam1.rotated.Add(false);
+		// Set the parent GameObject position
 		exam1.home = new Vector3(16.5747395f, -10.4444351f, 0.225589991f);
 		
 		Positions exam2 = new Positions("Exam2");
@@ -29,9 +50,11 @@ public class SmallRoomFactory : AbstractRoomFactory
 		hallway.rotated.Add(false);
 		hallway.home = new Vector3(36.9599991f, 12.0600004f, 0.225589991f);
 		
+		// Add the new Positions objects to the dictionary
 		addToDictionary(exam1);
 		addToDictionary(exam2);
 		addToDictionary(closet);
 		addToDictionary(hallway);
 	}
 }
+
