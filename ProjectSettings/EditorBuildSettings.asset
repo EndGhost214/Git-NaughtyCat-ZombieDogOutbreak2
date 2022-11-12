@@ -11,19 +11,19 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/src/Carson/Game.unity
     guid: 24671da929869eb47915d0eded35f9b8
-  - enabled: 1
-    path: Assets/src/Carson/Game (With pools).unity
-    guid: 2090b166c848c36499716f6e6f2bc133
   - enabled: 0
     path: Assets/test.unity
     guid: 20e086dc6d30f504f9da9cb87795684d
   - enabled: 1
     path: Assets/src/Ambrea/StartMenu.unity
     guid: 4f2078d114fbc4b7290906bccf302911
+  - enabled: 1
+    path: Assets/src/Carson/Game (With pools).unity
+    guid: 2090b166c848c36499716f6e6f2bc133
   - enabled: 0
     path: Assets/src/Tosin/Cutscene.unity
     guid: 802e4a6ed355dc649b58867f96f7edce
-  - enabled: 1
+  - enabled: 0
     path: Assets/src/Tosin/Hospital Cutscene.unity
     guid: bd81e9779c9b93c44b6034d1ffa9acd1
   m_configObjects: {}
