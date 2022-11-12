@@ -68,7 +68,7 @@ public class GameManager : Singleton<GameManager>
 	private GameObject cure;
 	private GameObject hint1;
 	private GameObject hint2;
-	private GameObject hint3;
+	private TextMeshProUGUI hint3;
 	private TextMeshProUGUI bulletCount;
 	private TextMeshProUGUI magCount;
 	private TextMeshProUGUI health;
@@ -94,7 +94,7 @@ public class GameManager : Singleton<GameManager>
 	private bool finished = false;
 	
 	// Where the player begins the game
-	private readonly Vector3 PLAYER_SPAWN = new Vector3(-9, 1, -0.5f);
+	private readonly Vector3 PLAYER_SPAWN = new Vector3(0, 0, -0.5f);
 
 	/*
 	 * Create references to scene objects to be updated later. Since Find is a very
@@ -116,8 +116,8 @@ public class GameManager : Singleton<GameManager>
 		// Get HUD objects
 		hint1 = HUD.transform.Find("hint1").gameObject;
 		hint2 = HUD.transform.Find("hint2").gameObject;
-		hint3 = HUD.transform.Find("hint3").gameObject;
-		// Text objects in the HUD
+		// Text objects in the HUD that need to be dynamically updated
+		hint3 = HUD.transform.Find("hint3").gameObject.GetComponent<TextMeshProUGUI>();
 		bulletCount = HUD.transform.Find("inventory").Find("bulletCount").Find("Bullets").gameObject.GetComponent<TextMeshProUGUI>();
 		magCount = HUD.transform.Find("inventory").Find("bulletCount").Find("Magazine").gameObject.GetComponent<TextMeshProUGUI>();
 		healthBar = HUD.transform.Find("healthBar").GetComponent<Slider>();
@@ -197,10 +197,12 @@ public class GameManager : Singleton<GameManager>
  		// Check that the game is in progress
 		if (spawnedWave < roundTime)
 		{
+			hint3.gameObject.SetActive(false);
+			
 			if (round == 0)
 			{
 				// Begin the game after 4 seconds
-				if (time == 4)
+				if (time == 1)
 				{
 					newRound();
 				}
@@ -523,7 +525,11 @@ public class GameManager : Singleton<GameManager>
 		round++;
 		roundText.text = "" + getRound();
 		// Unlock next room and display which it was
-		Debug.Log(map.unlockRoom() + " has just been unlocked!");
+		string room = map.unlockRoom();
+		if (room != "") {
+			hint3.text = "The <color=#870000>" + room + "</color> was just unlocked!";
+			hint3.gameObject.SetActive(true);
+		}
 	}
 	
 	/*
@@ -585,7 +591,7 @@ public class GameManager : Singleton<GameManager>
 	 */
 	private int enemiesLeft()
 	{
-		return enemies.transform.GetComponentsInChildren<Transform>(false).Length - 1;
+		return enemies.transform.GetComponentsInChildren<CapsuleCollider2D>(false).Length;
 	}
 }
 

@@ -2012,7 +2012,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 3
+  m_fontStyle: 35
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 256
   m_textAlignment: 65535
@@ -11177,8 +11177,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -137.92822, y: 23.799988}
-  m_SizeDelta: {x: 253.6632, y: 27.0723}
+  m_AnchoredPosition: {x: -228.92, y: 268.82}
+  m_SizeDelta: {x: 457.8359, y: 27.0723}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1071490833
 MonoBehaviour:
@@ -11200,7 +11200,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Go pick up some ammo!
+  m_text: The BC room has just been unlocked!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -11233,7 +11233,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 3
+  m_fontStyle: 35
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 256
   m_textAlignment: 65535
@@ -16561,8 +16561,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1620627992}
-  - component: {fileID: 1620627994}
   - component: {fileID: 1620627993}
+  - component: {fileID: 1620627994}
   m_Layer: 0
   m_Name: Managers
   m_TagString: Untagged
@@ -16806,7 +16806,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 3
+  m_fontStyle: 35
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 256
   m_textAlignment: 65535
@@ -21017,8 +21017,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -106.399994, y: 23.799988}
-  m_SizeDelta: {x: 190.6068, y: 27.0723}
+  m_AnchoredPosition: {x: -119.53, y: 23.799988}
+  m_SizeDelta: {x: 216.87, y: 27.0723}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2060984053
 MonoBehaviour:
@@ -21073,7 +21073,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 3
+  m_fontStyle: 35
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 256
   m_textAlignment: 65535
@@ -21410,7 +21410,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 0}
   m_FillRect: {fileID: 1729249306}
   m_HandleRect: {fileID: 0}

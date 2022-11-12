@@ -27,22 +27,15 @@ public class MapManager : Singleton<MapManager>
 	private List<Room> rooms;
 	private int unlocked;
 	private int spawnID = 0; // index of next spawnpoint to use
-
-    /*
-	 * Start is called before the first frame update by Unity.
-	 */
-    public void Start()
-	{
-		rooms = new List<Room>();
-		
-		unlocked = -1;
-    }
 	
 	/*
 	 * Generate rooms and add them to the room list. Called by startGame in GameManger.
 	 */
 	public void startGame()
 	{
+		rooms = new List<Room>();
+		unlocked = -1;
+		
 		// Create abstract factory variable to hold either factory type
 		AbstractRoomFactory factory = gameObject.AddComponent<LargeRoomFactory>(); // make large room factory
 		factory.roomPrefab = basicRoom;
@@ -54,10 +47,10 @@ public class MapManager : Singleton<MapManager>
 		factory = gameObject.AddComponent<SmallRoomFactory>(); // make small room factory
 		factory.roomPrefab = basicRoom;
 		// Create the four small rooms and position them in unlocked order in the list
-		rooms.Insert(0, factory.createRoom("Exam1"));
-		rooms.Insert(1, factory.createRoom("Exam2"));
-		rooms.Insert(3, factory.createRoom("Closet"));
-		rooms.Add(factory.createRoom("Hallway"));
+		rooms.Insert(0, factory.createRoom("Exam room"));
+		rooms.Insert(1, factory.createRoom("Surgery room"));
+		rooms.Insert(3, factory.createRoom("Bathroom"));
+		rooms.Add(factory.createRoom("Sprinkler room"));
 		
 		Destroy(factory); // remove the old factory component
 	}
