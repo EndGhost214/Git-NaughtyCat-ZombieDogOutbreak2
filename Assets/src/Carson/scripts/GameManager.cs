@@ -49,6 +49,8 @@ using UnityEngine.UI;
  */
 public class GameManager : Singleton<GameManager>
 {
+	[SerializeField]
+	private int difficulty;
 	private GameObject playerObject;
 	// Player controller reference to allow the dogs to do damage
 	[SerializeField]
@@ -132,7 +134,7 @@ public class GameManager : Singleton<GameManager>
 		demo = gameObject.GetComponent<DemoShow>();
 		
 		// Open start menu from Ambrea?
-		startGame(1);
+		startGame(difficulty);
 	}
 
     /*
@@ -431,9 +433,9 @@ public class GameManager : Singleton<GameManager>
 	
 	/*
 	 * Loads the map, sets necessary objects to active, gets the correct player and spawns it.
-	 * Parameter difficulty sets player type, where 0 = BC mode.
+	 * Parameter diff sets player type, where 0 = BC mode.
 	 */
-	public void startGame(int difficulty)
+	public void startGame(int diff)
 	{
 		startTime = (int) Time.time;
 		idleTime = (int) Time.time;
@@ -448,7 +450,7 @@ public class GameManager : Singleton<GameManager>
 		GameObject.Find("Notes (disable on start)").SetActive(false);
 		
 		// Check if BC mode needs to be enabled, get the correct player and disable the other
-		if (difficulty == 0)
+		if (diff == 0)
 		{
 			// Set the reference to the BCPlayer			
 			playerObject = GameObject.Find("BCPlayer");
@@ -465,9 +467,7 @@ public class GameManager : Singleton<GameManager>
 		// Get a reference to the inventory script
 		inventory = playerObject.GetComponent<PlayerInventory>();
 		playerScript.SetHealth(100f);
-		
-		difficulty++;
-		
+
 		// Populate map with testing enemies
 		//spawnDogs(3 * difficulty);
 	}
