@@ -10580,8 +10580,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 73.8, y: -8.4}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchoredPosition: {x: 73.8, y: -7.754801}
+  m_SizeDelta: {x: 200, y: 51.29}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &974440744
 MonoBehaviour:
@@ -10666,7 +10666,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 172.41687, w: 17.415873}
+  m_margin: {x: 0, y: 0, z: 172.41687, w: 34.96117}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -16609,6 +16609,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 026e4c30af6b7fa4f8a3e5b6fcbc545d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  difficulty: 0
   playerScript: {fileID: 1215895306}
   bossDog: {fileID: 1787611474}
 --- !u!114 &1620627994
@@ -18444,8 +18445,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 105.05, y: -8.4}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchoredPosition: {x: 105.05, y: -7.7548}
+  m_SizeDelta: {x: 200, y: 51.2904}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1814933068
 MonoBehaviour:
@@ -18530,7 +18531,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 172.41687, w: 17.415873}
+  m_margin: {x: 0, y: 0, z: 172.41687, w: 34.961174}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
