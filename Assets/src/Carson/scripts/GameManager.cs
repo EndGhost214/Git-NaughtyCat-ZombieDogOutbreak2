@@ -455,6 +455,11 @@ public class GameManager : Singleton<GameManager>
 			// Set the reference to the BCPlayer			
 			playerObject = GameObject.Find("BCPlayer");
 			GameObject.Find("SurvivalPlayer").SetActive(false);
+			
+			bulletCount.text = "<size=18>∞";
+			magCount.text = "<size=18>∞";
+			health.text = "∞";
+			healthBar.value = 1;
 		}
 		else
 		{
@@ -539,32 +544,35 @@ public class GameManager : Singleton<GameManager>
 	 */
 	private void updateHUD()
 	{
-		Shooter shooter = playerObject.GetComponent<Shooter>();
+		// Only worry about ammo and health if the user is not BC
+		if (playerObject.name == "SurvivalPlayer") {
+			Shooter shooter = playerObject.GetComponent<Shooter>();
+			
+			bulletCount.text = "" + shooter.ReserveAmmoCount();
+			magCount.text = "" + shooter.MagAmmoCount();
+			health.text = "" + playerScript.GetHealth();
+			healthBar.value = playerScript.GetHealth() / 100;
+			
+			if (round < 2 && shooter.MagAmmoCount() == 0)
+			{
+				hint1.SetActive(true);
+			}
+			else
+			{
+				hint1.SetActive(false);
+			}
+			
+			if (shooter.ReserveAmmoCount() == 0)
+			{
+				hint2.SetActive(true);
+			}
+			else
+			{
+				hint2.SetActive(false);
+			}
+		}
 		
-		bulletCount.text = "" + shooter.ReserveAmmoCount();
-		magCount.text = "" + shooter.MagAmmoCount();
-		health.text = "" + playerScript.GetHealth();
 		enemyCount.text = "zombies left: " + enemiesLeft();
-		
-		healthBar.value = playerScript.GetHealth() / 100;
-		
-		if (round < 2 && shooter.MagAmmoCount() == 0)
-		{
-			hint1.SetActive(true);
-		}
-		else
-		{
-			hint1.SetActive(false);
-		}
-		
-		if (shooter.ReserveAmmoCount() == 0)
-		{
-			hint2.SetActive(true);
-		}
-		else
-		{
-			hint2.SetActive(false);
-		}
 		
 		heart.SetActive(inventory.hasHeart());
 		tuft.SetActive(inventory.hasTuft());
