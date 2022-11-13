@@ -16,7 +16,7 @@ using UnityEngine;
 *member variables:
 *itemPooler - stores the item pools
 */
-public class LootBag : MonoBehaviour
+public class LootBag : UpgradedLootBag
 {
     
 
