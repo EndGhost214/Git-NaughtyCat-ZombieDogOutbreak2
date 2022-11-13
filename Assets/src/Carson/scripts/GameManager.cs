@@ -130,6 +130,9 @@ public class GameManager : Singleton<GameManager>
 		enemies = GameObject.Find("Enemies");
 		
 		demo = gameObject.GetComponent<DemoShow>();
+		
+		// Open start menu from Ambrea?
+		startGame(1);
 	}
 
     /*
@@ -137,8 +140,7 @@ public class GameManager : Singleton<GameManager>
 	 */
     public void Start()
 	{
-        // Open start menu from Ambrea?
-		startGame(1);
+
     }
 	
 	/*
@@ -428,7 +430,7 @@ public class GameManager : Singleton<GameManager>
 	}
 	
 	/*
-	 * Load2 the map, sets necessary objects to active, gets the correct player and spawns it.
+	 * Loads the map, sets necessary objects to active, gets the correct player and spawns it.
 	 * Parameter difficulty sets player type, where 0 = BC mode.
 	 */
 	public void startGame(int difficulty)
