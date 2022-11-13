@@ -307,7 +307,7 @@ public class GameManager : Singleton<GameManager>
 					}
 					if (roundTime == 40)
 					{
-						Instantiate(bossDog, new Vector3(11.1999998f, 3f, -0.1f), Quaternion.identity, enemies.transform);
+						spawnBoss(new Vector3(11.1999998f, 3f, -0.1f));
 						finished = true;
 					}
 				}
@@ -337,7 +337,7 @@ public class GameManager : Singleton<GameManager>
 					}
 					if (roundTime == 50)
 					{
-						Instantiate(bossDog, new Vector3(-7.55000019f, 14.7200003f, -0.1f), Quaternion.identity, enemies.transform);
+						spawnBoss(new Vector3(-7.55000019f, 14.7200003f, -0.1f));
 						finished = true;
 					}
 				}
@@ -367,17 +367,17 @@ public class GameManager : Singleton<GameManager>
 					}
 					if (roundTime == 30)
 					{
-						Instantiate(bossDog, new Vector3(44.5f, -13.6999998f, -0.1f), Quaternion.identity, enemies.transform);
+						spawnBoss(new Vector3(44.5f, -13.6999998f, -0.1f));
 						spawnedWave = roundTime;
 					}
 					if (roundTime == 45)
 					{
-						Instantiate(bossDog, new Vector3(11.1999998f, 3f, -0.1f), Quaternion.identity, enemies.transform);
+						spawnBoss(new Vector3(11.1999998f, 3f, -0.1f));
 						spawnedWave = roundTime;
 					}
 					if (roundTime == 60)
 					{
-						Instantiate(bossDog, new Vector3(-7.55000019f, 14.7200003f, -0.1f), Quaternion.identity, enemies.transform);
+						spawnBoss(new Vector3(-7.55000019f, 14.7200003f, -0.1f));
 						finished = true;
 					}
 				}
@@ -405,7 +405,7 @@ public class GameManager : Singleton<GameManager>
 				}
 				if (roundTime > 50 && roundTime % 10 == 0)
 				{
-					Instantiate(bossDog, new Vector3(25.6299992f, 26.2199993f, -0.1f), Quaternion.identity, enemies.transform);
+					spawnBoss(new Vector3(25.6299992f, 26.2199993f, -0.1f));
 					spawnedWave = roundTime;
 				}
 			}
@@ -589,11 +589,21 @@ public class GameManager : Singleton<GameManager>
 	}
 	
 	/*
+	 * Spawns a new boss dog and plays the growl sound effect.
+	 * Parameter pos is the position at which to spawn the boss.
+	 */
+	private void spawnBoss(Vector3 pos) {
+		SoundManager.Instance.bossGrowlFunction();
+		
+		Instantiate(bossDog, pos, Quaternion.identity, enemies.transform);
+	}
+	
+	/*
 	 * Returns the number of dogs currently alive on the map.
 	 */
 	private int enemiesLeft()
 	{
-		return enemies.transform.GetComponentsInChildren<CapsuleCollider2D>(false).Length;
+		return enemies.transform.GetComponentsInChildren<Rigidbody2D>(false).Length;
 	}
 }
 

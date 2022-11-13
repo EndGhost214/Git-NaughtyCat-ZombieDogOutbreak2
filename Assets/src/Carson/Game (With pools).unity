@@ -13219,6 +13219,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5269786082440840008, guid: 7f488346238bdd8418ad1af5b245e6db, type: 3}
+      propertyPath: speed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5269786082440840008, guid: 7f488346238bdd8418ad1af5b245e6db, type: 3}
+      propertyPath: damage
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 5269786082440840008, guid: 7f488346238bdd8418ad1af5b245e6db, type: 3}
+      propertyPath: health
+      value: 150
+      objectReference: {fileID: 0}
     - target: {fileID: 8985931492453228275, guid: 7f488346238bdd8418ad1af5b245e6db, type: 3}
       propertyPath: m_Name
       value: BossDog
@@ -16548,7 +16560,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dogPools:
-  - size: 30
+  - size: 60
     tag: ZombieDog
     prefab: {fileID: 1965858180}
   container: {fileID: 1326298428}
