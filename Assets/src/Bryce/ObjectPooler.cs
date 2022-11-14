@@ -117,7 +117,7 @@ public class ObjectPooler : MonoBehaviour
  *    |                                   /\
  *    |                                   \/
  *    |                                    |
- *    |                                    |
+ *    |  (uses)                            |
  *    |                                    |
  *    |                                    \/
  *    |                                   [ReusablePool  ]
