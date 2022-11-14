@@ -62,8 +62,9 @@ public class MapManager : Singleton<MapManager>
 	{
 		// Increment counter to next spawn point in the list
 		spawnID = (spawnID + 1) % (vents.Count);
-		// Start the vent open animation
+		// Start the vent open animation and play the spawn sound
 		vents[spawnID].GetComponent<Animator>().Play("open", 0, 0);
+		SoundManager.Instance.knifeSoundFunction();
 		// Disable the red closed texture
 		vents[spawnID].GetComponent<Animator>().SetBool("spawning", false);
 		// Enable the red texture for the next vent to spawn

@@ -49,6 +49,8 @@ using UnityEngine.UI;
  */
 public class GameManager : Singleton<GameManager>
 {
+	[SerializeField]
+	private int difficulty;
 	private GameObject playerObject;
 	// Player controller reference to allow the dogs to do damage
 	[SerializeField]
@@ -130,6 +132,9 @@ public class GameManager : Singleton<GameManager>
 		enemies = GameObject.Find("Enemies");
 		
 		demo = gameObject.GetComponent<DemoShow>();
+		
+		// Open start menu from Ambrea?
+		startGame(difficulty);
 	}
 
     /*
@@ -137,8 +142,7 @@ public class GameManager : Singleton<GameManager>
 	 */
     public void Start()
 	{
-        // Open start menu from Ambrea?
-		startGame(1);
+
     }
 	
 	/*
@@ -305,7 +309,7 @@ public class GameManager : Singleton<GameManager>
 					}
 					if (roundTime == 40)
 					{
-						Instantiate(bossDog, new Vector3(11.1999998f, 3f, -0.1f), Quaternion.identity, enemies.transform);
+						spawnBoss(new Vector3(11.1999998f, 3f, -0.1f));
 						finished = true;
 					}
 				}
@@ -335,7 +339,7 @@ public class GameManager : Singleton<GameManager>
 					}
 					if (roundTime == 50)
 					{
-						Instantiate(bossDog, new Vector3(-7.55000019f, 14.7200003f, -0.1f), Quaternion.identity, enemies.transform);
+						spawnBoss(new Vector3(-7.55000019f, 14.7200003f, -0.1f));
 						finished = true;
 					}
 				}
@@ -365,17 +369,17 @@ public class GameManager : Singleton<GameManager>
 					}
 					if (roundTime == 30)
 					{
-						Instantiate(bossDog, new Vector3(44.5f, -13.6999998f, -0.1f), Quaternion.identity, enemies.transform);
+						spawnBoss(new Vector3(44.5f, -13.6999998f, -0.1f));
 						spawnedWave = roundTime;
 					}
 					if (roundTime == 45)
 					{
-						Instantiate(bossDog, new Vector3(11.1999998f, 3f, -0.1f), Quaternion.identity, enemies.transform);
+						spawnBoss(new Vector3(11.1999998f, 3f, -0.1f));
 						spawnedWave = roundTime;
 					}
 					if (roundTime == 60)
 					{
-						Instantiate(bossDog, new Vector3(-7.55000019f, 14.7200003f, -0.1f), Quaternion.identity, enemies.transform);
+						spawnBoss(new Vector3(-7.55000019f, 14.7200003f, -0.1f));
 						finished = true;
 					}
 				}
@@ -403,7 +407,7 @@ public class GameManager : Singleton<GameManager>
 				}
 				if (roundTime > 50 && roundTime % 10 == 0)
 				{
-					Instantiate(bossDog, new Vector3(25.6299992f, 26.2199993f, -0.1f), Quaternion.identity, enemies.transform);
+					spawnBoss(new Vector3(25.6299992f, 26.2199993f, -0.1f));
 					spawnedWave = roundTime;
 				}
 			}
@@ -428,10 +432,10 @@ public class GameManager : Singleton<GameManager>
 	}
 	
 	/*
-	 * Load2 the map, sets necessary objects to active, gets the correct player and spawns it.
-	 * Parameter difficulty sets player type, where 0 = BC mode.
+	 * Loads the map, sets necessary objects to active, gets the correct player and spawns it.
+	 * Parameter diff sets player type, where 0 = BC mode.
 	 */
-	public void startGame(int difficulty)
+	public void startGame(int diff)
 	{
 		startTime = (int) Time.time;
 		idleTime = (int) Time.time;
@@ -446,11 +450,16 @@ public class GameManager : Singleton<GameManager>
 		GameObject.Find("Notes (disable on start)").SetActive(false);
 		
 		// Check if BC mode needs to be enabled, get the correct player and disable the other
-		if (difficulty == 0)
+		if (diff == 0)
 		{
 			// Set the reference to the BCPlayer			
 			playerObject = GameObject.Find("BCPlayer");
 			GameObject.Find("SurvivalPlayer").SetActive(false);
+			
+			bulletCount.text = "<size=18>∞";
+			magCount.text = "<size=18>∞";
+			health.text = "∞";
+			healthBar.value = 1;
 		}
 		else
 		{
@@ -463,9 +472,7 @@ public class GameManager : Singleton<GameManager>
 		// Get a reference to the inventory script
 		inventory = playerObject.GetComponent<PlayerInventory>();
 		playerScript.SetHealth(100f);
-		
-		difficulty++;
-		
+
 		// Populate map with testing enemies
 		//spawnDogs(3 * difficulty);
 	}
@@ -537,32 +544,35 @@ public class GameManager : Singleton<GameManager>
 	 */
 	private void updateHUD()
 	{
-		Shooter shooter = playerObject.GetComponent<Shooter>();
+		// Only worry about ammo and health if the user is not BC
+		if (playerObject.name == "SurvivalPlayer") {
+			Shooter shooter = playerObject.GetComponent<Shooter>();
+			
+			bulletCount.text = "" + shooter.ReserveAmmoCount();
+			magCount.text = "" + shooter.MagAmmoCount();
+			health.text = "" + playerScript.GetHealth();
+			healthBar.value = playerScript.GetHealth() / 100;
+			
+			if (round < 2 && shooter.MagAmmoCount() == 0)
+			{
+				hint1.SetActive(true);
+			}
+			else
+			{
+				hint1.SetActive(false);
+			}
+			
+			if (shooter.ReserveAmmoCount() == 0)
+			{
+				hint2.SetActive(true);
+			}
+			else
+			{
+				hint2.SetActive(false);
+			}
+		}
 		
-		bulletCount.text = "" + shooter.ReserveAmmoCount();
-		magCount.text = "" + shooter.MagAmmoCount();
-		health.text = "" + playerScript.GetHealth();
 		enemyCount.text = "zombies left: " + enemiesLeft();
-		
-		healthBar.value = playerScript.GetHealth() / 100;
-		
-		if (round < 2 && shooter.MagAmmoCount() == 0)
-		{
-			hint1.SetActive(true);
-		}
-		else
-		{
-			hint1.SetActive(false);
-		}
-		
-		if (shooter.ReserveAmmoCount() == 0)
-		{
-			hint2.SetActive(true);
-		}
-		else
-		{
-			hint2.SetActive(false);
-		}
 		
 		heart.SetActive(inventory.hasHeart());
 		tuft.SetActive(inventory.hasTuft());
@@ -587,11 +597,21 @@ public class GameManager : Singleton<GameManager>
 	}
 	
 	/*
+	 * Spawns a new boss dog and plays the growl sound effect.
+	 * Parameter pos is the position at which to spawn the boss.
+	 */
+	private void spawnBoss(Vector3 pos) {
+		SoundManager.Instance.bossGrowlFunction();
+		
+		Instantiate(bossDog, pos, Quaternion.identity, enemies.transform);
+	}
+	
+	/*
 	 * Returns the number of dogs currently alive on the map.
 	 */
 	private int enemiesLeft()
 	{
-		return enemies.transform.GetComponentsInChildren<CapsuleCollider2D>(false).Length;
+		return enemies.transform.GetComponentsInChildren<Rigidbody2D>(false).Length;
 	}
 }
 

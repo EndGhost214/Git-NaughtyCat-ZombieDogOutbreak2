@@ -25,7 +25,7 @@ public class LargeRoomFactory : AbstractRoomFactory
 		// Create new room GameObject
 		GameObject newRoom = Instantiate(roomPrefab, roomInfo[name].home, Quaternion.identity);
 		newRoom.name = name;
-		Room room = newRoom.GetComponent<Room>(); // get the attached room script
+		Room room = newRoom.AddComponent<LargeRoom>(); // attach the proper Room script
 		room.name = name;
 		
 		// Get a copy of the spawnPoints in the dictionary
