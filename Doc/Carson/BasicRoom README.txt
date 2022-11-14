@@ -7,10 +7,10 @@ Child GameObjects:
 	-'door':
 		This object will be copied as needed for all doors on the map and should block the player and enemies from passing. It has a BoxCollider2D component and a child GameObject 'sprite' with a SpriteRenderer component that displays a basic gray door sprite.
 	-'vent':
-		This object will be copied as needed for all spawn points for enemies on the map. It has a SpriteRenderer component that displays the closed vent sprite taken from Among Us. It also has an Animator component that references the VentController animator controller. The animator controller contains three stages: Closed, Ready and Open. Closed is the default stage, where the vent displays the closed vent sprite. When Open is played, the vent open animation plays for half a second and returns to Closed. The animator has one parameter: bool spawning, which causes the animator controller to wait in the Ready stage as long as it's true. Ready changes the normal closed sprite to a red glowing vent sprite.
+		This object will be copied as needed for all spawn points for enemies on the map. It has a SpriteRenderer component that displays the closed vent sprite taken from Among Us. It also has an Animator component that references the VentController animator controller. The animator controller contains three stages: Closed, Ready and Open. Closed is the default stage, where the vent displays the closed vent sprite. When Open is played, the vent open animation plays for roughly half a second and returns to Closed. The animator has one parameter: bool spawning, which causes the animator controller to wait in the Ready stage as long as it's true. Ready changes the normal closed sprite to a red glowing vent sprite.
 		
 Usage:
-	The prefab and its child GameObject can be positioned manually or by modifying their transform components with code at runtime. The parent GameObject should have some Room script attached to it as a component for the door to be unlockable and the vent to spawn enemies. Use SetActive(false) on the 'door' GameObject to
+	The prefab and its child GameObjects can be positioned manually or by modifying their transform components with code at runtime. The parent GameObject should have some Room script attached to it as a component for the door to be unlockable and the vent to spawn enemies. Use SetActive(false) on the 'door' GameObject to
 	unlock it, and SetActive(true) to lock it.
 	
 	See my GameFinal scene as an example:
@@ -32,7 +32,7 @@ Usage:
 			The SmallRoom component is returned to the MapManager for later reference.
 		-MapManager calls the unlockRoom method in the desired Room script, which then disables all of its doors
 		-MapManager calls the getSpawnPoints method in the desired Room script, which provides the positions of the vents
-		-MapManager provides the vent positions to GameManager, which spawns enemies at those locations.
+		-MapManager provides the vent positions to GameManager, which spawns enemies at those locations
 		
 Troubleshooting:
 	-Code integration:
