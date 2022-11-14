@@ -109,3 +109,19 @@ public class ObjectPooler : MonoBehaviour
         return objectToSpawn;
     }
 }
+
+/*
+ * [client] -> asks for reusableObject -> [Object Pool     ]
+ *    (class that calls for an objcet)    [+instance: array]
+ *    |                                   [+get            ]
+ *    |                                   /\
+ *    |                                   \/
+ *    |                                    |
+ *    |                                    |
+ *    |                                    |
+ *    |                                    \/
+ *    |                                   [ReusablePool  ]
+ *    ----------------------------------->[+DoSomething()]
+ * 
+ * 
+ */
