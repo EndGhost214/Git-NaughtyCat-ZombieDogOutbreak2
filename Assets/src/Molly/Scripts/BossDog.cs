@@ -63,7 +63,7 @@ public class BossDog : Dog
     public override void Death()
     {   
         Debug.Log("The boss dog is dead");
-        Destroy(this);
+        Destroy(gameObject);
     }
 
 }
