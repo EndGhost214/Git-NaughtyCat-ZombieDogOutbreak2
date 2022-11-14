@@ -5,6 +5,7 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
+<<<<<<< HEAD
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000
@@ -26,4 +27,12 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/src/Tosin/Hospital Cutscene.unity
     guid: bd81e9779c9b93c44b6034d1ffa9acd1
+=======
+  - enabled: 1
+    path: Assets/src/Carson/Game (With pools).unity
+    guid: 2090b166c848c36499716f6e6f2bc133
+  - enabled: 1
+    path: Assets/src/Ambrea/StartMenu.unity
+    guid: 4f2078d114fbc4b7290906bccf302911
+>>>>>>> f351c192d8a3918abb9b4742a1c32c2a3bcce4df
   m_configObjects: {}
