@@ -31,7 +31,7 @@ public class ZombieDog : Dog, IDogP
 
     /*
      * this function enables the collider, sets the stats of the dog,
-     * and also sets the animations to the correct state upon spawning
+     * and also sets the animations to the correct state upon spawning (start function)
      *
     */
     public void OnObjectSpawn()
