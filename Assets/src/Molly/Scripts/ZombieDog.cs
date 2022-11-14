@@ -83,7 +83,7 @@ public class ZombieDog : Dog, IDogP
     void OnCollisionEnter2D(Collision2D collision)
 	{
         // if the collision is with the player
-        if(collision.gameObject.tag == "Player")
+        if(collision.gameObject.tag == "BCPlayer")
         {
             //damage player
             GameManager.Instance.getPlayer().DamagePlayer(damage);
