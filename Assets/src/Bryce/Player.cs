@@ -34,7 +34,6 @@ public class Player : MonoBehaviour
     {
         playerObject = GetPlayerObject();
         body = playerObject.GetComponent<Rigidbody2D>();
-        
     }
 
     private void Update()
@@ -53,7 +52,6 @@ public class Player : MonoBehaviour
         {
             SoundManager.Instance.catMeowFunction();
         }
-
     }
 
     protected virtual GameObject GetPlayerObject()

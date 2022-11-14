@@ -95,7 +95,6 @@ public class Shooter : MonoBehaviour
                 ammoCount = 0;
             }
         }
-
     }
 
     //OnTrigger to check for bullet pickup, adds bullets then inactivates bullet drop
@@ -103,7 +102,6 @@ public class Shooter : MonoBehaviour
     {
         if (other.gameObject.tag == "bulletdrop")
         {
-            
             SoundManager.Instance.pickUpFunction();
             ammoCount = ammoCount + (MAG_SIZE * 3);
             if (ammoCount > MAX_AMMO)
@@ -113,8 +111,6 @@ public class Shooter : MonoBehaviour
             other.gameObject.SetActive(false);
         }
     }
-
-   
 
     //Returns the count of thr reserve ammo
     public int ReserveAmmoCount()
@@ -128,15 +124,11 @@ public class Shooter : MonoBehaviour
         return mag;
     }
 
-
-
     //Plays gun sound and spawns a bullet from the ObjectPooler
     private void Shoot()
     {
         SoundManager.Instance.gunSoundFunction();
-       
         ObjectPooler.Instance.SpawnFromPool("Bullet", firePoint.transform.position, firePoint.transform.rotation);
-     
     }
 
 }

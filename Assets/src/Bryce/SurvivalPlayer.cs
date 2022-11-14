@@ -71,5 +71,4 @@ public class SurvivalPlayer : Player
         return GameObject.Find("SurvivalPlayer");
     }
 
-
 }

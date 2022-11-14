@@ -31,7 +31,6 @@ public class Gun : MonoBehaviour
 
         //Calculating the absolute angle of gun 
         float angle = Mathf.Atan2(mousePos.y, mousePos.x) * Mathf.Rad2Deg;
-
         
         //Checking if the gun has passed the center line, flips sprite if so
         if (Camera.main.ScreenToWorldPoint(Input.mousePosition).x < transform.position.x)
@@ -42,7 +41,6 @@ public class Gun : MonoBehaviour
         {
             transform.rotation = Quaternion.Euler(new Vector3(0f, 0f, angle));
         }
-        
-       
     }
+
 }

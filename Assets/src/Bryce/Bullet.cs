@@ -33,7 +33,6 @@ public class Bullet : MonoBehaviour, IPooledObject
     //Returns damage value of the bullet
     public float GetDamage() {
         return bulletDamage;
-
     }
 
     //Spawn function for the bullet
@@ -45,7 +44,6 @@ public class Bullet : MonoBehaviour, IPooledObject
 
         Vector2 force = transform.right * bulletSpeed;
         rb.AddForce(force, ForceMode2D.Impulse);
-        
     }
 
 }
