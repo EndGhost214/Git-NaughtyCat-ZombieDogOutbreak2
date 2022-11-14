@@ -4,11 +4,5 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes:
-  - enabled: 1
-    path: Assets/src/Carson/Game (With pools).unity
-    guid: 2090b166c848c36499716f6e6f2bc133
-  - enabled: 1
-    path: Assets/src/Ambrea/StartMenu.unity
-    guid: 4f2078d114fbc4b7290906bccf302911
+  m_Scenes: []
   m_configObjects: {}

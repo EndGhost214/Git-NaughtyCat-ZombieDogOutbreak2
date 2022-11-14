@@ -62,8 +62,8 @@ public class BossDog : Dog
     //override the death method since it doesn't match the object pooler, destroys the prefab
     public override void Death()
     {   
-        Debug.Log("The boss dog is dead");
-        Destroy(this);
+        //Debug.Log("The boss dog is dead");
+        Destroy(gameObject);
     }
 
 }
