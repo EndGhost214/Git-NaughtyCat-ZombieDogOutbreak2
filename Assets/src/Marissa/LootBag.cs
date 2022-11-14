@@ -34,7 +34,7 @@ public class LootBag : UpgradedLootBag
                 //picks a number 1-70
                 int randomNumber = Random.Range(1,71);
 
-                if(randomNumber>=1 && randomNumber<=45)
+                if(randomNumber>=20 && randomNumber<=45)
                 {
                     //spawns the bullet from the item pool
                     ItemPooler.Instance.spawnFromPool("Bullet", spawnPosition, Quaternion.identity);
