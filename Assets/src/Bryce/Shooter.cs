@@ -16,6 +16,7 @@ using UnityEngine;
  * nextTimeToFire - time between gun fire
  * MAX_AMMO - maximum amount of ammo the player can carry
  * ammoCount - current count of player ammo
+ * rotateY - rotation variable for flipping character
  * mag - size of mag
  * Update() - called every frame
  * ReserveAmmoCount() - returns the count of the reserve ammo
@@ -38,6 +39,7 @@ public class Shooter : MonoBehaviour
     private int ammoCount = 270;
     private int mag = 30;
     private int MAG_SIZE = 30;
+    float rotateY = 0f;
 
     /*
      * Update function
@@ -51,7 +53,7 @@ public class Shooter : MonoBehaviour
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
         //rotation variable for flipping character
-        float rotateY = 0f;
+        rotateY = 0f;
 
         //checking if the mouse flipped to the opposite side of the character - sets roate to 180deg
         if(mousePos.x < transform.position.x)
@@ -93,7 +95,6 @@ public class Shooter : MonoBehaviour
                 ammoCount = 0;
             }
         }
-
     }
 
     //OnTrigger to check for bullet pickup, adds bullets then inactivates bullet drop
@@ -101,7 +102,6 @@ public class Shooter : MonoBehaviour
     {
         if (other.gameObject.tag == "bulletdrop")
         {
-            
             SoundManager.Instance.pickUpFunction();
             ammoCount = ammoCount + (MAG_SIZE * 3);
             if (ammoCount > MAX_AMMO)
@@ -111,8 +111,6 @@ public class Shooter : MonoBehaviour
             other.gameObject.SetActive(false);
         }
     }
-
-   
 
     //Returns the count of thr reserve ammo
     public int ReserveAmmoCount()
@@ -126,15 +124,11 @@ public class Shooter : MonoBehaviour
         return mag;
     }
 
-
-
     //Plays gun sound and spawns a bullet from the ObjectPooler
     private void Shoot()
     {
         SoundManager.Instance.gunSoundFunction();
-       
         ObjectPooler.Instance.SpawnFromPool("Bullet", firePoint.transform.position, firePoint.transform.rotation);
-     
     }
 
 }
