@@ -146,7 +146,7 @@ GameObject:
   - component: {fileID: 7238832937979725875}
   m_Layer: 0
   m_Name: BCPlayer
-  m_TagString: Player
+  m_TagString: BCPlayer
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

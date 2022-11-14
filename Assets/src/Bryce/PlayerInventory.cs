@@ -1,6 +1,24 @@
-
+/*
+ * PlayerInventory.cs
+ * Bryce Hendrickson
+ * Player invintory script attached to all player prefabs
+ */
 using UnityEngine;
 
+/*
+ * Handles player invintory 
+ * 
+ * member variables:
+ * invHeart
+ * invTuft
+ * invCure
+ * invSerum
+ * hasHeart()
+ * hasTuft()
+ * hasCure()
+ * hasSerum()
+ * OnTriggerEnter2D(Collider2D other)
+ */
 public class PlayerInventory : MonoBehaviour
 {
     private bool invHeart = false;

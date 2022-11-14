@@ -19,6 +19,8 @@ TagManager:
   - TriggerCutscene1
   - TriggerCutsceneCure
   - TriggerCutsceneFinal
+  - Undefined
+  - BCPlayer
   layers:
   - Default
   - TransparentFX
