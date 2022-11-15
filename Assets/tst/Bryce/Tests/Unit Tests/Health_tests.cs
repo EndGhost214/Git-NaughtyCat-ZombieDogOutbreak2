@@ -27,4 +27,15 @@ public class Health_tests : MonoBehaviour
         check = bob.GetHealth();
         Assert.AreEqual(check, 50);
     }
+
+    [Test]
+    public void checkPlayerHealthAfterDamageMax()
+    {
+
+        SurvivalPlayer bob = new SurvivalPlayer(new Player());
+        float check;
+        bob.DamagePlayer(500);
+        check = bob.GetHealth();
+        Assert.AreEqual(check, 0);
+    }
 }
