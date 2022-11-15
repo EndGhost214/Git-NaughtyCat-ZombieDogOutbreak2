@@ -116,13 +116,9 @@ public class ItemPooler : MonoBehaviour
     
 
         //searches the interface
-        IItemPooledObject pooledObj = objectToSpawn.GetComponent<IItemPooledObject>();
+        GameObject pooledObj = objectToSpawn;
 
-        //makes this optional
-        if (pooledObj != null)
-        {
-            pooledObj.onItemSpawn();
-        }
+       
 
         //add it back to the queue to be reused later
         poolDictionary[tag].Enqueue(objectToSpawn);
