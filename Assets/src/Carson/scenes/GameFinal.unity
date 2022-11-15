@@ -16609,7 +16609,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 026e4c30af6b7fa4f8a3e5b6fcbc545d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  difficulty: 1
+  difficulty: 0
   playerScript: {fileID: 1215895306}
   bossDog: {fileID: 1787611474}
 --- !u!114 &1620627994

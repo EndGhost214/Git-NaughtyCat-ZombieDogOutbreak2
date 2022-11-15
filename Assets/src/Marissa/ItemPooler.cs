@@ -2,6 +2,7 @@
 *ItemPooler.cs
 *Marissa Samayoa
 *contains the item pool scripts
+*code from ObJECT POOLINg in Unity by Brackeys on YouTube
 */
 
 using System.Collections;
@@ -115,7 +116,7 @@ public class ItemPooler : MonoBehaviour
         objectToSpawn.transform.rotation = rotation;  //gets the rotation of the item
     
 
-        //searches the interface
+        //sets pooledObj to the object you want to spawn
         GameObject pooledObj = objectToSpawn;
 
        
