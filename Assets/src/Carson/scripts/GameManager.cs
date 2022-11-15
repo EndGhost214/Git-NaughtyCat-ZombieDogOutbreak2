@@ -521,6 +521,14 @@ public class GameManager : Singleton<GameManager>
 	}
 	
 	/*
+	 * Returns the number of dogs currently alive on the map.
+	 */
+	public int enemiesLeft()
+	{
+		return enemies.transform.GetComponentsInChildren<Rigidbody2D>(false).Length;
+	}
+	
+	/*
 	 * Cleans up from the previous round and sets all the necessary variables for the new round.
 	 */
 	private void newRound()
@@ -604,14 +612,6 @@ public class GameManager : Singleton<GameManager>
 		SoundManager.Instance.bossGrowlFunction();
 		
 		Instantiate(bossDog, pos, Quaternion.identity, enemies.transform);
-	}
-	
-	/*
-	 * Returns the number of dogs currently alive on the map.
-	 */
-	private int enemiesLeft()
-	{
-		return enemies.transform.GetComponentsInChildren<Rigidbody2D>(false).Length;
 	}
 }
 
