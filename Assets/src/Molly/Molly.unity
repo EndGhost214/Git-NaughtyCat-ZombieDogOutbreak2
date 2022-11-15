@@ -334,6 +334,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5dfa5710869749b44aaf5da59ecbbf3f, type: 3}
+--- !u!1 &1063973657 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8985931492453228275, guid: 7f488346238bdd8418ad1af5b245e6db, type: 3}
+  m_PrefabInstance: {fileID: 8998128058696871838}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1257202198
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -391,6 +396,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4f90afd4dcc20254eb34b6606d030954, type: 3}
+--- !u!1 &1278866394 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8596971514160928299, guid: 1cbbf368df24c3a4a94fc04b100a7f14, type: 3}
+  m_PrefabInstance: {fileID: 1654790311}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1524566456
 GameObject:
   m_ObjectHideFlags: 0
@@ -566,6 +576,7 @@ MonoBehaviour:
   - size: 50
     tag: ZombieDog
     prefab: {fileID: 313768696}
+  container: {fileID: 0}
 --- !u!4 &1715887249
 Transform:
   m_ObjectHideFlags: 0
@@ -593,6 +604,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c39c007964270eb4a8ae82a5c975b76b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bossDog: {fileID: 1063973657}
 --- !u!1 &1917122445
 GameObject:
   m_ObjectHideFlags: 0
@@ -710,8 +722,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea8d21cb231dda04d999774009bf381b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  walkspeed: 5
-  playerObject: {fileID: 0}
+  walkSpeed: 5
+  playerObject: {fileID: 1278866394}
 --- !u!4 &2060946356
 Transform:
   m_ObjectHideFlags: 0
@@ -743,6 +755,7 @@ MonoBehaviour:
   - tag: Bullet
     prefab: {fileID: 280804086}
     size: 30
+  container: {fileID: 0}
 --- !u!114 &2060946358
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -755,6 +768,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbbc070472a76b345964558e1a67ede1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  basicRoom: {fileID: 0}
 --- !u!114 &2060946359
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -767,7 +781,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 026e4c30af6b7fa4f8a3e5b6fcbc545d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  difficulty: 1
   playerScript: {fileID: 2060946362}
+  bossDog: {fileID: 1063973657}
 --- !u!114 &2060946360
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -815,8 +831,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f794cda1de64714ca0c5554b3b9aa97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  walkspeed: 5
-  playerObject: {fileID: 0}
+  walkSpeed: 0
+  playerObject: {fileID: 1278866394}
 --- !u!1001 &8998128058696871838
 PrefabInstance:
   m_ObjectHideFlags: 0
