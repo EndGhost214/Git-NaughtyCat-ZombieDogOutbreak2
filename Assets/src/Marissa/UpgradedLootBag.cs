@@ -1,7 +1,19 @@
+/*
+*UpgradedLootBag.cs
+*Marissa Samayoa
+*drops all the items, used for testing or easy win
+*/
+
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+*class that contains the items and their ability to drop
+*member variables:
+*itemPooler - stores the item pools
+*/
 public class UpgradedLootBag : MonoBehaviour
 {
     

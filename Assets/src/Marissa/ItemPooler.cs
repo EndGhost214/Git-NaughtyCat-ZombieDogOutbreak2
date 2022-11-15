@@ -129,3 +129,20 @@ public class ItemPooler : MonoBehaviour
 
 
 }
+
+/*
+ * [client] -> asks for reusableObject -> [Object Pool     ]
+ *    (class that calls for an objcet)    [+instance: array]
+ *    |                                   [+get            ]
+ *    |                                   /\
+ *    |                                   \/
+ *    |                                    |
+ *    |  (uses)                            |
+ *    |                                    |
+ *    |                                    \/
+ *    |                                   [ReusablePool  ]
+ *    ----------------------------------->[+DoSomething()]
+ * 
+ * 
+ */
+

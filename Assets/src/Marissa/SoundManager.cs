@@ -19,13 +19,25 @@ public class SoundManager : Singleton<SoundManager>
 
     private string recentlyPlayed;
     //for testing if the sound was played - boundary test
-    public string GetrecentlyPlayed()
+    void GetrecentlyPlayed()
     {
 
-        return recentlyPlayed;
+        Debug.Log(recentlyPlayed);
     }
 
-
+    
+    float nextTime=0;
+    void FixedUpdate()
+    {
+        
+        
+        if(Time.time>=nextTime)
+        {   
+            Debug.Log(recentlyPlayed);
+            nextTime=Time.time +3f;
+        }
+    }
+    
     [SerializeField]
     private AudioSource zombieSound1; //mc zombie
 
@@ -50,7 +62,7 @@ public class SoundManager : Singleton<SoundManager>
         {
             zombieSound1.Play();
             recentlyPlayed="zombieSound1";
-
+            //Debug.Log("zombieSound1");
         }
         else if(play>=11 && play<=20)
         {
@@ -234,6 +246,7 @@ public class SoundManager : Singleton<SoundManager>
         
         gunSound1.PlayOneShot(gunClip, 0.7F);
         recentlyPlayed="gunClip";
+        //Debug.Log("gunClip");
     }
 
     [SerializeField]

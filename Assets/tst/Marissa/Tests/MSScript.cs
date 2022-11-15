@@ -5,14 +5,15 @@ using UnityEngine.TestTools;
 using NUnit.Framework;
 
 public class MSTestScript : MonoBehaviour
-{
-    [Test]
+{   
+    //[Test]
 
      /*
     *function to check if the zombie sound has been played
     *no parameter
     *displays if the test passes
     */
+    /*
     public void checkZombieSoundFunction(){
 
         SoundManager.Instance.zombieSoundFunction();
@@ -27,14 +28,15 @@ public class MSTestScript : MonoBehaviour
         Assert.AreEqual(flag,1);
       
     }
-
-     [Test]
+    */
+     //[Test]
 
     /*
     *function to check if the zombie hurt sound has been played
     *no parameter
     *displays if the test passes
     */
+    /*
     public void checkzombieHurtFunction(){
 
         SoundManager.Instance.zombieHurtFunction();
@@ -53,7 +55,7 @@ public class MSTestScript : MonoBehaviour
 
 
 
-
+*/
 
 }
 
