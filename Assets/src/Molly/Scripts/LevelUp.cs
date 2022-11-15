@@ -37,7 +37,7 @@ public class LevelUp : ZombieDog
     //sets the damage of the dog to 5 more than the existing damage
     protected override float SetDamage()
     {
-        return ZomDog.damage + 5f;
+        return ZomDog.damage + 1f;
     }
 
     //sets the health to 10 more than the existing health
