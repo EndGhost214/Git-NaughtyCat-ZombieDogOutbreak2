@@ -55,5 +55,29 @@ public class Dog : MonoBehaviour
         health-=damage;
         return health;
     }
+
+    /*
+     * reduces damage of sprite by the amount in the test case
+     *
+     * paramater is a float of how much damage is being taken
+     *
+     * returns the new damage
+    */
+    public float TakeDamageTest(float fullDamage){
+        damage-=fullDamage;
+        return damage;
+    }
+
+    /*
+     * reduces speed of sprite by the amount in the test case
+     *
+     * paramater is a float of how much speed is being taken
+     *
+     * returns the new speed
+    */
+     public float TakeSpeed(float fullSpeed){
+        speed-=fullSpeed;
+        return speed;
+    }
 }
 
