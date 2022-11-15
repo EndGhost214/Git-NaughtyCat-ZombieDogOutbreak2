@@ -21,6 +21,7 @@ using UnityEngine;
  */
 public abstract class AbstractRoomFactory : MonoBehaviour
 {
+	[SerializeField]
 	public GameObject roomPrefab; // assigned by the MapManager when the factory is created
 	
 	protected Dictionary<string, Positions> roomInfo;
@@ -65,6 +66,14 @@ public abstract class AbstractRoomFactory : MonoBehaviour
 	{
 		roomInfo = new Dictionary<string, Positions>();
 		setUp(); // call the setUp method implemented by the child factories
+	}
+	
+	/*
+	 * Default constructor for a new object.
+	 */
+	public AbstractRoomFactory()
+	{
+		Awake();
 	}
 	
 	/*
