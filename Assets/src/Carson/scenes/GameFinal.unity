@@ -831,7 +831,7 @@ GameObject:
   - component: {fileID: 44298834}
   - component: {fileID: 44298833}
   - component: {fileID: 44298832}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: box2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -846,7 +846,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 44298830}
   m_LocalRotation: {x: -0, y: -0, z: 0.14969051, w: 0.9887329}
-  m_LocalPosition: {x: 22.600002, y: 36.73, z: -0.109438084}
+  m_LocalPosition: {x: 16.45, y: 42.4, z: -0.109438084}
   m_LocalScale: {x: 0.21837601, y: 0.36152437, z: 1.2298}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5526,7 +5526,7 @@ GameObject:
   - component: {fileID: 495278025}
   - component: {fileID: 495278024}
   - component: {fileID: 495278023}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: chair4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5881,7 +5881,7 @@ GameObject:
   - component: {fileID: 532279681}
   - component: {fileID: 532279680}
   - component: {fileID: 532279679}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: chair2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7168,7 +7168,7 @@ GameObject:
   - component: {fileID: 686008255}
   - component: {fileID: 686008254}
   - component: {fileID: 686008253}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: chair5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11446,7 +11446,7 @@ GameObject:
   - component: {fileID: 1098473112}
   - component: {fileID: 1098473111}
   - component: {fileID: 1098473110}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: box1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16285,7 +16285,7 @@ GameObject:
   - component: {fileID: 1592004210}
   - component: {fileID: 1592004209}
   - component: {fileID: 1592004208}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: chair1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16609,7 +16609,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 026e4c30af6b7fa4f8a3e5b6fcbc545d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  difficulty: 0
+  difficulty: 1
   playerScript: {fileID: 1215895306}
   bossDog: {fileID: 1787611474}
 --- !u!114 &1620627994
@@ -18289,7 +18289,7 @@ GameObject:
   - component: {fileID: 1814522059}
   - component: {fileID: 1814522058}
   - component: {fileID: 1814522057}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: chair3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
