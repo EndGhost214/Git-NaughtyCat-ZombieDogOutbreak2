@@ -116,6 +116,7 @@ public class SoundManager : Singleton<SoundManager>
     public void bossGrowlFunction()
     {
         bossGrowl.Play();
+        recentlyPlayed="bossGrowl";
     }
 
 
@@ -131,6 +132,7 @@ public class SoundManager : Singleton<SoundManager>
     public void bossAttackFunction()
     {
         bossAttack.Play();
+        recentlyPlayed="bossAttack";
     }
 
 
@@ -146,6 +148,7 @@ public class SoundManager : Singleton<SoundManager>
     public void bossHurtFunction()
     {
         bossHurt.Play();
+        recentlyPlayed="bossHurt";
     }
 
 
@@ -169,10 +172,12 @@ public class SoundManager : Singleton<SoundManager>
         if(play==1)
         {
             catMeow1.Play();
+            recentlyPlayed="catMeow1";
         }
         else if(play==2)
         {
             catMeow2.Play();
+            recentlyPlayed="catMeow2";
         }
 
     }
@@ -190,6 +195,7 @@ public class SoundManager : Singleton<SoundManager>
     public void pickUpFunction()
     {
         pickUp.Play();
+        recentlyPlayed="pickUp";
     }
 
 
@@ -206,6 +212,7 @@ public class SoundManager : Singleton<SoundManager>
     {
 
         catWalk.Play();
+        recentlyPlayed="catWalk";
 
     }
 
@@ -226,6 +233,7 @@ public class SoundManager : Singleton<SoundManager>
 
         
         gunSound1.PlayOneShot(gunClip, 0.7F);
+        recentlyPlayed="gunClip";
     }
 
     [SerializeField]
@@ -239,6 +247,7 @@ public class SoundManager : Singleton<SoundManager>
     public void gunReloadSoundFunction(){
 
         gunReload.Play();
+        recentlyPlayed="gunReload";
     }
 
     [SerializeField]
@@ -252,6 +261,7 @@ public class SoundManager : Singleton<SoundManager>
     public void gunEmptySoundFunction(){
 
         gunEmpty.Play();
+        recentlyPlayed="gunEmpty";
     }
 
 
@@ -268,6 +278,7 @@ public class SoundManager : Singleton<SoundManager>
     public void knifeSoundFunction(){
 
         knifeSlash.Play();
+        recentlyPlayed="knifeSlash";
     }
 
 
@@ -291,12 +302,15 @@ public class SoundManager : Singleton<SoundManager>
 
         if(play==1){
             catHurt1.Play();
+            recentlyPlayed="catHurt1";
         }
         else if(play>=2 && play<=7){
             catHurt2.Play();
+            recentlyPlayed="catHurt2";
         }
         else if(play>=8 && play<=10){
             catHurt3.Play();
+            recentlyPlayed="catHurt3";
         }
     }
 
@@ -318,6 +332,7 @@ public class SoundManager : Singleton<SoundManager>
     */
     public void unlockDoorFunction(){
         unlockDoor.Play();
+        recentlyPlayed="unlockDoor";
     }
 
 
@@ -333,6 +348,7 @@ public class SoundManager : Singleton<SoundManager>
     */
     public void createCureFunction(){
         createCure.Play();
+        recentlyPlayed="createCure";
     }
 
 
@@ -347,6 +363,7 @@ public class SoundManager : Singleton<SoundManager>
     */
     public void playSprinklerFunction(){
         playSprinkler.Play();
+        recentlyPlayed="playSprinkler";
     }
 
 
