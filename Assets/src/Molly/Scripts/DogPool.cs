@@ -79,6 +79,7 @@ public class DogPool : MonoBehaviour
 
             for( int i = 0; i < dogPool.size; i++)
             {
+                //set in the container in the hierarchy and put in local space
                 GameObject obj = Instantiate(dogPool.prefab, container, false);
                 //sets the object false in the hierarchy
                 obj.SetActive(false);
