@@ -217,6 +217,7 @@ public class GameManager : Singleton<GameManager>
 				{
 					if (roundTime % 6 == 0)
 					{
+						spawnBoss(new Vector3(11.1999998f, 3f, -0.1f));
 						spawnDogs(2);
 						spawnedWave = roundTime;
 					}
