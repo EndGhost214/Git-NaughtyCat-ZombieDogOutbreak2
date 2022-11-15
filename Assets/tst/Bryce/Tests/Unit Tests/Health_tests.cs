@@ -1,8 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
+
 using UnityEngine;
 using NUnit.Framework;
-using UnityEngine.TestTools;
+
 public class Health_tests : MonoBehaviour
 {
 
@@ -37,5 +36,15 @@ public class Health_tests : MonoBehaviour
         bob.DamagePlayer(500);
         check = bob.GetHealth();
         Assert.AreEqual(check, 0);
+    }
+
+    [Test]
+    public void checkPlayerHealthAfterMinDamage()
+    {
+        SurvivalPlayer bob = new SurvivalPlayer(new Player());
+        float check;
+        bob.DamagePlayer(.5f);
+        check = bob.GetHealth();
+        Assert.AreEqual(check, 100);
     }
 }
