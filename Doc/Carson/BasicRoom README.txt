@@ -47,6 +47,5 @@ Troubleshooting:
 		If the child objects appear not to be positioned at the correct coordinates when transform.position is set, it's likely because your positions are switching from local space to world space. Use TransformPoint in Transform to turn the provided local coordinates into world space coordinates. InverseTransform works the same way, in the other direction.
 		
 		If the door is still colliding with the player after it's been unlocked, make sure you are calling SetActive(false) on the parent object, named 'door', as disabling the child will leave the parent's box collider component active.
-	
 	-Manual adjustments:
 		If you want to change the size of the door, it's easiest to use the scale tool on the parent object (named 'door'), as that changes the box collider as well. If you adjust the size or position of just the child object (named 'sprite'), then the collider will not be positioned correctly, and the door may have an offset from the parent position.

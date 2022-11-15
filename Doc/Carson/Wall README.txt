@@ -3,6 +3,10 @@
 Overview:
 	The purpose of this prefab is to have a wall sprite with a rectangular collider that can be easily copied around the map.
 	
+Video:
+	https://youtu.be/75iuiVzoK-E
+		This video shows a wall colliding with a player GameObject.
+
 Child GameObjects:
 	-none
 		

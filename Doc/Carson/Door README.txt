@@ -3,6 +3,10 @@
 Overview:
 	The purpose of this prefab is to have a door sprite with a collider that can be easily copied to each room created in the map.
 	
+Video:
+	https://youtu.be/FBkZXyQ0b28
+		This video demonstrates one door being unlocked and another that is still blocking access to a room.
+
 Child GameObjects:
 	-'sprite':
 		This has a SpriteRenderer component that displays a basic gray door sprite.
