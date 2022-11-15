@@ -3,6 +3,10 @@
 Overview:
 	This prefab is for copying to each new room created on the map to mark where enemies should spawn in Zombie Dog Outbreak 2. The basic closed vent sprite was stolen from Among Us, though the other animation frames were made by me.
 	
+Video:
+	https://youtu.be/dhBcAJklQ_c
+	This video demonstrates the vent opening animation.
+
 Child GameObjects:
 	-none
 		
