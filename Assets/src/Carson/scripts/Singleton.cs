@@ -46,12 +46,14 @@ public class Singleton<T> : MonoBehaviour where T : Component
 	/*
 	 * Called by Unity when the script is loaded for the first time, to set the instance property.
 	 */
-	public virtual void Awake() {
+	public virtual void Awake()
+	{
 		_instance = this as T; // set _instance (and Instance) to this instantiation of the class
 		
 		// Make sure only one of this script exists and is active
-		if (FindObjectsOfType<T>(false).Length > 1) {
-			Debug.LogError("Two Singletons of type " + typeof(T) + " found in the scene!");
+		if (FindObjectsOfType<T>(false).Length > 1)
+		{
+			Debug.LogError("Two Singletons of type " + typeof(T) + " found in the scene!"); // put an error in the console
 		}
 	}
 }
