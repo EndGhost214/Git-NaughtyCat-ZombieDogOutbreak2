@@ -106,7 +106,7 @@ public class GameManager : Singleton<GameManager>
 	public override void Awake()
 	{
 		// Set the singleton instance property
-		_instance = this;
+		base.Awake();
 		
 		HUD = GameObject.Find("HUD");
 		// Get inventory objects

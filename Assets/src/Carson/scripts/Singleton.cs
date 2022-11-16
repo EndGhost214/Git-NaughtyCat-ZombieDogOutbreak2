@@ -48,6 +48,11 @@ public class Singleton<T> : MonoBehaviour where T : Component
 	 */
 	public virtual void Awake() {
 		_instance = this as T; // set _instance (and Instance) to this instantiation of the class
+		
+		// Make sure only one of this script exists and is active
+		if (FindObjectsOfType<T>(false).Length > 1) {
+			Debug.LogError("Two Singletons of type " + typeof(T) + " found in the scene!");
+		}
 	}
 }
 

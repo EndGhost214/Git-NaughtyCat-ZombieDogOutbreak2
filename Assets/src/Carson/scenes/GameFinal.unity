@@ -12688,8 +12688,8 @@ RectTransform:
   - {fileID: 1990192832}
   - {fileID: 1376936010}
   - {fileID: 437335107}
-  - {fileID: 1182811307}
   - {fileID: 1811656723}
+  - {fileID: 1182811307}
   - {fileID: 600792962}
   - {fileID: 1078164620}
   - {fileID: 254740593}
@@ -18115,7 +18115,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1222189694}
-  m_RootOrder: 60
+  m_RootOrder: 59
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 6.27}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
