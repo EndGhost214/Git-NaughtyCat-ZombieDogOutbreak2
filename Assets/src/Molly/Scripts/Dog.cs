@@ -24,7 +24,7 @@ public class Dog : MonoBehaviour
     //variables 
     public float health;
     public float damage;
-    public float speed;
+    public float speed = 3f;
 
     private UpgradedLootBag bag;
 
