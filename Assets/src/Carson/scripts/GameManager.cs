@@ -132,9 +132,6 @@ public class GameManager : Singleton<GameManager>
 		enemies = GameObject.Find("Enemies");
 		
 		demo = gameObject.GetComponent<DemoShow>();
-		
-		// Open start menu from Ambrea?
-		startGame(difficulty);
 	}
 
     /*
