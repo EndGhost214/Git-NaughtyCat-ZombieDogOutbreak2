@@ -132,6 +132,8 @@ public class GameManager : Singleton<GameManager>
 		enemies = GameObject.Find("Enemies");
 		
 		demo = gameObject.GetComponent<DemoShow>();
+		
+		startGame(1);
 	}
 
     /*
